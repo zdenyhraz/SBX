@@ -7,10 +7,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="Entity\Entity.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Log\Logger.h" />
+    <ClInclude Include="Component\PositionComponent.h" />
+    <ClInclude Include="Component\EntityInfoComponent.h" />
   </ItemGroup>
 </Project>

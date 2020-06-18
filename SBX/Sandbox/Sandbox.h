@@ -9,11 +9,27 @@ class Sandbox
 public:
 	Sandbox()
 	{
+
 	}
 
 	~Sandbox()
 	{
 
+	}
+
+	void Start()
+	{
+		TimeRate = 1;
+	}
+
+	void Stop()
+	{
+		TimeRate = 0;
+	}
+
+	void SetTimeRate( double timeRate )
+	{
+		TimeRate = timeRate;
 	}
 
 private:
