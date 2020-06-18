@@ -1,5 +1,4 @@
 #include "Stdafx.h"
-#include "Log/Logger.h"
 #include "Sandbox/Sandbox.h"
 
 std::unique_ptr<Sandbox> sandbox = std::make_unique<Sandbox>();

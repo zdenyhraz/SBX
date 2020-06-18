@@ -1,6 +1,7 @@
 #pragma once
 #include "Stdafx.h"
 #include "Component/ComponentVectors/ComponentVectors.h"
+#include "System/VelocitySystem.h"
 
 class Sandbox
 {
@@ -18,6 +19,8 @@ public:
 	void Start()
 	{
 		TimeRate = 1;
+		VelocitySystem System( Components );//test!!!!!!!!!!!!!!!!!!!!
+
 	}
 
 	void Stop()
@@ -36,5 +39,4 @@ private:
 	double Dt;
 
 	ComponentVectors Components;
-
 };
