@@ -6,7 +6,7 @@
 class EntityInfoComponentVector : public ComponentVector
 {
 public:
-	std::unordered_map<int, EntityInfo> EntityInfos;
+	std::unordered_map<int, EntityInfoComponent> EntityInfos;
 
 private:
 };

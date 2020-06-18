@@ -149,14 +149,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\ComponentVector\ComponentVectors.h" />
+    <ClInclude Include="Component\ComponentVector\PositionComponentVector.h" />
+    <ClInclude Include="Component\ComponentVector\VelocityComponentVector.h" />
     <ClInclude Include="Component\Component\Component.h" />
     <ClInclude Include="Component\ComponentVector\ComponentVector.h" />
-    <ClInclude Include="Component\ComponentVector\EntityInfoComponenetVector.h" />
+    <ClInclude Include="Component\ComponentVector\EntityInfoComponentVector.h" />
     <ClInclude Include="Component\Component\EntityInfoComponent.h" />
+    <ClInclude Include="Component\Component\PositionComponent.h" />
+    <ClInclude Include="Component\Component\VelocityComponent.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\System.h" />
+    <ClInclude Include="System\VelocitySystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

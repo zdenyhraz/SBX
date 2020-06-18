@@ -2,7 +2,7 @@
 #include "Stdafx.h"
 #include "Component.h"
 
-class EntityInfo : public Component
+class EntityInfoComponent : public Component
 {
 public:
 	enum EntityType { friendly, enemy };

@@ -1,6 +1,6 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component/ComponentVector/EntityInfoComponenetVector.h"
+#include "Component/ComponentVector/ComponentVectors.h"
 
 class Sandbox
 {
@@ -34,5 +34,7 @@ private:
 	double Time;
 	double TimeRate;
 	double Dt;
-	EntityInfoComponentVector EntityInfos;
+
+	ComponentVectors Components;
+
 };
