@@ -1,7 +1,7 @@
 #pragma once
 #include "Stdafx.h"
 #include "ComponentVector.h"
-#include "Component/Component/PositionComponent.h"
+#include "Component/Components/PositionComponent.h"
 
 class PositionComponentVector : public ComponentVector
 {

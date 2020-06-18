@@ -1,7 +1,7 @@
 #pragma once
 #include "Stdafx.h"
 #include "ComponentVector.h"
-#include "Component/Component/EntityInfoComponent.h"
+#include "Component/Components/EntityInfoComponent.h"
 
 class EntityInfoComponentVector : public ComponentVector
 {
