@@ -3,7 +3,7 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Stdafx.cpp" />
-    <ClCompile Include="Log\logger.cpp" />
+    <ClCompile Include="Log\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -11,6 +11,6 @@
     <ClInclude Include="System\System.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
-    <ClInclude Include="Log\logger.h" />
+    <ClInclude Include="Log\Logger.h" />
   </ItemGroup>
 </Project>

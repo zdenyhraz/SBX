@@ -10,4 +10,4 @@
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 //custom
-#include "Log/logger.h"
+#include "Log/Logger.h"

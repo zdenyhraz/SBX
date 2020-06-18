@@ -5,7 +5,7 @@ int main()
 {
 	Sandbox sandbox;
 
-	//LOG_INFO( "yeeeea boiii" );
+	LOG_INFO( "yeeeea boiii" );
 
 	return 0;
 }
