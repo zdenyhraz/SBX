@@ -1,4 +1,5 @@
 #include "Stdafx.h"
+#include "Log/Logger.h"
 #include "Sandbox/Sandbox.h"
 
 int main()

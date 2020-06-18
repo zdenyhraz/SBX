@@ -150,8 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\Component.h" />
+    <ClInclude Include="Component\ComponentVector.h" />
+    <ClInclude Include="Component\EntityInfoComponenetVector.h" />
     <ClInclude Include="Component\EntityInfoComponent.h" />
-    <ClInclude Include="Component\PositionComponent.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Stdafx.h" />
