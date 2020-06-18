@@ -3,9 +3,11 @@
 
 int main()
 {
-	Sandbox sandbox;
+	std::unique_ptr<Logger> logger = std::make_unique<Logger>();
+	std::unique_ptr<Sandbox> sandbox = std::make_unique<Sandbox>();
 
 	LOG_INFO( "yeeeea boiii" );
 
+	std::cin.ignore();
 	return 0;
 }
