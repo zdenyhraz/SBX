@@ -6,7 +6,13 @@
 class EntityInfoComponentVector : public ComponentVector
 {
 public:
+	EntityInfoComponentVector()
+	{
+		EntityInfos.reserve( 1000 );
+	}
+
 	std::unordered_map<int, EntityInfoComponent> EntityInfos;
 
 private:
+
 };

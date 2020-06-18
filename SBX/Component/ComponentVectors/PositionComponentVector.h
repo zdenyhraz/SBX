@@ -6,7 +6,13 @@
 class PositionComponentVector : public ComponentVector
 {
 public:
+	PositionComponentVector()
+	{
+		Positions.reserve( 1000 );
+	}
+
 	std::unordered_map<int, PositionComponent> Positions;
 
 private:
+
 };
