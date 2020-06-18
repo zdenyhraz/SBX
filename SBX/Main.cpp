@@ -1,8 +1,11 @@
 #include "Stdafx.h"
+#include "Sandbox/Sandbox.h"
 
 int main()
 {
-	std::cout << "yeet\n";
-	std::cin.ignore();
+	Sandbox sandbox;
+
+	//LOG_INFO( "yeeeea boiii" );
+
 	return 0;
 }
