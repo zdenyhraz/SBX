@@ -1,19 +1,18 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component/Component.h"
-#include "System/System.h"
+#include "Component/ComponentVector/EntityInfoComponenetVector.h"
 
 class Sandbox
 {
 public:
 	Sandbox()
 	{
-
+		LOG_INFO( "Sandbox initialized" );
 	}
 
 	~Sandbox()
 	{
-
+		LOG_INFO( "Sandbox destructed" );
 	}
 
 	void Start()
@@ -35,4 +34,5 @@ private:
 	double Time;
 	double TimeRate;
 	double Dt;
+	EntityInfoComponentVector EntityInfos;
 };

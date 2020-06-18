@@ -8,14 +8,14 @@
 #include <tuple>
 #include <string>
 #include <fstream>
+//spdlog
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 //OpenCV
 //#include <opencv2/opencv.hpp>
 //#include <opencv2/core.hpp>
 //#include <opencv2/imgcodecs.hpp>
 //#include <opencv2/highgui.hpp>
-//spdlog
-#include "spdlog/spdlog.h"
-#include "spdlog/sinks/basic_file_sink.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
 //custom
 #include "Log/Logger.h"
