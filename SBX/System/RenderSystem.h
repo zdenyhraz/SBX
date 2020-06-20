@@ -6,9 +6,9 @@ class RenderSystem : public System
 {
 public:
 
-	RenderSystem( std::shared_ptr<ComponentVectors> ComponentVectors )
+	RenderSystem( std::shared_ptr<ComponentVectors> components )
 	{
-		Components = ComponentVectors;
+		Components = components;
 	}
 
 	void Run() override

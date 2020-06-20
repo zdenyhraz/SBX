@@ -8,7 +8,7 @@
 class SystemVector
 {
 public:
-	SystemVector( std::shared_ptr<ComponentVectors> ComponentVectors ) : ComponentVectors( ComponentVectors )
+	SystemVector( std::shared_ptr<ComponentVectors> components ) : ComponentVectors( ComponentVectors )
 	{
 		Velocity = std::make_unique<VelocitySystem>( ComponentVectors );
 		Draw = std::make_unique<DrawSystem>( ComponentVectors );

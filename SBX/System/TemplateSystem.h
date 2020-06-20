@@ -6,9 +6,9 @@ class TemplateSystem : public System
 {
 public:
 
-	TemplateSystem( std::shared_ptr<ComponentVectors> ComponentVectors )
+	TemplateSystem( std::shared_ptr<ComponentVectors> components )
 	{
-		Components = ComponentVectors;
+		Components = components;
 	}
 
 	void Run() override

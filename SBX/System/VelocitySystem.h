@@ -6,9 +6,9 @@ class VelocitySystem: public System
 {
 public:
 
-	VelocitySystem( std::shared_ptr<ComponentVectors> ComponentVectors )
+	VelocitySystem( std::shared_ptr<ComponentVectors> components )
 	{
-		Components = ComponentVectors;
+		Components = components;
 	}
 
 	void Run() override
