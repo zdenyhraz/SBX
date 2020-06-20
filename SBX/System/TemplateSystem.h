@@ -6,17 +6,7 @@ class TemplateSystem : public System
 {
 public:
 
-	TemplateSystem( std::shared_ptr<ComponentVectors> components ): System( components ): System( components )
-	{
-
-	}
-
-	void Run() override
-	{
-
-	}
-
-	void Stop() override
+	TemplateSystem( std::shared_ptr<ComponentVectors> components ): System( components )
 	{
 
 	}

@@ -10,11 +10,25 @@ public:
 
 	}
 
-	virtual void Run() = 0;
-	virtual void Stop() = 0;
+	void Run()
+	{
+		Enabled = true;
+
+		while ( Enabled )
+		{
+			Tick( 1 );
+		}
+	}
+
+	void Stop()
+	{
+		Enabled = false;
+	}
+
 	virtual void Tick( double dt ) = 0;
 
 protected:
 	std::shared_ptr<ComponentVectors> Components;
+	bool Enabled;
 
 };

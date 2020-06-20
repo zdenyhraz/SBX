@@ -8,16 +8,6 @@ public:
 
 	DrawSystem( std::shared_ptr<ComponentVectors> components ): System( components )
 	{
-		
-	}
-
-	void Run() override
-	{
-
-	}
-
-	void Stop() override
-	{
 
 	}
 
