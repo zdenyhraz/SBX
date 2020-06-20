@@ -23,3 +23,20 @@ private:
 	static std::shared_ptr<spdlog::logger> spdlogger;
 };
 
+class LOG_STARTEND
+{
+public:
+	LOG_STARTEND( std::string &&startmsg, std::string &&endmsg )
+	{
+		Endmsg = endmsg;
+		LOG_INFO( startmsg );
+	}
+
+	~LOG_STARTEND()
+	{
+		LOG_INFO( Endmsg );
+	}
+
+private:
+	std::string Endmsg;
+};

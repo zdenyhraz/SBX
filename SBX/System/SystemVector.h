@@ -19,6 +19,24 @@ public:
 		Render = std::make_unique<RenderSystem>( components );
 	}
 
+	void Run()
+	{
+		Position->Run();
+		Velocity->Run();
+		Acceleration->Run();
+		Draw->Run();
+		Render->Run();
+	}
+
+	void Stop()
+	{
+		Position->Stop();
+		Velocity->Stop();
+		Acceleration->Stop();
+		Draw->Stop();
+		Render->Stop();
+	}
+
 private:
 	std::unique_ptr<PositionSystem> Position;
 	std::unique_ptr<VelocitySystem> Velocity;

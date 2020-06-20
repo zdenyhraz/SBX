@@ -8,9 +8,9 @@ class Sandbox
 public:
 	Sandbox()
 	{
+		LOG_STARTEND( "Initializing sandbox", "Sandbox initialized" );
 		Components = std::make_shared<ComponentVectors>();
 		Systems = std::make_shared<SystemVector>( Components );
-		LOG_INFO( "Sandbox initialized" );
 	}
 
 	~Sandbox()
@@ -18,14 +18,28 @@ public:
 		LOG_INFO( "Sandbox destructed" );
 	}
 
-	void Start()
+	void Run()
 	{
-		TimeRate = 1;
+		LOG_STARTEND( "Running sandbox", "Sandbox ran" );
+		Systems->Run();
 	}
 
 	void Stop()
 	{
+		LOG_STARTEND( "Stopping sandbox", "Sandbox stopped" );
+		Systems->Stop();
+	}
+
+	void StartTime()
+	{
+		TimeRate = 1;
+		LOG_INFO( "Time started" );
+	}
+
+	void StopTime()
+	{
 		TimeRate = 0;
+		LOG_INFO( "Time stopped" );
 	}
 
 	void SetTimeRate( double timeRate )
