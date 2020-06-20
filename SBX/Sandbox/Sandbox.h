@@ -25,6 +25,11 @@ public:
 
 	void Init()
 	{
+		InitTest();
+	}
+
+	void InitTest()
+	{
 		LOG_STARTEND( "Initializing sandbox world", "Sandbox world initialized" );
 
 		int initEntityCnt = 1000;
