@@ -2,11 +2,11 @@
 #include "Stdafx.h"
 #include "System.h"
 
-class VelocitySystem: public System
+class DrawSystem : public System
 {
 public:
 
-	VelocitySystem( ComponentVectors &ComponentVectors ) : ComponentVectors( ComponentVectors )
+	DrawSystem( ComponentVectors &ComponentVectors ) : ComponentVectors( ComponentVectors )
 	{
 
 	}

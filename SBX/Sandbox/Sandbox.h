@@ -1,13 +1,16 @@
 #pragma once
 #include "Stdafx.h"
 #include "Component/ComponentVectors/ComponentVectors.h"
-#include "System/VelocitySystem.h"
+#include "System/SystemVector.h"
 
 class Sandbox
 {
 public:
 	Sandbox()
 	{
+		Components = std::make_unique<ComponentVectors>();
+		Systems = std::make_unique<SystemVector>( *Components.get() );
+
 		LOG_INFO( "Sandbox initialized" );
 	}
 
@@ -19,8 +22,6 @@ public:
 	void Start()
 	{
 		TimeRate = 1;
-		VelocitySystem System( Components );//test!!!!!!!!!!!!!!!!!!!!
-
 	}
 
 	void Stop()
@@ -38,5 +39,6 @@ private:
 	double TimeRate;
 	double Dt;
 
-	ComponentVectors Components;
+	std::unique_ptr<ComponentVectors> Components;
+	std::unique_ptr<SystemVector> Systems;
 };

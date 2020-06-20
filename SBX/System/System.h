@@ -6,6 +6,7 @@ class System
 {
 public:
 	virtual void Run() = 0;
+	virtual void Stop() = 0;
 	virtual void Tick( double dt ) = 0;
 
 private:
