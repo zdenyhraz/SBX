@@ -2,11 +2,11 @@
 #include "Stdafx.h"
 #include "System.h"
 
-class DrawSystem : public System
+class RenderSystem : public System
 {
 public:
 
-	DrawSystem( std::shared_ptr<ComponentVectors> ComponentVectors ) : ComponentVectors( ComponentVectors )
+	RenderSystem( std::shared_ptr<ComponentVectors> ComponentVectors ) : ComponentVectors( ComponentVectors )
 	{
 
 	}

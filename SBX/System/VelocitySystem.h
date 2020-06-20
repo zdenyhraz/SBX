@@ -6,7 +6,7 @@ class VelocitySystem: public System
 {
 public:
 
-	VelocitySystem( ComponentVectors &ComponentVectors ) : ComponentVectors( ComponentVectors )
+	VelocitySystem( std::shared_ptr<ComponentVectors> ComponentVectors ) : ComponentVectors( ComponentVectors )
 	{
 
 	}
@@ -27,5 +27,5 @@ public:
 	}
 
 private:
-	ComponentVectors &ComponentVectors;
+	std::shared_ptr<ComponentVectors> ComponentVectors;
 };

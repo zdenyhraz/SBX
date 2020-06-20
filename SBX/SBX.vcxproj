@@ -162,6 +162,7 @@
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\DrawSystem.h" />
+    <ClInclude Include="System\RenderSystem.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\VelocitySystem.h" />

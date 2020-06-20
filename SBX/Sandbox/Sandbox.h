@@ -8,9 +8,8 @@ class Sandbox
 public:
 	Sandbox()
 	{
-		Components = std::make_unique<ComponentVectors>();
-		Systems = std::make_unique<SystemVector>( *Components.get() );
-
+		Components = std::make_shared<ComponentVectors>();
+		Systems = std::make_shared<SystemVector>( Components );
 		LOG_INFO( "Sandbox initialized" );
 	}
 
@@ -39,6 +38,6 @@ private:
 	double TimeRate;
 	double Dt;
 
-	std::unique_ptr<ComponentVectors> Components;
-	std::unique_ptr<SystemVector> Systems;
+	std::shared_ptr<ComponentVectors> Components;
+	std::shared_ptr<SystemVector> Systems;
 };
