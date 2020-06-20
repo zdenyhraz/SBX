@@ -34,6 +34,25 @@ public:
 		{
 			m_EntityManager->CreateEntity();
 		}
+
+		for ( auto &pos : m_Components->Positions.Data )
+		{
+			pos.second.x = Utils::Rand11() * 1.5;
+			pos.second.y = Utils::Rand11() * 1;
+		}
+
+		for ( auto &vel : m_Components->Velocities.Data )
+		{
+			vel.second.vx = Utils::Rand11() * 0.2;
+			vel.second.vy = Utils::Rand11() * 0.2;
+		}
+
+		for ( auto &acc : m_Components->Accelerations.Data )
+		{
+			acc.second.ax = Utils::Rand11() * 0.1;
+			acc.second.ay = Utils::Rand11() * 0.1;
+		}
+
 	}
 
 	void Run()

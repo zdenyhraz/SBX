@@ -9,7 +9,6 @@
 #include <string>
 #include <chrono>
 #include <numeric>
-#include <time.h>
 #include <math.h>
 #include <filesystem>
 #include <queue>
@@ -21,7 +20,7 @@
 #include <memory>
 #include <unordered_map>
 //OpenCV
-#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>

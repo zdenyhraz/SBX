@@ -9,13 +9,15 @@ public:
 	DrawSystem( std::shared_ptr<ComponentVectors> components ): System( components )
 	{
 		m_WindowName = "SBX";
-		m_WindowWidth = 1500;
-		m_WindowHeight = 1000;
+		m_WindowWidth = 2000;
+		m_WindowHeight = 1200;
+		m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
+		m_MapWidth = 1.5;
+		m_MapHeight = 1.;
 		m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
 		m_Live = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
-		m_DrawEntityRadius = 20;
-		m_DrawEntityColor = cv::Scalar( 0, 0, 1 );
-		m_DrawEntityThickness = 5;
+		m_DrawEntityRadius = 7;
+		m_DrawEntityThickness = -1;
 	}
 
 	void Tick( double dt ) override
@@ -26,8 +28,8 @@ public:
 		{
 			if ( entity.second.m_Drawable )
 			{
-				m_Live.at<cv::Vec3f>( 0, 0 )[2] = 1;
-				//cv::circle( m_Live, cv::Point( 0, 0 ), m_DrawEntityRadius, m_DrawEntityColor, m_DrawEntityThickness );
+				auto pos = m_Components->Positions.Find( entity.first );
+				cv::circle( m_Live, GetPixelCoordinates( pos.x, pos.y ), m_DrawEntityRadius, cv::Scalar( 0.8, 0.3, 0.1 ), m_DrawEntityThickness );
 			}
 		}
 
@@ -37,14 +39,20 @@ public:
 		cv::waitKey( 1 );
 	}
 
+	cv::Point GetPixelCoordinates( double x, double y )
+	{
+		return m_WindowCenter + cv::Point( ( x / m_MapWidth ) * ( m_WindowWidth / 2 ), ( y / m_MapHeight ) * ( m_WindowHeight / 2 ) );
+	}
+
 private:
 	std::string m_WindowName;
 	int m_WindowWidth;
 	int m_WindowHeight;
+	cv::Point m_WindowCenter;
+	double m_MapWidth;
+	double m_MapHeight;
 	cv::Mat m_Blank;
 	cv::Mat m_Live;
 	int m_DrawEntityRadius;
-	cv::Scalar m_DrawEntityColor;
 	int m_DrawEntityThickness;
-
 };

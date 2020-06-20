@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <OpenMPSupport>
@@ -110,7 +110,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
@@ -129,7 +129,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <OpenMPSupport>
@@ -155,6 +155,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
     <ClInclude Include="Component\TemplateComponent.h" />
     <ClInclude Include="Component\Component.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\TemplateSystem.h" />
     <ClInclude Include="System\VelocitySystem.h" />
+    <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
   </ItemGroup>

@@ -3,7 +3,7 @@
 #include "Component/ComponentVectors.h"
 #include "Utils/ThreadUtils.h"
 #include "Utils/TimeUtils.h"
-
+#include "Utils/MathUtils.h"
 
 class System
 {
@@ -20,9 +20,9 @@ public:
 
 		while ( m_Enabled )
 		{
-			m_TickStart = Utils::GetCurrentTime();
+			m_TickStart = Utils::GetTimeNow();
 			Tick( m_TargetTickDurationSec );
-			m_TickEnd = Utils::GetCurrentTime();
+			m_TickEnd = Utils::GetTimeNow();
 
 			std::this_thread::sleep_for( std::chrono::microseconds( m_TargetTickDuration - Utils::GetDuration( m_TickStart, m_TickEnd ) ) );
 		}

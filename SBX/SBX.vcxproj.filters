@@ -28,5 +28,7 @@
     <ClInclude Include="System\CommandLineSystem.h" />
     <ClInclude Include="Sandbox\EntityManager.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
+    <ClInclude Include="Utils\MathUtils.h" />
+    <ClInclude Include="Component\AccelerationComponent.h" />
   </ItemGroup>
 </Project>
