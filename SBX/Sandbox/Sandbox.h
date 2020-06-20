@@ -27,7 +27,10 @@ public:
 	{
 		LOG_STARTEND( "Initializing sandbox world", "Sandbox world initialized" );
 
-		for ( int i = 0; i < 1000; i++ )
+		int initEntityCnt = 1000;
+		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
+
+		for ( int i = 0; i < initEntityCnt; i++ )
 		{
 			m_EntityManager->CreateEntity();
 		}

@@ -28,7 +28,7 @@ class LOG_STARTEND
 public:
 	LOG_STARTEND( std::string &&startmsg, std::string &&endmsg )
 	{
-		Endmsg = endmsg;
+		Endmsg = std::move( endmsg );
 		LOG_INFO( startmsg );
 	}
 
