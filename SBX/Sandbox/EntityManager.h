@@ -5,29 +5,29 @@
 class EntityManager
 {
 public:
-	EntityManager( std::shared_ptr<ComponentVectors> components ) : Components( components )
+	EntityManager( std::shared_ptr<ComponentVectors> components ) : m_Components( components )
 	{
 
 	}
 
 	void CreateEntity( bool alive = true, EntityInfoComponent::EntityType type = EntityInfoComponent::EntityType::Entity )
 	{
-		Components->EntityInfos.Data.emplace( std::pair<int, EntityInfoComponent>( MaxEntityId, EntityInfoComponent( MaxEntityId, alive, type ) ) );
-		Components->Positions.Data.emplace( std::pair<int, PositionComponent>( MaxEntityId, PositionComponent() ) );
-		Components->Velocities.Data.emplace( std::pair<int, VelocityComponent>( MaxEntityId, VelocityComponent() ) );
+		m_Components->EntityInfos.Data.emplace( std::pair<int, EntityInfoComponent>( m_MaxEntityId, EntityInfoComponent( m_MaxEntityId, alive, type ) ) );
+		m_Components->Positions.Data.emplace( std::pair<int, PositionComponent>( m_MaxEntityId, PositionComponent() ) );
+		m_Components->Velocities.Data.emplace( std::pair<int, VelocityComponent>( m_MaxEntityId, VelocityComponent() ) );
 
-		MaxEntityId++;
-		EntityCnt++;
+		m_MaxEntityId++;
+		m_EntityCnt++;
 	}
 
 	void DeleteEntity( int id )
 	{
 
-		EntityCnt--;
+		m_EntityCnt--;
 	}
 
 private:
-	std::shared_ptr<ComponentVectors> Components;
-	int EntityCnt = 0;
-	int MaxEntityId = 0;
+	std::shared_ptr<ComponentVectors> m_Components;
+	int m_EntityCnt = 0;
+	int m_MaxEntityId = 0;
 };

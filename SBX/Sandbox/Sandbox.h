@@ -10,9 +10,9 @@ public:
 	Sandbox()
 	{
 		LOG_STARTEND( "Creating sandbox", "Sandbox created" );
-		Components = std::make_shared<ComponentVectors>();
-		Systems = std::make_shared<SystemVector>( Components );
-		m_EntityManager = std::make_shared<EntityManager>( Components );
+		m_Components = std::make_shared<ComponentVectors>();
+		m_Systems = std::make_shared<SystemVector>( m_Components );
+		m_EntityManager = std::make_shared<EntityManager>( m_Components );
 
 		Init();
 		Run();
@@ -35,41 +35,41 @@ public:
 	void Run()
 	{
 		LOG_STARTEND( "Running systems", "Systems ran" );
-		Systems->Run();
+		m_Systems->Run();
 	}
 
 	void Stop()
 	{
 		LOG_STARTEND( "Stopping systems", "Systems stopped" );
-		Systems->Stop();
+		m_Systems->Stop();
 	}
 
 	void StartTime()
 	{
-		TimeRate = 1;
+		m_TimeRate = 1;
 		LOG_INFO( "Time started" );
 	}
 
 	void StopTime()
 	{
-		TimeRate = 0;
+		m_TimeRate = 0;
 		LOG_INFO( "Time stopped" );
 	}
 
 	void SetTimeRate( double timeRate )
 	{
-		TimeRate = timeRate;
-		LOG_INFO( "Time rate set to {}", TimeRate );
+		m_TimeRate = timeRate;
+		LOG_INFO( "Time rate set to {}", m_TimeRate );
 	}
 
 
 private:
-	double Time = 0;
-	double TimeRate = 1;
-	double Dt;//fixme
+	double m_Time = 0;
+	double m_TimeRate = 1;
+	double m_Dt;//fixme
 
-	std::shared_ptr<ComponentVectors> Components;
-	std::shared_ptr<SystemVector> Systems;
+	std::shared_ptr<ComponentVectors> m_Components;
+	std::shared_ptr<SystemVector> m_Systems;
 	std::shared_ptr<EntityManager> m_EntityManager;
 
 };

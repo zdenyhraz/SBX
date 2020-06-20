@@ -6,7 +6,7 @@
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components ): Components( components )
+	System( std::shared_ptr<ComponentVectors> components ): m_Components( components )
 	{
 
 	}
@@ -14,10 +14,10 @@ public:
 	void Run()
 	{
 		LOG_DEBUG( "Running system on thread {}", ThisThreadId() );
-		Enabled = true;
-		double dt = 1. / RefreshRate;
+		m_Enabled = true;
+		double dt = 1. / m_RefreshRate;
 
-		while ( Enabled )
+		while ( m_Enabled )
 		{
 			Tick( dt );
 			std::this_thread::sleep_for( std::chrono::microseconds( ( int )( dt * 1e6 ) ) );
@@ -26,13 +26,13 @@ public:
 
 	void Stop()
 	{
-		Enabled = false;
+		m_Enabled = false;
 	}
 
 	virtual void Tick( double dt ) = 0;
 
 protected:
-	std::shared_ptr<ComponentVectors> Components;
-	bool Enabled = true;
-	int RefreshRate = 60;
+	std::shared_ptr<ComponentVectors> m_Components;
+	bool m_Enabled = true;
+	int m_RefreshRate = 60;
 };

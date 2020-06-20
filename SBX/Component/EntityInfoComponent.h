@@ -8,15 +8,15 @@ public:
 	enum EntityType { Entity };
 
 	EntityInfoComponent( int id, bool alive = true, EntityType type = Entity ):
-		Id( id ),
-		Alive( alive ),
-		Type( type )
+		m_Id( id ),
+		m_Alive( alive ),
+		m_Type( type )
 	{
 
 	}
 
-	int Id;
-	bool Alive;
-	EntityType Type;
+	int m_Id;
+	bool m_Alive;
+	EntityType m_Type;
 private:
 };
