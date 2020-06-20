@@ -32,7 +32,7 @@ public:
 	void InitTest()
 	{
 
-		int initEntityCnt = 100;
+		int initEntityCnt = 1000;
 		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 		for ( int i = 0; i < initEntityCnt; i++ )
@@ -47,8 +47,9 @@ public:
 
 		for ( auto &pos : m_Components->Positions.Data )
 		{
-			pos.second.x = Utils::Rand11() * 0.5;
-			pos.second.y = Utils::Rand11() * 0.5;
+			const double spread = 0.8;
+			pos.second.x = Utils::Rand11() * spread;
+			pos.second.y = Utils::Rand11() * spread;
 		}
 
 		for ( auto &vel : m_Components->Velocities.Data )

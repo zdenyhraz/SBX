@@ -15,15 +15,9 @@ public:
 	{
 		for ( auto &accel : m_Components->Accelerations.Data )
 		{
-			double gravity = 5.0;
+			const double gravity = 1.0;
 			accel.second.x = m_Components->Positions.Find( accel.first ).x * -gravity;
 			accel.second.y = m_Components->Positions.Find( accel.first ).y * -gravity;
-		}
-
-		for ( auto &vel : m_Components->Velocities.Data )
-		{
-			vel.second.x += Utils::Rand11() * 0.01;
-			vel.second.y += Utils::Rand11() * 0.01;
 		}
 	}
 
