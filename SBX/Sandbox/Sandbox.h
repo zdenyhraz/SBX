@@ -1,6 +1,6 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component/ComponentVectors/ComponentVectors.h"
+#include "Component/ComponentVectors.h"
 #include "System/SystemVector.h"
 
 class Sandbox

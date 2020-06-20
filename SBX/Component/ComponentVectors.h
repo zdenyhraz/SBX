@@ -1,8 +1,8 @@
 #pragma once
 #include "Stdafx.h"
-#include "EntityInfoComponentVector.h"
-#include "PositionComponentVector.h"
-#include "VelocityComponentVector.h"
+#include "EntityInfo/EntityInfoComponentVector.h"
+#include "Position/PositionComponentVector.h"
+#include "Velocity/VelocityComponentVector.h"
 
 class ComponentVectors
 {
