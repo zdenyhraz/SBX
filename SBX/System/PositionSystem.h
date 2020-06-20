@@ -11,16 +11,6 @@ public:
 
 	}
 
-	void Run() override
-	{
-		Enabled = true;
-	}
-
-	void Stop() override
-	{
-		E
-	}
-
 	void Tick( double dt ) override
 	{
 
