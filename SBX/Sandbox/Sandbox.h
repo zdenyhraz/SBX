@@ -70,7 +70,6 @@ public:
 private:
 	double m_Time = 0;
 	double m_TimeRate = 1;
-	double m_Dt;//fixme
 
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<SystemVector> m_Systems;
