@@ -24,5 +24,7 @@
     <ClInclude Include="Component\Position\PositionComponentVector.h" />
     <ClInclude Include="Component\Velocity\VelocityComponent.h" />
     <ClInclude Include="Component\Velocity\VelocityComponentVector.h" />
+    <ClInclude Include="System\PositionSystem.h" />
+    <ClInclude Include="System\AccelerationSystem.h" />
   </ItemGroup>
 </Project>

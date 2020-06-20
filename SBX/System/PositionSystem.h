@@ -2,13 +2,13 @@
 #include "Stdafx.h"
 #include "System.h"
 
-class TemplateSystem : public System
+class PositionSystem : public System
 {
 public:
 
-	TemplateSystem( std::shared_ptr<ComponentVectors> components ): System( components ): System( components )
+	PositionSystem( std::shared_ptr<ComponentVectors> components ): System( components )
 	{
-
+		
 	}
 
 	void Run() override

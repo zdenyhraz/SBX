@@ -5,6 +5,11 @@
 class System
 {
 public:
+	System( std::shared_ptr<ComponentVectors> components ): Components( components )
+	{
+
+	}
+
 	virtual void Run() = 0;
 	virtual void Stop() = 0;
 	virtual void Tick( double dt ) = 0;
