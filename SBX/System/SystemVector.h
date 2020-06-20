@@ -1,6 +1,6 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component/ComponentVectors/ComponentVectors.h"
+#include "System.h"
 #include "VelocitySystem.h"
 #include "DrawSystem.h"
 #include "RenderSystem.h"

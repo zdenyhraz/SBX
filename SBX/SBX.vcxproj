@@ -165,6 +165,7 @@
     <ClInclude Include="System\RenderSystem.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
+    <ClInclude Include="System\TemplateSystem.h" />
     <ClInclude Include="System\VelocitySystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

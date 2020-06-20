@@ -6,9 +6,9 @@ class DrawSystem : public System
 {
 public:
 
-	DrawSystem( std::shared_ptr<ComponentVectors> ComponentVectors ) : ComponentVectors( ComponentVectors )
+	DrawSystem( std::shared_ptr<ComponentVectors> ComponentVectors )
 	{
-
+		Components = ComponentVectors;
 	}
 
 	void Run() override
@@ -27,5 +27,4 @@ public:
 	}
 
 private:
-	std::shared_ptr<ComponentVectors> ComponentVectors;
 };

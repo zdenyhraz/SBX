@@ -2,11 +2,11 @@
 #include "Stdafx.h"
 #include "System.h"
 
-class VelocitySystem: public System
+class TemplateSystem : public System
 {
 public:
 
-	VelocitySystem( std::shared_ptr<ComponentVectors> ComponentVectors )
+	TemplateSystem( std::shared_ptr<ComponentVectors> ComponentVectors )
 	{
 		Components = ComponentVectors;
 	}

@@ -9,5 +9,7 @@ public:
 	virtual void Stop() = 0;
 	virtual void Tick( double dt ) = 0;
 
-private:
+protected:
+	std::shared_ptr<ComponentVectors> Components;
+
 };
