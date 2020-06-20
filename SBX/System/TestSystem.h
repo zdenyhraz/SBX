@@ -15,17 +15,17 @@ public:
 	{
 		for ( auto &accel : m_Components->Accelerations.Data )
 		{
-			accel.second.ax = m_Components->Positions.Find( accel.first ).x * -10.5;
-			accel.second.ay = m_Components->Positions.Find( accel.first ).y * -10.5;
+			accel.second.x = m_Components->Positions.Find( accel.first ).x * -10.5;
+			accel.second.y = m_Components->Positions.Find( accel.first ).y * -10.5;
 
-			//accel.second.ax += Utils::Rand11() * 0.01;
-			//accel.second.ay += Utils::Rand11() * 0.01;
+			//accel.second.x += Utils::Rand11() * 0.01;
+			//accel.second.y += Utils::Rand11() * 0.01;
 		}
 
 		for ( auto &vel : m_Components->Velocities.Data )
 		{
-			vel.second.vx += Utils::Rand11() * 0.01;
-			vel.second.vy += Utils::Rand11() * 0.01;
+			vel.second.x += Utils::Rand11() * 0.01;
+			vel.second.y += Utils::Rand11() * 0.01;
 
 		}
 	}

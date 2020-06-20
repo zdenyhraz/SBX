@@ -5,8 +5,8 @@
 class AccelerationComponent : public Component
 {
 public:
-	double ax = 0;
-	double ay = 0;
-	double az = 0;
+	double x = 0;
+	double y = 0;
+	double z = 0;
 private:
 };

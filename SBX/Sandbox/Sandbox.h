@@ -48,18 +48,18 @@ public:
 
 		for ( auto &vel : m_Components->Velocities.Data )
 		{
-			vel.second.vx = Utils::Rand11() * 1.5;
-			vel.second.vy = Utils::Rand11() * 1.5;
+			vel.second.x = Utils::Rand11() * 1.5;
+			vel.second.y = Utils::Rand11() * 1.5;
 		}
 
 		for ( auto &acc : m_Components->Accelerations.Data )
 		{
-			//acc.second.ax = Utils::Rand11() * 0.05;
-			//acc.second.ay = Utils::Rand11() * 0.05;
+			//acc.second.x = Utils::Rand11() * 0.05;
+			//acc.second.y = Utils::Rand11() * 0.05;
 
 
-			//acc.second.ax = m_Components->Positions.Find( acc.first ).y * +0.1;
-			//acc.second.ay = m_Components->Positions.Find( acc.first ).x * -0.1;
+			//acc.second.x = m_Components->Positions.Find( acc.first ).y * +0.1;
+			//acc.second.y = m_Components->Positions.Find( acc.first ).x * -0.1;
 		}
 
 	}
