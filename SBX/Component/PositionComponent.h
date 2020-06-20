@@ -5,8 +5,8 @@
 class PositionComponent : public Component
 {
 public:
-	float x;
-	float y;
-	float z;
+	double x;
+	double y;
+	double z;
 private:
 };

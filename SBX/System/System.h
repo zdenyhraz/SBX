@@ -15,11 +15,12 @@ public:
 	{
 		LOG_DEBUG( "Running system on thread {}", ThisThreadId() );
 		Enabled = true;
+		double dt = 1. / RefreshRate;
 
 		while ( Enabled )
 		{
-			Tick( 1.f / 60.f );
-			std::this_thread::sleep_for( std::chrono::microseconds( 100000 ) );
+			Tick( dt );
+			std::this_thread::sleep_for( std::chrono::microseconds( ( int )( dt * 1e6 ) ) );
 		}
 	}
 
@@ -28,10 +29,10 @@ public:
 		Enabled = false;
 	}
 
-	virtual void Tick( float dt ) = 0;
+	virtual void Tick( double dt ) = 0;
 
 protected:
 	std::shared_ptr<ComponentVectors> Components;
-	bool Enabled;
-
+	bool Enabled = true;
+	int RefreshRate = 60;
 };

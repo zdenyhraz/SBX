@@ -11,7 +11,7 @@ public:
 
 	}
 
-	void Tick( float dt ) override
+	void Tick( double dt ) override
 	{
 		getline( std::cin, Command );
 		LOG_DEBUG( "Command line registered command '{}'", Command );
