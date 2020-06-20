@@ -24,13 +24,10 @@ public:
 	{
 		m_Live = m_Blank.clone();
 
-		for ( auto &entity : m_Components->EntityInfos.Data )
+		for ( auto &model : m_Components->Models.Data )
 		{
-			if ( entity.second.m_Drawable )
-			{
-				auto pos = m_Components->Positions.Find( entity.first );
-				cv::circle( m_Live, GetWindowCoordinates( pos.x, pos.y ), m_DrawEntityRadius, cv::Scalar( 0.8, 0.3, 0.1 ), m_DrawEntityThickness );
-			}
+			auto pos = m_Components->Positions.Find( model.first );
+			cv::circle( m_Live, GetWindowCoordinates( pos.x, pos.y ), m_DrawEntityRadius, model.second.m_Color, m_DrawEntityThickness );
 		}
 
 		cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );

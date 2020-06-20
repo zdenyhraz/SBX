@@ -25,12 +25,12 @@ public:
 
 	void Init()
 	{
+		LOG_STARTEND( "Initializing sandbox world", "Sandbox world initialized" );
 		InitTest();
 	}
 
 	void InitTest()
 	{
-		LOG_STARTEND( "Initializing sandbox world", "Sandbox world initialized" );
 
 		int initEntityCnt = 100;
 		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
@@ -38,6 +38,11 @@ public:
 		for ( int i = 0; i < initEntityCnt; i++ )
 		{
 			m_EntityManager->CreateEntity();
+		}
+
+		for ( auto &mod : m_Components->Models.Data )
+		{
+			mod.second.m_Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
 		}
 
 		for ( auto &pos : m_Components->Positions.Data )
@@ -48,8 +53,9 @@ public:
 
 		for ( auto &vel : m_Components->Velocities.Data )
 		{
-			vel.second.x = Utils::Rand11() * 1.5;
-			vel.second.y = Utils::Rand11() * 1.5;
+			vel.second.x = Utils::Rand11() * 0.5;
+			vel.second.y = Utils::Rand11() * 0.5;
+
 		}
 
 		for ( auto &acc : m_Components->Accelerations.Data )

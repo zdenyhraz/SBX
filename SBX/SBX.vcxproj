@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="Component\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
+    <ClInclude Include="Component\ModelComponent.h" />
     <ClInclude Include="Component\TemplateComponent.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\ComponentVector.h" />

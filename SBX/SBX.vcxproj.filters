@@ -29,5 +29,6 @@
     <ClInclude Include="Component\AccelerationComponent.h" />
     <ClInclude Include="System\TestSystem.h" />
     <ClInclude Include="System\MovementSystem.h" />
+    <ClInclude Include="Component\ModelComponent.h" />
   </ItemGroup>
 </Project>
