@@ -29,7 +29,7 @@ public:
 			if ( entity.second.m_Drawable )
 			{
 				auto pos = m_Components->Positions.Find( entity.first );
-				cv::circle( m_Live, GetPixelCoordinates( pos.x, pos.y ), m_DrawEntityRadius, cv::Scalar( 0.8, 0.3, 0.1 ), m_DrawEntityThickness );
+				cv::circle( m_Live, GetWindowCoordinates( pos.x, pos.y ), m_DrawEntityRadius, cv::Scalar( 0.8, 0.3, 0.1 ), m_DrawEntityThickness );
 			}
 		}
 
@@ -39,9 +39,9 @@ public:
 		cv::waitKey( 1 );
 	}
 
-	cv::Point GetPixelCoordinates( double x, double y )
+	cv::Point GetWindowCoordinates( double x, double y )
 	{
-		return m_WindowCenter + cv::Point( ( x / m_MapWidth ) * ( m_WindowWidth / 2 ), ( y / m_MapHeight ) * ( m_WindowHeight / 2 ) );
+		return m_WindowCenter + cv::Point( ( int )( ( x / m_MapWidth ) * ( m_WindowWidth / 2 ) ), ( int )( ( y / m_MapHeight ) * ( m_WindowHeight / 2 ) ) );
 	}
 
 private:

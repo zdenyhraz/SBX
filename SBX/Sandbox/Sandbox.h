@@ -43,7 +43,7 @@ public:
 		for ( auto &pos : m_Components->Positions.Data )
 		{
 			pos.second.x = Utils::Rand11() * 1.5;
-			pos.second.y = Utils::Rand11() * 1;
+			pos.second.y = Utils::Rand11() * 1.0;
 		}
 
 		for ( auto &vel : m_Components->Velocities.Data )
