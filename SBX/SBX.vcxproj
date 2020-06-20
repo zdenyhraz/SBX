@@ -160,6 +160,7 @@
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\AccelerationSystem.h" />
+    <ClInclude Include="System\CommandLineSystem.h" />
     <ClInclude Include="System\DrawSystem.h" />
     <ClInclude Include="System\PositionSystem.h" />
     <ClInclude Include="System\RenderSystem.h" />

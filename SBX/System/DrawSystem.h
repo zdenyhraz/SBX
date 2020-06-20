@@ -11,7 +11,7 @@ public:
 
 	}
 
-	void Tick( double dt ) override
+	void Tick( float dt ) override
 	{
 
 	}

@@ -22,13 +22,13 @@ public:
 
 	void Run()
 	{
-		LOG_STARTEND( "Running sandbox", "Sandbox ran" );
+		LOG_STARTEND( "Running systems", "Systems ran" );
 		Systems->Run();
 	}
 
 	void Stop()
 	{
-		LOG_STARTEND( "Stopping sandbox", "Sandbox stopped" );
+		LOG_STARTEND( "Stopping systems", "Systems stopped" );
 		Systems->Stop();
 	}
 
