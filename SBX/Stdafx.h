@@ -8,6 +8,7 @@
 #include <tuple>
 #include <string>
 #include <fstream>
+#include <sstream>
 //spdlog
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h"

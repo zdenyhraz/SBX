@@ -167,6 +167,7 @@
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\TemplateSystem.h" />
     <ClInclude Include="System\VelocitySystem.h" />
+    <ClInclude Include="Utils\ThreadUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

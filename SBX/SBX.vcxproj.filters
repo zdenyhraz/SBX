@@ -24,5 +24,6 @@
     <ClInclude Include="Component\TemplateComponent.h" />
     <ClInclude Include="Component\PositionComponent.h" />
     <ClInclude Include="Component\EntityInfoComponent.h" />
+    <ClInclude Include="Utils\ThreadUtils.h" />
   </ItemGroup>
 </Project>

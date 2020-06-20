@@ -1,6 +1,7 @@
 #pragma once
 #include "Stdafx.h"
 #include "Component/ComponentVectors.h"
+#include "Utils/ThreadUtils.h"
 
 class System
 {
@@ -12,6 +13,7 @@ public:
 
 	void Run()
 	{
+		LOG_DEBUG( "Running system on thread {}", ThisThreadId() );
 		Enabled = true;
 
 		while ( Enabled )

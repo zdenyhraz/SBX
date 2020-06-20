@@ -11,6 +11,8 @@ public:
 		LOG_STARTEND( "Initializing sandbox", "Sandbox initialized" );
 		Components = std::make_shared<ComponentVectors>();
 		Systems = std::make_shared<SystemVector>( Components );
+
+		Run();
 	}
 
 	~Sandbox()
@@ -45,6 +47,7 @@ public:
 	void SetTimeRate( double timeRate )
 	{
 		TimeRate = timeRate;
+		LOG_INFO( "Time rate set to {}", TimeRate );
 	}
 
 private:
