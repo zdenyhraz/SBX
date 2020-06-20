@@ -12,7 +12,10 @@ public:
 		m_Components( components ),
 		m_Name( std::move( name ) )
 	{
-
+		m_Enabled = true;
+		m_RefreshRate = 100;
+		m_TargetTickDurationSec = 1. / m_RefreshRate;
+		m_TargetTickDuration = ( long long )( m_TargetTickDurationSec * 1e6 );
 	}
 
 	void Run()
@@ -40,10 +43,10 @@ public:
 protected:
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::string m_Name;
-	bool m_Enabled = true;
-	int m_RefreshRate = 100;
-	double m_TargetTickDurationSec = 1. / m_RefreshRate;
-	long long m_TargetTickDuration = ( long long )( m_TargetTickDurationSec * 1e6 );
+	bool m_Enabled;
+	int m_RefreshRate;
+	double m_TargetTickDurationSec;
+	long long m_TargetTickDuration;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickEnd;
 
