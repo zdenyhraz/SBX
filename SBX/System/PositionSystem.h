@@ -13,7 +13,12 @@ public:
 
 	void Tick( double dt ) override
 	{
-
+		for ( auto &velocity : Components->Velocities.Data )
+		{
+			Components->Positions.Find( velocity.first ).x += velocity.second.vx;
+			Components->Positions.Find( velocity.first ).y += velocity.second.vy;
+			Components->Positions.Find( velocity.first ).z += velocity.second.vz;
+		}
 	}
 
 private:

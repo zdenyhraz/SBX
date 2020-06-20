@@ -16,7 +16,7 @@ public:
 
 		while ( Enabled )
 		{
-			Tick( 1 );
+			Tick( 1. / 60. );
 		}
 	}
 

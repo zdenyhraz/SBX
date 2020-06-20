@@ -1,12 +1,16 @@
 #pragma once
 #include "Stdafx.h"
-#include "EntityInfo/EntityInfoComponentVector.h"
-#include "Position/PositionComponentVector.h"
-#include "Velocity/VelocityComponentVector.h"
+#include "ComponentVector.h"
+#include "EntityInfoComponent.h"
+#include "PositionComponent.h"
+#include "VelocityComponent.h"
 
 class ComponentVectors
 {
-	EntityInfoComponentVector EntityInfos;
-	PositionComponentVector Positions;
-	VelocityComponentVector Velocities;
+public:
+	ComponentVector<EntityInfoComponent> EntityInfos;
+	ComponentVector<PositionComponent> Positions;
+	ComponentVector<VelocityComponent> Velocities;
+
+private:
 };
