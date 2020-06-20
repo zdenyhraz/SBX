@@ -18,7 +18,7 @@ public:
 			//accel.second.ax += Utils::Rand11() * 0.01 * dt;
 			//accel.second.ay += Utils::Rand11() * 0.01 * dt;
 
-			accel.second.ax = m_Components->Positions.Find( accel.first ).y * 1.5;
+			accel.second.ax = m_Components->Positions.Find( accel.first ).y * -1.0;
 			accel.second.ay = m_Components->Positions.Find( accel.first ).x * -1.0;
 		}
 	}

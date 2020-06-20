@@ -9,11 +9,11 @@ public:
 	DrawSystem( std::shared_ptr<ComponentVectors> components ): System( components, "draw" )
 	{
 		m_WindowName = "SBX";
-		m_WindowWidth = 2000;
+		m_WindowWidth = 1200;
 		m_WindowHeight = 1200;
 		m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
-		m_MapWidth = 1.5;
-		m_MapHeight = 1.;
+		m_MapWidth = 1.0;
+		m_MapHeight = 1.0;
 		m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
 		m_Live = m_Blank.clone();
 		m_DrawEntityRadius = 7;

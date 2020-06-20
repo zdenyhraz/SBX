@@ -2,11 +2,11 @@
 #include "Stdafx.h"
 #include "System.h"
 
-class VelocitySystem: public System
+class MovementSystem : public System
 {
 public:
 
-	VelocitySystem( std::shared_ptr<ComponentVectors> components ): System( components, "velocity" )
+	MovementSystem( std::shared_ptr<ComponentVectors> components ) : System( components, "movement" )
 	{
 
 	}
@@ -19,6 +19,14 @@ public:
 			m_Components->Velocities.Find( accel.first ).vy += accel.second.ay * dt;
 			m_Components->Velocities.Find( accel.first ).vz += accel.second.az * dt;
 		}
+
+		for ( auto &vel : m_Components->Velocities.Data )
+		{
+			m_Components->Positions.Find( vel.first ).x += vel.second.vx * dt;
+			m_Components->Positions.Find( vel.first ).y += vel.second.vy * dt;
+			m_Components->Positions.Find( vel.first ).z += vel.second.vz * dt;
+		}
+
 	}
 
 private:

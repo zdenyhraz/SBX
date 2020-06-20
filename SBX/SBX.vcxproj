@@ -171,16 +171,14 @@
     <ClInclude Include="Sandbox\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="System\AccelerationSystem.h" />
     <ClInclude Include="System\CommandLineSystem.h" />
     <ClInclude Include="System\DrawSystem.h" />
-    <ClInclude Include="System\PositionSystem.h" />
+    <ClInclude Include="System\MovementSystem.h" />
     <ClInclude Include="System\RenderSystem.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\TemplateSystem.h" />
     <ClInclude Include="System\TestSystem.h" />
-    <ClInclude Include="System\VelocitySystem.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
