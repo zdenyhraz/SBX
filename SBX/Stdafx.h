@@ -20,10 +20,8 @@
 #include <thread>
 #include <memory>
 #include <unordered_map>
-//OpenMP
-#include <omp.h>
 //OpenCV
-//#include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
