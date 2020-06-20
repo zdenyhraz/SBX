@@ -15,16 +15,16 @@ public:
 
 	void Run()
 	{
-		LOG_DEBUG( "Running system on thread {}", ThisThreadId() );
+		LOG_DEBUG( "Running system on thread {}", Utils::ThisThreadId() );
 		m_Enabled = true;
 
 		while ( m_Enabled )
 		{
-			m_TickStart = std::chrono::high_resolution_clock::now();
+			m_TickStart = Utils::GetCurrentTime();
 			Tick( m_TargetTickDurationSec );
-			m_TickEnd = std::chrono::high_resolution_clock::now();
+			m_TickEnd = Utils::GetCurrentTime();
 
-			std::this_thread::sleep_for( std::chrono::microseconds( m_TargetTickDuration - GetDuration( m_TickStart, m_TickEnd ) ) );
+			std::this_thread::sleep_for( std::chrono::microseconds( m_TargetTickDuration - Utils::GetDuration( m_TickStart, m_TickEnd ) ) );
 		}
 	}
 
