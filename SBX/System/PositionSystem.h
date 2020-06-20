@@ -6,7 +6,7 @@ class PositionSystem : public System
 {
 public:
 
-	PositionSystem( std::shared_ptr<ComponentVectors> components ): System( components )
+	PositionSystem( std::shared_ptr<ComponentVectors> components ): System( components, "position" )
 	{
 
 	}

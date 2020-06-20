@@ -8,14 +8,16 @@
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components ): m_Components( components )
+	System( std::shared_ptr<ComponentVectors> components, std::string &&name ):
+		m_Components( components ),
+		m_Name( std::move( name ) )
 	{
 
 	}
 
 	void Run()
 	{
-		LOG_DEBUG( "Running system on thread {}", Utils::ThisThreadId() );
+		LOG_DEBUG( "Running <{}> system on thread {}", m_Name, Utils::ThisThreadId() );
 		m_Enabled = true;
 
 		while ( m_Enabled )
@@ -37,6 +39,7 @@ public:
 
 protected:
 	std::shared_ptr<ComponentVectors> m_Components;
+	std::string m_Name;
 	bool m_Enabled = true;
 	int m_RefreshRate = 60;
 	double m_TargetTickDurationSec = 1. / m_RefreshRate;

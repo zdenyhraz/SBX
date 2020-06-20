@@ -30,5 +30,6 @@
     <ClInclude Include="Utils\TimeUtils.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Component\AccelerationComponent.h" />
+    <ClInclude Include="System\TestSystem.h" />
   </ItemGroup>
 </Project>

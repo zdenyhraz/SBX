@@ -32,7 +32,7 @@ public:
 	{
 		LOG_STARTEND( "Initializing sandbox world", "Sandbox world initialized" );
 
-		int initEntityCnt = 1000;
+		int initEntityCnt = 5000;
 		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 		for ( int i = 0; i < initEntityCnt; i++ )
@@ -48,14 +48,18 @@ public:
 
 		for ( auto &vel : m_Components->Velocities.Data )
 		{
-			vel.second.vx = Utils::Rand11() * 0.2;
-			vel.second.vy = Utils::Rand11() * 0.2;
+			vel.second.vx = Utils::Rand11() * 0.1;
+			vel.second.vy = Utils::Rand11() * 0.1;
 		}
 
 		for ( auto &acc : m_Components->Accelerations.Data )
 		{
-			acc.second.ax = Utils::Rand11() * 0.1;
-			acc.second.ay = Utils::Rand11() * 0.1;
+			//acc.second.ax = Utils::Rand11() * 0.05;
+			//acc.second.ay = Utils::Rand11() * 0.05;
+
+
+			//acc.second.ax = m_Components->Positions.Find( acc.first ).y * +0.1;
+			//acc.second.ay = m_Components->Positions.Find( acc.first ).x * -0.1;
 		}
 
 	}

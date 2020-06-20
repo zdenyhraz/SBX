@@ -7,6 +7,7 @@
 #include "DrawSystem.h"
 #include "RenderSystem.h"
 #include "CommandLineSystem.h"
+#include "TestSystem.h"
 
 class SystemVector
 {
@@ -19,6 +20,7 @@ public:
 		Draw = std::make_unique<DrawSystem>( components );
 		Render = std::make_unique<RenderSystem>( components );
 		CommandLine = std::make_unique<CommandLineSystem>( components );
+		Test = std::make_unique<TestSystem>( components );
 
 	}
 
@@ -31,6 +33,7 @@ public:
 		threads.push_back( std::thread( &DrawSystem::Run, Draw.get() ) );
 		threads.push_back( std::thread( &RenderSystem::Run, Render.get() ) );
 		threads.push_back( std::thread( &CommandLineSystem::Run, CommandLine.get() ) );
+		threads.push_back( std::thread( &TestSystem::Run, Test.get() ) );
 
 
 		for ( auto &thread : threads )
@@ -48,6 +51,7 @@ public:
 		Draw->Stop();
 		Render->Stop();
 		CommandLine->Stop();
+		Test->Stop();
 	}
 
 private:
@@ -57,6 +61,7 @@ private:
 	std::unique_ptr<DrawSystem> Draw;
 	std::unique_ptr<RenderSystem> Render;
 	std::unique_ptr<CommandLineSystem> CommandLine;
+	std::unique_ptr<TestSystem> Test;
 
 
 };

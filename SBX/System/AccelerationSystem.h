@@ -6,7 +6,7 @@ class AccelerationSystem : public System
 {
 public:
 
-	AccelerationSystem( std::shared_ptr<ComponentVectors> components ): System( components )
+	AccelerationSystem( std::shared_ptr<ComponentVectors> components ): System( components, "acceleration" )
 	{
 
 	}

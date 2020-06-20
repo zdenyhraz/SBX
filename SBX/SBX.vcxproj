@@ -179,6 +179,7 @@
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\TemplateSystem.h" />
+    <ClInclude Include="System\TestSystem.h" />
     <ClInclude Include="System\VelocitySystem.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />

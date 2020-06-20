@@ -6,7 +6,7 @@ class TemplateSystem : public System
 {
 public:
 
-	TemplateSystem( std::shared_ptr<ComponentVectors> components ): System( components )
+	TemplateSystem( std::shared_ptr<ComponentVectors> components ): System( components, "template" )
 	{
 
 	}
