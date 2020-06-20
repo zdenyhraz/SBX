@@ -2,6 +2,8 @@
 #include "Stdafx.h"
 #include "Component/ComponentVectors.h"
 #include "Utils/ThreadUtils.h"
+#include "Utils/TimeUtils.h"
+
 
 class System
 {
@@ -15,12 +17,14 @@ public:
 	{
 		LOG_DEBUG( "Running system on thread {}", ThisThreadId() );
 		m_Enabled = true;
-		double dt = 1. / m_RefreshRate;
 
 		while ( m_Enabled )
 		{
-			Tick( dt );
-			std::this_thread::sleep_for( std::chrono::microseconds( ( int )( dt * 1e6 ) ) );
+			m_TickStart = std::chrono::high_resolution_clock::now();
+			Tick( m_TargetTickDurationSec );
+			m_TickEnd = std::chrono::high_resolution_clock::now();
+
+			std::this_thread::sleep_for( std::chrono::microseconds( m_TargetTickDuration - GetDuration( m_TickStart, m_TickEnd ) ) );
 		}
 	}
 
@@ -35,4 +39,9 @@ protected:
 	std::shared_ptr<ComponentVectors> m_Components;
 	bool m_Enabled = true;
 	int m_RefreshRate = 60;
+	double m_TargetTickDurationSec = 1. / m_RefreshRate;
+	long long m_TargetTickDuration = ( long long )( m_TargetTickDurationSec * 1e6 );
+	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
+	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickEnd;
+
 };

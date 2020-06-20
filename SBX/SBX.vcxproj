@@ -170,6 +170,7 @@
     <ClInclude Include="System\TemplateSystem.h" />
     <ClInclude Include="System\VelocitySystem.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
+    <ClInclude Include="Utils\TimeUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

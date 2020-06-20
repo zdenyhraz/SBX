@@ -25,7 +25,8 @@ public:
 
 	void Init()
 	{
-		LOG_STARTEND( "Initializing sandbox", "Sandbox initialized" );
+		LOG_STARTEND( "Initializing sandbox world", "Sandbox world initialized" );
+
 		for ( int i = 0; i < 1000; i++ )
 		{
 			m_EntityManager->CreateEntity();
