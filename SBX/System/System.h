@@ -41,7 +41,7 @@ protected:
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::string m_Name;
 	bool m_Enabled = true;
-	int m_RefreshRate = 60;
+	int m_RefreshRate = 100;
 	double m_TargetTickDurationSec = 1. / m_RefreshRate;
 	long long m_TargetTickDuration = ( long long )( m_TargetTickDurationSec * 1e6 );
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
