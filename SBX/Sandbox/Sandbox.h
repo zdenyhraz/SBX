@@ -32,7 +32,7 @@ public:
 	void InitTest()
 	{
 
-		int initEntityCnt = 1000;
+		int initEntityCnt = 3;
 		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 		for ( int i = 0; i < initEntityCnt; i++ )
@@ -43,6 +43,7 @@ public:
 		for ( auto &mod : m_Components->Models.Data )
 		{
 			mod.second.m_Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
+			mod.second.m_Size = Utils::Rand01() * 20;
 		}
 
 		for ( auto &pos : m_Components->Positions.Data )

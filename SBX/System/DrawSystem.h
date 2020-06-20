@@ -16,7 +16,6 @@ public:
 		m_MapHeight = 1;
 		m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
 		m_Live = m_Blank.clone();
-		m_DrawEntityRadius = 7;
 		m_DrawEntityThickness = -1;
 	}
 
@@ -27,7 +26,7 @@ public:
 		for ( auto &model : m_Components->Models.Data )
 		{
 			auto pos = m_Components->Positions.Find( model.first );
-			cv::circle( m_Live, GetWindowCoordinates( pos.x, pos.y ), m_DrawEntityRadius, model.second.m_Color, m_DrawEntityThickness );
+			cv::circle( m_Live, GetWindowCoordinates( pos.x, pos.y ), model.second.m_Size, model.second.m_Color, m_DrawEntityThickness );
 		}
 
 		cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );
@@ -50,6 +49,5 @@ private:
 	double m_MapHeight;
 	cv::Mat m_Blank;
 	cv::Mat m_Live;
-	int m_DrawEntityRadius;
 	int m_DrawEntityThickness;
 };
