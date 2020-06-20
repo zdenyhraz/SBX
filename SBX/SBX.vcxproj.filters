@@ -26,5 +26,6 @@
     <ClInclude Include="Component\EntityInfoComponent.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="System\CommandLineSystem.h" />
+    <ClInclude Include="Sandbox\EntityManager.h" />
   </ItemGroup>
 </Project>

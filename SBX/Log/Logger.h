@@ -34,7 +34,7 @@ public:
 
 	~LOG_STARTEND()
 	{
-		LOG_INFO( Endmsg );
+		LOG_SUCC( Endmsg );
 	}
 
 private:

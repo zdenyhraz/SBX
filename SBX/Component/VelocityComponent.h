@@ -5,8 +5,8 @@
 class VelocityComponent : public Component
 {
 public:
-	double vx;
-	double vy;
-	double vz;
+	double vx = 0;
+	double vy = 0;
+	double vz = 0;
 private:
 };
