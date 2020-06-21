@@ -11,4 +11,4 @@ Data oriented Entity-Component-System sandbox world
 - Synchronized target refresh rate across all systems
 - Basic kinematics - orbiting planets with gravity demo
 
-![blobs](https://github.com/zdenyhraz/SBX/blob/master/pics/2.PNG?raw=true)
+![blobs](https://github.com/zdenyhraz/SBX/blob/master/pics/2.png?raw=true)
