@@ -6,18 +6,21 @@ class DrawSystem : public System
 {
 public:
 
-	DrawSystem( std::shared_ptr<ComponentVectors> components ):
-		System( components, "Draw" )
+	DrawSystem( std::shared_ptr<ComponentVectors> components ) :
+		System( components, "Draw" ),
+		m_WindowName( "SBX" ),
+		m_WindowWidth( 1000 ),
+		m_WindowHeight( 1000 ),
+		m_MapWidth( 1 ),
+		m_MapHeight( 1 ),
+		m_DrawEntityThickness( -1 ),
+		m_TextRelOffsetX( 1.3 ),
+		m_TextRelOffsetY( 0.5 ),
+		m_TextRelScale( 0.05 )
 	{
-		m_WindowName = "SBX";
-		m_WindowWidth = 1000;
-		m_WindowHeight = 1000;
 		m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
-		m_MapWidth = 1;
-		m_MapHeight = 1;
 		m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
 		m_Live = m_Blank.clone();
-		m_DrawEntityThickness = -1;
 	}
 
 	void Tick() override
@@ -28,7 +31,7 @@ public:
 		{
 			auto pos = m_Components->Positions.Find( model.first );
 			cv::circle( m_Live, GetWindowCoordinates( pos.Position.x, pos.Position.y ), model.second.Size, model.second.Color, m_DrawEntityThickness );
-			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, pos.Position, 7, 1, model.second.Color );
+			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, GetWindowCoordinates( pos.Position.x, pos.Position.y ) + cv::Point( m_TextRelOffsetX * model.second.Size, m_TextRelOffsetY * model.second.Size ), 0, std::max( m_TextRelScale * model.second.Size, 0.5 ), model.second.Color, 2 );
 		}
 
 		cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );
@@ -52,4 +55,7 @@ private:
 	cv::Mat m_Blank;
 	cv::Mat m_Live;
 	int m_DrawEntityThickness;
+	double m_TextRelOffsetX;
+	double m_TextRelOffsetY;
+	double m_TextRelScale;
 };

@@ -32,13 +32,15 @@ public:
 	void InitTest()
 	{
 
-		int initEntityCnt = 1000;
+		int initEntityCnt = 20;
 		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 		for ( int i = 0; i < initEntityCnt; i++ )
 		{
 			m_EntityManager->CreateEntity();
 		}
+
+		m_Components->EntityInfos.Find( 0 ).Name = "Saska";
 
 		for ( auto &mod : m_Components->Models.Data )
 		{
@@ -57,7 +59,6 @@ public:
 		{
 			vel.second.Velocity.x = Utils::Rand11() * 0.5;
 			vel.second.Velocity.y = Utils::Rand11() * 0.5;
-
 		}
 	}
 
