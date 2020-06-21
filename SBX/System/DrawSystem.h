@@ -9,14 +9,16 @@ public:
 	DrawSystem( std::shared_ptr<ComponentVectors> components ) :
 		System( components, "Draw" ),
 		m_WindowName( "SBX" ),
-		m_WindowWidth( 1000 ),
+		m_WindowWidth( 1500 ),
 		m_WindowHeight( 1000 ),
 		m_MapWidth( 1 ),
 		m_MapHeight( 1 ),
 		m_DrawEntityThickness( -1 ),
-		m_TextRelOffsetX( 1.3 ),
+		m_TextRelOffsetX( 1.5 ),
 		m_TextRelOffsetY( 0.5 ),
-		m_TextRelScale( 0.05 )
+		m_TextRelScale( 0.05 ),
+		m_TextMinRelScale( 0.5 ),
+		m_TextThickness( 2 )
 	{
 		m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
 		m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
@@ -31,7 +33,7 @@ public:
 		{
 			auto pos = m_Components->Positions.Find( model.first );
 			cv::circle( m_Live, GetWindowCoordinates( pos.Position.x, pos.Position.y ), model.second.Size, model.second.Color, m_DrawEntityThickness );
-			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, GetWindowCoordinates( pos.Position.x, pos.Position.y ) + cv::Point( m_TextRelOffsetX * model.second.Size, m_TextRelOffsetY * model.second.Size ), 0, std::max( m_TextRelScale * model.second.Size, 0.5 ), model.second.Color, 2 );
+			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, GetWindowCoordinates( pos.Position.x, pos.Position.y ) + cv::Point( m_TextRelOffsetX * model.second.Size, m_TextRelOffsetY * model.second.Size ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
 		}
 
 		cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );
@@ -58,4 +60,6 @@ private:
 	double m_TextRelOffsetX;
 	double m_TextRelOffsetY;
 	double m_TextRelScale;
+	double m_TextMinRelScale;
+	int m_TextThickness;
 };

@@ -45,7 +45,7 @@ public:
 		for ( auto &mod : m_Components->Models.Data )
 		{
 			mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
-			mod.second.Size = Utils::Rand01() * 20;
+			mod.second.Size = Utils::Rand01() * 30;
 		}
 
 		for ( auto &pos : m_Components->Positions.Data )
