@@ -18,6 +18,7 @@
 #include <tuple>
 #include <thread>
 #include <atomic>
+#include <mutex>
 #include <memory>
 #include <unordered_map>
 //OpenCV

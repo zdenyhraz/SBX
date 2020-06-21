@@ -5,7 +5,10 @@
 class EntityManager
 {
 public:
-	EntityManager( std::shared_ptr<ComponentVectors> components ): m_Components( components )
+	EntityManager( std::shared_ptr<ComponentVectors> components ):
+		m_Components( components ),
+		m_EntityCnt( 0 ),
+		m_MaxEntityId( 0 )
 	{
 
 	}
@@ -18,17 +21,20 @@ public:
 		m_Components->Accelerations.Data.emplace( std::pair<int, AccelerationComponent>( m_MaxEntityId, AccelerationComponent() ) );
 		m_Components->Models.Data.emplace( std::pair<int, ModelComponent>( m_MaxEntityId, ModelComponent() ) );
 
-		m_MaxEntityId.fetch_add( 1, std::memory_order_relaxed );
-		m_EntityCnt.fetch_add( 1, std::memory_order_relaxed );
+		std::lock_guard<std::mutex> lock( m_CDmutex );
+		m_MaxEntityId++;
+		m_EntityCnt++;
 	}
 
 	void DeleteEntity( int id )
 	{
-		m_EntityCnt.fetch_sub( 1, std::memory_order_relaxed );
+		std::lock_guard<std::mutex> lock( m_CDmutex );
+		m_EntityCnt--;
 	}
 
 private:
 	std::shared_ptr<ComponentVectors> m_Components;
-	std::atomic<int> m_EntityCnt = 0;
-	std::atomic<int> m_MaxEntityId = 0;
+	std::mutex m_CDmutex;
+	int m_EntityCnt;
+	int m_MaxEntityId;
 };
