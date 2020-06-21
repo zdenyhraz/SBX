@@ -167,10 +167,13 @@
     <ClInclude Include="Component\ComponentVector.h" />
     <ClInclude Include="Component\EntityInfoComponent.h" />
     <ClInclude Include="Component\PositionComponent.h" />
+    <ClInclude Include="Component\TimeComponent.h" />
     <ClInclude Include="Component\VelocityComponent.h" />
     <ClInclude Include="Log\Logger.h" />
+    <ClInclude Include="Sandbox\CommandLineParser.h" />
     <ClInclude Include="Sandbox\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
+    <ClInclude Include="System\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\CommandLineSystem.h" />
     <ClInclude Include="System\DrawSystem.h" />

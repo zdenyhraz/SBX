@@ -6,6 +6,7 @@
 #include "RenderSystem.h"
 #include "CommandLineSystem.h"
 #include "TestSystem.h"
+#include "TimeSystem.h"
 
 class SystemVector
 {
@@ -15,18 +16,21 @@ public:
 		Movement = std::make_unique<MovementSystem>( components );
 		Draw = std::make_unique<DrawSystem>( components );
 		Render = std::make_unique<RenderSystem>( components );
-		CommandLine = std::make_unique<CommandLineSystem>( components );
 		Test = std::make_unique<TestSystem>( components );
+		Time = std::make_unique<TimeSystem>( components );
+		CommandLine = std::make_unique<CommandLineSystem>( components, Time );
 	}
 
 	void Run()
 	{
 		std::vector<std::thread> threads;
-		threads.push_back( std::thread( &MovementSystem::Run, Movement.get() ) );
-		threads.push_back( std::thread( &DrawSystem::Run, Draw.get() ) );
-		threads.push_back( std::thread( &RenderSystem::Run, Render.get() ) );
-		threads.push_back( std::thread( &CommandLineSystem::Run, CommandLine.get() ) );
-		threads.push_back( std::thread( &TestSystem::Run, Test.get() ) );
+		threads.push_back( std::thread( &System::Run, Movement.get() ) );
+		threads.push_back( std::thread( &System::Run, Draw.get() ) );
+		threads.push_back( std::thread( &System::Run, Render.get() ) );
+		threads.push_back( std::thread( &System::Run, CommandLine.get() ) );
+		threads.push_back( std::thread( &System::Run, Test.get() ) );
+		threads.push_back( std::thread( &System::Run, Time.get() ) );
+
 
 		for ( auto &thread : threads )
 		{
@@ -41,14 +45,16 @@ public:
 		Render->Stop();
 		CommandLine->Stop();
 		Test->Stop();
+		Time->Stop();
 	}
 
 private:
-	std::unique_ptr<MovementSystem> Movement;
-	std::unique_ptr<DrawSystem> Draw;
-	std::unique_ptr<RenderSystem> Render;
-	std::unique_ptr<CommandLineSystem> CommandLine;
-	std::unique_ptr<TestSystem> Test;
+	std::shared_ptr<MovementSystem> Movement;
+	std::shared_ptr<DrawSystem> Draw;
+	std::shared_ptr<RenderSystem> Render;
+	std::shared_ptr<CommandLineSystem> CommandLine;
+	std::shared_ptr<TestSystem> Test;
+	std::shared_ptr<TimeSystem> Time;
 
 
 };

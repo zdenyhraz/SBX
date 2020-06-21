@@ -84,28 +84,11 @@ public:
 		m_Systems->Stop();
 	}
 
-	void StartTime()
-	{
-		m_TimeRate = 1;
-		LOG_INFO( "Time started" );
-	}
 
-	void StopTime()
-	{
-		m_TimeRate = 0;
-		LOG_INFO( "Time stopped" );
-	}
-
-	void SetTimeRate( double timeRate )
-	{
-		m_TimeRate = timeRate;
-		LOG_INFO( "Time rate set to {}", m_TimeRate );
-	}
 
 
 private:
-	double m_Time = 0;
-	double m_TimeRate = 1;
+
 
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<SystemVector> m_Systems;

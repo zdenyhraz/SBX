@@ -30,5 +30,8 @@
     <ClInclude Include="System\TestSystem.h" />
     <ClInclude Include="System\MovementSystem.h" />
     <ClInclude Include="Component\ModelComponent.h" />
+    <ClInclude Include="Sandbox\CommandLineParser.h" />
+    <ClInclude Include="Component\TimeComponent.h" />
+    <ClInclude Include="System\TimeSystem.h" />
   </ItemGroup>
 </Project>

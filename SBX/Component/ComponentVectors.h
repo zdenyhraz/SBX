@@ -6,6 +6,7 @@
 #include "VelocityComponent.h"
 #include "AccelerationComponent.h"
 #include "ModelComponent.h"
+#include "TimeComponent.h"
 
 class ComponentVectors
 {
@@ -15,6 +16,7 @@ public:
 	ComponentVector<VelocityComponent> Velocities;
 	ComponentVector<AccelerationComponent> Accelerations;
 	ComponentVector<ModelComponent> Models;
+	TimeComponent Time;
 
 private:
 };
