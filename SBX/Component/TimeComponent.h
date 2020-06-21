@@ -8,48 +8,48 @@ public:
 	static constexpr double RefreshRate = 100;
 
 	TimeComponent():
-		m_Time( 0 ),
-		m_TimeRate( 1 ),
-		m_Delta( 1. / RefreshRate )
+		Time( 0 ),
+		TimeRate( 1 ),
+		Delta( 1. / RefreshRate )
 	{
 
 	}
 
 	double GetTime() const
 	{
-		return m_Time;
+		return Time;
 	}
 
 	void Advance()
 	{
-		m_Time += m_Delta;
+		Time += Delta;
 	}
 
 	double GetDelta() const
 	{
-		return m_Delta;
+		return Delta;
 	}
 
 	double GetTimeRate() const
 	{
-		return m_TimeRate;
+		return TimeRate;
 	}
 
 	void SetTimeRate( double timerate )
 	{
-		m_TimeRate = timerate;
+		TimeRate = timerate;
 		ResetDelta();
-		m_Delta *= timerate;
+		Delta *= timerate;
 	}
 
 private:
-	double m_Time;
-	double m_TimeRate;
-	double m_Delta;
+	double Time;
+	double TimeRate;
+	double Delta;
 
 	void ResetDelta()
 	{
-		m_Delta = 1. / RefreshRate;
+		Delta = 1. / RefreshRate;
 	}
 
 };

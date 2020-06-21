@@ -8,19 +8,19 @@ public:
 	enum EntityType { Entity };
 
 	EntityInfoComponent( int id, bool alive = true, EntityType type = Entity, bool drawable = true ):
-		m_Id( id ),
-		m_Alive( alive ),
-		m_Type( type ),
-		m_Drawable( drawable ),
-		m_Name( "Entity" + std::to_string( id ) )
+		Id( id ),
+		Alive( alive ),
+		Type( type ),
+		Drawable( drawable ),
+		Name( "Entity" + std::to_string( id ) )
 	{
 
 	}
 
-	int m_Id;
-	bool m_Alive;
-	EntityType m_Type;
-	bool m_Drawable;
-	std::string m_Name;
+	int Id;
+	bool Alive;
+	EntityType Type;
+	bool Drawable;
+	std::string Name;
 private:
 };

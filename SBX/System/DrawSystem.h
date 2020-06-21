@@ -27,7 +27,8 @@ public:
 		for ( auto &model : m_Components->Models.Data )
 		{
 			auto pos = m_Components->Positions.Find( model.first );
-			cv::circle( m_Live, GetWindowCoordinates( pos.x, pos.y ), model.second.m_Size, model.second.m_Color, m_DrawEntityThickness );
+			cv::circle( m_Live, GetWindowCoordinates( pos.Position.x, pos.Position.y ), model.second.Size, model.second.Color, m_DrawEntityThickness );
+			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, pos.Position, 7, 1, model.second.Color );
 		}
 
 		cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );

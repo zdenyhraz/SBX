@@ -42,34 +42,23 @@ public:
 
 		for ( auto &mod : m_Components->Models.Data )
 		{
-			mod.second.m_Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
-			mod.second.m_Size = Utils::Rand01() * 20;
+			mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
+			mod.second.Size = Utils::Rand01() * 20;
 		}
 
 		for ( auto &pos : m_Components->Positions.Data )
 		{
 			const double spread = 0.8;
-			pos.second.x = Utils::Rand11() * spread;
-			pos.second.y = Utils::Rand11() * spread;
+			pos.second.Position.x = Utils::Rand11() * spread;
+			pos.second.Position.y = Utils::Rand11() * spread;
 		}
 
 		for ( auto &vel : m_Components->Velocities.Data )
 		{
-			vel.second.x = Utils::Rand11() * 0.5;
-			vel.second.y = Utils::Rand11() * 0.5;
+			vel.second.Velocity.x = Utils::Rand11() * 0.5;
+			vel.second.Velocity.y = Utils::Rand11() * 0.5;
 
 		}
-
-		for ( auto &acc : m_Components->Accelerations.Data )
-		{
-			//acc.second.x = Utils::Rand11() * 0.05;
-			//acc.second.y = Utils::Rand11() * 0.05;
-
-
-			//acc.second.x = m_Components->Positions.Find( acc.first ).y * +0.1;
-			//acc.second.y = m_Components->Positions.Find( acc.first ).x * -0.1;
-		}
-
 	}
 
 	void Run()
@@ -83,8 +72,6 @@ public:
 		LOG_STARTEND( "Stopping systems", "Systems stopped" );
 		m_Systems->Stop();
 	}
-
-
 
 
 private:

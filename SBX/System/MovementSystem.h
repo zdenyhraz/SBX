@@ -16,16 +16,12 @@ public:
 	{
 		for ( auto &accel : m_Components->Accelerations.Data )
 		{
-			m_Components->Velocities.Find( accel.first ).x += accel.second.x * m_Components->Time.GetDelta();
-			m_Components->Velocities.Find( accel.first ).y += accel.second.y * m_Components->Time.GetDelta();
-			m_Components->Velocities.Find( accel.first ).z += accel.second.z * m_Components->Time.GetDelta();
+			m_Components->Velocities.Find( accel.first ).Velocity += accel.second.Acceleration * m_Components->Time.GetDelta();
 		}
 
 		for ( auto &vel : m_Components->Velocities.Data )
 		{
-			m_Components->Positions.Find( vel.first ).x += vel.second.x * m_Components->Time.GetDelta();
-			m_Components->Positions.Find( vel.first ).y += vel.second.y * m_Components->Time.GetDelta();
-			m_Components->Positions.Find( vel.first ).z += vel.second.z * m_Components->Time.GetDelta();
+			m_Components->Positions.Find( vel.first ).Position += vel.second.Velocity * m_Components->Time.GetDelta();
 		}
 
 	}
