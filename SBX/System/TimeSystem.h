@@ -13,26 +13,26 @@ public:
 
 	void Tick() override
 	{
-		m_Components->Time.m_Time += m_Components->Time.m_Delta * m_Components->Time.m_TimeRate;
-		m_ConsoleTitle = "Time = " + std::to_string( m_Components->Time.m_Time ) + ", TimeRate = " + std::to_string( m_Components->Time.m_TimeRate );
+		m_Components->Time.Advance();
+		m_ConsoleTitle = "Time = " + std::to_string( m_Components->Time.GetTime() ) + ", TimeRate = " + std::to_string( m_Components->Time.GetTimeRate() );
 		SetConsoleTitle( m_ConsoleTitle.c_str() );
 	}
 
 	void StartTime()
 	{
-		m_Components->Time.m_TimeRate = 1;
-		LOG_INFO( "Time started at {}", m_Components->Time.m_Time );
+		m_Components->Time.SetTimeRate( 1 );
+		LOG_INFO( "Time started at {}", m_Components->Time.GetTime() );
 	}
 
 	void StopTime()
 	{
-		m_Components->Time.m_TimeRate = 0;
-		LOG_INFO( "Time stopped at {}", m_Components->Time.m_Time );
+		m_Components->Time.SetTimeRate( 0 );
+		LOG_INFO( "Time stopped at {}", m_Components->Time.GetTime() );
 	}
 
 	void SetTimeRate( double timeRate )
 	{
-		m_Components->Time.m_TimeRate = timeRate;
+		m_Components->Time.SetTimeRate( timeRate );
 		LOG_INFO( "Time rate set to {}", timeRate );
 	}
 

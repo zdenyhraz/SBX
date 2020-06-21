@@ -5,9 +5,51 @@
 class TimeComponent : public Component
 {
 public:
-	double m_Time = 0;
-	double m_TimeRate = 1;
-	double m_Delta = 1. / 60.;
+	static constexpr double RefreshRate = 100;
+
+	TimeComponent():
+		m_Time( 0 ),
+		m_TimeRate( 1 ),
+		m_Delta( 1. / RefreshRate )
+	{
+
+	}
+
+	double GetTime() const
+	{
+		return m_Time;
+	}
+
+	void Advance()
+	{
+		m_Time += m_Delta;
+	}
+
+	double GetDelta() const
+	{
+		return m_Delta;
+	}
+
+	double GetTimeRate() const
+	{
+		return m_TimeRate;
+	}
+
+	void SetTimeRate( double timerate )
+	{
+		m_TimeRate = timerate;
+		ResetDelta();
+		m_Delta *= timerate;
+	}
 
 private:
+	double m_Time;
+	double m_TimeRate;
+	double m_Delta;
+
+	void ResetDelta()
+	{
+		m_Delta = 1. / RefreshRate;
+	}
+
 };

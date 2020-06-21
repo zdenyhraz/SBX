@@ -8,14 +8,13 @@
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate = 100 ):
+	System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate = TimeComponent::RefreshRate ):
 		m_Components( components ),
 		m_Name( std::move( name ) ),
 		m_Enabled( true ),
 		m_RefreshRate( refreshRate )
 	{
-		m_TargetTickDurationSec = 1. / m_RefreshRate;
-		m_TargetTickDuration = ( long long )( m_TargetTickDurationSec * 1e6 );
+		m_TargetTickDuration = ( long long )( 1. / m_RefreshRate * 1e6 );
 	}
 
 	void Run()
@@ -29,7 +28,7 @@ public:
 			Tick();
 			m_TickEnd = Utils::GetTimeNow();
 
-			std::this_thread::sleep_for( std::chrono::microseconds( m_TargetTickDuration - Utils::GetDuration( m_TickStart, m_TickEnd ) ) );
+			std::this_thread::sleep_for( std::chrono::microseconds( std::max( m_TargetTickDuration - Utils::GetDuration( m_TickStart, m_TickEnd ), 0ll ) ) );
 		}
 	}
 
@@ -45,7 +44,6 @@ protected:
 	std::string m_Name;
 	bool m_Enabled;
 	int m_RefreshRate;
-	double m_TargetTickDurationSec;
 	long long m_TargetTickDuration;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickEnd;
