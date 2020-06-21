@@ -32,7 +32,7 @@ public:
 	void InitTest()
 	{
 
-		int initEntityCnt = 20;
+		int initEntityCnt = 100;
 		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 		for ( int i = 0; i < initEntityCnt; i++ )
