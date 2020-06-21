@@ -17,6 +17,7 @@
 #include <complex>
 #include <tuple>
 #include <thread>
+#include <atomic>
 #include <memory>
 #include <unordered_map>
 //OpenCV
