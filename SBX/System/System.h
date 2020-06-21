@@ -19,7 +19,7 @@ public:
 
 	void Run()
 	{
-		LOG_DEBUG( "Running <{}> system on thread {}", m_Name, Utils::ThisThreadId() );
+		LOG_DEBUG( "Running <{}> system on thread {} with {} Hz refresh rate", m_Name, Utils::ThisThreadId(), m_RefreshRate );
 		m_Enabled = true;
 
 		while ( m_Enabled )

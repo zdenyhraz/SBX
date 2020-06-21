@@ -6,7 +6,8 @@ class RenderSystem : public System
 {
 public:
 
-	RenderSystem( std::shared_ptr<ComponentVectors> components ): System( components, "Render" )
+	RenderSystem( std::shared_ptr<ComponentVectors> components ):
+		System( components, "Render" )
 	{
 
 	}

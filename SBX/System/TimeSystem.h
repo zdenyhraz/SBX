@@ -6,7 +6,8 @@ class TimeSystem : public System
 {
 public:
 
-	TimeSystem( std::shared_ptr<ComponentVectors> components ) : System( components, "Time" )
+	TimeSystem( std::shared_ptr<ComponentVectors> components ):
+		System( components, "Time" )
 	{
 
 	}

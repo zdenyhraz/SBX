@@ -5,7 +5,7 @@
 class EntityManager
 {
 public:
-	EntityManager( std::shared_ptr<ComponentVectors> components ) : m_Components( components )
+	EntityManager( std::shared_ptr<ComponentVectors> components ): m_Components( components )
 	{
 
 	}

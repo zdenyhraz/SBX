@@ -6,7 +6,8 @@ class TestSystem : public System
 {
 public:
 
-	TestSystem( std::shared_ptr<ComponentVectors> components ) : System( components, "Test" )
+	TestSystem( std::shared_ptr<ComponentVectors> components ):
+		System( components, "Test/Gravity", 10 )
 	{
 
 	}

@@ -7,7 +7,8 @@ class CommandLineSystem : public System
 {
 public:
 
-	CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<TimeSystem> timesystem ) : System( components, "CommandLine" )
+	CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<TimeSystem> timesystem ):
+		System( components, "CommandLine", 10 )
 	{
 		m_CommandLineManager = std::make_shared<CommandLineManager>( timesystem );
 	}
