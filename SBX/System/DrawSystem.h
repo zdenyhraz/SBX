@@ -19,7 +19,7 @@ public:
 		m_DrawEntityThickness = -1;
 	}
 
-	void Tick( double dt ) override
+	void Tick() override
 	{
 		m_Live = m_Blank.clone();
 

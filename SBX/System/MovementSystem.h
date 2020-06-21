@@ -11,20 +11,20 @@ public:
 
 	}
 
-	void Tick( double dt ) override
+	void Tick() override
 	{
 		for ( auto &accel : m_Components->Accelerations.Data )
 		{
-			m_Components->Velocities.Find( accel.first ).x += accel.second.x * dt;
-			m_Components->Velocities.Find( accel.first ).y += accel.second.y * dt;
-			m_Components->Velocities.Find( accel.first ).z += accel.second.z * dt;
+			m_Components->Velocities.Find( accel.first ).x += accel.second.x * m_Components->Time.m_Delta;
+			m_Components->Velocities.Find( accel.first ).y += accel.second.y * m_Components->Time.m_Delta;
+			m_Components->Velocities.Find( accel.first ).z += accel.second.z * m_Components->Time.m_Delta;
 		}
 
 		for ( auto &vel : m_Components->Velocities.Data )
 		{
-			m_Components->Positions.Find( vel.first ).x += vel.second.x * dt;
-			m_Components->Positions.Find( vel.first ).y += vel.second.y * dt;
-			m_Components->Positions.Find( vel.first ).z += vel.second.z * dt;
+			m_Components->Positions.Find( vel.first ).x += vel.second.x * m_Components->Time.m_Delta;
+			m_Components->Positions.Find( vel.first ).y += vel.second.y * m_Components->Time.m_Delta;
+			m_Components->Positions.Find( vel.first ).z += vel.second.z * m_Components->Time.m_Delta;
 		}
 
 	}

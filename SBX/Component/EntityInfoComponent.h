@@ -11,7 +11,8 @@ public:
 		m_Id( id ),
 		m_Alive( alive ),
 		m_Type( type ),
-		m_Drawable( drawable )
+		m_Drawable( drawable ),
+		m_Name( "Entity" + std::to_string( id ) )
 	{
 
 	}
@@ -20,5 +21,6 @@ public:
 	bool m_Alive;
 	EntityType m_Type;
 	bool m_Drawable;
+	std::string m_Name;
 private:
 };

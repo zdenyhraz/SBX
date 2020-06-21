@@ -8,12 +8,12 @@
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components, std::string &&name ):
+	System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate = 100 ):
 		m_Components( components ),
-		m_Name( std::move( name ) )
+		m_Name( std::move( name ) ),
+		m_Enabled( true ),
+		m_RefreshRate( refreshRate )
 	{
-		m_Enabled = true;
-		m_RefreshRate = 100;
 		m_TargetTickDurationSec = 1. / m_RefreshRate;
 		m_TargetTickDuration = ( long long )( m_TargetTickDurationSec * 1e6 );
 	}
@@ -26,7 +26,7 @@ public:
 		while ( m_Enabled )
 		{
 			m_TickStart = Utils::GetTimeNow();
-			Tick( m_TargetTickDurationSec );
+			Tick();
 			m_TickEnd = Utils::GetTimeNow();
 
 			std::this_thread::sleep_for( std::chrono::microseconds( m_TargetTickDuration - Utils::GetDuration( m_TickStart, m_TickEnd ) ) );
@@ -38,7 +38,7 @@ public:
 		m_Enabled = false;
 	}
 
-	virtual void Tick( double dt ) = 0;
+	virtual void Tick() = 0;
 
 protected:
 	std::shared_ptr<ComponentVectors> m_Components;

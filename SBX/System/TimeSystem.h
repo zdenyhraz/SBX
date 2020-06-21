@@ -11,9 +11,9 @@ public:
 
 	}
 
-	void Tick( double dt ) override
+	void Tick() override
 	{
-		m_Components->Time.m_Time += dt * m_Components->Time.m_TimeRate;
+		m_Components->Time.m_Time += m_Components->Time.m_Delta * m_Components->Time.m_TimeRate;
 		m_ConsoleTitle = "Time = " + std::to_string( m_Components->Time.m_Time ) + ", TimeRate = " + std::to_string( m_Components->Time.m_TimeRate );
 		SetConsoleTitle( m_ConsoleTitle.c_str() );
 	}

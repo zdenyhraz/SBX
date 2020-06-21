@@ -23,15 +23,15 @@
     <ClInclude Include="Component\EntityInfoComponent.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="System\CommandLineSystem.h" />
-    <ClInclude Include="Sandbox\EntityManager.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Component\AccelerationComponent.h" />
     <ClInclude Include="System\TestSystem.h" />
     <ClInclude Include="System\MovementSystem.h" />
     <ClInclude Include="Component\ModelComponent.h" />
-    <ClInclude Include="Sandbox\CommandLineParser.h" />
     <ClInclude Include="Component\TimeComponent.h" />
     <ClInclude Include="System\TimeSystem.h" />
+    <ClInclude Include="Manager\CommandLineManager.h" />
+    <ClInclude Include="Manager\EntityManager.h" />
   </ItemGroup>
 </Project>

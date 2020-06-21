@@ -2,10 +2,10 @@
 #include "Stdafx.h"
 #include "System/TimeSystem.h"
 
-class CommandLineParser
+class CommandLineManager
 {
 public:
-	CommandLineParser( std::shared_ptr<TimeSystem> timesystem ):
+	CommandLineManager( std::shared_ptr<TimeSystem> timesystem ):
 		m_TimeSystem( timesystem )
 	{
 

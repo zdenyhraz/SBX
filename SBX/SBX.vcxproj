@@ -170,8 +170,8 @@
     <ClInclude Include="Component\TimeComponent.h" />
     <ClInclude Include="Component\VelocityComponent.h" />
     <ClInclude Include="Log\Logger.h" />
-    <ClInclude Include="Sandbox\CommandLineParser.h" />
-    <ClInclude Include="Sandbox\EntityManager.h" />
+    <ClInclude Include="Manager\CommandLineManager.h" />
+    <ClInclude Include="Manager\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="System\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
