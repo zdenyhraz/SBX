@@ -1,12 +1,12 @@
 #pragma once
 #include "Stdafx.h"
 #include "ComponentVector.h"
-#include "EntityInfoComponent.h"
-#include "PositionComponent.h"
-#include "VelocityComponent.h"
-#include "AccelerationComponent.h"
-#include "ModelComponent.h"
-#include "TimeComponent.h"
+#include "Entity/EntityInfoComponent.h"
+#include "Movement/PositionComponent.h"
+#include "Movement/VelocityComponent.h"
+#include "Movement/AccelerationComponent.h"
+#include "Model/ModelComponent.h"
+#include "Time/TimeComponent.h"
 
 class ComponentVectors
 {
