@@ -6,83 +6,21 @@ class CommandLineSystem : public System
 {
 public:
 
-	CommandLineSystem( std::shared_ptr<ComponentVectors> components ):
-		System( components, "CommandLine", 10 )
-	{
+	CommandLineSystem( std::shared_ptr<ComponentVectors> components );
 
-	}
+	void Tick() override;
 
-	void Tick() override
-	{
-		getline( std::cin, m_Command );
-		ProcessCommand( m_Command );
-	}
+	void ProcessCommand( const std::string &command );
 
-	void ProcessCommand( const std::string &command )
-	{
-		if ( command.find( "run" ) != std::string::npos )
-		{
-			LOG_DEBUG( "Run command registered" );
-			ProcessRun();
-			return;
-		}
+	void ProcessRun();
 
-		if ( command.find( "end" ) != std::string::npos )
-		{
-			LOG_DEBUG( "End command registered" );
-			ProcessEnd();
-			return;
-		}
+	void ProcessEnd();
 
-		if ( command.find( "start" ) != std::string::npos )
-		{
-			LOG_DEBUG( "StartTime command registered" );
-			ProcessStartTime();
-			return;
-		}
+	void ProcessStartTime();
 
-		if ( command.find( "stop" ) != std::string::npos )
-		{
-			LOG_DEBUG( "StopTime command registered" );
-			ProcessStopTime();
-			return;
-		}
+	void ProcessStopTime();
 
-		if ( command.find( "timerate" ) != std::string::npos )
-		{
-			LOG_DEBUG( "SetTimeRate command registered" );
-			double timerate = std::stod( command.substr( command.find( " " ) + 1 ) );
-			ProcessSetTimeRate( timerate );
-			return;
-		}
-
-		LOG_DEBUG( "Unknown command '{}'", command );
-	}
-
-	void ProcessRun()
-	{
-		//m_Systems->Run();
-	}
-
-	void ProcessEnd()
-	{
-		//m_Systems->End();
-	}
-
-	void ProcessStartTime()
-	{
-		m_Components->Time.StartTime();
-	}
-
-	void ProcessStopTime()
-	{
-		m_Components->Time.StopTime();
-	}
-
-	void ProcessSetTimeRate( double timerate )
-	{
-		m_Components->Time.SetTimeRate( timerate );
-	}
+	void ProcessSetTimeRate( double timerate );
 
 private:
 	std::string m_Command;

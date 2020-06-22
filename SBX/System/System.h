@@ -8,34 +8,11 @@
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate = TimeComponent::RefreshRate ):
-		m_Components( components ),
-		m_Name( std::move( name ) ),
-		m_Enabled( true ),
-		m_RefreshRate( refreshRate )
-	{
-		m_TargetTickDuration = ( long long )( 1. / m_RefreshRate * 1e6 );
-	}
+	System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate = TimeComponent::RefreshRate );
 
-	void Run()
-	{
-		LOG_DEBUG( "Running <{}> system on thread {} with {} Hz refresh rate", m_Name, Utils::ThisThreadId(), m_RefreshRate );
-		m_Enabled = true;
+	void Run();
 
-		while ( m_Enabled )
-		{
-			m_TickStart = Utils::GetTimeNow();
-			Tick();
-			m_TickEnd = Utils::GetTimeNow();
-
-			std::this_thread::sleep_for( std::chrono::microseconds( std::max( m_TargetTickDuration - Utils::GetDuration( m_TickStart, m_TickEnd ), 0ll ) ) );
-		}
-	}
-
-	void End()
-	{
-		m_Enabled = false;
-	}
+	void End();
 
 	virtual void Tick() = 0;
 

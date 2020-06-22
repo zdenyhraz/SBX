@@ -7,83 +7,25 @@ class TimeComponent : public Component
 public:
 	static constexpr double RefreshRate = 100;
 
-	TimeComponent():
-		Time( 0 ),
-		TimeRate( 1 ),
-		Delta( 1. / RefreshRate ),
-		Running( true )
-	{
+	TimeComponent();
 
-	}
+	double GetTime() const;
 
-	double GetTime() const
-	{
-		return Time;
-	}
+	double GetDelta() const;
 
-	double GetDelta() const
-	{
-		return Delta;
-	}
+	double GetTimeRate() const;
 
-	double GetTimeRate() const
-	{
-		return TimeRate;
-	}
+	bool GetRunning() const;
 
-	bool GetRunning() const
-	{
-		return Running;
-	}
+	void Advance();
 
-	void Advance()
-	{
-		Time += Delta;
-	}
+	void SetTimeRate( double timerate );
 
-	void SetTimeRate( double timerate )
-	{
-		std::lock_guard<std::mutex> lock( Mutex );
+	void SetRunning( bool running );
 
-		TimeRate = timerate;
-		if ( Running )
-		{
-			ResetDelta();
-		}
-		LOG_INFO( "Time rate set to {}", timerate );
-	}
+	void StartTime();
 
-	void SetRunning( bool running )
-	{
-		std::lock_guard<std::mutex> lock( Mutex );
-
-		//stopping
-		if ( Running && !running )
-		{
-			Delta = 0;
-		}
-
-		//starting
-		if ( !Running && running )
-		{
-			ResetDelta();
-		}
-
-		Running = running;
-	}
-
-	void StartTime()
-	{
-		SetRunning( true );
-		LOG_INFO( "Time started at {}", GetTime() );
-	}
-
-	void StopTime()
-	{
-		SetRunning( false );
-		LOG_INFO( "Time stopped at {}", GetTime() );
-	}
-
+	void StopTime();
 
 private:
 	double Time;
@@ -92,9 +34,6 @@ private:
 	bool Running;
 	std::mutex Mutex;
 
-	void ResetDelta()
-	{
-		Delta = 1. / RefreshRate * TimeRate;
-	}
+	void ResetDelta();
 
 };

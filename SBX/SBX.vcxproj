@@ -147,8 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component\TimeComponent.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Manager\EntityManager.cpp" />
+    <ClCompile Include="Manager\SystemManager.cpp" />
+    <ClCompile Include="Sandbox\Sandbox.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -157,6 +161,14 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="System\CommandLineSystem.cpp" />
+    <ClCompile Include="System\DrawSystem.cpp" />
+    <ClCompile Include="System\MovementSystem.cpp" />
+    <ClCompile Include="System\System.cpp" />
+    <ClCompile Include="System\SystemVector.cpp" />
+    <ClCompile Include="System\TemplateSystem.cpp" />
+    <ClCompile Include="System\TestSystem.cpp" />
+    <ClCompile Include="System\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\AccelerationComponent.h" />
@@ -171,13 +183,13 @@
     <ClInclude Include="Component\VelocityComponent.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\EntityManager.h" />
+    <ClInclude Include="Manager\SystemManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="System\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\CommandLineSystem.h" />
     <ClInclude Include="System\DrawSystem.h" />
     <ClInclude Include="System\MovementSystem.h" />
-    <ClInclude Include="System\RenderSystem.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\TemplateSystem.h" />

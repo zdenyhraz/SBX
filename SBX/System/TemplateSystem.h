@@ -6,16 +6,9 @@ class TemplateSystem : public System
 {
 public:
 
-	TemplateSystem( std::shared_ptr<ComponentVectors> components ):
-		System( components, "Template" )
-	{
+	TemplateSystem( std::shared_ptr<ComponentVectors> components );
 
-	}
-
-	void Tick() override
-	{
-
-	}
+	void Tick() override;
 
 private:
 };
