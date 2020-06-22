@@ -13,11 +13,11 @@ class SystemVector
 public:
 	SystemVector( std::shared_ptr<ComponentVectors> components )
 	{
-		Systems.push_back( std::make_shared<TimeSystem>( components, std::shared_ptr<SystemVector>( this ) ) );
-		Systems.push_back( std::make_shared<MovementSystem>( components, std::shared_ptr<SystemVector>( this ) ) );
-		Systems.push_back( std::make_shared<DrawSystem>( components, std::shared_ptr<SystemVector>( this ) ) );
-		Systems.push_back( std::make_shared<CommandLineSystem>( components, std::shared_ptr<SystemVector>( this ) ) );
-		Systems.push_back( std::make_shared<TestSystem>( components, std::shared_ptr<SystemVector>( this ) ) );
+		Systems.push_back( std::make_shared<TimeSystem>( components ) );
+		Systems.push_back( std::make_shared<MovementSystem>( components ) );
+		Systems.push_back( std::make_shared<DrawSystem>( components ) );
+		Systems.push_back( std::make_shared<CommandLineSystem>( components ) );
+		Systems.push_back( std::make_shared<TestSystem>( components ) );
 	}
 
 	void Run()

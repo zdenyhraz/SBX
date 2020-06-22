@@ -6,8 +6,8 @@ class CommandLineSystem : public System
 {
 public:
 
-	CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<SystemVector> systems ):
-		System( components, systems, "CommandLine", 10 )
+	CommandLineSystem( std::shared_ptr<ComponentVectors> components ):
+		System( components, "CommandLine", 10 )
 	{
 
 	}
