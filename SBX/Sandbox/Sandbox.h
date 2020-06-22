@@ -38,7 +38,7 @@ public:
 
 		for ( int i = 0; i < initEntityCnt; i++ )
 		{
-			m_EntityManager->CreateEntity();
+			m_EntityManager->CreateEntity( EntityInfoComponent::EntityType::Entity );
 		}
 
 		m_Components->EntityInfos.Find( 0 ).Name = "Saska";
