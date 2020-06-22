@@ -37,7 +37,8 @@ public:
 		if ( command.find( "timerate" ) != std::string::npos )
 		{
 			LOG_DEBUG( "SetTimeRate command registered" );
-			ProcessSetTimeRate();
+			double timerate = std::stod( command.substr( command.find( " " ) + 1 ) );
+			ProcessSetTimeRate( timerate );
 			return;
 		}
 
@@ -54,9 +55,9 @@ public:
 		m_Components->Time.StopTime();
 	}
 
-	void ProcessSetTimeRate()
+	void ProcessSetTimeRate( double timerate )
 	{
-		m_Components->Time.SetTimeRate( 0.1 );
+		m_Components->Time.SetTimeRate( timerate );
 	}
 
 private:

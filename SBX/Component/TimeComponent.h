@@ -31,6 +31,11 @@ public:
 		return TimeRate;
 	}
 
+	bool GetRunning() const
+	{
+		return Running;
+	}
+
 	void Advance()
 	{
 		Time += Delta;
@@ -38,19 +43,33 @@ public:
 
 	void SetTimeRate( double timerate )
 	{
+		std::lock_guard<std::mutex> lock( Mutex );
+
 		TimeRate = timerate;
-		ResetDelta();
-		Delta *= timerate;
+		if ( Running )
+		{
+			ResetDelta();
+		}
 		LOG_INFO( "Time rate set to {}", timerate );
 	}
 
 	void SetRunning( bool running )
 	{
-		Running = running;
-		if ( !Running )
+		std::lock_guard<std::mutex> lock( Mutex );
+
+		//stopping
+		if ( Running && !running )
 		{
 			Delta = 0;
 		}
+
+		//starting
+		if ( !Running && running )
+		{
+			ResetDelta();
+		}
+
+		Running = running;
 	}
 
 	void StartTime()
@@ -68,13 +87,14 @@ public:
 
 private:
 	double Time;
-	double TimeRate;
 	double Delta;
+	double TimeRate;
 	bool Running;
+	std::mutex Mutex;
 
 	void ResetDelta()
 	{
-		Delta = 1. / RefreshRate;
+		Delta = 1. / RefreshRate * TimeRate;
 	}
 
 };

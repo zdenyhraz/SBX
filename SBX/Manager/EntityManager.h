@@ -21,20 +21,20 @@ public:
 		m_Components->Accelerations.Data.emplace( std::pair<int, AccelerationComponent>( m_MaxEntityId, AccelerationComponent() ) );
 		m_Components->Models.Data.emplace( std::pair<int, ModelComponent>( m_MaxEntityId, ModelComponent() ) );
 
-		std::lock_guard<std::mutex> lock( m_CDmutex );
+		std::lock_guard<std::mutex> lock( m_mutex );
 		m_MaxEntityId++;
 		m_EntityCnt++;
 	}
 
 	void DeleteEntity( int id )
 	{
-		std::lock_guard<std::mutex> lock( m_CDmutex );
+		std::lock_guard<std::mutex> lock( m_mutex );
 		m_EntityCnt--;
 	}
 
 private:
 	std::shared_ptr<ComponentVectors> m_Components;
-	std::mutex m_CDmutex;
+	std::mutex m_mutex;
 	int m_EntityCnt;
 	int m_MaxEntityId;
 };
