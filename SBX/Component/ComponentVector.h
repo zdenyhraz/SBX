@@ -1,7 +1,7 @@
 #pragma once
 #include "Stdafx.h"
 
-template <typename T>
+template <typename DataType, class ContainerType = std::unordered_map<int, DataType>>
 class ComponentVector
 {
 public:
@@ -10,12 +10,12 @@ public:
 		Data.reserve( 1000 );
 	}
 
-	T &Find( int id )
+	DataType &Find( int id )
 	{
 		return Data.find( id )->second;
 	}
 
-	std::unordered_map<int, T> Data;
+	ContainerType Data;
 
 private:
 

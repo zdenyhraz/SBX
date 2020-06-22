@@ -4,6 +4,7 @@
 #include "CommandLineSystem.h"
 #include "TestSystem.h"
 #include "TimeSystem.h"
+#include "Utils/ThreadUtils.h"
 
 SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components )
 {
@@ -16,6 +17,8 @@ SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components )
 
 void SystemVector::Run()
 {
+	LOG_DEBUG( "Running systems from thread {}", Utils::ThisThreadId() );
+
 	std::vector<std::thread> Threads;
 
 	for ( auto &system : Systems )
@@ -27,6 +30,8 @@ void SystemVector::Run()
 
 void SystemVector::Kill()
 {
+	LOG_DEBUG( "Killing systems from thread {}", Utils::ThisThreadId() );
+
 	for ( auto &system : Systems )
 		system->Kill();
 }

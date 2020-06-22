@@ -21,13 +21,11 @@ Sandbox::~Sandbox()
 
 void Sandbox::Run()
 {
-	LOG_DEBUG( "Running systems from thread {}", Utils::ThisThreadId() );
 	m_Systems->Run();
 }
 
 void Sandbox::Kill()
 {
-	LOG_DEBUG( "Killing systems from thread {}", Utils::ThisThreadId() );
 	m_Systems->Kill();
 }
 
