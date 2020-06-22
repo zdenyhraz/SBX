@@ -43,7 +43,7 @@ protected:
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::string m_Name;
 	bool m_Enabled;
-	int m_RefreshRate;
+	double m_RefreshRate;
 	long long m_TargetTickDuration;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickEnd;

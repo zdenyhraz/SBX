@@ -33,7 +33,7 @@ public:
 		{
 			auto pos = m_Components->Positions.Find( model.first );
 			cv::circle( m_Live, GetWindowCoordinates( pos.Position.x, pos.Position.y ), model.second.Size, model.second.Color, m_DrawEntityThickness );
-			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, GetWindowCoordinates( pos.Position.x, pos.Position.y ) + cv::Point( m_TextRelOffsetX * model.second.Size, m_TextRelOffsetY * model.second.Size ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
+			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, GetWindowCoordinates( pos.Position.x, pos.Position.y ) + cv::Point( ( int )( m_TextRelOffsetX * model.second.Size ), ( int )( m_TextRelOffsetY * model.second.Size ) ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
 		}
 
 		cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );

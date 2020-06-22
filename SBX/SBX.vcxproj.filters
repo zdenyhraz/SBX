@@ -31,7 +31,6 @@
     <ClInclude Include="Component\ModelComponent.h" />
     <ClInclude Include="Component\TimeComponent.h" />
     <ClInclude Include="System\TimeSystem.h" />
-    <ClInclude Include="Manager\CommandLineManager.h" />
     <ClInclude Include="Manager\EntityManager.h" />
   </ItemGroup>
 </Project>
