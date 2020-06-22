@@ -10,7 +10,7 @@ int main()
 	std::this_thread::sleep_for( std::chrono::milliseconds( 10 * 1000 ) );
 	sandbox->Kill();
 
-	LOG_ERROR( "Press any key to end the app" );
+	LOG_ERROR( "Press enter twice to end the app" );
 	std::cin.ignore();
 	return 0;
 }

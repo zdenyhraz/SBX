@@ -17,7 +17,7 @@ SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components )
 
 void SystemVector::Run()
 {
-	LOG_DEBUG( "Running systems from thread {}", Utils::ThisThreadId() );
+	LOG_DEBUG( "Running systems" );
 
 	std::vector<std::thread> Threads;
 
@@ -30,7 +30,7 @@ void SystemVector::Run()
 
 void SystemVector::Kill()
 {
-	LOG_DEBUG( "Killing systems from thread {}", Utils::ThisThreadId() );
+	LOG_DEBUG( "Killing systems" );
 
 	for ( auto &system : Systems )
 		system->Kill();
