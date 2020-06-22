@@ -13,34 +13,28 @@ class SystemVector
 public:
 	SystemVector( std::shared_ptr<ComponentVectors> components )
 	{
-		Systems.push_back( std::make_unique<TimeSystem>( components ) );
-		Systems.push_back( std::make_unique<MovementSystem>( components ) );
-		Systems.push_back( std::make_unique<DrawSystem>( components ) );
-		Systems.push_back( std::make_unique<CommandLineSystem>( components ) );
-		Systems.push_back( std::make_unique<TestSystem>( components ) );
+		Systems.push_back( std::make_shared<TimeSystem>( components ) );
+		Systems.push_back( std::make_shared<MovementSystem>( components ) );
+		Systems.push_back( std::make_shared<DrawSystem>( components ) );
+		Systems.push_back( std::make_shared<CommandLineSystem>( components ) );
+		Systems.push_back( std::make_shared<TestSystem>( components ) );
 	}
 
 	void Run()
 	{
-		std::vector<std::thread> threads;
+		std::vector<std::thread> Threads;
 
 		for ( auto &system : Systems )
-		{
-			threads.push_back( std::thread( &System::Run, system.get() ) );
-		}
+			Threads.push_back( std::thread( &System::Run, system.get() ) );
 
-		for ( auto &thread : threads )
-		{
+		for ( auto &thread : Threads )
 			thread.join();
-		}
 	}
 
 	void Stop()
 	{
 		for ( auto &system : Systems )
-		{
 			system->Stop();
-		}
 	}
 
 private:

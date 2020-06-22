@@ -15,11 +15,12 @@ public:
 		m_EntityManager = std::make_shared<EntityManager>( m_Components );
 
 		Init();
-		Run();
+		RunSystems();
 	}
 
 	~Sandbox()
 	{
+		StopSystems();
 		LOG_INFO( "Sandbox destructed" );
 	}
 
@@ -62,13 +63,13 @@ public:
 		}
 	}
 
-	void Run()
+	void RunSystems()
 	{
 		LOG_STARTEND( "Running systems", "Systems ran" );
 		m_Systems->Run();
 	}
 
-	void Stop()
+	void StopSystems()
 	{
 		LOG_STARTEND( "Stopping systems", "Systems stopped" );
 		m_Systems->Stop();
