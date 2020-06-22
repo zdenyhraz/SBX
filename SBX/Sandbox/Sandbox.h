@@ -20,7 +20,7 @@ public:
 
 	~Sandbox()
 	{
-		StopSystems();
+		EndSystems();
 		LOG_INFO( "Sandbox destructed" );
 	}
 
@@ -46,7 +46,7 @@ public:
 		for ( auto &mod : m_Components->Models.Data )
 		{
 			mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
-			mod.second.Size = Utils::Rand01() * 30;
+			mod.second.Size = ( int )( Utils::Rand01() * 30 );
 		}
 
 		for ( auto &pos : m_Components->Positions.Data )
@@ -69,10 +69,10 @@ public:
 		m_Systems->Run();
 	}
 
-	void StopSystems()
+	void EndSystems()
 	{
-		LOG_STARTEND( "Stopping systems", "Systems stopped" );
-		m_Systems->Stop();
+		LOG_STARTEND( "Ending systems", "Systems stopped" );
+		m_Systems->End();
 	}
 
 

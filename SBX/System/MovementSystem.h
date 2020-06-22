@@ -6,8 +6,8 @@ class MovementSystem : public System
 {
 public:
 
-	MovementSystem( std::shared_ptr<ComponentVectors> components ):
-		System( components, "Movement" )
+	MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<SystemVector> systems ):
+		System( components, systems, "Movement" )
 	{
 
 	}

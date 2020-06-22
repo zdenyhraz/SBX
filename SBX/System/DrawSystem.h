@@ -6,8 +6,8 @@ class DrawSystem : public System
 {
 public:
 
-	DrawSystem( std::shared_ptr<ComponentVectors> components ) :
-		System( components, "Draw" ),
+	DrawSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<SystemVector> systems ) :
+		System( components, systems, "Draw" ),
 		m_WindowName( "SBX" ),
 		m_WindowWidth( 1500 ),
 		m_WindowHeight( 1000 ),

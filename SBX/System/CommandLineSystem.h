@@ -6,8 +6,8 @@ class CommandLineSystem : public System
 {
 public:
 
-	CommandLineSystem( std::shared_ptr<ComponentVectors> components ):
-		System( components, "CommandLine", 10 )
+	CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<SystemVector> systems ):
+		System( components, systems, "CommandLine", 10 )
 	{
 
 	}
@@ -20,6 +20,20 @@ public:
 
 	void ProcessCommand( const std::string &command )
 	{
+		if ( command.find( "run" ) != std::string::npos )
+		{
+			LOG_DEBUG( "Run command registered" );
+			ProcessRun();
+			return;
+		}
+
+		if ( command.find( "end" ) != std::string::npos )
+		{
+			LOG_DEBUG( "End command registered" );
+			ProcessEnd();
+			return;
+		}
+
 		if ( command.find( "start" ) != std::string::npos )
 		{
 			LOG_DEBUG( "StartTime command registered" );
@@ -43,6 +57,16 @@ public:
 		}
 
 		LOG_DEBUG( "Unknown command '{}'", command );
+	}
+
+	void ProcessRun()
+	{
+		//m_Systems->Run();
+	}
+
+	void ProcessEnd()
+	{
+		//m_Systems->End();
 	}
 
 	void ProcessStartTime()

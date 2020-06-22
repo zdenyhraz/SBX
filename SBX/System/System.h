@@ -5,11 +5,14 @@
 #include "Utils/TimeUtils.h"
 #include "Utils/MathUtils.h"
 
+class SystemVector;
+
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate = TimeComponent::RefreshRate ):
+	System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<SystemVector> systems, std::string &&name, double refreshRate = TimeComponent::RefreshRate ):
 		m_Components( components ),
+		m_Systems( systems ),
 		m_Name( std::move( name ) ),
 		m_Enabled( true ),
 		m_RefreshRate( refreshRate )
@@ -32,7 +35,7 @@ public:
 		}
 	}
 
-	void Stop()
+	void End()
 	{
 		m_Enabled = false;
 	}
@@ -41,6 +44,7 @@ public:
 
 protected:
 	std::shared_ptr<ComponentVectors> m_Components;
+	std::shared_ptr<SystemVector> m_Systems;
 	std::string m_Name;
 	bool m_Enabled;
 	double m_RefreshRate;
