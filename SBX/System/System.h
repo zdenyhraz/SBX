@@ -1,9 +1,6 @@
 #pragma once
 #include "Stdafx.h"
 #include "Component/ComponentVectors.h"
-#include "Utils/ThreadUtils.h"
-#include "Utils/TimeUtils.h"
-#include "Utils/MathUtils.h"
 
 class System
 {

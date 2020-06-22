@@ -1,4 +1,7 @@
 #include "System.h"
+#include "Utils/ThreadUtils.h"
+#include "Utils/TimeUtils.h"
+#include "Utils/MathUtils.h"
 
 System::System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate ) :
 	m_Components( components ),
