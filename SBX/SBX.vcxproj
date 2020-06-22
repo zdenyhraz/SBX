@@ -151,7 +151,6 @@
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager\EntityManager.cpp" />
-    <ClCompile Include="Manager\SystemManager.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -183,7 +182,6 @@
     <ClInclude Include="Component\VelocityComponent.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\EntityManager.h" />
-    <ClInclude Include="Manager\SystemManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="System\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />

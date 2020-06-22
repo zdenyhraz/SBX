@@ -9,7 +9,7 @@ public:
 
 	void Run();
 
-	void End();
+	void Kill();
 
 	virtual void Tick() = 0;
 

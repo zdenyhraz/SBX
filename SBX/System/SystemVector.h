@@ -9,7 +9,7 @@ public:
 
 	void Run();
 
-	void End();
+	void Kill();
 
 private:
 	std::vector<std::shared_ptr<System>> Systems;

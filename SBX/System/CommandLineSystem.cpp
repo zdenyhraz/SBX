@@ -14,20 +14,6 @@ void CommandLineSystem::Tick()
 
 void CommandLineSystem::ProcessCommand( const std::string &command )
 {
-	if ( command.find( "run" ) != std::string::npos )
-	{
-		LOG_DEBUG( "Run command registered" );
-		ProcessRun();
-		return;
-	}
-
-	if ( command.find( "end" ) != std::string::npos )
-	{
-		LOG_DEBUG( "End command registered" );
-		ProcessEnd();
-		return;
-	}
-
 	if ( command.find( "start" ) != std::string::npos )
 	{
 		LOG_DEBUG( "StartTime command registered" );
@@ -51,16 +37,6 @@ void CommandLineSystem::ProcessCommand( const std::string &command )
 	}
 
 	LOG_DEBUG( "Unknown command '{}'", command );
-}
-
-void CommandLineSystem::ProcessRun()
-{
-	//m_SystemManager->Run();
-}
-
-void CommandLineSystem::ProcessEnd()
-{
-	//m_SystemManager->End();
 }
 
 void CommandLineSystem::ProcessStartTime()

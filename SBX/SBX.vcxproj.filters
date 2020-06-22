@@ -5,7 +5,6 @@
     <ClCompile Include="Stdafx.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="System\CommandLineSystem.cpp" />
-    <ClCompile Include="Manager\SystemManager.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
     <ClCompile Include="Manager\EntityManager.cpp" />
     <ClCompile Include="System\DrawSystem.cpp" />
@@ -43,6 +42,5 @@
     <ClInclude Include="Component\TimeComponent.h" />
     <ClInclude Include="System\TimeSystem.h" />
     <ClInclude Include="Manager\EntityManager.h" />
-    <ClInclude Include="Manager\SystemManager.h" />
   </ItemGroup>
 </Project>

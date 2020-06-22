@@ -1,23 +1,34 @@
 #include "Sandbox.h"
 #include "Utils/MathUtils.h"
+#include "Utils/ThreadUtils.h"
 
 Sandbox::Sandbox()
 {
 	LOG_STARTEND( "Creating sandbox", "Sandbox created" );
+
 	m_Components = std::make_shared<ComponentVectors>();
+	m_Systems = std::make_shared<SystemVector>( m_Components );
 	m_EntityManager = std::make_shared<EntityManager>( m_Components );
 
-	m_Systems = std::make_shared<SystemVector>( m_Components );
-	m_SystemManager = std::make_shared<SystemManager>( m_Systems );
-
 	Init();
-	RunSystems();
 }
 
 Sandbox::~Sandbox()
 {
-	EndSystems();
-	LOG_INFO( "Sandbox destructed" );
+	Kill();
+	LOG_INFO( "Sandbox destroyed" );
+}
+
+void Sandbox::Run()
+{
+	LOG_DEBUG( "Running systems from thread {}", Utils::ThisThreadId() );
+	m_Systems->Run();
+}
+
+void Sandbox::Kill()
+{
+	LOG_DEBUG( "Killing systems from thread {}", Utils::ThisThreadId() );
+	m_Systems->Kill();
 }
 
 void Sandbox::Init()
@@ -57,16 +68,4 @@ void Sandbox::InitTest()
 		vel.second.Velocity.x = Utils::Rand11() * 0.5;
 		vel.second.Velocity.y = Utils::Rand11() * 0.5;
 	}
-}
-
-void Sandbox::RunSystems()
-{
-	LOG_STARTEND( "Running systems", "Systems ran" );
-	m_Systems->Run();
-}
-
-void Sandbox::EndSystems()
-{
-	LOG_STARTEND( "Ending systems", "Systems stopped" );
-	m_Systems->End();
 }

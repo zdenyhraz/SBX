@@ -27,7 +27,8 @@ void System::Run()
 	}
 }
 
-void System::End()
+void System::Kill()
 {
+	LOG_DEBUG( "Killing <{}> system", m_Name );
 	m_Enabled = false;
 }

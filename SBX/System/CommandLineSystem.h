@@ -12,10 +12,6 @@ public:
 
 	void ProcessCommand( const std::string &command );
 
-	void ProcessRun();
-
-	void ProcessEnd();
-
 	void ProcessStartTime();
 
 	void ProcessStopTime();

@@ -22,11 +22,11 @@ void SystemVector::Run()
 		Threads.push_back( std::thread( &System::Run, system.get() ) );
 
 	for ( auto &thread : Threads )
-		thread.join();
+		thread.detach();
 }
 
-void SystemVector::End()
+void SystemVector::Kill()
 {
 	for ( auto &system : Systems )
-		system->End();
+		system->Kill();
 }
