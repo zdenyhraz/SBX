@@ -1,9 +1,9 @@
 #include "SystemVector.h"
-#include "MovementSystem.h"
-#include "DrawSystem.h"
-#include "CommandLineSystem.h"
-#include "TestSystem.h"
-#include "TimeSystem.h"
+#include "Movement/MovementSystem.h"
+#include "Draw/DrawSystem.h"
+#include "CommandLine/CommandLineSystem.h"
+#include "Test/TestSystem.h"
+#include "Time/TimeSystem.h"
 #include "Utils/ThreadUtils.h"
 
 SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components )

@@ -1,6 +1,6 @@
 #pragma once
 #include "Stdafx.h"
-#include "System.h"
+#include "System/System.h"
 
 class DrawSystem : public System
 {

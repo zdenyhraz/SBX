@@ -4,17 +4,17 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Stdafx.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
-    <ClCompile Include="System\CommandLineSystem.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
     <ClCompile Include="Manager\EntityManager.cpp" />
-    <ClCompile Include="System\DrawSystem.cpp" />
-    <ClCompile Include="System\MovementSystem.cpp" />
     <ClCompile Include="System\System.cpp" />
     <ClCompile Include="System\SystemVector.cpp" />
-    <ClCompile Include="System\TemplateSystem.cpp" />
-    <ClCompile Include="System\TestSystem.cpp" />
-    <ClCompile Include="System\TimeSystem.cpp" />
     <ClCompile Include="Component\TimeComponent.cpp" />
+    <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
+    <ClCompile Include="System\Draw\DrawSystem.cpp" />
+    <ClCompile Include="System\Movement\MovementSystem.cpp" />
+    <ClCompile Include="System\Template\TemplateSystem.cpp" />
+    <ClCompile Include="System\Time\TimeSystem.cpp" />
+    <ClCompile Include="System\Test\TestSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -22,8 +22,6 @@
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="System\SystemVector.h" />
-    <ClInclude Include="System\DrawSystem.h" />
-    <ClInclude Include="System\TemplateSystem.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\ComponentVector.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
@@ -32,15 +30,17 @@
     <ClInclude Include="Component\PositionComponent.h" />
     <ClInclude Include="Component\EntityInfoComponent.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
-    <ClInclude Include="System\CommandLineSystem.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Component\AccelerationComponent.h" />
-    <ClInclude Include="System\TestSystem.h" />
-    <ClInclude Include="System\MovementSystem.h" />
     <ClInclude Include="Component\ModelComponent.h" />
     <ClInclude Include="Component\TimeComponent.h" />
-    <ClInclude Include="System\TimeSystem.h" />
     <ClInclude Include="Manager\EntityManager.h" />
+    <ClInclude Include="System\CommandLine\CommandLineSystem.h" />
+    <ClInclude Include="System\Draw\DrawSystem.h" />
+    <ClInclude Include="System\Movement\MovementSystem.h" />
+    <ClInclude Include="System\Template\TemplateSystem.h" />
+    <ClInclude Include="System\Time\TimeSystem.h" />
+    <ClInclude Include="System\Test\TestSystem.h" />
   </ItemGroup>
 </Project>

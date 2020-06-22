@@ -160,14 +160,14 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="System\CommandLineSystem.cpp" />
-    <ClCompile Include="System\DrawSystem.cpp" />
-    <ClCompile Include="System\MovementSystem.cpp" />
+    <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
+    <ClCompile Include="System\Draw\DrawSystem.cpp" />
+    <ClCompile Include="System\Movement\MovementSystem.cpp" />
     <ClCompile Include="System\System.cpp" />
     <ClCompile Include="System\SystemVector.cpp" />
-    <ClCompile Include="System\TemplateSystem.cpp" />
-    <ClCompile Include="System\TestSystem.cpp" />
-    <ClCompile Include="System\TimeSystem.cpp" />
+    <ClCompile Include="System\Template\TemplateSystem.cpp" />
+    <ClCompile Include="System\Test\TestSystem.cpp" />
+    <ClCompile Include="System\Time\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\AccelerationComponent.h" />
@@ -183,15 +183,15 @@
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
-    <ClInclude Include="System\TimeSystem.h" />
+    <ClInclude Include="System\Time\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="System\CommandLineSystem.h" />
-    <ClInclude Include="System\DrawSystem.h" />
-    <ClInclude Include="System\MovementSystem.h" />
+    <ClInclude Include="System\CommandLine\CommandLineSystem.h" />
+    <ClInclude Include="System\Draw\DrawSystem.h" />
+    <ClInclude Include="System\Movement\MovementSystem.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
-    <ClInclude Include="System\TemplateSystem.h" />
-    <ClInclude Include="System\TestSystem.h" />
+    <ClInclude Include="System\Template\TemplateSystem.h" />
+    <ClInclude Include="System\Test\TestSystem.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
