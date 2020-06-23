@@ -6,7 +6,7 @@ class TimeSystem : public System
 {
 public:
 
-	TimeSystem( std::shared_ptr<ComponentVectors> components );
+	TimeSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
 

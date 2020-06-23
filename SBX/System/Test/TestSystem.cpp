@@ -1,7 +1,7 @@
 #include "TestSystem.h"
 
-TestSystem::TestSystem( std::shared_ptr<ComponentVectors> components ) :
-	System( components, "Test/Gravity" )
+TestSystem::TestSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+	System( components, managers, "Test/Gravity" )
 {
 
 }

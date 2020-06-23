@@ -7,8 +7,8 @@ Sandbox::Sandbox()
 	LOG_STARTEND( "Creating sandbox", "Sandbox created" );
 
 	m_Components = std::make_shared<ComponentVectors>();
-	m_Systems = std::make_shared<SystemVector>( m_Components );
 	m_Managers = std::make_shared<ManagerVector>( m_Components );
+	m_Systems = std::make_shared<SystemVector>( m_Components, m_Managers );
 
 	Init();
 }
@@ -39,7 +39,6 @@ void Sandbox::Init()
 
 void Sandbox::InitTest()
 {
-
 	int initEntityCnt = 100;
 	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 

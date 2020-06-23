@@ -5,7 +5,7 @@
 class SystemVector
 {
 public:
-	SystemVector( std::shared_ptr<ComponentVectors> components );
+	SystemVector( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Run();
 

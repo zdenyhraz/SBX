@@ -1,7 +1,7 @@
 #include "EntityManager.h"
 
 EntityManager::EntityManager( std::shared_ptr<ComponentVectors> components ) :
-	m_Components( components ),
+	Manager( components ),
 	m_EntityCnt( 0 ),
 	m_MaxEntityId( 0 )
 {

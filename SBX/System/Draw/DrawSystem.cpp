@@ -1,7 +1,7 @@
 #include "DrawSystem.h"
 
-DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components ) :
-	System( components, "Draw" ),
+DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+	System( components, managers, "Draw" ),
 	m_WindowName( "SBX" ),
 	m_WindowWidth( 1500 ),
 	m_WindowHeight( 1000 ),

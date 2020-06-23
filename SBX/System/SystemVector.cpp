@@ -6,13 +6,13 @@
 #include "Time/TimeSystem.h"
 #include "Utils/ThreadUtils.h"
 
-SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components )
+SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers )
 {
-	Systems.push_back( std::make_shared<TimeSystem>( components ) );
-	Systems.push_back( std::make_shared<MovementSystem>( components ) );
-	Systems.push_back( std::make_shared<DrawSystem>( components ) );
-	Systems.push_back( std::make_shared<CommandLineSystem>( components ) );
-	Systems.push_back( std::make_shared<TestSystem>( components ) );
+	Systems.push_back( std::make_shared<TimeSystem>( components, managers ) );
+	Systems.push_back( std::make_shared<MovementSystem>( components, managers ) );
+	Systems.push_back( std::make_shared<DrawSystem>( components, managers ) );
+	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
+	Systems.push_back( std::make_shared<TestSystem>( components, managers ) );
 }
 
 void SystemVector::Run()

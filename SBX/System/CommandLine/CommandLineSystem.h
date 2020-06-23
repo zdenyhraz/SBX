@@ -6,7 +6,7 @@ class CommandLineSystem : public System
 {
 public:
 
-	CommandLineSystem( std::shared_ptr<ComponentVectors> components );
+	CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
 

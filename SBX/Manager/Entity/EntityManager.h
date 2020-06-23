@@ -1,8 +1,8 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component/ComponentVectors.h"
+#include "Manager/Manager.h"
 
-class EntityManager
+class EntityManager: public Manager
 {
 public:
 	EntityManager( std::shared_ptr<ComponentVectors> components );
@@ -12,8 +12,6 @@ public:
 	void DeleteEntity( int id );
 
 private:
-	std::shared_ptr<ComponentVectors> m_Components;
-	std::mutex m_mutex;
 	int m_EntityCnt;
 	int m_MaxEntityId;
 };

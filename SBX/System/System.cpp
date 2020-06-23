@@ -3,7 +3,7 @@
 #include "Utils/TimeUtils.h"
 #include "Utils/MathUtils.h"
 
-System::System( std::shared_ptr<ComponentVectors> components, std::string &&name, double refreshRate ) :
+System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::string &&name, double refreshRate ) :
 	m_Components( components ),
 	m_Name( std::move( name ) ),
 	m_Enabled( true ),

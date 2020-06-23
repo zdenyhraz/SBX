@@ -7,33 +7,22 @@ class TimeComponent : public Component
 public:
 	static constexpr double RefreshRate = 100;
 
-	TimeComponent();
+	TimeComponent() :
+		Time( 0 ),
+		TimeRate( 1 ),
+		Delta( 1. / RefreshRate ),
+		Running( true )
+	{
 
-	double GetTime() const;
+	}
 
-	double GetDelta() const;
+	void Advance()
+	{
+		Time += Delta;
+	}
 
-	double GetTimeRate() const;
-
-	bool GetRunning() const;
-
-	void Advance();
-
-	void SetTimeRate( double timerate );
-
-	void SetRunning( bool running );
-
-	void StartTime();
-
-	void StopTime();
-
-private:
 	double Time;
 	double Delta;
 	double TimeRate;
 	bool Running;
-	std::mutex Mutex;
-
-	void ResetDelta();
-
 };
