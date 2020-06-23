@@ -161,6 +161,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="System\Agent\AgentSystem.cpp" />
     <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
     <ClCompile Include="System\Draw\DrawSystem.cpp" />
     <ClCompile Include="System\Movement\MovementSystem.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Manager\Time\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\Agent\AgentComponent.h" />
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
     <ClInclude Include="Component\Model\ModelComponent.h" />
@@ -187,6 +189,7 @@
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
+    <ClInclude Include="System\Agent\AgentSystem.h" />
     <ClInclude Include="System\Time\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\CommandLine\CommandLineSystem.h" />

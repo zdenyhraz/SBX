@@ -23,12 +23,11 @@ protected:
 
 private:
 	bool m_LogLoad;
-	int m_LogLoadPeriod;
+	long long m_LogLoadPeriod;
 	long long m_TargetTickDuration;
 	long long m_TickDuration;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickEnd;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_LastLogLoad;
-
-
+	int m_LoadPercent;
 };

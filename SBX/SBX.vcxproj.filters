@@ -17,6 +17,7 @@
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
     <ClCompile Include="Manager\Time\TimeManager.cpp" />
+    <ClCompile Include="System\Agent\AgentSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -47,5 +48,7 @@
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
     <ClInclude Include="Manager\Time\TimeManager.h" />
+    <ClInclude Include="Component\Agent\AgentComponent.h" />
+    <ClInclude Include="System\Agent\AgentSystem.h" />
   </ItemGroup>
 </Project>

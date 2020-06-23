@@ -10,7 +10,7 @@ System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<Ma
 	m_Enabled( true ),
 	m_RefreshRate( refreshRate ),
 	m_LogLoad( logLoad ),
-	m_LogLoadPeriod( 10 )
+	m_LogLoadPeriod( 10 * 1000000 )
 {
 	m_TargetTickDuration = ( long long )( 1. / m_RefreshRate * 1e6 );
 	m_LastLogLoad = Utils::GetTimeNow();
@@ -28,11 +28,12 @@ void System::Run()
 		m_TickEnd = Utils::GetTimeNow();
 
 		m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
+		m_LoadPercent = ( int )( ( double )m_TickDuration / m_TargetTickDuration * 100 );
 
-		if ( m_LogLoad && ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > ( m_LogLoadPeriod * 1000000 ) ) )
+		if ( ( m_LoadPercent > 0 ) && m_LogLoad && ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod ) )
 		{
 			m_LastLogLoad = m_TickEnd;
-			LOG_DEBUG( "System <{}> thread load {}% ({} Hz)", m_Name, ( int )( ( double )m_TickDuration / m_TargetTickDuration * 100 ), m_RefreshRate );
+			LOG_SUCC( "System <{}> thread load {}% ({} Hz)", m_Name, m_LoadPercent, ( int )m_RefreshRate );
 		}
 
 		std::this_thread::sleep_for( std::chrono::microseconds( std::max( m_TargetTickDuration - m_TickDuration, 0ll ) ) );
