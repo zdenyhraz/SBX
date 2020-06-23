@@ -6,10 +6,16 @@ Sandbox::Sandbox()
 {
 	LOG_STARTEND( "Creating sandbox", "Sandbox created" );
 
+	// 1) construct components
 	m_Components = std::make_shared<ComponentVectors>();
+
+	// 2) construct managers acting on components
 	m_Managers = std::make_shared<ManagerVector>( m_Components );
+
+	// 3) construct systems that act on components directly and/or via managers
 	m_Systems = std::make_shared<SystemVector>( m_Components, m_Managers );
 
+	// 4) initialize the sandbox world
 	Init();
 }
 
