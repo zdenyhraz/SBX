@@ -53,8 +53,6 @@ void Sandbox::InitTest()
 		m_Managers->m_EntityManager->CreateEntity( EntityInfoComponent::EntityType::Entity );
 	}
 
-	m_Components->EntityInfos.Find( 0 ).Name = "Saska";
-
 	for ( auto &mod : m_Components->Models.Data )
 	{
 		mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
@@ -73,4 +71,8 @@ void Sandbox::InitTest()
 		vel.second.Velocity.x = Utils::Rand11() * 0.5;
 		vel.second.Velocity.y = Utils::Rand11() * 0.5;
 	}
+
+	m_Components->EntityInfos.Find( 0 ).Name = "Saska";
+	m_Components->Models.Find( 0 ).Size = 50;
+	m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.85, 0.70, 1 );
 }
