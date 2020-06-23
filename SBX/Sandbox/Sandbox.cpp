@@ -74,5 +74,5 @@ void Sandbox::InitTest()
 
 	m_Components->EntityInfos.Find( 0 ).Name = "Saska";
 	m_Components->Models.Find( 0 ).Size = 50;
-	m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.85, 0.70, 1 );
+	m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.7, 0.41, 1 );
 }

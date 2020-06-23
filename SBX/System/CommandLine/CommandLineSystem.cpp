@@ -1,7 +1,7 @@
 #include "CommandLineSystem.h"
 
 CommandLineSystem::CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "CommandLine", 10 )
+	System( components, managers, "CommandLine", 10, false )
 {
 
 }
