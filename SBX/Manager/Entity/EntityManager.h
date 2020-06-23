@@ -1,5 +1,4 @@
 #pragma once
-#include "Stdafx.h"
 #include "Manager/Manager.h"
 
 class EntityManager: public Manager

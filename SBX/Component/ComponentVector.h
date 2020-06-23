@@ -2,9 +2,8 @@
 #include "Stdafx.h"
 
 template <typename DataType, class ContainerType = std::unordered_map<int, DataType>>
-class ComponentVector
+struct ComponentVector
 {
-public:
 	ComponentVector()
 	{
 		Data.reserve( 1000 );
@@ -16,7 +15,4 @@ public:
 	}
 
 	ContainerType Data;
-
-private:
-
 };

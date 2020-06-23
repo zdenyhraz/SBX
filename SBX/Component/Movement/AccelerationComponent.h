@@ -1,10 +1,7 @@
 #pragma once
-#include "Stdafx.h"
 #include "Component/Component.h"
 
-class AccelerationComponent : public Component
+struct AccelerationComponent : Component
 {
-public:
 	cv::Point2d Acceleration;
-private:
 };

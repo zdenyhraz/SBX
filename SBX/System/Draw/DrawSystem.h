@@ -1,5 +1,4 @@
 #pragma once
-#include "Stdafx.h"
 #include "System/System.h"
 
 class DrawSystem : public System

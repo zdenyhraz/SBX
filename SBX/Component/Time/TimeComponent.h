@@ -1,10 +1,8 @@
 #pragma once
-#include "Stdafx.h"
 #include "Component/Component.h"
 
-class TimeComponent : public Component
+struct TimeComponent : Component
 {
-public:
 	static constexpr double RefreshRate = 100;
 
 	TimeComponent() :

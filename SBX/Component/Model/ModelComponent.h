@@ -1,11 +1,8 @@
 #pragma once
-#include "Stdafx.h"
 #include "Component/Component.h"
 
-class ModelComponent : public Component
+struct ModelComponent : Component
 {
-public:
-
 	ModelComponent():
 		Color( 1, 1, 1 ),
 		Size( 5 )
@@ -15,6 +12,4 @@ public:
 
 	cv::Scalar Color;
 	int Size;
-
-private:
 };

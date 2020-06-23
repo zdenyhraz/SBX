@@ -1,10 +1,8 @@
 #pragma once
-#include "Stdafx.h"
 #include "Component/Component.h"
 
-class EntityInfoComponent : public Component
+struct EntityInfoComponent : Component
 {
-public:
 	enum EntityType { Entity };
 
 	EntityInfoComponent( int id, EntityType type = Entity ):
@@ -21,5 +19,4 @@ public:
 	EntityType Type;
 	std::string Name;
 	int HP;
-private:
 };
