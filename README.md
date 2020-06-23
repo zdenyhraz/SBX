@@ -1,5 +1,5 @@
 # SBX
-Data oriented Entity-Component-System sandbox world with OpenCV visualizer (for now, later OpenGL)
+Multithreaded, data oriented, entity-component-system based sandbox world with OpenCV visualizer (for now, later OpenGL) & with many other features
 ## Features
 - Entity-Component-System architecture
 - Templates & interfaces for all components and systems
