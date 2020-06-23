@@ -1,6 +1,6 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component.h"
+#include "Component/Component.h"
 
 class TimeComponent : public Component
 {
