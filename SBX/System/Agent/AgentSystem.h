@@ -9,5 +9,8 @@ public:
 
 	void Tick() override;
 
+	int FindClosestEntity( int agentId );
+
 private:
+	double m_FleeSpeed;
 };
