@@ -16,11 +16,6 @@ public:
 
 	}
 
-	void Advance()
-	{
-		Time += Delta;
-	}
-
 	double Time;
 	double Delta;
 	double TimeRate;

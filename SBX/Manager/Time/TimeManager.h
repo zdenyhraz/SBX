@@ -14,6 +14,8 @@ public:
 
 	bool GetRunning() const;
 
+	void Advance();
+
 	void SetTimeRate( double timerate );
 
 	void SetRunning( bool running );

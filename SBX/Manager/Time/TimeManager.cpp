@@ -25,6 +25,11 @@ bool TimeManager::GetRunning() const
 	return m_Components->Time.Running;
 }
 
+void TimeManager::Advance()
+{
+	m_Components->Time.Time += m_Components->Time.Delta;
+}
+
 void TimeManager::SetTimeRate( double timerate )
 {
 	std::lock_guard<std::mutex> lock( m_mutex );

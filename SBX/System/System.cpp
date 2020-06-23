@@ -5,6 +5,7 @@
 
 System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::string &&name, double refreshRate ) :
 	m_Components( components ),
+	m_Managers( managers ),
 	m_Name( std::move( name ) ),
 	m_Enabled( true ),
 	m_RefreshRate( refreshRate )
