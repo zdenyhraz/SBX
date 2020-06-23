@@ -6,7 +6,8 @@
 #include "Movement/VelocityComponent.h"
 #include "Movement/AccelerationComponent.h"
 #include "Model/ModelComponent.h"
-#include "Agent/AgentComponent.h"
+#include "Agent/AvoidanceAgentComponent.h"
+#include "Agent/SeekingAgentComponent.h"
 
 struct ComponentVectors
 {
@@ -16,5 +17,6 @@ struct ComponentVectors
 	ComponentVector<VelocityComponent> Velocities;
 	ComponentVector<AccelerationComponent> Accelerations;
 	ComponentVector<ModelComponent> Models;
-	ComponentVector<AgentComponent> Agents;
+	ComponentVector<AvoidanceAgentComponent> AvoidanceAgents;
+	ComponentVector<SeekingAgentComponent> SeekingAgents;
 };

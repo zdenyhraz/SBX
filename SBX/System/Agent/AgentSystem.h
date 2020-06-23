@@ -1,5 +1,7 @@
 #pragma once
 #include "System/System.h"
+#include "Avoidance/AvoidanceAgentSystem.h"
+#include "Seeking/SeekingAgentSystem.h"
 
 class AgentSystem : public System
 {
@@ -9,8 +11,8 @@ public:
 
 	void Tick() override;
 
-	int FindClosestEntity( int agentId );
-
 private:
-	double m_FleeSpeed;
+	std::shared_ptr<AvoidanceAgentSystem> m_AvoidanceAgentSystem;
+	std::shared_ptr<SeekingAgentSystem> m_SeekingAgentSystem;
+
 };

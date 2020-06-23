@@ -68,12 +68,17 @@ void Sandbox::InitTest()
 
 	for ( auto &vel : m_Components->Velocities.Data )
 	{
-		vel.second.Velocity.x = Utils::Rand11() * 0.5;
-		vel.second.Velocity.y = Utils::Rand11() * 0.5;
+		//vel.second.Velocity.x = Utils::Rand11() * 0.5;
+		//vel.second.Velocity.y = Utils::Rand11() * 0.5;
 	}
 
 	m_Components->EntityInfos.Find( 0 ).Name = "<<<Saska>>>";
 	m_Components->Models.Find( 0 ).Size = 20;
 	m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.7, 0.41, 1 );
-	m_Components->Agents.Data.emplace( std::pair<int, AgentComponent>( 0, AgentComponent() ) );
+	m_Components->AvoidanceAgents.Data.emplace( std::pair<int, AvoidanceAgentComponent>( 0, AvoidanceAgentComponent() ) );
+
+	m_Components->EntityInfos.Find( 1 ).Name = "<<<Zdeny>>>";
+	m_Components->Models.Find( 1 ).Size = 20;
+	m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
+	m_Components->SeekingAgents.Data.emplace( std::pair<int, SeekingAgentComponent>( 1, SeekingAgentComponent( 0 ) ) );
 }
