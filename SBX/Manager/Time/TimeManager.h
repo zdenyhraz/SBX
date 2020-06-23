@@ -18,13 +18,14 @@ public:
 
 	void SetTimeRate( double timerate );
 
-	void SetRunning( bool running );
-
 	void StartTime();
 
 	void StopTime();
 
 private:
+
+	void SetRunning( bool running );
+
 	void ResetDelta();
 };
 
