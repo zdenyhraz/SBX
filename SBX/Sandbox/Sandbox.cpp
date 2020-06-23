@@ -8,7 +8,7 @@ Sandbox::Sandbox()
 
 	m_Components = std::make_shared<ComponentVectors>();
 	m_Systems = std::make_shared<SystemVector>( m_Components );
-	m_EntityManager = std::make_shared<EntityManager>( m_Components );
+	m_Managers = std::make_shared<ManagerVector>( m_Components );
 
 	Init();
 }
@@ -45,7 +45,7 @@ void Sandbox::InitTest()
 
 	for ( int i = 0; i < initEntityCnt; i++ )
 	{
-		m_EntityManager->CreateEntity( EntityInfoComponent::EntityType::Entity );
+		m_Managers->m_EntityManager->CreateEntity( EntityInfoComponent::EntityType::Entity );
 	}
 
 	m_Components->EntityInfos.Find( 0 ).Name = "Saska";

@@ -2,7 +2,7 @@
 #include "Stdafx.h"
 #include "Component/ComponentVectors.h"
 #include "System/SystemVector.h"
-#include "Manager/EntityManager.h"
+#include "Manager/ManagerVector.h"
 
 class Sandbox
 {
@@ -23,5 +23,5 @@ private:
 
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<SystemVector> m_Systems;
-	std::shared_ptr<EntityManager> m_EntityManager;
+	std::shared_ptr<ManagerVector> m_Managers;
 };

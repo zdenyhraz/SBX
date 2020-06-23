@@ -15,6 +15,7 @@
     <ClCompile Include="System\Time\TimeSystem.cpp" />
     <ClCompile Include="System\Test\TestSystem.cpp" />
     <ClCompile Include="Component\Time\TimeComponent.cpp" />
+    <ClCompile Include="Manager\ManagerVector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -42,5 +43,6 @@
     <ClInclude Include="Component\Movement\VelocityComponent.h" />
     <ClInclude Include="Component\Movement\PositionComponent.h" />
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
+    <ClInclude Include="Manager\ManagerVector.h" />
   </ItemGroup>
 </Project>
