@@ -3,11 +3,11 @@
 SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	m_Components( components ),
 	m_Managers( managers ),
-	m_BoundaryW( 0.2 ),
+	m_BoundaryW( 0.05 ),
 	m_AlignmentW( 1 ),
 	m_SeparationW( 1 ),
 	m_CohesionW( 1 ),
-	m_VisionRadius( 0.3 ),
+	m_VisionRadius( 0.5 ),
 	m_Speed( 0.8 )
 {
 
