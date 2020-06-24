@@ -4,9 +4,12 @@
 struct SeekingAgentComponent : Component
 {
 	SeekingAgentComponent( int targetId ):
-		TargetId( targetId )
+		TargetId( targetId ),
+		SeekSpeed( 0.1 )
 	{
 	}
 
 	int TargetId;
+	double SeekSpeed;
+
 };

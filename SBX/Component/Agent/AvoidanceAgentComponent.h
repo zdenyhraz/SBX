@@ -3,5 +3,10 @@
 
 struct AvoidanceAgentComponent : Component
 {
+	AvoidanceAgentComponent():
+		FleeSpeed( 0.1 )
+	{
+	}
 
+	double FleeSpeed;
 };

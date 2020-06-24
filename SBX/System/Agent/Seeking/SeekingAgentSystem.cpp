@@ -2,8 +2,7 @@
 
 SeekingAgentSystem::SeekingAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	m_Components( components ),
-	m_Managers( managers ),
-	m_SeekSpeed( 0.2 )
+	m_Managers( managers )
 {
 
 }
@@ -17,6 +16,6 @@ void SeekingAgentSystem::Tick()
 		auto &agentPos = m_Components->Positions.Find( agentId );
 		auto &targetPos = m_Components->Positions.Find( targetId );
 		auto direction = targetPos.Position - agentPos.Position;
-		m_Components->Velocities.Find( agentId ).Velocity = direction / cv::norm( direction ) * m_SeekSpeed;
+		m_Components->Velocities.Find( agentId ).Velocity = direction / cv::norm( direction ) * agent.second.SeekSpeed;
 	}
 }

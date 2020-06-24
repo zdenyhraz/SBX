@@ -68,8 +68,9 @@ void Sandbox::InitTest()
 
 	for ( auto &vel : m_Components->Velocities.Data )
 	{
-		//vel.second.Velocity.x = Utils::Rand11() * 0.5;
-		//vel.second.Velocity.y = Utils::Rand11() * 0.5;
+		const double spread = 0.5;
+		vel.second.Velocity.x = Utils::Rand11() * spread;
+		vel.second.Velocity.y = Utils::Rand11() * spread;
 	}
 
 	m_Components->EntityInfos.Find( 0 ).Name = "<<<Saska>>>";
