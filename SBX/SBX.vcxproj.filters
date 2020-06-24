@@ -57,5 +57,6 @@
     <ClInclude Include="System\Agent\Template\TemplateAgentSystem.h" />
     <ClInclude Include="Component\Agent\SeekingAgentComponent.h" />
     <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />
+    <ClInclude Include="Component\Map\MapComponent.h" />
   </ItemGroup>
 </Project>

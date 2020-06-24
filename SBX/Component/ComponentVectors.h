@@ -1,6 +1,7 @@
 #pragma once
 #include "ComponentVector.h"
 #include "Time/TimeComponent.h"
+#include "Map/MapComponent.h"
 #include "Entity/EntityInfoComponent.h"
 #include "Movement/PositionComponent.h"
 #include "Movement/VelocityComponent.h"
@@ -12,6 +13,7 @@
 struct ComponentVectors
 {
 	TimeComponent Time;
+	MapComponent Map;
 	ComponentVector<EntityInfoComponent> EntityInfos;
 	ComponentVector<PositionComponent> Positions;
 	ComponentVector<VelocityComponent> Velocities;

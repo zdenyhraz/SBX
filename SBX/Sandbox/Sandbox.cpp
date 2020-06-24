@@ -56,7 +56,7 @@ void Sandbox::InitTest()
 	for ( auto &mod : m_Components->Models.Data )
 	{
 		mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
-		mod.second.Size = ( int )( Utils::Rand01() * 30 );
+		mod.second.Size = ( int )( Utils::Rand01() * 10 );
 	}
 
 	for ( auto &pos : m_Components->Positions.Data )
@@ -73,13 +73,13 @@ void Sandbox::InitTest()
 		vel.second.Velocity.y = Utils::Rand11() * spread;
 	}
 
-	m_Components->EntityInfos.Find( 0 ).Name = "<<<Saska>>>";
-	m_Components->Models.Find( 0 ).Size = 20;
+	m_Components->EntityInfos.Find( 0 ).Name = "Saska";
+	m_Components->Models.Find( 0 ).Size = 15;
 	m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.7, 0.41, 1 );
 	m_Components->AvoidanceAgents.Data.emplace( std::pair<int, AvoidanceAgentComponent>( 0, AvoidanceAgentComponent() ) );
 
-	m_Components->EntityInfos.Find( 1 ).Name = "<<<Zdeny>>>";
-	m_Components->Models.Find( 1 ).Size = 20;
+	m_Components->EntityInfos.Find( 1 ).Name = "Zdeny";
+	m_Components->Models.Find( 1 ).Size = 15;
 	m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
 	m_Components->SeekingAgents.Data.emplace( std::pair<int, SeekingAgentComponent>( 1, SeekingAgentComponent( 0 ) ) );
 }

@@ -5,8 +5,6 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_WindowName( "SBX" ),
 	m_WindowWidth( 1500 ),
 	m_WindowHeight( 1000 ),
-	m_MapWidth( 1 ),
-	m_MapHeight( 1 ),
 	m_DrawEntityThickness( -1 ),
 	m_TextRelOffsetX( 1.5 ),
 	m_TextRelOffsetY( 0.5 ),
@@ -38,5 +36,5 @@ void DrawSystem::Tick()
 
 cv::Point DrawSystem::GetWindowCoordinates( double x, double y )
 {
-	return m_WindowCenter + cv::Point( ( int )( ( x / m_MapWidth ) * ( m_WindowWidth / 2 ) ), ( int )( ( y / m_MapHeight ) * ( m_WindowHeight / 2 ) ) );
+	return m_WindowCenter + cv::Point( ( int )( ( x / m_Components->Map.MapWidth ) * ( m_WindowWidth / 2 ) ), ( int )( ( y / m_Components->Map.MapHeight ) * ( m_WindowHeight / 2 ) ) );
 }

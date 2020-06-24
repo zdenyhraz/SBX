@@ -178,6 +178,7 @@
   <ItemGroup>
     <ClInclude Include="Component\Agent\AvoidanceAgentComponent.h" />
     <ClInclude Include="Component\Agent\SeekingAgentComponent.h" />
+    <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
     <ClInclude Include="Component\Model\ModelComponent.h" />

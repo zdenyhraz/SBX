@@ -16,8 +16,6 @@ private:
 	int m_WindowWidth;
 	int m_WindowHeight;
 	cv::Point m_WindowCenter;
-	double m_MapWidth;
-	double m_MapHeight;
 	cv::Mat m_Blank;
 	cv::Mat m_Live;
 	int m_DrawEntityThickness;
