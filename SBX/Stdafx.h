@@ -33,3 +33,6 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 //custom
 #include "Log/Logger.h"
+#include "Utils/MathUtils.h"
+#include "Utils/TimeUtils.h"
+#include "Utils/ThreadUtils.h"

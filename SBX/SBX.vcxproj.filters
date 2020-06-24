@@ -21,6 +21,7 @@
     <ClCompile Include="System\Agent\Template\TemplateAgentSystem.cpp" />
     <ClCompile Include="System\Agent\Seeking\SeekingAgentSystem.cpp" />
     <ClCompile Include="System\Attractor\AttractorSystem.cpp" />
+    <ClCompile Include="System\Agent\Swarm\SwarmAgentSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -58,5 +59,7 @@
     <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="System\Attractor\AttractorSystem.h" />
+    <ClInclude Include="System\Agent\Swarm\SwarmAgentSystem.h" />
+    <ClInclude Include="Component\Agent\SwarmAgentComponent.h" />
   </ItemGroup>
 </Project>

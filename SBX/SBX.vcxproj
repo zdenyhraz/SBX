@@ -164,6 +164,7 @@
     </ClCompile>
     <ClCompile Include="System\Agent\AgentSystem.cpp" />
     <ClCompile Include="System\Agent\Avoidance\AvoidanceAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\Swarm\SwarmAgentSystem.cpp" />
     <ClCompile Include="System\Agent\Template\TemplateAgentSystem.cpp" />
     <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
     <ClCompile Include="System\Draw\DrawSystem.cpp" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <ClInclude Include="Component\Agent\AvoidanceAgentComponent.h" />
     <ClInclude Include="Component\Agent\SeekingAgentComponent.h" />
+    <ClInclude Include="Component\Agent\SwarmAgentComponent.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
@@ -197,6 +199,7 @@
     <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />
     <ClInclude Include="System\Agent\AgentSystem.h" />
     <ClInclude Include="System\Agent\Avoidance\AvoidanceAgentSystem.h" />
+    <ClInclude Include="System\Agent\Swarm\SwarmAgentSystem.h" />
     <ClInclude Include="System\Agent\Template\TemplateAgentSystem.h" />
     <ClInclude Include="System\Time\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />

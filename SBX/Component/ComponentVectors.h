@@ -9,6 +9,7 @@
 #include "Model/ModelComponent.h"
 #include "Agent/AvoidanceAgentComponent.h"
 #include "Agent/SeekingAgentComponent.h"
+#include "Agent/SwarmAgentComponent.h"
 
 struct ComponentVectors
 {
@@ -21,4 +22,6 @@ struct ComponentVectors
 	ComponentVector<ModelComponent> Models;
 	ComponentVector<AvoidanceAgentComponent> AvoidanceAgents;
 	ComponentVector<SeekingAgentComponent> SeekingAgents;
+	ComponentVector<SwarmAgentComponent> SwarmAgents;
+
 };
