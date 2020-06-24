@@ -10,7 +10,8 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_TextRelOffsetY( 0.5 ),
 	m_TextRelScale( 0.05 ),
 	m_TextMinRelScale( 0.5 ),
-	m_TextThickness( 2 )
+	m_TextThickness( 2 ),
+	m_DrawEntityArrowScale( 3 )
 {
 	m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
 	m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
@@ -24,15 +25,17 @@ void DrawSystem::Tick()
 	for ( auto &model : m_Components->Models.Data )
 	{
 		auto pos = m_Components->Positions.Find( model.first );
+		auto winpos = GetWindowCoordinates( pos.Position.x, pos.Position.y );
 
 		if ( model.second.Size )
 		{
-			cv::circle( m_Live, GetWindowCoordinates( pos.Position.x, pos.Position.y ), model.second.Size, model.second.Color, m_DrawEntityThickness );
+			cv::circle( m_Live, winpos, model.second.Size, model.second.Color, m_DrawEntityThickness );
+			cv::arrowedLine( m_Live, winpos, winpos + ( cv::Point )( Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowScale * model.second.Size ), model.second.Color, 2 );
 		}
 
 		if ( m_Components->EntityInfos.Find( model.first ).Name != "" )
 		{
-			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, GetWindowCoordinates( pos.Position.x, pos.Position.y ) + cv::Point( ( int )( m_TextRelOffsetX * model.second.Size ), ( int )( m_TextRelOffsetY * model.second.Size ) ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
+			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, winpos + cv::Point( ( int )( m_TextRelOffsetX * model.second.Size ), ( int )( m_TextRelOffsetY * model.second.Size ) ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
 		}
 	}
 

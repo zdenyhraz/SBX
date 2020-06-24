@@ -4,10 +4,10 @@ SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components
 	m_Components( components ),
 	m_Managers( managers ),
 	m_BoundaryW( 0.05 ),
-	m_AlignmentW( 1 ),
-	m_SeparationW( 1 ),
-	m_CohesionW( 1 ),
-	m_VisionRadius( 0.5 ),
+	m_AlignmentW( 1.0 ),
+	m_SeparationW( 1.0 ),
+	m_CohesionW( 1.0 ),
+	m_VisionRadius( 0.05 ),
 	m_Speed( 0.8 )
 {
 
@@ -34,6 +34,11 @@ cv::Point2d SwarmAgentSystem::GetSeparationDirection( int id )
 
 	for ( auto &agent : m_Components->SwarmAgents.Data )
 	{
+		if ( agent.first == id )
+		{
+			continue;
+		}
+
 		PositionComponent &agentPos = m_Components->Positions.Find( agent.first );
 		cv::Point2d direction = mainAgentPos.Position - agentPos.Position;
 		double distance = cv::norm( direction );
@@ -53,6 +58,11 @@ cv::Point2d SwarmAgentSystem::GetAlignmentDirection( int id )
 
 	for ( auto &agent : m_Components->SwarmAgents.Data )
 	{
+		if ( agent.first == id )
+		{
+			continue;
+		}
+
 		PositionComponent &agentPos = m_Components->Positions.Find( agent.first );
 		cv::Point2d direction = mainAgentPos.Position - agentPos.Position;
 		double distance = cv::norm( direction );
@@ -61,7 +71,7 @@ cv::Point2d SwarmAgentSystem::GetAlignmentDirection( int id )
 		{
 			VelocityComponent &agentVel = m_Components->Velocities.Find( agent.first );
 
-			alignment += Utils::UnitVector( agentVel.Velocity ) / std::max( distance, 1e-6 );
+			alignment += Utils::UnitVector( agentVel.Velocity );
 		}
 	}
 	return Utils::UnitVector( alignment );
@@ -75,6 +85,11 @@ cv::Point2d SwarmAgentSystem::GetCohesionDirection( int id )
 
 	for ( auto &agent : m_Components->SwarmAgents.Data )
 	{
+		if ( agent.first == id )
+		{
+			continue;
+		}
+
 		PositionComponent &agentPos = m_Components->Positions.Find( agent.first );
 		cv::Point2d direction = mainAgentPos.Position - agentPos.Position;
 		double distance = cv::norm( direction );
