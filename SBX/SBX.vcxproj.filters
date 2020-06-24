@@ -12,7 +12,6 @@
     <ClCompile Include="System\Movement\MovementSystem.cpp" />
     <ClCompile Include="System\Template\TemplateSystem.cpp" />
     <ClCompile Include="System\Time\TimeSystem.cpp" />
-    <ClCompile Include="System\Test\TestSystem.cpp" />
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
@@ -21,6 +20,7 @@
     <ClCompile Include="System\Agent\AgentSystem.cpp" />
     <ClCompile Include="System\Agent\Template\TemplateAgentSystem.cpp" />
     <ClCompile Include="System\Agent\Seeking\SeekingAgentSystem.cpp" />
+    <ClCompile Include="System\Attractor\AttractorSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -39,7 +39,6 @@
     <ClInclude Include="System\Movement\MovementSystem.h" />
     <ClInclude Include="System\Template\TemplateSystem.h" />
     <ClInclude Include="System\Time\TimeSystem.h" />
-    <ClInclude Include="System\Test\TestSystem.h" />
     <ClInclude Include="Component\Time\TimeComponent.h" />
     <ClInclude Include="Component\Template\TemplateComponent.h" />
     <ClInclude Include="Component\Model\ModelComponent.h" />
@@ -58,5 +57,6 @@
     <ClInclude Include="Component\Agent\SeekingAgentComponent.h" />
     <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
+    <ClInclude Include="System\Attractor\AttractorSystem.h" />
   </ItemGroup>
 </Project>

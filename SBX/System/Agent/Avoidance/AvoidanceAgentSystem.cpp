@@ -1,4 +1,5 @@
 #include "AvoidanceAgentSystem.h"
+#include "Utils/MathUtils.h"
 
 AvoidanceAgentSystem::AvoidanceAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	m_Components( components ),
@@ -18,7 +19,7 @@ void AvoidanceAgentSystem::Tick()
 		PositionComponent &closestPos = m_Components->Positions.Find( closestId );
 
 		cv::Point2d fleeDirection = agentPos.Position - closestPos.Position;
-		m_Components->Velocities.Find( agentId ).Velocity = fleeDirection / cv::norm( fleeDirection ) * agent.second.FleeSpeed;
+		m_Components->Velocities.Find( agentId ).Velocity = Utils::UnitVector( fleeDirection ) * agent.second.FleeSpeed;
 	}
 }
 

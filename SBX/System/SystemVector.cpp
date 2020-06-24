@@ -3,7 +3,7 @@
 #include "Movement/MovementSystem.h"
 #include "Draw/DrawSystem.h"
 #include "CommandLine/CommandLineSystem.h"
-#include "Test/TestSystem.h"
+#include "Attractor/AttractorSystem.h"
 #include "Time/TimeSystem.h"
 #include "Agent/AgentSystem.h"
 
@@ -13,8 +13,9 @@ SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components, std::s
 	Systems.push_back( std::make_shared<MovementSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<DrawSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
-	Systems.push_back( std::make_shared<TestSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<AgentSystem>( components, managers ) );
+
+	//Systems.push_back( std::make_shared<AttractorSystem>( components, managers ) );
 }
 
 void SystemVector::Run()

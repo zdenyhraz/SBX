@@ -45,7 +45,9 @@ void Sandbox::Init()
 
 void Sandbox::InitTest()
 {
-	int initEntityCnt = 100;
+	m_Managers->m_TimeManager->StopTime();
+
+	int initEntityCnt = 1500;
 	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 	for ( int i = 0; i < initEntityCnt; i++ )
@@ -56,12 +58,12 @@ void Sandbox::InitTest()
 	for ( auto &mod : m_Components->Models.Data )
 	{
 		mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
-		mod.second.Size = ( int )( Utils::Rand01() * 10 );
+		mod.second.Size = 10;//std::max( ( int )( Utils::Rand01() * 15 ), 5 );
 	}
 
 	for ( auto &pos : m_Components->Positions.Data )
 	{
-		const double spread = 0.8;
+		const double spread = 1.0;
 		pos.second.Position.x = Utils::Rand11() * spread;
 		pos.second.Position.y = Utils::Rand11() * spread;
 	}
@@ -81,5 +83,6 @@ void Sandbox::InitTest()
 	m_Components->EntityInfos.Find( 1 ).Name = "Zdeny";
 	m_Components->Models.Find( 1 ).Size = 15;
 	m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
+	m_Components->AvoidanceAgents.Data.erase( 1 );
 	m_Components->SeekingAgents.Data.emplace( std::pair<int, SeekingAgentComponent>( 1, SeekingAgentComponent( 0 ) ) );
 }

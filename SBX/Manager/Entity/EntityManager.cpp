@@ -18,6 +18,8 @@ void EntityManager::CreateEntity( EntityInfoComponent::EntityType type )
 	m_Components->Accelerations.Data.emplace( std::pair<int, AccelerationComponent>( m_MaxEntityId, AccelerationComponent() ) );
 	m_Components->Models.Data.emplace( std::pair<int, ModelComponent>( m_MaxEntityId, ModelComponent() ) );
 
+	m_Components->AvoidanceAgents.Data.emplace( std::pair<int, AvoidanceAgentComponent>( m_MaxEntityId, AvoidanceAgentComponent() ) );
+
 	m_MaxEntityId++;
 	m_EntityCnt++;
 }
