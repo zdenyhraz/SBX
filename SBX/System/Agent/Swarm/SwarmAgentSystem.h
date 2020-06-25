@@ -27,4 +27,6 @@ private:
 	double m_BoundaryW;
 	double m_VisionRadius;
 	double m_Speed;
+	double m_Acceleration;
+	std::unordered_map<int, cv::Point2d> m_Accelerations;
 };
