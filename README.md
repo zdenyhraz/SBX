@@ -12,3 +12,5 @@ Multithreaded, data oriented, entity-component-system based sandbox world with O
 - Basic kinematics - orbiting planets with gravity demo
 
 ![blobs](https://github.com/zdenyhraz/SBX/blob/master/pics/2.png?raw=true)
+
+![blobs](https://github.com/zdenyhraz/SBX/blob/master/pics/3.png?raw=true)
