@@ -24,5 +24,6 @@ private:
 	double m_TextRelScale;
 	double m_TextMinRelScale;
 	int m_TextThickness;
-	double m_DrawEntityArrowScale;
+	double m_DrawEntityArrowLengthScale;
+	double m_DrawEntityArrowThicknessScale;
 };

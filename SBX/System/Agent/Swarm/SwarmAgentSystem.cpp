@@ -6,10 +6,10 @@ SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components
 	m_BoundaryW( 3.0 ),
 	m_AlignmentW( 1.0 ),
 	m_SeparationW( 1.0 ),
-	m_CohesionW( 0.5 ),
+	m_CohesionW( 1.0 ),
 	m_VisionRadius( 0.3 ),
 	m_Speed( 5.0 ),
-	m_Acceleration( 1.0 )
+	m_Acceleration( 0.7 )
 {
 	m_Accelerations.reserve( 1000 );
 }
@@ -35,6 +35,11 @@ void SwarmAgentSystem::Tick()
 	{
 		m_Components->Accelerations.Find( agent.first ).Acceleration = m_Accelerations.find( agent.first )->second;
 	}
+}
+
+cv::Point2d SwarmAgentSystem::GetSwarmDirection( int id )
+{
+
 }
 
 cv::Point2d SwarmAgentSystem::GetSeparationDirection( int id )

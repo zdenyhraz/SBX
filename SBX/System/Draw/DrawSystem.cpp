@@ -11,7 +11,8 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_TextRelScale( 0.05 ),
 	m_TextMinRelScale( 0.5 ),
 	m_TextThickness( 2 ),
-	m_DrawEntityArrowScale( 3 )
+	m_DrawEntityArrowLengthScale( 3 ),
+	m_DrawEntityArrowThicknessScale( 0.5 )
 {
 	m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
 	m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
@@ -30,7 +31,7 @@ void DrawSystem::Tick()
 		if ( model.second.Size )
 		{
 			cv::circle( m_Live, winpos, model.second.Size, model.second.Color, m_DrawEntityThickness );
-			cv::arrowedLine( m_Live, winpos, winpos + ( cv::Point )( Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowScale * model.second.Size ), model.second.Color, 2 );
+			cv::arrowedLine( m_Live, winpos, winpos + ( cv::Point )( Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * model.second.Size ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * model.second.Size ) );
 		}
 
 		if ( m_Components->EntityInfos.Find( model.first ).Name != "" )

@@ -13,6 +13,8 @@ private:
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
 
+	cv::Point2d GetSwarmDirection( int id );
+
 	cv::Point2d GetSeparationDirection( int id );
 
 	cv::Point2d GetAlignmentDirection( int id );
