@@ -11,29 +11,19 @@ SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components
 	m_Speed( 5.0 ),
 	m_Acceleration( 0.7 )
 {
-	m_Accelerations.reserve( 1000 );
+
 }
 
 void SwarmAgentSystem::Tick()
 {
-	m_Accelerations.clear();
 	for ( auto &agent : m_Components->SwarmAgents.Data )
 	{
 		int agentId = agent.first;
-		cv::Point2d separation = GetSeparationDirection( agentId );
-		cv::Point2d alignment = GetAlignmentDirection( agentId );
-		cv::Point2d cohesion = GetCohesionDirection( agentId );
-		cv::Point2d boundary = GetBoundaryDirection( agentId );
 		cv::Point2d agentVelocity = m_Components->Velocities.Find( agentId ).Velocity;
-		cv::Point2d swarmVelocity = m_Speed * ( separation * m_SeparationW + alignment * m_AlignmentW + cohesion * m_CohesionW + boundary * m_BoundaryW ) / ( m_SeparationW + m_AlignmentW + m_CohesionW + m_BoundaryW );
+		cv::Point2d swarmVelocity = m_Speed * ( GetSeparationDirection( agentId ) * m_SeparationW + GetAlignmentDirection( agentId ) * m_AlignmentW + GetCohesionDirection( agentId ) * m_CohesionW + GetBoundaryDirection( agentId ) * m_BoundaryW ) / ( m_SeparationW + m_AlignmentW + m_CohesionW + m_BoundaryW );
 		cv::Point2d acceleration = m_Acceleration * ( swarmVelocity - agentVelocity );
 
-		m_Accelerations.emplace( std::make_pair( agentId, acceleration ) );
-	}
-
-	for ( auto &agent : m_Components->SwarmAgents.Data )
-	{
-		m_Components->Accelerations.Find( agent.first ).Acceleration = m_Accelerations.find( agent.first )->second;
+		m_Components->Accelerations.Find( agentId ).Acceleration = acceleration;
 	}
 }
 
