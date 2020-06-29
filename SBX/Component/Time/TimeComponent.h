@@ -3,7 +3,7 @@
 
 struct TimeComponent : Component
 {
-	static constexpr double RefreshRate = 60;
+	static constexpr double RefreshRate = 75;
 
 	TimeComponent() :
 		Time( 0 ),

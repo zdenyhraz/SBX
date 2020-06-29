@@ -48,7 +48,7 @@ void Sandbox::InitTest()
 {
 	//m_Managers->m_TimeManager->StopTime();
 
-	int initEntityCnt = 500;
+	int initEntityCnt = 1500;
 	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 	for ( int i = 0; i < initEntityCnt; i++ )
