@@ -10,7 +10,7 @@ void AttractorSystem::Tick()
 {
 	for ( auto &accel : m_Components->Accelerations.Data )
 	{
-		constexpr double gravity = 5.0;
+		constexpr double gravity = 1.0;//5
 		accel.second.Acceleration += gravity * Utils::UnitVector( -m_Components->Positions.Find( accel.first ).Position );
 
 	}

@@ -26,5 +26,13 @@ void EntityManager::CreateEntity( EntityInfoComponent::EntityType type )
 void EntityManager::DeleteEntity( int id )
 {
 	std::lock_guard<std::mutex> lock( m_mutex );
+	m_Components->EntityInfos.Data.erase( id );
+	m_Components->Positions.Data.erase( id );
+	m_Components->Velocities.Data.erase( id );
+	m_Components->Accelerations.Data.erase( id );
+	m_Components->Models.Data.erase( id );
+	m_Components->SwarmAgents.Data.erase( id );
+	m_Components->NomNomAgents.Data.erase( id );
+
 	m_EntityCnt--;
 }
