@@ -5,8 +5,7 @@ struct TimeComponent : Component
 {
 	enum RefreshRate
 	{
-		Normal = 60,
-		Double = 2 * Normal,
+		Normal = 65,
 		Max = -1
 	};
 

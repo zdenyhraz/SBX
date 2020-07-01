@@ -6,7 +6,7 @@
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, int refreshRate = TimeComponent::RefreshRate::Normal, bool logLoad = true );
+	System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, int refreshRate = TimeComponent::RefreshRate::Normal );
 
 	void Run();
 
@@ -22,12 +22,12 @@ protected:
 	int m_RefreshRate;
 
 private:
-	bool m_LogLoad;
 	long long m_LogLoadPeriod;
 	long long m_TargetTickDuration;
 	long long m_TickDuration;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickEnd;
 	std::chrono::time_point<std::chrono::high_resolution_clock> m_LastLogLoad;
+	std::chrono::time_point<std::chrono::high_resolution_clock> m_TargetTickEnd;
 	int m_LoadPercent;
 };

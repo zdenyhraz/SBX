@@ -10,4 +10,15 @@ inline std::string ThisThreadId()
 	return ss.str();
 }
 
+inline void WaitUntil( const std::chrono::time_point<std::chrono::high_resolution_clock> &time )
+{
+	while ( true )
+	{
+		if ( Utils::GetTimeNow() >= time )
+		{
+			break;
+		}
+	}
+}
+
 }
