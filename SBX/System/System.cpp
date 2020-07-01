@@ -18,7 +18,7 @@ System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<Ma
 
 void System::Run()
 {
-	LOG_DEBUG( "Running <{}> system on thread {} with {} refresh rate", m_Name, Utils::ThisThreadId(), m_RefreshRate > 0 ? std::to_string( ( int )m_RefreshRate ) + " Hz" : "maximum" );
+	LOG_DEBUG( "Running <{}> system on thread {} with => {} <= refresh rate", m_Name, Utils::ThisThreadId(), m_RefreshRate > 0 ? std::to_string( ( int )m_RefreshRate ) + " Hz" : "MAX" );
 	m_Enabled = true;
 
 	if ( m_RefreshRate > 0 )
@@ -43,13 +43,11 @@ void System::Run()
 				continue;
 			}
 
-			if ( m_LoadPercent > 10 )
+			if ( m_LoadPercent >= 0 )
 			{
 				while ( true )
 				{
-					m_TickEnd = Utils::GetTimeNow();
-					m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
-					if ( m_TickDuration > m_TargetTickDuration )
+					if ( Utils::GetDuration( m_TickStart, Utils::GetTimeNow() ) > m_TargetTickDuration )
 					{
 						break;
 					}

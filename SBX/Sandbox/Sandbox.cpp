@@ -41,14 +41,13 @@ void Sandbox::Kill()
 void Sandbox::Init()
 {
 	LOG_STARTEND( "Initializing sandbox world", "Sandbox world initialized" );
+	//m_Managers->m_TimeManager->StopTime();
 	InitTest();
 }
 
 void Sandbox::InitTest()
 {
-	//m_Managers->m_TimeManager->StopTime();
-
-	int initEntityCnt = 2000;
+	int initEntityCnt = 300;
 	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 	for ( int i = 0; i < initEntityCnt; i++ )
