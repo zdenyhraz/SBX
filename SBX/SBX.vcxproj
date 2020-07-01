@@ -157,6 +157,7 @@
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
+    <ClCompile Include="System\Agent\AgentSubSystem.cpp" />
     <ClCompile Include="System\Agent\Seeking\SeekingAgentSystem.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -199,6 +200,7 @@
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
+    <ClInclude Include="System\Agent\AgentSubSystem.h" />
     <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />
     <ClInclude Include="System\Agent\AgentSystem.h" />
     <ClInclude Include="System\Agent\Avoidance\AvoidanceAgentSystem.h" />

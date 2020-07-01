@@ -1,13 +1,13 @@
 #pragma once
-#include "System/System.h"
+#include "System/Agent/AgentSubSystem.h"
 
-class SwarmAgentSystem
+class SwarmAgentSystem : public AgentSubSystem
 {
 public:
 
 	SwarmAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
-	void Tick();
+	void Tick() override;
 
 private:
 	std::shared_ptr<ComponentVectors> m_Components;

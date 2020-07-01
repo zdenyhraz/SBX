@@ -13,8 +13,5 @@ public:
 	void Tick() override;
 
 private:
-	std::shared_ptr<AvoidanceAgentSystem> m_AvoidanceAgentSystem;
-	std::shared_ptr<SeekingAgentSystem> m_SeekingAgentSystem;
-	std::shared_ptr<SwarmAgentSystem> m_SwarmAgentSystem;
-
+	std::vector<std::shared_ptr<AgentSubSystem>> m_AgentSubSystems;
 };
