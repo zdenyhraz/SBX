@@ -8,7 +8,7 @@ SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components
 	m_SeparationW( 1.0 ),
 	m_CohesionW( 1.0 ),
 	m_VisionRadius( 0.3 ),
-	m_Speed( 5.0 ),
+	m_Speed( 7.0 ),
 	m_Acceleration( 0.7 )
 {
 

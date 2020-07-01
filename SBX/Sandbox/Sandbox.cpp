@@ -69,14 +69,14 @@ void Sandbox::InitTest()
 
 	for ( auto &vel : m_Components->Velocities.Data )
 	{
-		const double spread = 0.5;
+		const double spread = 1.0;
 		vel.second.Velocity.x = Utils::Rand11() * spread;
 		vel.second.Velocity.y = Utils::Rand11() * spread;
 	}
 
 	if ( 1 )
 	{
-		m_Components->EntityInfos.Find( 0 ).Name = "Saska";
+		m_Components->EntityInfos.Find( 0 ).Name = "Sasko";
 		m_Components->Models.Find( 0 ).Size = 15;
 		m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.7, 0.41, 1 );
 
