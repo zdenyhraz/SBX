@@ -11,4 +11,7 @@ public:
 
 private:
 	std::string m_ConsoleTitle;
+	bool m_SystemsReady;
+
+	void WaitForAllSystems();
 };

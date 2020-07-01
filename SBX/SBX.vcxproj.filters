@@ -59,5 +59,6 @@
     <ClInclude Include="System\Attractor\AttractorSystem.h" />
     <ClInclude Include="System\Agent\Swarm\SwarmAgentSystem.h" />
     <ClInclude Include="Component\Agent\SwarmAgentComponent.h" />
+    <ClInclude Include="Component\SystemsReady\SystemsReadyComponent.h" />
   </ItemGroup>
 </Project>

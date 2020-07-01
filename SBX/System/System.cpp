@@ -29,6 +29,7 @@ void System::Run()
 	}
 	else
 	{
+		m_Components->SystemsReady.SubscribeSystem( m_Name );
 		while ( m_Enabled )
 		{
 			if ( m_LastTargetTickEnd < m_Components->Time.GetTargetTickEnd() )
@@ -40,6 +41,7 @@ void System::Run()
 				m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
 				m_LoadPercent = ( int )( ( double )m_TickDuration / TimeComponent::TargetTickDuration * 100 );
 				m_LastTargetTickEnd = m_Components->Time.GetTargetTickEnd();
+				m_Components->SystemsReady.NotifySystemReady( m_Name );
 
 				if ( m_LoadPercent >= 100 )
 				{
@@ -63,4 +65,12 @@ void System::Kill()
 {
 	LOG_DEBUG( "Killing <{}> system", m_Name );
 	m_Enabled = false;
+	if ( m_Async )
+	{
+
+	}
+	else
+	{
+		m_Components->SystemsReady.UnsubscribeSystem( m_Name );
+	}
 }
