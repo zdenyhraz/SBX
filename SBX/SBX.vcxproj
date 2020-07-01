@@ -156,6 +156,7 @@
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
+    <ClCompile Include="System\Agent\NomNom\NomNomAgentSystem.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
     <ClCompile Include="System\Agent\AgentSubSystem.cpp" />
     <ClCompile Include="System\Agent\Seeking\SeekingAgentSystem.cpp" />
@@ -182,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\Agent\AvoidanceAgentComponent.h" />
+    <ClInclude Include="Component\Agent\NomNomAgentComponent.h" />
     <ClInclude Include="Component\Agent\SeekingAgentComponent.h" />
     <ClInclude Include="Component\Agent\SwarmAgentComponent.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
@@ -199,6 +201,7 @@
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
+    <ClInclude Include="System\Agent\NomNom\NomNomAgentSystem.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="System\Agent\AgentSubSystem.h" />
     <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />

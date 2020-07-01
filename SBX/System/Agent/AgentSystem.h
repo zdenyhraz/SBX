@@ -1,8 +1,6 @@
 #pragma once
 #include "System/System.h"
-#include "Avoidance/AvoidanceAgentSystem.h"
-#include "Seeking/SeekingAgentSystem.h"
-#include "Swarm/SwarmAgentSystem.h"
+#include "System/Agent/AgentSubSystem.h"
 
 class AgentSystem : public System
 {
