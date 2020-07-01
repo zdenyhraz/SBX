@@ -7,7 +7,7 @@ TimeSystem::TimeSystem( std::shared_ptr<ComponentVectors> components, std::share
 
 void TimeSystem::Tick()
 {
-	m_Managers->m_TimeManager->Advance();
-	m_ConsoleTitle = "Time = " + std::to_string( m_Components->Time.Time ) + ", TimeRate = " + std::to_string( m_Components->Time.TimeRate ) + ", Delta = " + std::to_string( m_Components->Time.Delta ) + ", Running = " + std::to_string( m_Components->Time.Running );
+	m_Components->Time.Advance();
+	m_ConsoleTitle = "Time = " + std::to_string( m_Components->Time.GetTime() ) + ", TimeRate = " + std::to_string( m_Components->Time.GetTimeRate() ) + ", Delta = " + std::to_string( m_Components->Time.GetDelta() ) + ", Running = " + std::to_string( m_Components->Time.GetRunning() );
 	SetConsoleTitle( m_ConsoleTitle.c_str() );
 }

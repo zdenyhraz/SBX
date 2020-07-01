@@ -178,7 +178,6 @@
     <ClCompile Include="System\Template\TemplateSystem.cpp" />
     <ClCompile Include="System\Attractor\AttractorSystem.cpp" />
     <ClCompile Include="System\Time\TimeSystem.cpp" />
-    <ClCompile Include="Manager\Time\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\Agent\AvoidanceAgentComponent.h" />
@@ -214,7 +213,6 @@
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\Template\TemplateSystem.h" />
     <ClInclude Include="System\Attractor\AttractorSystem.h" />
-    <ClInclude Include="Manager\Time\TimeManager.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />

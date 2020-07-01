@@ -9,7 +9,8 @@ System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<Ma
 	m_Name( name ),
 	m_Enabled( true ),
 	m_LogLoadPeriod( 15 * 1000 ),
-	m_Async( async )
+	m_Async( async ),
+	m_TickId( 0 )
 {
 	m_LastLogLoad = Utils::GetTimeNow();
 }
@@ -30,10 +31,16 @@ void System::Run()
 	{
 		while ( m_Enabled )
 		{
+			if ( m_TickId && m_TickId >= m_Components->Time.GetTickId() )
+			{
+				continue;
+			}
+
 			m_TickStart = Utils::GetTimeNow();
 			Tick();
 			m_TickEnd = Utils::GetTimeNow();
 
+			m_TickId++;
 			m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
 			m_LoadPercent = ( int )( ( double )m_TickDuration / TimeComponent::TargetTickDuration * 100 );
 
@@ -50,7 +57,7 @@ void System::Run()
 				}
 			}
 
-			std::this_thread::sleep_until( m_Components->Time.TargetTickEnd );
+			std::this_thread::sleep_until( m_Components->Time.GetTargetTickEnd() );
 		}
 	}
 }
