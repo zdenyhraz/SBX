@@ -32,6 +32,12 @@ void System::Run()
 			m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
 			m_LoadPercent = ( int )( ( double )m_TickDuration / m_TargetTickDuration * 100 );
 
+			if ( m_LogLoad && m_LoadPercent > 0 && ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod ) )
+			{
+				m_LastLogLoad = m_TickEnd;
+				LOG_SUCC( "System <{}> thread load {}% ({} Hz)", m_Name, m_LoadPercent, ( int )m_RefreshRate );
+			}
+
 			if ( m_LoadPercent > 100 )
 			{
 				continue;
@@ -39,11 +45,6 @@ void System::Run()
 
 			if ( m_LoadPercent > 10 )
 			{
-				if ( m_LogLoad && ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod ) )
-				{
-					m_LastLogLoad = m_TickEnd;
-					LOG_SUCC( "System <{}> thread load {}% ({} Hz)", m_Name, m_LoadPercent, ( int )m_RefreshRate );
-				}
 				while ( true )
 				{
 					m_TickEnd = Utils::GetTimeNow();
