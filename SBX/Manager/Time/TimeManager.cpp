@@ -28,6 +28,7 @@ bool TimeManager::GetRunning() const
 void TimeManager::Advance()
 {
 	m_Components->Time.Time += m_Components->Time.Delta;
+	m_Components->Time.TargetTickEnd += std::chrono::milliseconds( TimeComponent::TargetTickDuration );
 }
 
 void TimeManager::SetTimeRate( double timerate )

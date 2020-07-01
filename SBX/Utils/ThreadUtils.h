@@ -10,7 +10,7 @@ inline std::string ThisThreadId()
 	return ss.str();
 }
 
-inline void WaitUntil( const std::chrono::time_point<std::chrono::high_resolution_clock> &time )
+inline void WaitUntil( const std::chrono::time_point<std::chrono::steady_clock> &time )
 {
 	while ( true )
 	{

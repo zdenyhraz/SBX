@@ -17,7 +17,6 @@ Sandbox::Sandbox()
 
 	// 4) initialize the sandbox world
 	Init();
-
 }
 
 Sandbox::~Sandbox()

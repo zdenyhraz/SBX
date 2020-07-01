@@ -3,7 +3,6 @@
 TimeSystem::TimeSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Time" )
 {
-
 }
 
 void TimeSystem::Tick()
