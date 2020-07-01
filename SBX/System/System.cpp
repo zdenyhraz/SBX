@@ -18,7 +18,7 @@ void System::Run()
 {
 	LOG_DEBUG( "Running <{}> system on thread {}", m_Name, Utils::ThisThreadId() );
 	m_Enabled = true;
-	m_SleptUntil = Utils::GetTimeNow();
+	m_LastTargetTickEnd = Utils::GetTimeNow();
 
 	if ( m_Async )
 	{
@@ -31,7 +31,7 @@ void System::Run()
 	{
 		while ( m_Enabled )
 		{
-			if ( m_SleptUntil < m_Components->Time.GetTargetTickEnd() )
+			if ( m_LastTargetTickEnd < m_Components->Time.GetTargetTickEnd() )
 			{
 				m_TickStart = Utils::GetTimeNow();
 				Tick();
@@ -39,6 +39,7 @@ void System::Run()
 
 				m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
 				m_LoadPercent = ( int )( ( double )m_TickDuration / TimeComponent::TargetTickDuration * 100 );
+				m_LastTargetTickEnd = m_Components->Time.GetTargetTickEnd();
 
 				if ( m_LoadPercent >= 100 )
 				{
@@ -52,8 +53,6 @@ void System::Run()
 						LOG_SUCC( "System <{}> thread load {}%", m_Name, m_LoadPercent );
 					}
 				}
-
-				m_SleptUntil = m_Components->Time.GetTargetTickEnd();
 				std::this_thread::sleep_until( m_Components->Time.GetTargetTickEnd() );
 			}
 		}

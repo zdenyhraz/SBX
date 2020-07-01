@@ -53,6 +53,11 @@ struct TimeComponent : Component
 		return TargetTickEnd;
 	}
 
+	void SetTargetTickEnd( const std::chrono::time_point<std::chrono::steady_clock> &time )
+	{
+		TargetTickEnd = time;
+	}
+
 	void SetTimeRate( double timerate )
 	{
 		std::lock_guard<std::mutex> lock( m_mutex );

@@ -28,6 +28,6 @@ private:
 	std::chrono::time_point<std::chrono::steady_clock> m_TickStart;
 	std::chrono::time_point<std::chrono::steady_clock> m_TickEnd;
 	std::chrono::time_point<std::chrono::steady_clock> m_LastLogLoad;
-	std::chrono::time_point<std::chrono::steady_clock> m_SleptUntil;
+	std::chrono::time_point<std::chrono::steady_clock> m_LastTargetTickEnd;
 
 };
