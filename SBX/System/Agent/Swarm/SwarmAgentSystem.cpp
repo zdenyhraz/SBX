@@ -1,8 +1,7 @@
 #include "SwarmAgentSystem.h"
 
 SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	m_Components( components ),
-	m_Managers( managers ),
+	AgentSubSystem( components, managers ),
 	m_BoundaryW( 3.0 ),
 	m_AlignmentW( 1.0 ),
 	m_SeparationW( 1.0 ),

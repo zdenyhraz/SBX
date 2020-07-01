@@ -1,8 +1,8 @@
 #include "NomNomAgentSystem.h"
 
 NomNomAgentSystem::NomNomAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	m_Components( components ),
-	m_Managers( managers )
+	AgentSubSystem( components, managers ),
+	m_NomAngleThreshold( Utils::ToRadians( 30 ) )
 {
 
 }
@@ -32,8 +32,11 @@ void NomNomAgentSystem::Tick()
 
 			if ( distance < agentSiz )
 			{
+				double angle = Utils::GetAngle( agentVel, otherAgentVel );
+				if ( abs( angle ) > m_NomAngleThreshold )
+				{
 
-				//nomnom
+				}
 			}
 
 		}

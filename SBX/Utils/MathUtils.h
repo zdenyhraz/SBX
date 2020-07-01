@@ -30,7 +30,7 @@ inline cv::Point2d UnitVector( const cv::Point2d &pt )
 	return pt / std::max( cv::norm( pt ), 1e-6 );
 }
 
-inline double Angle( const cv::Point2d &pt1, const cv::Point2d &pt2 )
+inline double GetAngle( const cv::Point2d &pt1, const cv::Point2d &pt2 )
 {
 	double a = ( pt1.dot( pt2 ) ) / ( cv::norm( pt1 ) * cv::norm( pt2 ) );
 	return acos( a );
