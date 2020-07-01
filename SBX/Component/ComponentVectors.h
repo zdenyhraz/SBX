@@ -10,13 +10,11 @@
 #include "Agent/AvoidanceAgentComponent.h"
 #include "Agent/SeekingAgentComponent.h"
 #include "Agent/SwarmAgentComponent.h"
-#include "SystemsReady/SystemsReadyComponent.h"
 
 struct ComponentVectors
 {
 	TimeComponent Time;
 	MapComponent Map;
-	SystemsReadyComponent SystemsReady;
 	ComponentVector<EntityInfoComponent> EntityInfos;
 	ComponentVector<PositionComponent> Positions;
 	ComponentVector<VelocityComponent> Velocities;

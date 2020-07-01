@@ -23,7 +23,7 @@ void SwarmAgentSystem::Tick()
 		cv::Point2d swarmVelocity = m_Speed * ( GetSeparationDirection( agentId ) * m_SeparationW + GetAlignmentDirection( agentId ) * m_AlignmentW + GetCohesionDirection( agentId ) * m_CohesionW + GetBoundaryDirection( agentId ) * m_BoundaryW ) / ( m_SeparationW + m_AlignmentW + m_CohesionW + m_BoundaryW );
 		cv::Point2d acceleration = m_Acceleration * ( swarmVelocity - agentVelocity );
 
-		m_Components->Accelerations.Find( agentId ).Acceleration = acceleration;
+		m_Components->Accelerations.Find( agentId ).Acceleration += acceleration;
 	}
 }
 
