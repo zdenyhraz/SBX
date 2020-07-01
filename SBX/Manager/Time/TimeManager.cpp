@@ -75,5 +75,5 @@ void TimeManager::StopTime()
 
 void TimeManager::ResetDelta()
 {
-	m_Components->Time.Delta = 1. / m_Components->Time.RefreshRate * m_Components->Time.TimeRate;
+	m_Components->Time.Delta = 1. / m_Components->Time.RefreshRate::Normal * m_Components->Time.TimeRate;
 }

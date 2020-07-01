@@ -3,10 +3,10 @@
 #include "Utils/TimeUtils.h"
 #include "Utils/MathUtils.h"
 
-System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::string &&name, double refreshRate, bool logLoad ) :
+System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, int refreshRate, bool logLoad ) :
 	m_Components( components ),
 	m_Managers( managers ),
-	m_Name( std::move( name ) ),
+	m_Name( name ),
 	m_Enabled( true ),
 	m_RefreshRate( refreshRate ),
 	m_LogLoad( logLoad ),
@@ -18,25 +18,54 @@ System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<Ma
 
 void System::Run()
 {
-	LOG_DEBUG( "Running <{}> system on thread {} with {} Hz refresh rate", m_Name, Utils::ThisThreadId(), m_RefreshRate );
+	LOG_DEBUG( "Running <{}> system on thread {} with {} refresh rate", m_Name, Utils::ThisThreadId(), m_RefreshRate > 0 ? std::to_string( ( int )m_RefreshRate ) + " Hz" : "maximum" );
 	m_Enabled = true;
 
-	while ( m_Enabled )
+	if ( m_RefreshRate > 0 )
 	{
-		m_TickStart = Utils::GetTimeNow();
-		Tick();
-		m_TickEnd = Utils::GetTimeNow();
-
-		m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
-		m_LoadPercent = ( int )( ( double )m_TickDuration / m_TargetTickDuration * 100 );
-
-		if ( ( m_LoadPercent > 0 ) && m_LogLoad && ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod ) )
+		while ( m_Enabled )
 		{
-			m_LastLogLoad = m_TickEnd;
-			LOG_SUCC( "System <{}> thread load {}% ({} Hz)", m_Name, m_LoadPercent, ( int )m_RefreshRate );
-		}
+			m_TickStart = Utils::GetTimeNow();
+			Tick();
+			m_TickEnd = Utils::GetTimeNow();
 
-		std::this_thread::sleep_for( std::chrono::microseconds( std::max( m_TargetTickDuration - m_TickDuration, 0ll ) ) );
+			m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
+			m_LoadPercent = ( int )( ( double )m_TickDuration / m_TargetTickDuration * 100 );
+
+			if ( m_LoadPercent > 100 )
+			{
+				continue;
+			}
+
+			if ( m_LoadPercent > 10 )
+			{
+				if ( m_LogLoad && ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod ) )
+				{
+					m_LastLogLoad = m_TickEnd;
+					LOG_SUCC( "System <{}> thread load {}% ({} Hz)", m_Name, m_LoadPercent, ( int )m_RefreshRate );
+				}
+				while ( true )
+				{
+					m_TickEnd = Utils::GetTimeNow();
+					m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
+					if ( m_TickDuration > m_TargetTickDuration )
+					{
+						break;
+					}
+				}
+			}
+			else
+			{
+				std::this_thread::sleep_for( std::chrono::microseconds( std::max( m_TargetTickDuration - m_TickDuration, 0ll ) ) );
+			}
+		}
+	}
+	else
+	{
+		while ( m_Enabled )
+		{
+			Tick();
+		}
 	}
 }
 

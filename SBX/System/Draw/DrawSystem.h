@@ -26,4 +26,10 @@ private:
 	int m_TextThickness;
 	double m_DrawEntityArrowLengthScale;
 	double m_DrawEntityArrowThicknessScale;
+	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickStart;
+	std::chrono::time_point<std::chrono::high_resolution_clock> m_TickEnd;
+	long long m_TickDuration;
+	int m_FpsTextThickness;
+	cv::Scalar m_FpsTextColor;
+	double m_FpsTextScale;
 };

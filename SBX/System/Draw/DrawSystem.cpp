@@ -1,7 +1,7 @@
 #include "DrawSystem.h"
 
 DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Draw" ),
+	System( components, managers, "Draw", 0 ),
 	m_WindowName( "SBX" ),
 	m_WindowWidth( 1500 ),
 	m_WindowHeight( 1000 ),
@@ -12,7 +12,10 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_TextMinRelScale( 0.5 ),
 	m_TextThickness( 2 ),
 	m_DrawEntityArrowLengthScale( 3 ),
-	m_DrawEntityArrowThicknessScale( 0.5 )
+	m_DrawEntityArrowThicknessScale( 0.5 ),
+	m_FpsTextThickness( 2 ),
+	m_FpsTextColor( 0.2, 1, 0.2 ),
+	m_FpsTextScale( 1 )
 {
 	m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
 	m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
@@ -21,6 +24,7 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 
 void DrawSystem::Tick()
 {
+	m_TickStart = Utils::GetTimeNow();
 	m_Live = m_Blank.clone();
 
 	for ( auto &model : m_Components->Models.Data )
@@ -40,10 +44,15 @@ void DrawSystem::Tick()
 		}
 	}
 
+	cv::putText( m_Live, std::to_string( ( int )( 1e6 / m_TickDuration ) ) + " fps", cv::Point( 0, 0.025 * m_WindowHeight * m_FpsTextScale ), 0, m_FpsTextScale, m_FpsTextColor, m_FpsTextThickness );
+
 	cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );
 	cv::resizeWindow( m_WindowName, m_WindowWidth, m_WindowHeight );
 	cv::imshow( m_WindowName, m_Live );
 	cv::waitKey( 1 );
+
+	m_TickEnd = Utils::GetTimeNow();
+	m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
 }
 
 cv::Point DrawSystem::GetWindowCoordinates( double x, double y )

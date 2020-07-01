@@ -6,7 +6,7 @@
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::string &&name, double refreshRate = TimeComponent::RefreshRate, bool logLoad = true );
+	System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, int refreshRate = TimeComponent::RefreshRate::Normal, bool logLoad = true );
 
 	void Run();
 
@@ -19,7 +19,7 @@ protected:
 	std::shared_ptr<ManagerVector> m_Managers;
 	std::string m_Name;
 	bool m_Enabled;
-	double m_RefreshRate;
+	int m_RefreshRate;
 
 private:
 	bool m_LogLoad;

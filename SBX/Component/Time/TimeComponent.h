@@ -3,12 +3,17 @@
 
 struct TimeComponent : Component
 {
-	static constexpr double RefreshRate = 75;
+	enum RefreshRate
+	{
+		Normal = 60,
+		Double = 2 * Normal,
+		Max = -1
+	};
 
 	TimeComponent() :
 		Time( 0 ),
 		TimeRate( 1 ),
-		Delta( 1. / RefreshRate ),
+		Delta( 1. / RefreshRate::Normal ),
 		Running( true )
 	{
 
