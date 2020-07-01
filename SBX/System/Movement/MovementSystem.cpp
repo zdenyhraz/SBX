@@ -2,7 +2,7 @@
 #include "Utils/MathUtils.h"
 
 MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Movement", TimeComponent::RefreshRate::Normal )
+	System( components, managers, "Movement" )
 {
 
 }
@@ -12,6 +12,7 @@ void MovementSystem::Tick()
 	for ( auto &accel : m_Components->Accelerations.Data )
 	{
 		m_Components->Velocities.Find( accel.first ).Velocity += accel.second.Acceleration * m_Components->Time.Delta;
+		accel.second.Clear();
 	}
 
 	for ( auto &vel : m_Components->Velocities.Data )

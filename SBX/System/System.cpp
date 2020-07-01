@@ -3,24 +3,31 @@
 #include "Utils/TimeUtils.h"
 #include "Utils/MathUtils.h"
 
-System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, int refreshRate ) :
+System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, bool async ) :
 	m_Components( components ),
 	m_Managers( managers ),
 	m_Name( name ),
 	m_Enabled( true ),
-	m_RefreshRate( refreshRate ),
-	m_LogLoadPeriod( 15 * 1000000 )
+	m_LogLoadPeriod( 15 * 1000000 ),
+	m_Async( async )
 {
-	m_TargetTickDuration = ( long long )( 1. / m_RefreshRate * 1e6 );
+	m_TargetTickDuration = ( long long )( 1. / TimeComponent::RefreshRate * 1e6 );
 	m_LastLogLoad = Utils::GetTimeNow();
 }
 
 void System::Run()
 {
-	LOG_DEBUG( "Running <{}> system on thread {} with => {} <= refresh rate", m_Name, Utils::ThisThreadId(), m_RefreshRate > 0 ? std::to_string( ( int )m_RefreshRate ) + " Hz" : "MAX" );
+	LOG_DEBUG( "Running <{}> system on thread {}", m_Name, Utils::ThisThreadId() );
 	m_Enabled = true;
 
-	if ( m_RefreshRate > 0 )
+	if ( m_Async )
+	{
+		while ( m_Enabled )
+		{
+			Tick();
+		}
+	}
+	else
 	{
 		while ( m_Enabled )
 		{
@@ -35,7 +42,7 @@ void System::Run()
 			if ( m_LoadPercent > 0 && ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod ) )
 			{
 				m_LastLogLoad = m_TickEnd;
-				LOG_SUCC( "System <{}> thread load {}% ({} Hz)", m_Name, m_LoadPercent, ( int )m_RefreshRate );
+				LOG_SUCC( "System <{}> thread load {}%", m_Name, m_LoadPercent );
 			}
 
 			if ( m_LoadPercent >= 100 )
@@ -44,13 +51,6 @@ void System::Run()
 			}
 
 			std::this_thread::sleep_until( m_TargetTickEnd );
-		}
-	}
-	else
-	{
-		while ( m_Enabled )
-		{
-			Tick();
 		}
 	}
 }

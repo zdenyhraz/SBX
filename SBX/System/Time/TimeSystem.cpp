@@ -1,7 +1,7 @@
 #include "TimeSystem.h"
 
 TimeSystem::TimeSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Time", TimeComponent::RefreshRate::Normal )
+	System( components, managers, "Time" )
 {
 
 }

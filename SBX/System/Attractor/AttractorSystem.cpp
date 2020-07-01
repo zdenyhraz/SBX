@@ -1,7 +1,7 @@
 #include "AttractorSystem.h"
 
 AttractorSystem::AttractorSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Attractor", TimeComponent::RefreshRate::Normal )
+	System( components, managers, "Attractor" )
 {
 
 }
