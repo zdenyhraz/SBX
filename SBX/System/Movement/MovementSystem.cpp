@@ -2,7 +2,7 @@
 #include "Utils/MathUtils.h"
 
 MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Movement" )
+	System( components, managers, "Movement", TimeComponent::RefreshRate::Normal )
 {
 
 }

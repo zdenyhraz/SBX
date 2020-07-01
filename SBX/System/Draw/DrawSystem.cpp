@@ -1,7 +1,7 @@
 #include "DrawSystem.h"
 
 DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Draw", 0 ),
+	System( components, managers, "Draw", TimeComponent::RefreshRate::Max ),
 	m_WindowName( "SBX" ),
 	m_WindowWidth( 1500 ),
 	m_WindowHeight( 1000 ),
@@ -44,7 +44,7 @@ void DrawSystem::Tick()
 		}
 	}
 
-	cv::putText( m_Live, std::to_string( ( int )( 1e6 / m_TickDuration ) ) + " fps", cv::Point( 0, 0.025 * m_WindowHeight * m_FpsTextScale ), 0, m_FpsTextScale, m_FpsTextColor, m_FpsTextThickness );
+	cv::putText( m_Live, std::to_string( ( int )( 1e6 / m_TickDuration ) ) + " fps", cv::Point( 0, ( int )( 0.025 * m_WindowHeight * m_FpsTextScale ) ), 0, m_FpsTextScale, m_FpsTextColor, m_FpsTextThickness );
 
 	cv::namedWindow( m_WindowName, cv::WINDOW_NORMAL );
 	cv::resizeWindow( m_WindowName, m_WindowWidth, m_WindowHeight );
