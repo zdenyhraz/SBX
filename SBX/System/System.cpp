@@ -9,8 +9,7 @@ System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<Ma
 	m_Name( name ),
 	m_Enabled( true ),
 	m_LogLoadPeriod( 15 * 1000 ),
-	m_Async( async ),
-	m_TickId( 0 )
+	m_Async( async )
 {
 	m_LastLogLoad = Utils::GetTimeNow();
 }
@@ -19,6 +18,7 @@ void System::Run()
 {
 	LOG_DEBUG( "Running <{}> system on thread {}", m_Name, Utils::ThisThreadId() );
 	m_Enabled = true;
+	m_SleptUntil = Utils::GetTimeNow();
 
 	if ( m_Async )
 	{
@@ -31,33 +31,31 @@ void System::Run()
 	{
 		while ( m_Enabled )
 		{
-			if ( m_TickId && m_TickId >= m_Components->Time.GetTickId() )
+			if ( m_SleptUntil < m_Components->Time.GetTargetTickEnd() )
 			{
-				continue;
-			}
+				m_TickStart = Utils::GetTimeNow();
+				Tick();
+				m_TickEnd = Utils::GetTimeNow();
 
-			m_TickStart = Utils::GetTimeNow();
-			Tick();
-			m_TickEnd = Utils::GetTimeNow();
+				m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
+				m_LoadPercent = ( int )( ( double )m_TickDuration / TimeComponent::TargetTickDuration * 100 );
 
-			m_TickId++;
-			m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
-			m_LoadPercent = ( int )( ( double )m_TickDuration / TimeComponent::TargetTickDuration * 100 );
-
-			if ( m_LoadPercent >= 100 )
-			{
-				continue;
-			}
-			else
-			{
-				if ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod )
+				if ( m_LoadPercent >= 100 )
 				{
-					m_LastLogLoad = m_TickEnd;
-					LOG_SUCC( "System <{}> thread load {}%", m_Name, m_LoadPercent );
+					continue;
 				}
-			}
+				else
+				{
+					if ( Utils::GetDuration( m_LastLogLoad, m_TickEnd ) > m_LogLoadPeriod )
+					{
+						m_LastLogLoad = m_TickEnd;
+						LOG_SUCC( "System <{}> thread load {}%", m_Name, m_LoadPercent );
+					}
+				}
 
-			std::this_thread::sleep_until( m_Components->Time.GetTargetTickEnd() );
+				m_SleptUntil = m_Components->Time.GetTargetTickEnd();
+				std::this_thread::sleep_until( m_Components->Time.GetTargetTickEnd() );
+			}
 		}
 	}
 }
