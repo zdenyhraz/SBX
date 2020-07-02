@@ -38,14 +38,7 @@ inline double GetAngle( const cv::Point2d &pt1, const cv::Point2d &pt2 )
 
 inline double ToDegrees( double rad )
 {
-	if ( rad < 0 )
-	{
-		return ( rad + TwoPi ) * Rad;
-	}
-	else
-	{
-		return rad * Rad;
-	}
+	return rad * Rad;
 }
 
 inline double ToRadians( double deg )

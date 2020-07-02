@@ -3,7 +3,7 @@
 NomNomAgentSystem::NomNomAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	AgentSubSystem( components, managers ),
 	m_VelAngleThreshold( Utils::ToRadians( 50 ) ),
-	m_RangeAgentSizeScale( 3e-3 ),
+	m_RangeAgentSizeScale( 2e-3 ),
 	m_GrowthRatio( 0.3 )
 {
 
@@ -50,14 +50,30 @@ void NomNomAgentSystem::Tick()
 					}
 				}
 			}
-
 		}
-
 	}
 }
 
 void NomNomAgentSystem::NomNom( int predatorId, int victimId )
 {
+	if ( 1 )
+	{
+		std::string predatorName = m_Components->EntityInfos.Find( predatorId ).Name == "" ? std::to_string( predatorId ) : m_Components->EntityInfos.Find( predatorId ).Name;
+		std::string victimName = m_Components->EntityInfos.Find( victimId ).Name == "" ? std::to_string( victimId ) : m_Components->EntityInfos.Find( victimId ).Name;
+
+		auto &agentPos = m_Components->Positions.Data.find( predatorId )->second.Position;
+		auto &agentVel = m_Components->Velocities.Data.find( predatorId )->second.Velocity;
+
+		auto &otherAgentPos = m_Components->Positions.Data.find( victimId )->second.Position;
+		auto &otherAgentVel = m_Components->Velocities.Data.find( victimId )->second.Velocity;
+
+		auto direction = otherAgentPos - agentPos;
+		int velAngle = ( int )Utils::ToDegrees( Utils::GetAngle( agentVel, otherAgentVel ) );
+		int velDirAngle = ( int )Utils::ToDegrees( Utils::GetAngle( agentVel, direction ) );
+
+		LOG_DEBUG( "Agent {} eats agent {}! (velAngle={}, velDirAngle={})", predatorName, victimName, velAngle, velDirAngle );
+	}
+
 	m_Components->Models.Data.find( predatorId )->second.Size += ( int )( m_GrowthRatio * m_Components->Models.Data.find( victimId )->second.Size );
 	m_Managers->m_EntityManager->DeleteEntity( victimId );
 }
