@@ -28,20 +28,20 @@ void DrawSystem::Tick()
 	m_TickStart = Utils::GetTimeNow();
 	m_Live = m_Blank.clone();
 
-	for ( auto &model : m_Components->Past.Models.GetContainer() )
+	for ( auto &model : m_Components->Past->Models.GetContainer() )
 	{
-		auto pos = m_Components->Past.Positions.Find( model.first );
+		auto pos = m_Components->Past->Positions.Find( model.first );
 		auto winpos = GetWindowCoordinates( pos.Position.x, pos.Position.y );
 
 		if ( model.second.Size )
 		{
 			cv::circle( m_Live, winpos, model.second.Size, model.second.Color, m_DrawEntityThickness );
-			cv::arrowedLine( m_Live, winpos, winpos + ( cv::Point )( Utils::UnitVector( m_Components->Past.Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * model.second.Size ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * model.second.Size ) );
+			cv::arrowedLine( m_Live, winpos, winpos + ( cv::Point )( Utils::UnitVector( m_Components->Past->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * model.second.Size ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * model.second.Size ) );
 		}
 
-		if ( m_Components->Past.EntityInfos.Find( model.first ).Name != "" )
+		if ( m_Components->Past->EntityInfos.Find( model.first ).Name != "" )
 		{
-			cv::putText( m_Live, m_Components->Past.EntityInfos.Find( model.first ).Name, winpos + cv::Point( ( int )( m_TextRelOffsetX * model.second.Size ), ( int )( m_TextRelOffsetY * model.second.Size ) ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
+			cv::putText( m_Live, m_Components->Past->EntityInfos.Find( model.first ).Name, winpos + cv::Point( ( int )( m_TextRelOffsetX * model.second.Size ), ( int )( m_TextRelOffsetY * model.second.Size ) ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
 		}
 	}
 
@@ -58,5 +58,5 @@ void DrawSystem::Tick()
 
 cv::Point DrawSystem::GetWindowCoordinates( double x, double y )
 {
-	return m_WindowCenter + cv::Point( ( int )( ( x / m_Components->Past.Map.MapWidth ) * ( m_WindowWidth / 2 ) ), ( int )( ( y / m_Components->Past.Map.MapHeight ) * ( m_WindowHeight / 2 ) ) );
+	return m_WindowCenter + cv::Point( ( int )( ( x / m_Components->Past->Map.MapWidth ) * ( m_WindowWidth / 2 ) ), ( int )( ( y / m_Components->Past->Map.MapHeight ) * ( m_WindowHeight / 2 ) ) );
 }

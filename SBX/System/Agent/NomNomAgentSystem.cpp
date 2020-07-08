@@ -11,14 +11,14 @@ NomNomAgentSystem::NomNomAgentSystem( std::shared_ptr<PastFutureComponentVectors
 
 void NomNomAgentSystem::Tick()
 {
-	for ( auto &agent : m_Components->Past.Agents.GetContainer() )
+	for ( auto &agent : m_Components->Past->Agents.GetContainer() )
 	{
 		int agentId = agent.first;
-		auto &agentPos = m_Components->Past.Positions.Find( agentId ).Position;
-		auto &agentVel = m_Components->Past.Velocities.Find( agentId ).Velocity;
-		auto &agentSiz = m_Components->Past.Models.Find( agentId ).Size;
+		auto &agentPos = m_Components->Past->Positions.Find( agentId ).Position;
+		auto &agentVel = m_Components->Past->Velocities.Find( agentId ).Velocity;
+		auto &agentSiz = m_Components->Past->Models.Find( agentId ).Size;
 
-		for ( auto &otherAgent : m_Components->Past.Agents.GetContainer() )
+		for ( auto &otherAgent : m_Components->Past->Agents.GetContainer() )
 		{
 			int otherAgentId = otherAgent.first;
 
@@ -27,9 +27,9 @@ void NomNomAgentSystem::Tick()
 				continue;
 			}
 
-			auto &otherAgentPos = m_Components->Past.Positions.Find( otherAgentId ).Position;
-			auto &otherAgentVel = m_Components->Past.Velocities.Find( otherAgentId ).Velocity;
-			auto &otherAgentSiz = m_Components->Past.Models.Find( otherAgentId ).Size;
+			auto &otherAgentPos = m_Components->Past->Positions.Find( otherAgentId ).Position;
+			auto &otherAgentVel = m_Components->Past->Velocities.Find( otherAgentId ).Velocity;
+			auto &otherAgentSiz = m_Components->Past->Models.Find( otherAgentId ).Size;
 
 			auto direction = otherAgentPos - agentPos;
 			double distance = cv::norm( direction );
@@ -58,14 +58,14 @@ void NomNomAgentSystem::NomNom( int predatorId, int victimId )
 {
 	if ( 1 )
 	{
-		std::string predatorName = m_Components->Past.EntityInfos.Find( predatorId ).Name == "" ? std::to_string( predatorId ) : m_Components->Past.EntityInfos.Find( predatorId ).Name;
-		std::string victimName = m_Components->Past.EntityInfos.Find( victimId ).Name == "" ? std::to_string( victimId ) : m_Components->Past.EntityInfos.Find( victimId ).Name;
+		std::string predatorName = m_Components->Past->EntityInfos.Find( predatorId ).Name == "" ? std::to_string( predatorId ) : m_Components->Past->EntityInfos.Find( predatorId ).Name;
+		std::string victimName = m_Components->Past->EntityInfos.Find( victimId ).Name == "" ? std::to_string( victimId ) : m_Components->Past->EntityInfos.Find( victimId ).Name;
 
-		auto &agentPos = m_Components->Past.Positions.Find( predatorId ).Position;
-		auto &agentVel = m_Components->Past.Velocities.Find( predatorId ).Velocity;
+		auto &agentPos = m_Components->Past->Positions.Find( predatorId ).Position;
+		auto &agentVel = m_Components->Past->Velocities.Find( predatorId ).Velocity;
 
-		auto &otherAgentPos = m_Components->Past.Positions.Find( victimId ).Position;
-		auto &otherAgentVel = m_Components->Past.Velocities.Find( victimId ).Velocity;
+		auto &otherAgentPos = m_Components->Past->Positions.Find( victimId ).Position;
+		auto &otherAgentVel = m_Components->Past->Velocities.Find( victimId ).Velocity;
 
 		auto direction = otherAgentPos - agentPos;
 		int velAngle = ( int )Utils::ToDegrees( Utils::GetAngle( agentVel, otherAgentVel ) );
@@ -74,6 +74,6 @@ void NomNomAgentSystem::NomNom( int predatorId, int victimId )
 		LOG_DEBUG( "Agent {} eats agent {}! (velAngle={}, velDirAngle={})", predatorName, victimName, velAngle, velDirAngle );
 	}
 
-	m_Components->Past.Models.Find( predatorId ).Size += ( int )( m_GrowthRatio * m_Components->Past.Models.Find( victimId ).Size );
+	m_Components->Past->Models.Find( predatorId ).Size += ( int )( m_GrowthRatio * m_Components->Past->Models.Find( victimId ).Size );
 	m_Managers->m_EntityManager->DeleteEntity( victimId );
 }

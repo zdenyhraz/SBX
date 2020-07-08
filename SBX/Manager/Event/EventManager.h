@@ -9,17 +9,17 @@ public:
 
 	void ProcessEvents()
 	{
-		for ( auto &event : m_Components->Past.Events )
+		for ( auto &event : m_Components->Past->Events )
 		{
 			HandleEvent( event );
 		}
 
-		m_Components->Past.Events.clear();
+		m_Components->Past->Events.clear();
 	}
 
 	void AddEvent()
 	{
-		m_Components->Future.Events.push_back( EventComponent() );
+		m_Components->Future->Events.push_back( EventComponent() );
 	}
 
 private:

@@ -31,13 +31,13 @@ void System::Run()
 	{
 		while ( m_Enabled )
 		{
-			if ( m_LastTargetTickEnd < m_Components->Past.Time.GetTargetTickEnd() )
+			if ( m_LastTargetTickEnd < m_Components->Past->Time.GetTargetTickEnd() )
 			{
 				m_TickStart = Utils::GetTimeNow();
 				Tick();
 				m_TickEnd = Utils::GetTimeNow();
 
-				m_LastTargetTickEnd = m_Components->Past.Time.GetTargetTickEnd();
+				m_LastTargetTickEnd = m_Components->Past->Time.GetTargetTickEnd();
 				m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
 				m_LoadPercent = ( int )( ( double )m_TickDuration / TimeComponent::TargetTickDuration * 100 );
 
@@ -48,7 +48,7 @@ void System::Run()
 						m_LastLogLoad = m_TickEnd;
 						LOG_SUCC( "System <{}> thread load {}%", m_Name, m_LoadPercent );
 					}
-					std::this_thread::sleep_until( m_Components->Past.Time.GetTargetTickEnd() );
+					std::this_thread::sleep_until( m_Components->Past->Time.GetTargetTickEnd() );
 				}
 			}
 		}

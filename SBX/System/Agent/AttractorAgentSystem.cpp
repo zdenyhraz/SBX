@@ -8,9 +8,9 @@ AttractorAgentSystem::AttractorAgentSystem( std::shared_ptr<PastFutureComponentV
 
 void AttractorAgentSystem::Tick()
 {
-	for ( auto &accel : m_Components->Past.Accelerations.GetContainer() )
+	for ( auto &accel : m_Components->Past->Accelerations.GetContainer() )
 	{
 		constexpr double gravity = 3.0;
-		accel.second.Acceleration += gravity * Utils::UnitVector( -m_Components->Past.Positions.Find( accel.first ).Position );
+		accel.second.Acceleration += gravity * Utils::UnitVector( -m_Components->Past->Positions.Find( accel.first ).Position );
 	}
 }

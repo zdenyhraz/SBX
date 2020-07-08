@@ -9,13 +9,13 @@ SeekingAgentSystem::SeekingAgentSystem( std::shared_ptr<PastFutureComponentVecto
 
 void SeekingAgentSystem::Tick()
 {
-	for ( auto &agent : m_Components->Past.Agents.GetContainer() )
+	for ( auto &agent : m_Components->Past->Agents.GetContainer() )
 	{
 		int agentId = agent.first;
 		int targetId = agent.second.TargetId;
-		auto &agentPos = m_Components->Past.Positions.Find( agentId );
-		auto &targetPos = m_Components->Past.Positions.Find( targetId );
+		auto &agentPos = m_Components->Past->Positions.Find( agentId );
+		auto &targetPos = m_Components->Past->Positions.Find( targetId );
 		auto seekDirection = targetPos.Position - agentPos.Position;
-		m_Components->Past.Velocities.Find( agentId ).Velocity = Utils::UnitVector( seekDirection ) * agent.second.SeekSpeed;
+		m_Components->Past->Velocities.Find( agentId ).Velocity = Utils::UnitVector( seekDirection ) * agent.second.SeekSpeed;
 	}
 }
