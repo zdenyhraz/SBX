@@ -9,7 +9,7 @@ struct EntityInfoComponent : Component
 		Id( 0 ),
 		Type( Entity ),
 		Name( "" ),
-		HP( 100 )
+		Health( 100 )
 	{
 
 	}
@@ -17,5 +17,5 @@ struct EntityInfoComponent : Component
 	int Id;
 	EntityType Type;
 	std::string Name;
-	int HP;
+	int Health;
 };

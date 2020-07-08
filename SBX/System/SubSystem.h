@@ -1,5 +1,6 @@
 #pragma once
-#include "System/System.h"
+#include "Component/ComponentVectors.h"
+#include "Manager/ManagerVector.h"
 
 class SubSystem
 {

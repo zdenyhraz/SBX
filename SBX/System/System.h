@@ -1,5 +1,6 @@
 #pragma once
 #include "Stdafx.h"
+#include "SubSystem.h"
 #include "Component/ComponentVectors.h"
 #include "Manager/ManagerVector.h"
 
@@ -17,6 +18,7 @@ public:
 protected:
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
+	std::vector<std::shared_ptr<SubSystem>> m_SubSystems;
 	std::string m_Name;
 	bool m_Enabled;
 	bool m_Async;
@@ -29,5 +31,4 @@ private:
 	std::chrono::time_point<std::chrono::steady_clock> m_TickEnd;
 	std::chrono::time_point<std::chrono::steady_clock> m_LastLogLoad;
 	std::chrono::time_point<std::chrono::steady_clock> m_LastTargetTickEnd;
-
 };

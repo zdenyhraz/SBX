@@ -16,9 +16,9 @@ MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, st
 
 void MovementSystem::Tick()
 {
-	for ( auto &system : m_SubSystems )
+	for ( auto &subsystem : m_SubSystems )
 	{
-		system->Tick();
+		subsystem->Tick();
 	}
 
 	// update velocities from accelerations

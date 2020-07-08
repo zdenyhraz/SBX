@@ -9,8 +9,4 @@ public:
 	MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
-
-private:
-	std::vector<std::shared_ptr<SubSystem>> m_SubSystems;
-
 };
