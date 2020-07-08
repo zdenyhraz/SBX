@@ -13,5 +13,4 @@ public:
 protected:
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
-
 };

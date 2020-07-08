@@ -4,7 +4,6 @@
 #include "Draw/DrawSystem.h"
 #include "CommandLine/CommandLineSystem.h"
 #include "Time/TimeSystem.h"
-#include "Event/EventSystem.h"
 #include "Render/RenderSystem.h"
 #include "Logic/LogicSystem.h"
 
@@ -14,7 +13,6 @@ SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components, std::s
 	Systems.push_back( std::make_shared<RenderSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<TimeSystem>( components, managers ) );
-	Systems.push_back( std::make_shared<EventSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<MovementSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<LogicSystem>( components, managers ) );
 }

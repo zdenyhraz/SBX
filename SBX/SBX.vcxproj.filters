@@ -15,7 +15,6 @@
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
-    <ClCompile Include="System\Event\EventSystem.cpp" />
     <ClCompile Include="Manager\Event\EventManager.cpp" />
     <ClCompile Include="Manager\Template\TemplateManager.cpp" />
     <ClCompile Include="System\Render\RenderSystem.cpp" />
@@ -27,6 +26,7 @@
     <ClCompile Include="System\Movement\AttractorSubSystem.cpp" />
     <ClCompile Include="System\Logic\HealthSubSystem.cpp" />
     <ClCompile Include="System\Template\TemplateSubSystem.cpp" />
+    <ClCompile Include="System\Logic\EventSubSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -57,7 +57,6 @@
     <ClInclude Include="Manager\Entity\EntityManager.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="Component\Event\EventComponent.h" />
-    <ClInclude Include="System\Event\EventSystem.h" />
     <ClInclude Include="Manager\Event\EventManager.h" />
     <ClInclude Include="Manager\Template\TemplateManager.h" />
     <ClInclude Include="Component\Containers\MapComponentVector.h" />
@@ -72,5 +71,6 @@
     <ClInclude Include="System\Movement\AttractorSubSystem.h" />
     <ClInclude Include="System\Logic\HealthSubSystem.h" />
     <ClInclude Include="System\Template\TemplateSubSystem.h" />
+    <ClInclude Include="System\Logic\EventSubSystem.h" />
   </ItemGroup>
 </Project>
