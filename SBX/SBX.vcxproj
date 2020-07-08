@@ -160,8 +160,9 @@
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
+    <ClCompile Include="System\Logic\LogicSystem.cpp" />
     <ClCompile Include="System\SubSystem.cpp" />
-    <ClCompile Include="System\Movement\Agent\SeekingAgentSystem.cpp" />
+    <ClCompile Include="System\Movement\SeekingSubSystem.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -170,8 +171,8 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="System\Movement\Agent\AvoidanceAgentSystem.cpp" />
-    <ClCompile Include="System\Movement\Agent\SwarmAgentSystem.cpp" />
+    <ClCompile Include="System\Movement\AvoidanceSubSystem.cpp" />
+    <ClCompile Include="System\Movement\SwarmSubSystem.cpp" />
     <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
     <ClCompile Include="System\Draw\DrawSystem.cpp" />
     <ClCompile Include="System\Movement\MovementSystem.cpp" />
@@ -179,7 +180,7 @@
     <ClCompile Include="System\System.cpp" />
     <ClCompile Include="System\SystemVector.cpp" />
     <ClCompile Include="System\Template\TemplateSystem.cpp" />
-    <ClCompile Include="System\Movement\Agent\AttractorAgentSystem.cpp" />
+    <ClCompile Include="System\Movement\AttractorSubSystem.cpp" />
     <ClCompile Include="System\Time\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -206,10 +207,11 @@
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
+    <ClInclude Include="System\Logic\LogicSystem.h" />
     <ClInclude Include="System\SubSystem.h" />
-    <ClInclude Include="System\Movement\Agent\SeekingAgentSystem.h" />
-    <ClInclude Include="System\Movement\Agent\AvoidanceAgentSystem.h" />
-    <ClInclude Include="System\Movement\Agent\SwarmAgentSystem.h" />
+    <ClInclude Include="System\Movement\SeekingSubSystem.h" />
+    <ClInclude Include="System\Movement\AvoidanceSubSystem.h" />
+    <ClInclude Include="System\Movement\SwarmSubSystem.h" />
     <ClInclude Include="System\Render\RenderSystem.h" />
     <ClInclude Include="System\Time\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
@@ -219,7 +221,7 @@
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\Template\TemplateSystem.h" />
-    <ClInclude Include="System\Movement\Agent\AttractorAgentSystem.h" />
+    <ClInclude Include="System\Movement\AttractorSubSystem.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />

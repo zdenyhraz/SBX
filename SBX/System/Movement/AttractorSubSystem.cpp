@@ -1,12 +1,12 @@
-#include "AttractorAgentSystem.h"
+#include "AttractorSubSystem.h"
 
-AttractorAgentSystem::AttractorAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+AttractorSubSystem::AttractorSubSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	SubSystem( components, managers )
 {
 
 }
 
-void AttractorAgentSystem::Tick()
+void AttractorSubSystem::Tick()
 {
 	for ( auto &accel : m_Components->Accelerations.GetContainer() )
 	{

@@ -20,10 +20,11 @@
     <ClCompile Include="Manager\Template\TemplateManager.cpp" />
     <ClCompile Include="System\Render\RenderSystem.cpp" />
     <ClCompile Include="System\SubSystem.cpp" />
-    <ClCompile Include="System\Movement\Agent\SwarmAgentSystem.cpp" />
-    <ClCompile Include="System\Movement\Agent\SeekingAgentSystem.cpp" />
-    <ClCompile Include="System\Movement\Agent\AvoidanceAgentSystem.cpp" />
-    <ClCompile Include="System\Movement\Agent\AttractorAgentSystem.cpp" />
+    <ClCompile Include="System\Logic\LogicSystem.cpp" />
+    <ClCompile Include="System\Movement\SwarmSubSystem.cpp" />
+    <ClCompile Include="System\Movement\SeekingSubSystem.cpp" />
+    <ClCompile Include="System\Movement\AvoidanceSubSystem.cpp" />
+    <ClCompile Include="System\Movement\AttractorSubSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -62,9 +63,10 @@
     <ClInclude Include="System\Render\RenderSystem.h" />
     <ClInclude Include="Component\Agent\AgentComponent.h" />
     <ClInclude Include="System\SubSystem.h" />
-    <ClInclude Include="System\Movement\Agent\SwarmAgentSystem.h" />
-    <ClInclude Include="System\Movement\Agent\SeekingAgentSystem.h" />
-    <ClInclude Include="System\Movement\Agent\AvoidanceAgentSystem.h" />
-    <ClInclude Include="System\Movement\Agent\AttractorAgentSystem.h" />
+    <ClInclude Include="System\Logic\LogicSystem.h" />
+    <ClInclude Include="System\Movement\SwarmSubSystem.h" />
+    <ClInclude Include="System\Movement\SeekingSubSystem.h" />
+    <ClInclude Include="System\Movement\AvoidanceSubSystem.h" />
+    <ClInclude Include="System\Movement\AttractorSubSystem.h" />
   </ItemGroup>
 </Project>

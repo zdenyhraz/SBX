@@ -1,6 +1,6 @@
-#include "SwarmAgentSystem.h"
+#include "SwarmSubSystem.h"
 
-SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+SwarmSubSystem::SwarmSubSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	SubSystem( components, managers ),
 	m_BoundaryW( 3.0 ),
 	m_AlignmentW( 1.0 ),
@@ -13,7 +13,7 @@ SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components
 
 }
 
-void SwarmAgentSystem::Tick()
+void SwarmSubSystem::Tick()
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
@@ -26,7 +26,7 @@ void SwarmAgentSystem::Tick()
 	}
 }
 
-cv::Point2d SwarmAgentSystem::GetSeparationDirection( int id )
+cv::Point2d SwarmSubSystem::GetSeparationDirection( int id )
 {
 	cv::Point2d separation( 0, 0 );
 	PositionComponent &mainAgentPos = m_Components->Positions.Find( id );
@@ -50,7 +50,7 @@ cv::Point2d SwarmAgentSystem::GetSeparationDirection( int id )
 	return Utils::UnitVector( separation );
 }
 
-cv::Point2d SwarmAgentSystem::GetAlignmentDirection( int id )
+cv::Point2d SwarmSubSystem::GetAlignmentDirection( int id )
 {
 	cv::Point2d alignment( 0, 0 );
 	PositionComponent &mainAgentPos = m_Components->Positions.Find( id );
@@ -76,7 +76,7 @@ cv::Point2d SwarmAgentSystem::GetAlignmentDirection( int id )
 	return Utils::UnitVector( alignment );
 }
 
-cv::Point2d SwarmAgentSystem::GetCohesionDirection( int id )
+cv::Point2d SwarmSubSystem::GetCohesionDirection( int id )
 {
 	cv::Point2d center( 0, 0 );
 	PositionComponent &mainAgentPos = m_Components->Positions.Find( id );
@@ -106,7 +106,7 @@ cv::Point2d SwarmAgentSystem::GetCohesionDirection( int id )
 	return Utils::UnitVector( center - mainAgentPos.Position );
 }
 
-cv::Point2d SwarmAgentSystem::GetBoundaryDirection( int id )
+cv::Point2d SwarmSubSystem::GetBoundaryDirection( int id )
 {
 	cv::Point2d boundary( 0, 0 );
 	PositionComponent &mainAgentPos = m_Components->Positions.Find( id );

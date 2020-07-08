@@ -1,17 +1,17 @@
 #include "MovementSystem.h"
 #include "Utils/MathUtils.h"
-#include "Agent/AttractorAgentSystem.h"
-#include "Agent/AvoidanceAgentSystem.h"
-#include "Agent/SeekingAgentSystem.h"
-#include "Agent/SwarmAgentSystem.h"
+#include "AttractorSubSystem.h"
+#include "AvoidanceSubSystem.h"
+#include "SeekingSubSystem.h"
+#include "SwarmSubSystem.h"
 
 MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Movement" )
 {
-	//m_SubSystems.push_back( std::make_shared<AvoidanceAgentSystem>( components, managers ) );
-	//m_SubSystems.push_back( std::make_shared<SeekingAgentSystem>( components, managers ) );
-	m_SubSystems.push_back( std::make_shared<AttractorAgentSystem>( components, managers ) );
-	m_SubSystems.push_back( std::make_shared<SwarmAgentSystem>( components, managers ) );
+	//m_SubSystems.push_back( std::make_shared<AvoidanceSubSystem>( components, managers ) );
+	//m_SubSystems.push_back( std::make_shared<SeekingSubSystem>( components, managers ) );
+	m_SubSystems.push_back( std::make_shared<AttractorSubSystem>( components, managers ) );
+	m_SubSystems.push_back( std::make_shared<SwarmSubSystem>( components, managers ) );
 }
 
 void MovementSystem::Tick()
