@@ -59,8 +59,6 @@
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="System\Agent\AgentSubSystem.h" />
     <ClInclude Include="Component\Agent\AgentComponent.h" />
-    <ClInclude Include="Component\MapComponentVector.h" />
-    <ClInclude Include="Component\VecComponentVector.h" />
     <ClInclude Include="System\Agent\AvoidanceAgentSystem.h" />
     <ClInclude Include="System\Agent\NomNomAgentSystem.h" />
     <ClInclude Include="System\Agent\SwarmAgentSystem.h" />
@@ -72,5 +70,8 @@
     <ClInclude Include="Manager\Template\TemplateManager.h" />
     <ClInclude Include="System\Test\TestSystem.h" />
     <ClInclude Include="System\Agent\AttractorAgentSystem.h" />
+    <ClInclude Include="Component\Containers\MapComponentVector.h" />
+    <ClInclude Include="Component\Containers\VecComponentVector.h" />
+    <ClInclude Include="Component\PastFutureComponentVectors.h" />
   </ItemGroup>
 </Project>

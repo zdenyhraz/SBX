@@ -4,7 +4,7 @@
 class EntityManager: public Manager
 {
 public:
-	EntityManager( std::shared_ptr<ComponentVectors> components );
+	EntityManager( std::shared_ptr<PastFutureComponentVectors> components );
 
 	void CreateEntity( EntityInfoComponent::EntityType type );
 

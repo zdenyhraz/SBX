@@ -5,7 +5,7 @@ class NomNomAgentSystem : public AgentSubSystem
 {
 public:
 
-	NomNomAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
+	NomNomAgentSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
 

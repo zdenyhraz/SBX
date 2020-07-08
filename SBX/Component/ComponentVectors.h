@@ -1,16 +1,15 @@
 #pragma once
-#include "ComponentVector.h"
-#include "MapComponentVector.h"
-#include "VecComponentVector.h"
 #include "Time/TimeComponent.h"
 #include "Map/MapComponent.h"
+#include "Event/EventComponent.h"
+#include "Containers/MapComponentVector.h"
+#include "Containers/VecComponentVector.h"
 #include "Entity/EntityInfoComponent.h"
 #include "Movement/PositionComponent.h"
 #include "Movement/VelocityComponent.h"
 #include "Movement/AccelerationComponent.h"
 #include "Model/ModelComponent.h"
 #include "Agent/AgentComponent.h"
-#include "Event/EventComponent.h"
 
 struct ComponentVectors
 {
@@ -23,6 +22,11 @@ struct ComponentVectors
 	MapComponentVector<int, AccelerationComponent> Accelerations;
 	MapComponentVector<int, ModelComponent> Models;
 	MapComponentVector<int, AgentComponent> Agents;
+
+	ComponentVectors()
+	{
+		Events.reserve( 20 );
+	}
 
 	void EraseEntity( int id )
 	{

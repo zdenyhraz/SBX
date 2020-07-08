@@ -5,7 +5,7 @@ class SwarmAgentSystem : public AgentSubSystem
 {
 public:
 
-	SwarmAgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
+	SwarmAgentSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
 

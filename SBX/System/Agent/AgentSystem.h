@@ -6,7 +6,7 @@ class AgentSystem : public System
 {
 public:
 
-	AgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
+	AgentSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
 

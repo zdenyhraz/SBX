@@ -1,12 +1,12 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component/ComponentVectors.h"
+#include "Component/PastFutureComponentVectors.h"
 #include "Manager/ManagerVector.h"
 
 class System
 {
 public:
-	System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, bool async = false );
+	System( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers, const std::string &name, bool async = false );
 
 	void Run();
 
@@ -15,7 +15,7 @@ public:
 	virtual void Tick() = 0;
 
 protected:
-	std::shared_ptr<ComponentVectors> m_Components;
+	std::shared_ptr<PastFutureComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
 	std::string m_Name;
 	bool m_Enabled;

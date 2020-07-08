@@ -188,11 +188,12 @@
   <ItemGroup>
     <ClInclude Include="Component\Agent\AgentComponent.h" />
     <ClInclude Include="Component\Event\EventComponent.h" />
-    <ClInclude Include="Component\MapComponentVector.h" />
+    <ClInclude Include="Component\Containers\MapComponentVector.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
     <ClInclude Include="Component\Model\ModelComponent.h" />
+    <ClInclude Include="Component\PastFutureComponentVectors.h" />
     <ClInclude Include="Component\Template\TemplateComponent.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\ComponentVector.h" />
@@ -200,7 +201,7 @@
     <ClInclude Include="Component\Movement\PositionComponent.h" />
     <ClInclude Include="Component\Time\TimeComponent.h" />
     <ClInclude Include="Component\Movement\VelocityComponent.h" />
-    <ClInclude Include="Component\VecComponentVector.h" />
+    <ClInclude Include="Component\Containers\VecComponentVector.h" />
     <ClInclude Include="Manager\Event\EventManager.h" />
     <ClInclude Include="Manager\Template\TemplateManager.h" />
     <ClInclude Include="System\Event\EventSystem.h" />

@@ -5,23 +5,21 @@
 class EventManager : public Manager
 {
 public:
-	EventManager( std::shared_ptr<ComponentVectors> components );
+	EventManager( std::shared_ptr<PastFutureComponentVectors> components );
 
 	void ProcessEvents()
 	{
-		std::lock_guard<std::mutex> lock( m_mutex );
-
-		for ( auto &event : m_Components->Events )
+		for ( auto &event : m_Components->Past.Events )
 		{
 			HandleEvent( event );
 		}
 
-		m_Components->Events.clear();
+		m_Components->Past.Events.clear();
 	}
 
 	void AddEvent()
 	{
-		std::lock_guard<std::mutex> lock( m_mutex );
+		m_Components->Future.Events.push_back( EventComponent() );
 	}
 
 private:

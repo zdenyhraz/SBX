@@ -5,7 +5,7 @@
 #include "NomNomAgentSystem.h"
 #include "AttractorAgentSystem.h"
 
-AgentSystem::AgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+AgentSystem::AgentSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Agent" )
 {
 	//m_AgentSubSystems.push_back( std::make_shared<AvoidanceAgentSystem>( components, managers ) );

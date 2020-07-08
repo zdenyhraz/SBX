@@ -4,7 +4,7 @@
 class TemplateManager : public Manager
 {
 public:
-	TemplateManager( std::shared_ptr<ComponentVectors> components );
+	TemplateManager( std::shared_ptr<PastFutureComponentVectors> components );
 
 private:
 
