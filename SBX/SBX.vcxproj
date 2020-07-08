@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="System\Event\EventSystem.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
@@ -183,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\Agent\AgentComponent.h" />
+    <ClInclude Include="Component\Event\EventComponent.h" />
     <ClInclude Include="Component\MapComponentVector.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
@@ -196,6 +198,7 @@
     <ClInclude Include="Component\Time\TimeComponent.h" />
     <ClInclude Include="Component\Movement\VelocityComponent.h" />
     <ClInclude Include="Component\VecComponentVector.h" />
+    <ClInclude Include="System\Event\EventSystem.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\ManagerVector.h" />

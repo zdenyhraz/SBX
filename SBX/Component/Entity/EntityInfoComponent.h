@@ -5,10 +5,10 @@ struct EntityInfoComponent : Component
 {
 	enum EntityType { Entity };
 
-	EntityInfoComponent( int id, EntityType type = Entity ):
-		Id( id ),
-		Type( type ),
-		Name( std::to_string( id ) ),
+	EntityInfoComponent():
+		Id( 0 ),
+		Type( Entity ),
+		Name( "" ),
 		HP( 100 )
 	{
 

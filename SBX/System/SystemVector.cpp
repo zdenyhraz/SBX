@@ -6,11 +6,13 @@
 #include "Attractor/AttractorSystem.h"
 #include "Time/TimeSystem.h"
 #include "Agent/AgentSystem.h"
+#include "Event/EventSystem.h"
 
 SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers )
 {
 	Systems.push_back( std::make_shared<TimeSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<MovementSystem>( components, managers ) );
+	Systems.push_back( std::make_shared<EventSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<DrawSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<AgentSystem>( components, managers ) );

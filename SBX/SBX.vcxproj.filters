@@ -23,6 +23,7 @@
     <ClCompile Include="System\Agent\SeekingAgentSystem.cpp" />
     <ClCompile Include="System\Agent\SwarmAgentSystem.cpp" />
     <ClCompile Include="System\Agent\TemplateAgentSystem.cpp" />
+    <ClCompile Include="System\Event\EventSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -63,5 +64,7 @@
     <ClInclude Include="System\Agent\SwarmAgentSystem.h" />
     <ClInclude Include="System\Agent\TemplateAgentSystem.h" />
     <ClInclude Include="System\Agent\SeekingAgentSystem.h" />
+    <ClInclude Include="Component\Event\EventComponent.h" />
+    <ClInclude Include="System\Event\EventSystem.h" />
   </ItemGroup>
 </Project>

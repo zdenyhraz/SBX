@@ -14,12 +14,12 @@ struct VecComponentVector : ComponentVector<KeyType, DataType, std::vector<std::
 		return Data[FindIdx( id )].second;
 	}
 
-	void Emplace( KeyType id, DataType &&data ) override
+	void Add( KeyType id, DataType &&data ) override
 	{
 		Data.emplace_back( std::pair<KeyType, DataType>( id, std::move( data ) ) );
 	}
 
-	void Erase( KeyType id ) override
+	void Remove( KeyType id ) override
 	{
 		int idx = FindIdx( id );
 		if ( idx >= 0 )

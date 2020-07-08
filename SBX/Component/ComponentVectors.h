@@ -10,11 +10,13 @@
 #include "Movement/AccelerationComponent.h"
 #include "Model/ModelComponent.h"
 #include "Agent/AgentComponent.h"
+#include "Event/EventComponent.h"
 
 struct ComponentVectors
 {
 	TimeComponent Time;
 	MapComponent Map;
+	std::vector<EventComponent> Events;
 	MapComponentVector<int, EntityInfoComponent> EntityInfos;
 	MapComponentVector<int, PositionComponent> Positions;
 	MapComponentVector<int, VelocityComponent> Velocities;
@@ -22,14 +24,13 @@ struct ComponentVectors
 	MapComponentVector<int, ModelComponent> Models;
 	MapComponentVector<int, AgentComponent> Agents;
 
-	void Erase( int id )
+	void EraseEntity( int id )
 	{
-		EntityInfos.Erase( id );
-		Positions.Erase( id );
-		Velocities.Erase( id );
-		Accelerations.Erase( id );
-		Models.Erase( id );
-		Agents.Erase( id );
+		EntityInfos.Remove( id );
+		Positions.Remove( id );
+		Velocities.Remove( id );
+		Accelerations.Remove( id );
+		Models.Remove( id );
+		Agents.Remove( id );
 	}
-
 };

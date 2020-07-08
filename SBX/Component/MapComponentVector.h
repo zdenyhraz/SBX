@@ -14,12 +14,12 @@ struct MapComponentVector: ComponentVector<KeyType, DataType, std::unordered_map
 		return Data.find( id )->second;
 	}
 
-	void Emplace( KeyType id, DataType &&data ) override
+	void Add( KeyType id ) override
 	{
-		Data.emplace( std::pair<KeyType, DataType>( id, std::move( data ) ) );
+		Data.emplace( std::pair<KeyType, DataType>( id, DataType() ) );
 	}
 
-	void Erase( KeyType id ) override
+	void Remove( KeyType id ) override
 	{
 		Data.erase( id );
 	}
