@@ -4,7 +4,6 @@
 template <typename KeyType, typename DataType>
 struct VecComponentVector : ComponentVector<KeyType, DataType, std::vector<std::pair<KeyType, DataType>>>
 {
-public:
 	VecComponentVector()
 	{
 		Data.reserve( 1000 );

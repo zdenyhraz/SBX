@@ -4,7 +4,6 @@
 template <typename KeyType, typename DataType>
 struct MapComponentVector: ComponentVector<KeyType, DataType, std::unordered_map<KeyType, DataType>>
 {
-public:
 	MapComponentVector()
 	{
 		Data.reserve( 1000 );
