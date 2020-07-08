@@ -28,7 +28,7 @@ void DrawSystem::Tick()
 	m_TickStart = Utils::GetTimeNow();
 	m_Live = m_Blank.clone();
 
-	for ( auto &model : m_Components->Models.Data )
+	for ( auto &model : m_Components->Models.GetContainer() )
 	{
 		auto pos = m_Components->Positions.Find( model.first );
 		auto winpos = GetWindowCoordinates( pos.Position.x, pos.Position.y );

@@ -15,7 +15,7 @@ SwarmAgentSystem::SwarmAgentSystem( std::shared_ptr<ComponentVectors> components
 
 void SwarmAgentSystem::Tick()
 {
-	for ( auto &agent : m_Components->SwarmAgents.Data )
+	for ( auto &agent : m_Components->Positions.GetContainer() )
 	{
 		int agentId = agent.first;
 		cv::Point2d agentVelocity = m_Components->Velocities.Find( agentId ).Velocity;
@@ -26,17 +26,12 @@ void SwarmAgentSystem::Tick()
 	}
 }
 
-cv::Point2d SwarmAgentSystem::GetSwarmDirection( int id )
-{
-
-}
-
 cv::Point2d SwarmAgentSystem::GetSeparationDirection( int id )
 {
 	cv::Point2d separation( 0, 0 );
 	PositionComponent &mainAgentPos = m_Components->Positions.Find( id );
 
-	for ( auto &agent : m_Components->SwarmAgents.Data )
+	for ( auto &agent : m_Components->Positions.GetContainer() )
 	{
 		if ( agent.first == id )
 		{
@@ -60,7 +55,7 @@ cv::Point2d SwarmAgentSystem::GetAlignmentDirection( int id )
 	cv::Point2d alignment( 0, 0 );
 	PositionComponent &mainAgentPos = m_Components->Positions.Find( id );
 
-	for ( auto &agent : m_Components->SwarmAgents.Data )
+	for ( auto &agent : m_Components->Positions.GetContainer() )
 	{
 		if ( agent.first == id )
 		{
@@ -87,7 +82,7 @@ cv::Point2d SwarmAgentSystem::GetCohesionDirection( int id )
 	PositionComponent &mainAgentPos = m_Components->Positions.Find( id );
 	int otherAgentsCnt = 0;
 
-	for ( auto &agent : m_Components->SwarmAgents.Data )
+	for ( auto &agent : m_Components->Positions.GetContainer() )
 	{
 		if ( agent.first == id )
 		{

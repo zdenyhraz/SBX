@@ -6,7 +6,7 @@ class EntityManager: public Manager
 public:
 	EntityManager( std::shared_ptr<ComponentVectors> components );
 
-	void CreateEntity( EntityInfoComponent::EntityType type = EntityInfoComponent::EntityType::Entity );
+	void CreateEntity( EntityInfoComponent::EntityType type );
 
 	void DeleteEntity( int id );
 

@@ -9,13 +9,13 @@ MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, st
 
 void MovementSystem::Tick()
 {
-	for ( auto &accel : m_Components->Accelerations.Data )
+	for ( auto &accel : m_Components->Accelerations.GetContainer() )
 	{
 		m_Components->Velocities.Find( accel.first ).Velocity += accel.second.Acceleration * m_Components->Time.GetDelta();
 		accel.second.Clear();
 	}
 
-	for ( auto &vel : m_Components->Velocities.Data )
+	for ( auto &vel : m_Components->Velocities.GetContainer() )
 	{
 		m_Components->Positions.Find( vel.first ).Position += vel.second.Velocity * m_Components->Time.GetDelta();
 		Utils::Clamp( m_Components->Positions.Find( vel.first ).Position.x, m_Components->Map.MinPositionX, m_Components->Map.MaxPositionX );

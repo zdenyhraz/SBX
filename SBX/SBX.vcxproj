@@ -182,10 +182,8 @@
     <ClCompile Include="System\Time\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component\Agent\AvoidanceAgentComponent.h" />
-    <ClInclude Include="Component\Agent\NomNomAgentComponent.h" />
-    <ClInclude Include="Component\Agent\SeekingAgentComponent.h" />
-    <ClInclude Include="Component\Agent\SwarmAgentComponent.h" />
+    <ClInclude Include="Component\Agent\AgentComponent.h" />
+    <ClInclude Include="Component\MapComponentVector.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
@@ -197,6 +195,7 @@
     <ClInclude Include="Component\Movement\PositionComponent.h" />
     <ClInclude Include="Component\Time\TimeComponent.h" />
     <ClInclude Include="Component\Movement\VelocityComponent.h" />
+    <ClInclude Include="Component\VecComponentVector.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\ManagerVector.h" />

@@ -1,5 +1,6 @@
 #pragma once
 #include "ComponentVector.h"
+#include "MapComponentVector.h"
 #include "Time/TimeComponent.h"
 #include "Map/MapComponent.h"
 #include "Entity/EntityInfoComponent.h"
@@ -7,24 +8,27 @@
 #include "Movement/VelocityComponent.h"
 #include "Movement/AccelerationComponent.h"
 #include "Model/ModelComponent.h"
-#include "Agent/AvoidanceAgentComponent.h"
-#include "Agent/SeekingAgentComponent.h"
-#include "Agent/SwarmAgentComponent.h"
-#include "Agent/NomNomAgentComponent.h"
-
+#include "Agent/AgentComponent.h"
 
 struct ComponentVectors
 {
 	TimeComponent Time;
 	MapComponent Map;
-	ComponentVector<EntityInfoComponent> EntityInfos;
-	ComponentVector<PositionComponent> Positions;
-	ComponentVector<VelocityComponent> Velocities;
-	ComponentVector<AccelerationComponent> Accelerations;
-	ComponentVector<ModelComponent> Models;
-	ComponentVector<AvoidanceAgentComponent> AvoidanceAgents;
-	ComponentVector<SeekingAgentComponent> SeekingAgents;
-	ComponentVector<SwarmAgentComponent> SwarmAgents;
-	ComponentVector<NomNomAgentComponent> NomNomAgents;
+	MapComponentVector<int, EntityInfoComponent> EntityInfos;
+	MapComponentVector<int, PositionComponent> Positions;
+	MapComponentVector<int, VelocityComponent> Velocities;
+	MapComponentVector<int, AccelerationComponent> Accelerations;
+	MapComponentVector<int, ModelComponent> Models;
+	MapComponentVector<int, AgentComponent> Agents;
+
+	void Erase( int id )
+	{
+		EntityInfos.Erase( id );
+		Positions.Erase( id );
+		Velocities.Erase( id );
+		Accelerations.Erase( id );
+		Models.Erase( id );
+		Agents.Erase( id );
+	}
 
 };

@@ -9,7 +9,7 @@ AvoidanceAgentSystem::AvoidanceAgentSystem( std::shared_ptr<ComponentVectors> co
 
 void AvoidanceAgentSystem::Tick()
 {
-	for ( auto &agent : m_Components->AvoidanceAgents.Data )
+	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
 		int agentId = agent.first;
 		PositionComponent &agentPos = m_Components->Positions.Find( agentId );
@@ -27,7 +27,7 @@ int AvoidanceAgentSystem::FindClosestEntity( int agentId )
 	PositionComponent &agentPos = m_Components->Positions.Find( agentId );
 	int closestId;
 	double closestDistance = std::numeric_limits<double>::max();
-	for ( auto &pos : m_Components->Positions.Data )
+	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
 		if ( pos.first == agentId )
 		{

@@ -54,20 +54,20 @@ void Sandbox::InitTest()
 		m_Managers->m_EntityManager->CreateEntity( EntityInfoComponent::EntityType::Entity );
 	}
 
-	for ( auto &mod : m_Components->Models.Data )
+	for ( auto &mod : m_Components->Models.GetContainer() )
 	{
 		mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
 		mod.second.Size = 5;//std::max( ( int )( Utils::Rand01() * 15 ), 5 );
 	}
 
-	for ( auto &pos : m_Components->Positions.Data )
+	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
 		const double spread = 1.0;
 		pos.second.Position.x = Utils::Rand11() * spread;
 		pos.second.Position.y = Utils::Rand11() * spread;
 	}
 
-	for ( auto &vel : m_Components->Velocities.Data )
+	for ( auto &vel : m_Components->Velocities.GetContainer() )
 	{
 		const double spread = 1.0;
 		vel.second.Velocity.x = Utils::Rand11() * spread;

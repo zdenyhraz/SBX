@@ -1,18 +1,11 @@
 #pragma once
 #include "Stdafx.h"
 
-template <typename DataType, class ContainerType = std::unordered_map<int, DataType>>
+template <typename KeyType, typename DataType, typename ContainerType>
 struct ComponentVector
 {
-	ComponentVector()
-	{
-		Data.reserve( 1000 );
-	}
-
-	DataType &Find( int id )
-	{
-		return Data.find( id )->second;
-	}
-
-	ContainerType Data;
+	virtual DataType &Find( KeyType id ) = 0;
+	virtual void Emplace( KeyType id, DataType &&data ) = 0;
+	virtual void Erase( KeyType id ) = 0;
+	virtual ContainerType &GetContainer() = 0;
 };

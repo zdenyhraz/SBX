@@ -8,7 +8,7 @@ AttractorSystem::AttractorSystem( std::shared_ptr<ComponentVectors> components, 
 
 void AttractorSystem::Tick()
 {
-	for ( auto &accel : m_Components->Accelerations.Data )
+	for ( auto &accel : m_Components->Accelerations.GetContainer() )
 	{
 		constexpr double gravity = 1.0;//5
 		accel.second.Acceleration += gravity * Utils::UnitVector( -m_Components->Positions.Find( accel.first ).Position );

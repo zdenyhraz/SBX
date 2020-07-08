@@ -11,8 +11,6 @@ public:
 
 private:
 
-	cv::Point2d GetSwarmDirection( int id );
-
 	cv::Point2d GetSeparationDirection( int id );
 
 	cv::Point2d GetAlignmentDirection( int id );

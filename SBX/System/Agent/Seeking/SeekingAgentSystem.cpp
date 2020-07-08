@@ -9,7 +9,7 @@ SeekingAgentSystem::SeekingAgentSystem( std::shared_ptr<ComponentVectors> compon
 
 void SeekingAgentSystem::Tick()
 {
-	for ( auto &agent : m_Components->SeekingAgents.Data )
+	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
 		int agentId = agent.first;
 		int targetId = agent.second.TargetId;
