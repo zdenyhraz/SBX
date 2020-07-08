@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(SRCS_DIR "E:/SBX_VSCode/src/")
 set(OPENCV_INCLUDE_DIR "C:/include/opencv/build/include/")
 set(SPDLOG_INCLUDE_DIR "C:/include/spdlog/include/")
-set(OPENCV_LIBRARY_DIR "C:/include/opencv/build/x64/vc14/lib/")
+set(OPENCV_LIBRARY_DIR "C:/include/opencv/build/x64/vc14/lib/opencv_world343.lib")
 
 project(SBX VERSION 1.0.0)
 

@@ -28,7 +28,7 @@ void SwarmAgentSystem::Tick()
 
 cv::Point2d SwarmAgentSystem::GetSwarmDirection( int id )
 {
-
+	return cv::Point2d(0,0);
 }
 
 cv::Point2d SwarmAgentSystem::GetSeparationDirection( int id )
