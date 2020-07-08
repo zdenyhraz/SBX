@@ -8,8 +8,5 @@ EventSystem::EventSystem( std::shared_ptr<ComponentVectors> components, std::sha
 
 void EventSystem::Tick()
 {
-	for ( auto &event : m_Components->Events )
-	{
-
-	}
+	m_Managers->m_EventManager->ProcessEvents();
 }

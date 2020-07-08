@@ -11,7 +11,5 @@ protected:
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::mutex m_mutex;
 
-private:
-
 };
 
