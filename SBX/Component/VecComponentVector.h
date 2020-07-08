@@ -2,7 +2,7 @@
 #include "ComponentVector.h"
 
 template <typename KeyType, typename DataType>
-struct VecComponentVector : ComponentVector<KeyType, DataType>
+struct VecComponentVector : ComponentVector<KeyType, DataType, std::vector<std::pair<KeyType, DataType>>>
 {
 public:
 	VecComponentVector()
@@ -12,17 +12,26 @@ public:
 
 	DataType &Find( KeyType id ) override
 	{
-
+		return Data[FindIdx( id )].second;
 	}
 
 	void Emplace( KeyType id, DataType &&data ) override
 	{
-		Data.emplace( std::pair<KeyType, DataType>( id, data ) );
+		Data.emplace_back( std::pair<KeyType, DataType>( id, std::move( data ) ) );
 	}
 
 	void Erase( KeyType id ) override
 	{
+		int idx = FindIdx( id );
+		if ( idx >= 0 )
+		{
+			Data.erase( Data.begin() + idx );
+		}
+	}
 
+	std::vector<std::pair<KeyType, DataType>> &GetContainer() override
+	{
+		return Data;
 	}
 
 private:

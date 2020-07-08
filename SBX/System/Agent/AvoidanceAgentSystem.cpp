@@ -27,18 +27,19 @@ int AvoidanceAgentSystem::FindClosestEntity( int agentId )
 	PositionComponent &agentPos = m_Components->Positions.Find( agentId );
 	int closestId;
 	double closestDistance = std::numeric_limits<double>::max();
-	for ( auto &pos : m_Components->Positions.GetContainer() )
+	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
-		if ( pos.first == agentId )
+		if ( agent.first == agentId )
 		{
 			continue;
 		}
 
-		double distance = cv::norm( agentPos.Position - pos.second.Position );
+		auto &pos = m_Components->Positions.Find( agent.first );
+		double distance = cv::norm( agentPos.Position - pos.Position );
 		if ( distance < closestDistance )
 		{
 			closestDistance = distance;
-			closestId = pos.first;
+			closestId = agent.first;
 		}
 	}
 	return closestId;

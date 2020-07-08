@@ -16,6 +16,7 @@ void EntityManager::CreateEntity( EntityInfoComponent::EntityType type )
 	m_Components->Velocities.Emplace( m_MaxEntityId, VelocityComponent() );
 	m_Components->Accelerations.Emplace( m_MaxEntityId, AccelerationComponent() );
 	m_Components->Models.Emplace( m_MaxEntityId, ModelComponent() );
+	m_Components->Agents.Emplace( m_MaxEntityId, AgentComponent() );
 
 	m_MaxEntityId++;
 	m_EntityCnt++;

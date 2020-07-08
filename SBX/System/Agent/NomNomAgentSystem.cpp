@@ -11,14 +11,14 @@ NomNomAgentSystem::NomNomAgentSystem( std::shared_ptr<ComponentVectors> componen
 
 void NomNomAgentSystem::Tick()
 {
-	for ( auto &agent : m_Components->Positions.GetContainer() )
+	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
 		int agentId = agent.first;
 		auto &agentPos = m_Components->Positions.Find( agentId ).Position;
 		auto &agentVel = m_Components->Velocities.Find( agentId ).Velocity;
 		auto &agentSiz = m_Components->Models.Find( agentId ).Size;
 
-		for ( auto &otherAgent : m_Components->Positions.GetContainer() )
+		for ( auto &otherAgent : m_Components->Agents.GetContainer() )
 		{
 			int otherAgentId = otherAgent.first;
 

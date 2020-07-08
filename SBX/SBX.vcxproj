@@ -156,10 +156,10 @@
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
-    <ClCompile Include="System\Agent\NomNom\NomNomAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\NomNomAgentSystem.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
     <ClCompile Include="System\Agent\AgentSubSystem.cpp" />
-    <ClCompile Include="System\Agent\Seeking\SeekingAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\SeekingAgentSystem.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -169,9 +169,9 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="System\Agent\AgentSystem.cpp" />
-    <ClCompile Include="System\Agent\Avoidance\AvoidanceAgentSystem.cpp" />
-    <ClCompile Include="System\Agent\Swarm\SwarmAgentSystem.cpp" />
-    <ClCompile Include="System\Agent\Template\TemplateAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\AvoidanceAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\SwarmAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\TemplateAgentSystem.cpp" />
     <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
     <ClCompile Include="System\Draw\DrawSystem.cpp" />
     <ClCompile Include="System\Movement\MovementSystem.cpp" />
@@ -200,14 +200,14 @@
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
-    <ClInclude Include="System\Agent\NomNom\NomNomAgentSystem.h" />
+    <ClInclude Include="System\Agent\NomNomAgentSystem.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="System\Agent\AgentSubSystem.h" />
-    <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />
+    <ClInclude Include="System\Agent\SeekingAgentSystem.h" />
     <ClInclude Include="System\Agent\AgentSystem.h" />
-    <ClInclude Include="System\Agent\Avoidance\AvoidanceAgentSystem.h" />
-    <ClInclude Include="System\Agent\Swarm\SwarmAgentSystem.h" />
-    <ClInclude Include="System\Agent\Template\TemplateAgentSystem.h" />
+    <ClInclude Include="System\Agent\AvoidanceAgentSystem.h" />
+    <ClInclude Include="System\Agent\SwarmAgentSystem.h" />
+    <ClInclude Include="System\Agent\TemplateAgentSystem.h" />
     <ClInclude Include="System\Time\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\CommandLine\CommandLineSystem.h" />

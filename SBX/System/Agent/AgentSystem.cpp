@@ -1,8 +1,8 @@
 #include "AgentSystem.h"
-#include "Avoidance/AvoidanceAgentSystem.h"
-#include "Seeking/SeekingAgentSystem.h"
-#include "Swarm/SwarmAgentSystem.h"
-#include "NomNom/NomNomAgentSystem.h"
+#include "AvoidanceAgentSystem.h"
+#include "SeekingAgentSystem.h"
+#include "SwarmAgentSystem.h"
+#include "NomNomAgentSystem.h"
 
 AgentSystem::AgentSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Agent" )

@@ -15,14 +15,14 @@
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
-    <ClCompile Include="System\Agent\Avoidance\AvoidanceAgentSystem.cpp" />
     <ClCompile Include="System\Agent\AgentSystem.cpp" />
-    <ClCompile Include="System\Agent\Template\TemplateAgentSystem.cpp" />
-    <ClCompile Include="System\Agent\Seeking\SeekingAgentSystem.cpp" />
     <ClCompile Include="System\Attractor\AttractorSystem.cpp" />
-    <ClCompile Include="System\Agent\Swarm\SwarmAgentSystem.cpp" />
     <ClCompile Include="System\Agent\AgentSubSystem.cpp" />
-    <ClCompile Include="System\Agent\NomNom\NomNomAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\AvoidanceAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\NomNomAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\SeekingAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\SwarmAgentSystem.cpp" />
+    <ClCompile Include="System\Agent\TemplateAgentSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -52,16 +52,16 @@
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
     <ClInclude Include="System\Agent\AgentSystem.h" />
-    <ClInclude Include="System\Agent\Avoidance\AvoidanceAgentSystem.h" />
-    <ClInclude Include="System\Agent\Template\TemplateAgentSystem.h" />
-    <ClInclude Include="System\Agent\Seeking\SeekingAgentSystem.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
     <ClInclude Include="System\Attractor\AttractorSystem.h" />
-    <ClInclude Include="System\Agent\Swarm\SwarmAgentSystem.h" />
     <ClInclude Include="System\Agent\AgentSubSystem.h" />
-    <ClInclude Include="System\Agent\NomNom\NomNomAgentSystem.h" />
     <ClInclude Include="Component\Agent\AgentComponent.h" />
     <ClInclude Include="Component\MapComponentVector.h" />
     <ClInclude Include="Component\VecComponentVector.h" />
+    <ClInclude Include="System\Agent\AvoidanceAgentSystem.h" />
+    <ClInclude Include="System\Agent\NomNomAgentSystem.h" />
+    <ClInclude Include="System\Agent\SwarmAgentSystem.h" />
+    <ClInclude Include="System\Agent\TemplateAgentSystem.h" />
+    <ClInclude Include="System\Agent\SeekingAgentSystem.h" />
   </ItemGroup>
 </Project>
