@@ -4,18 +4,18 @@
 struct AgentComponent : Component
 {
 	AgentComponent():
-		Fleeing( false ),
+		Avoiding( false ),
 		Seeking( false ),
 		Swarming( false )
 	{
 
 	}
 
-	bool Fleeing;
+	bool Avoiding;
 	bool Seeking;
 	bool Swarming;
 
-	double FleeSpeed;
+	double AvoidSpeed;
 	double SeekSpeed;
 	int TargetId;
 };

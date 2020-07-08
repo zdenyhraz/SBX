@@ -11,6 +11,11 @@ void SeekingSubSystem::Tick()
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
+		if ( !agent.second.Seeking )
+		{
+			continue;
+		}
+
 		int agentId = agent.first;
 		int targetId = agent.second.TargetId;
 		auto &agentPos = m_Components->Positions.Find( agentId );

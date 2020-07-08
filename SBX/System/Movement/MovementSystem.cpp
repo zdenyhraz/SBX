@@ -8,8 +8,8 @@
 MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Movement" )
 {
-	//m_SubSystems.push_back( std::make_shared<AvoidanceSubSystem>( components, managers ) );
-	//m_SubSystems.push_back( std::make_shared<SeekingSubSystem>( components, managers ) );
+	m_SubSystems.push_back( std::make_shared<AvoidanceSubSystem>( components, managers ) );
+	m_SubSystems.push_back( std::make_shared<SeekingSubSystem>( components, managers ) );
 	m_SubSystems.push_back( std::make_shared<AttractorSubSystem>( components, managers ) );
 	m_SubSystems.push_back( std::make_shared<SwarmSubSystem>( components, managers ) );
 }

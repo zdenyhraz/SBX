@@ -11,6 +11,11 @@ void AvoidanceSubSystem::Tick()
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
+		if ( !agent.second.Avoiding )
+		{
+			continue;
+		}
+
 		int agentId = agent.first;
 		PositionComponent &agentPos = m_Components->Positions.Find( agentId );
 
@@ -18,7 +23,7 @@ void AvoidanceSubSystem::Tick()
 		PositionComponent &closestPos = m_Components->Positions.Find( closestId );
 
 		cv::Point2d fleeDirection = agentPos.Position - closestPos.Position;
-		m_Components->Velocities.Find( agentId ).Velocity = Utils::UnitVector( fleeDirection ) * agent.second.FleeSpeed;
+		m_Components->Velocities.Find( agentId ).Velocity = Utils::UnitVector( fleeDirection ) * agent.second.AvoidSpeed;
 	}
 }
 

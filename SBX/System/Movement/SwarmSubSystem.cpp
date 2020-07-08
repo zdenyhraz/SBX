@@ -17,6 +17,11 @@ void SwarmSubSystem::Tick()
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
+		if ( !agent.second.Swarming )
+		{
+			continue;
+		}
+
 		int agentId = agent.first;
 		cv::Point2d agentVelocity = m_Components->Velocities.Find( agentId ).Velocity;
 		cv::Point2d swarmVelocity = m_Speed * ( GetSeparationDirection( agentId ) * m_SeparationW + GetAlignmentDirection( agentId ) * m_AlignmentW + GetCohesionDirection( agentId ) * m_CohesionW + GetBoundaryDirection( agentId ) * m_BoundaryW ) / ( m_SeparationW + m_AlignmentW + m_CohesionW + m_BoundaryW );

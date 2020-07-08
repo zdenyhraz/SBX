@@ -74,6 +74,11 @@ void Sandbox::InitTest()
 		vel.second.Velocity.y = Utils::Rand11() * spread;
 	}
 
+	for ( auto &ag : m_Components->Agents.GetContainer() )
+	{
+		ag.second.Swarming = true;
+	}
+
 	if ( 1 )
 	{
 		m_Components->EntityInfos.Find( 0 ).Name = "Sasko";
