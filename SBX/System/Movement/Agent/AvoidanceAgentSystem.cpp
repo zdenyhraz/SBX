@@ -2,7 +2,7 @@
 #include "Utils/MathUtils.h"
 
 AvoidanceAgentSystem::AvoidanceAgentSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	AgentSubSystem( components, managers )
+	SubSystem( components, managers )
 {
 
 }

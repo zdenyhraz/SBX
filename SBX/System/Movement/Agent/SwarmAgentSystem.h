@@ -1,7 +1,7 @@
 #pragma once
-#include "System/Agent/AgentSubSystem.h"
+#include "System/SubSystem.h"
 
-class SwarmAgentSystem : public AgentSubSystem
+class SwarmAgentSystem : public SubSystem
 {
 public:
 

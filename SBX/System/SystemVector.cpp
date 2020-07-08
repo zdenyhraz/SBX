@@ -4,7 +4,6 @@
 #include "Draw/DrawSystem.h"
 #include "CommandLine/CommandLineSystem.h"
 #include "Time/TimeSystem.h"
-#include "Agent/AgentSystem.h"
 #include "Event/EventSystem.h"
 #include "Render/RenderSystem.h"
 
@@ -16,8 +15,6 @@ SystemVector::SystemVector( std::shared_ptr<PastFutureComponentVectors> componen
 	Systems.push_back( std::make_shared<EventSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<MovementSystem>( components, managers ) );
-	Systems.push_back( std::make_shared<AgentSystem>( components, managers ) );
-
 }
 
 void SystemVector::Run()

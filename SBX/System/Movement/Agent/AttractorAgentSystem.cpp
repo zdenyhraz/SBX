@@ -1,7 +1,7 @@
 #include "AttractorAgentSystem.h"
 
 AttractorAgentSystem::AttractorAgentSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	AgentSubSystem( components, managers )
+	SubSystem( components, managers )
 {
 
 }

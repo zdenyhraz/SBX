@@ -1,11 +1,11 @@
 #pragma once
 #include "System/System.h"
 
-class AgentSubSystem
+class SubSystem
 {
 public:
 
-	AgentSubSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers );
+	SubSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	virtual void Tick() = 0;
 

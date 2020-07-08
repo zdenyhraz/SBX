@@ -1,7 +1,7 @@
 #pragma once
-#include "System/Agent/AgentSubSystem.h"
+#include "System/SubSystem.h"
 
-class AvoidanceAgentSystem : public AgentSubSystem
+class AvoidanceAgentSystem : public SubSystem
 {
 public:
 

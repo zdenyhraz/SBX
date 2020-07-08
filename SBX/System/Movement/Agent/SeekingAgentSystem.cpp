@@ -2,7 +2,7 @@
 #include "Utils/MathUtils.h"
 
 SeekingAgentSystem::SeekingAgentSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	AgentSubSystem( components, managers )
+	SubSystem( components, managers )
 {
 
 }

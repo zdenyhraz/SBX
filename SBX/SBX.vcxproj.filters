@@ -15,18 +15,15 @@
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\Entity\EntityManager.cpp" />
-    <ClCompile Include="System\Agent\AgentSystem.cpp" />
-    <ClCompile Include="System\Agent\AgentSubSystem.cpp" />
-    <ClCompile Include="System\Agent\AvoidanceAgentSystem.cpp" />
-    <ClCompile Include="System\Agent\NomNomAgentSystem.cpp" />
-    <ClCompile Include="System\Agent\SeekingAgentSystem.cpp" />
-    <ClCompile Include="System\Agent\SwarmAgentSystem.cpp" />
-    <ClCompile Include="System\Agent\TemplateAgentSystem.cpp" />
     <ClCompile Include="System\Event\EventSystem.cpp" />
     <ClCompile Include="Manager\Event\EventManager.cpp" />
     <ClCompile Include="Manager\Template\TemplateManager.cpp" />
-    <ClCompile Include="System\Agent\AttractorAgentSystem.cpp" />
     <ClCompile Include="System\Render\RenderSystem.cpp" />
+    <ClCompile Include="System\SubSystem.cpp" />
+    <ClCompile Include="System\Movement\Agent\SwarmAgentSystem.cpp" />
+    <ClCompile Include="System\Movement\Agent\SeekingAgentSystem.cpp" />
+    <ClCompile Include="System\Movement\Agent\AvoidanceAgentSystem.cpp" />
+    <ClCompile Include="System\Movement\Agent\AttractorAgentSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -55,23 +52,20 @@
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\Entity\EntityManager.h" />
-    <ClInclude Include="System\Agent\AgentSystem.h" />
     <ClInclude Include="Component\Map\MapComponent.h" />
-    <ClInclude Include="System\Agent\AgentSubSystem.h" />
-    <ClInclude Include="Component\Agent\AgentComponent.h" />
-    <ClInclude Include="System\Agent\AvoidanceAgentSystem.h" />
-    <ClInclude Include="System\Agent\NomNomAgentSystem.h" />
-    <ClInclude Include="System\Agent\SwarmAgentSystem.h" />
-    <ClInclude Include="System\Agent\TemplateAgentSystem.h" />
-    <ClInclude Include="System\Agent\SeekingAgentSystem.h" />
     <ClInclude Include="Component\Event\EventComponent.h" />
     <ClInclude Include="System\Event\EventSystem.h" />
     <ClInclude Include="Manager\Event\EventManager.h" />
     <ClInclude Include="Manager\Template\TemplateManager.h" />
-    <ClInclude Include="System\Agent\AttractorAgentSystem.h" />
     <ClInclude Include="Component\Containers\MapComponentVector.h" />
     <ClInclude Include="Component\Containers\VecComponentVector.h" />
     <ClInclude Include="Component\PastFutureComponentVectors.h" />
     <ClInclude Include="System\Render\RenderSystem.h" />
+    <ClInclude Include="Component\Agent\AgentComponent.h" />
+    <ClInclude Include="System\SubSystem.h" />
+    <ClInclude Include="System\Movement\Agent\SwarmAgentSystem.h" />
+    <ClInclude Include="System\Movement\Agent\SeekingAgentSystem.h" />
+    <ClInclude Include="System\Movement\Agent\AvoidanceAgentSystem.h" />
+    <ClInclude Include="System\Movement\Agent\AttractorAgentSystem.h" />
   </ItemGroup>
 </Project>
