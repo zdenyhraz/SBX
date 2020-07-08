@@ -8,7 +8,8 @@ int main()
 	Sandbox sandbox;
 
 	sandbox.Run();
-	std::this_thread::sleep_for( std::chrono::milliseconds( 1000000 * 1000 ) );
+	std::this_thread::sleep_for( std::chrono::minutes( 3 ) );
+
 	sandbox.Kill();
 
 	LOG_ERROR( "Press enter twice to end the app" );

@@ -12,7 +12,7 @@ void MovementSystem::Tick()
 	for ( auto &accel : m_Components->Accelerations.GetContainer() )
 	{
 		m_Components->Velocities.Find( accel.first ).Velocity += accel.second.Acceleration * m_Components->Time.GetDelta();
-		accel.second.Clear();
+		accel.second.Acceleration = cv::Point2d( 0, 0 );
 	}
 
 	for ( auto &vel : m_Components->Velocities.GetContainer() )
