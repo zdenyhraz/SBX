@@ -5,7 +5,7 @@ class RenderSystem : public System
 {
 public:
 
-	RenderSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers );
+	RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
 

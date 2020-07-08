@@ -1,14 +1,14 @@
 #pragma once
 #include "Stdafx.h"
-#include "Component/PastFutureComponentVectors.h"
+#include "Component/ComponentVectors.h"
 
 class Manager
 {
 public:
-	Manager( std::shared_ptr<PastFutureComponentVectors> components );
+	Manager( std::shared_ptr<ComponentVectors> components );
 
 protected:
-	std::shared_ptr<PastFutureComponentVectors> m_Components;
+	std::shared_ptr<ComponentVectors> m_Components;
 	std::mutex m_mutex;
 
 };

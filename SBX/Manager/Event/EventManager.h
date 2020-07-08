@@ -5,21 +5,21 @@
 class EventManager : public Manager
 {
 public:
-	EventManager( std::shared_ptr<PastFutureComponentVectors> components );
+	EventManager( std::shared_ptr<ComponentVectors> components );
 
 	void ProcessEvents()
 	{
-		for ( auto &event : m_Components->Past->Events )
+		for ( auto &event : m_Components->Events )
 		{
 			HandleEvent( event );
 		}
 
-		m_Components->Past->Events.clear();
+		m_Components->Events.clear();
 	}
 
 	void AddEvent()
 	{
-		m_Components->Past->Events.push_back( EventComponent() );
+		m_Components->Events.push_back( EventComponent() );
 	}
 
 private:

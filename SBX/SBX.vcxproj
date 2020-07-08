@@ -190,7 +190,6 @@
     <ClInclude Include="Component\Movement\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
     <ClInclude Include="Component\Model\ModelComponent.h" />
-    <ClInclude Include="Component\PastFutureComponentVectors.h" />
     <ClInclude Include="Component\Template\TemplateComponent.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\ComponentVector.h" />

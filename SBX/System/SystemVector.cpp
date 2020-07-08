@@ -7,7 +7,7 @@
 #include "Event/EventSystem.h"
 #include "Render/RenderSystem.h"
 
-SystemVector::SystemVector( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers )
+SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers )
 {
 	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<TimeSystem>( components, managers ) );

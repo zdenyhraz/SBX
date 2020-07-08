@@ -6,7 +6,7 @@ class MovementSystem : public System
 {
 public:
 
-	MovementSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers );
+	MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
 	void Tick() override;
 

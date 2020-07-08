@@ -59,7 +59,6 @@
     <ClInclude Include="Manager\Template\TemplateManager.h" />
     <ClInclude Include="Component\Containers\MapComponentVector.h" />
     <ClInclude Include="Component\Containers\VecComponentVector.h" />
-    <ClInclude Include="Component\PastFutureComponentVectors.h" />
     <ClInclude Include="System\Render\RenderSystem.h" />
     <ClInclude Include="Component\Agent\AgentComponent.h" />
     <ClInclude Include="System\SubSystem.h" />

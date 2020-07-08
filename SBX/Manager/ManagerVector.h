@@ -5,7 +5,7 @@
 class ManagerVector
 {
 public:
-	ManagerVector( std::shared_ptr<PastFutureComponentVectors> components );
+	ManagerVector( std::shared_ptr<ComponentVectors> components );
 
 	std::shared_ptr<EntityManager> m_EntityManager;
 	std::shared_ptr<EventManager> m_EventManager;

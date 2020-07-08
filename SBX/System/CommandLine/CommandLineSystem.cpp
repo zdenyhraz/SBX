@@ -1,6 +1,6 @@
 #include "CommandLineSystem.h"
 
-CommandLineSystem::CommandLineSystem( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+CommandLineSystem::CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "CommandLine", true )
 {
 
@@ -41,15 +41,15 @@ void CommandLineSystem::ProcessCommand( const std::string &command )
 
 void CommandLineSystem::ProcessStartTime()
 {
-	m_Components->Past->Time.StartTime();
+	m_Components->Time.StartTime();
 }
 
 void CommandLineSystem::ProcessStopTime()
 {
-	m_Components->Past->Time.StopTime();
+	m_Components->Time.StopTime();
 }
 
 void CommandLineSystem::ProcessSetTimeRate( double timerate )
 {
-	m_Components->Past->Time.SetTimeRate( timerate );
+	m_Components->Time.SetTimeRate( timerate );
 }
