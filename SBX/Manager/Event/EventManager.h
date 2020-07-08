@@ -19,7 +19,7 @@ public:
 
 	void AddEvent()
 	{
-		m_Components->Future->Events.push_back( EventComponent() );
+		m_Components->Past->Events.push_back( EventComponent() );
 	}
 
 private:

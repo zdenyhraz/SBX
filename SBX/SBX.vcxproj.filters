@@ -25,8 +25,8 @@
     <ClCompile Include="System\Event\EventSystem.cpp" />
     <ClCompile Include="Manager\Event\EventManager.cpp" />
     <ClCompile Include="Manager\Template\TemplateManager.cpp" />
-    <ClCompile Include="System\Test\TestSystem.cpp" />
     <ClCompile Include="System\Agent\AttractorAgentSystem.cpp" />
+    <ClCompile Include="System\Render\RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -68,10 +68,10 @@
     <ClInclude Include="System\Event\EventSystem.h" />
     <ClInclude Include="Manager\Event\EventManager.h" />
     <ClInclude Include="Manager\Template\TemplateManager.h" />
-    <ClInclude Include="System\Test\TestSystem.h" />
     <ClInclude Include="System\Agent\AttractorAgentSystem.h" />
     <ClInclude Include="Component\Containers\MapComponentVector.h" />
     <ClInclude Include="Component\Containers\VecComponentVector.h" />
     <ClInclude Include="Component\PastFutureComponentVectors.h" />
+    <ClInclude Include="System\Render\RenderSystem.h" />
   </ItemGroup>
 </Project>

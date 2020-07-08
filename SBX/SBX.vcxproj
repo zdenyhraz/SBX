@@ -178,11 +178,11 @@
     <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
     <ClCompile Include="System\Draw\DrawSystem.cpp" />
     <ClCompile Include="System\Movement\MovementSystem.cpp" />
+    <ClCompile Include="System\Render\RenderSystem.cpp" />
     <ClCompile Include="System\System.cpp" />
     <ClCompile Include="System\SystemVector.cpp" />
     <ClCompile Include="System\Template\TemplateSystem.cpp" />
     <ClCompile Include="System\Agent\AttractorAgentSystem.cpp" />
-    <ClCompile Include="System\Test\TestSystem.cpp" />
     <ClCompile Include="System\Time\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -217,7 +217,7 @@
     <ClInclude Include="System\Agent\AvoidanceAgentSystem.h" />
     <ClInclude Include="System\Agent\SwarmAgentSystem.h" />
     <ClInclude Include="System\Agent\TemplateAgentSystem.h" />
-    <ClInclude Include="System\Test\TestSystem.h" />
+    <ClInclude Include="System\Render\RenderSystem.h" />
     <ClInclude Include="System\Time\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\CommandLine\CommandLineSystem.h" />
