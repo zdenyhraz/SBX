@@ -9,11 +9,11 @@
 
 SystemVector::SystemVector( std::shared_ptr<PastFutureComponentVectors> components, std::shared_ptr<ManagerVector> managers )
 {
+	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<TimeSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<DrawSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<RenderSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<EventSystem>( components, managers ) );
-	Systems.push_back( std::make_shared<CommandLineSystem>( components, managers ) );
 	Systems.push_back( std::make_shared<MovementSystem>( components, managers ) );
 }
 

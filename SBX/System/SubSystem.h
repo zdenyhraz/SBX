@@ -13,5 +13,4 @@ protected:
 	std::shared_ptr<PastFutureComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
 
-private:
 };
