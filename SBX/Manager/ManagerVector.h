@@ -1,6 +1,6 @@
 #pragma once
-#include "Entity/EntityManager.h"
-#include "Event/EventManager.h"
+#include "Managers/EntityManager.h"
+#include "Managers/EventManager.h"
 
 class ManagerVector
 {

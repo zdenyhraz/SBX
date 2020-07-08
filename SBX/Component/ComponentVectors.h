@@ -1,15 +1,15 @@
 #pragma once
-#include "Time/TimeComponent.h"
-#include "Map/MapComponent.h"
-#include "Event/EventComponent.h"
-#include "Containers/MapComponentVector.h"
-#include "Containers/VecComponentVector.h"
-#include "Entity/EntityInfoComponent.h"
-#include "Movement/PositionComponent.h"
-#include "Movement/VelocityComponent.h"
-#include "Movement/AccelerationComponent.h"
-#include "Model/ModelComponent.h"
-#include "Agent/AgentComponent.h"
+#include "MapComponentVector.h"
+#include "VecComponentVector.h"
+#include "Components/TimeComponent.h"
+#include "Components/MapComponent.h"
+#include "Components/EventComponent.h"
+#include "Components/EntityInfoComponent.h"
+#include "Components/PositionComponent.h"
+#include "Components/VelocityComponent.h"
+#include "Components/AccelerationComponent.h"
+#include "Components/ModelComponent.h"
+#include "Components/AgentComponent.h"
 
 struct ComponentVectors
 {

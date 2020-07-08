@@ -1,6 +1,6 @@
 #pragma once
 #include "Manager/Manager.h"
-#include "Component/Event/EventComponent.h"
+#include "Component/Components/EventComponent.h"
 
 class EventManager : public Manager
 {

@@ -151,19 +151,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Manager\Event\EventManager.cpp" />
-    <ClCompile Include="Manager\Template\TemplateManager.cpp" />
-    <ClCompile Include="System\Logic\EventSubSystem.cpp" />
+    <ClCompile Include="Manager\Managers\EventManager.cpp" />
+    <ClCompile Include="Manager\Managers\TemplateManager.cpp" />
+    <ClCompile Include="System\Systems\Logic\EventSubSystem.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\ManagerVector.cpp" />
-    <ClCompile Include="Manager\Entity\EntityManager.cpp" />
+    <ClCompile Include="Manager\Managers\EntityManager.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
-    <ClCompile Include="System\Logic\HealthSubSystem.cpp" />
-    <ClCompile Include="System\Logic\LogicSystem.cpp" />
+    <ClCompile Include="System\Systems\Logic\HealthSubSystem.cpp" />
+    <ClCompile Include="System\Systems\Logic\LogicSystem.cpp" />
     <ClCompile Include="System\SubSystem.cpp" />
-    <ClCompile Include="System\Movement\SeekingSubSystem.cpp" />
+    <ClCompile Include="System\Systems\Movement\SeekingSubSystem.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -172,60 +172,60 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="System\Movement\AvoidanceSubSystem.cpp" />
-    <ClCompile Include="System\Movement\SwarmSubSystem.cpp" />
-    <ClCompile Include="System\CommandLine\CommandLineSystem.cpp" />
-    <ClCompile Include="System\Draw\DrawSystem.cpp" />
-    <ClCompile Include="System\Movement\MovementSystem.cpp" />
-    <ClCompile Include="System\Render\RenderSystem.cpp" />
+    <ClCompile Include="System\Systems\Movement\AvoidanceSubSystem.cpp" />
+    <ClCompile Include="System\Systems\Movement\SwarmSubSystem.cpp" />
+    <ClCompile Include="System\Systems\CommandLine\CommandLineSystem.cpp" />
+    <ClCompile Include="System\Systems\Draw\DrawSystem.cpp" />
+    <ClCompile Include="System\Systems\Movement\MovementSystem.cpp" />
+    <ClCompile Include="System\Systems\Render\RenderSystem.cpp" />
     <ClCompile Include="System\System.cpp" />
     <ClCompile Include="System\SystemVector.cpp" />
-    <ClCompile Include="System\Template\TemplateSubSystem.cpp" />
-    <ClCompile Include="System\Template\TemplateSystem.cpp" />
-    <ClCompile Include="System\Movement\AttractorSubSystem.cpp" />
-    <ClCompile Include="System\Time\TimeSystem.cpp" />
+    <ClCompile Include="System\Systems\Template\TemplateSubSystem.cpp" />
+    <ClCompile Include="System\Systems\Template\TemplateSystem.cpp" />
+    <ClCompile Include="System\Systems\Movement\AttractorSubSystem.cpp" />
+    <ClCompile Include="System\Systems\Time\TimeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component\Agent\AgentComponent.h" />
-    <ClInclude Include="Component\Event\EventComponent.h" />
-    <ClInclude Include="Component\Containers\MapComponentVector.h" />
-    <ClInclude Include="Component\Map\MapComponent.h" />
-    <ClInclude Include="Component\Movement\AccelerationComponent.h" />
+    <ClInclude Include="Component\Components\AgentComponent.h" />
+    <ClInclude Include="Component\Components\EventComponent.h" />
+    <ClInclude Include="Component\MapComponentVector.h" />
+    <ClInclude Include="Component\Components\MapComponent.h" />
+    <ClInclude Include="Component\Components\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
-    <ClInclude Include="Component\Model\ModelComponent.h" />
-    <ClInclude Include="Component\Template\TemplateComponent.h" />
+    <ClInclude Include="Component\Components\ModelComponent.h" />
+    <ClInclude Include="Component\Components\TemplateComponent.h" />
     <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\ComponentVector.h" />
-    <ClInclude Include="Component\Entity\EntityInfoComponent.h" />
-    <ClInclude Include="Component\Movement\PositionComponent.h" />
-    <ClInclude Include="Component\Time\TimeComponent.h" />
-    <ClInclude Include="Component\Movement\VelocityComponent.h" />
-    <ClInclude Include="Component\Containers\VecComponentVector.h" />
-    <ClInclude Include="Manager\Event\EventManager.h" />
-    <ClInclude Include="Manager\Template\TemplateManager.h" />
-    <ClInclude Include="System\Logic\EventSubSystem.h" />
+    <ClInclude Include="Component\Components\EntityInfoComponent.h" />
+    <ClInclude Include="Component\Components\PositionComponent.h" />
+    <ClInclude Include="Component\Components\TimeComponent.h" />
+    <ClInclude Include="Component\Components\VelocityComponent.h" />
+    <ClInclude Include="Component\VecComponentVector.h" />
+    <ClInclude Include="Manager\Managers\EventManager.h" />
+    <ClInclude Include="Manager\Managers\TemplateManager.h" />
+    <ClInclude Include="System\Systems\Logic\EventSubSystem.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\ManagerVector.h" />
-    <ClInclude Include="Manager\Entity\EntityManager.h" />
+    <ClInclude Include="Manager\Managers\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
-    <ClInclude Include="System\Logic\HealthSubSystem.h" />
-    <ClInclude Include="System\Logic\LogicSystem.h" />
+    <ClInclude Include="System\Systems\Logic\HealthSubSystem.h" />
+    <ClInclude Include="System\Systems\Logic\LogicSystem.h" />
     <ClInclude Include="System\SubSystem.h" />
-    <ClInclude Include="System\Movement\SeekingSubSystem.h" />
-    <ClInclude Include="System\Movement\AvoidanceSubSystem.h" />
-    <ClInclude Include="System\Movement\SwarmSubSystem.h" />
-    <ClInclude Include="System\Render\RenderSystem.h" />
-    <ClInclude Include="System\Template\TemplateSubSystem.h" />
-    <ClInclude Include="System\Time\TimeSystem.h" />
+    <ClInclude Include="System\Systems\Movement\SeekingSubSystem.h" />
+    <ClInclude Include="System\Systems\Movement\AvoidanceSubSystem.h" />
+    <ClInclude Include="System\Systems\Movement\SwarmSubSystem.h" />
+    <ClInclude Include="System\Systems\Render\RenderSystem.h" />
+    <ClInclude Include="System\Systems\Template\TemplateSubSystem.h" />
+    <ClInclude Include="System\Systems\Time\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="System\CommandLine\CommandLineSystem.h" />
-    <ClInclude Include="System\Draw\DrawSystem.h" />
-    <ClInclude Include="System\Movement\MovementSystem.h" />
+    <ClInclude Include="System\Systems\CommandLine\CommandLineSystem.h" />
+    <ClInclude Include="System\Systems\Draw\DrawSystem.h" />
+    <ClInclude Include="System\Systems\Movement\MovementSystem.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\SystemVector.h" />
-    <ClInclude Include="System\Template\TemplateSystem.h" />
-    <ClInclude Include="System\Movement\AttractorSubSystem.h" />
+    <ClInclude Include="System\Systems\Template\TemplateSystem.h" />
+    <ClInclude Include="System\Systems\Movement\AttractorSubSystem.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
