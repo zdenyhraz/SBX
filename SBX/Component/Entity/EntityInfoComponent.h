@@ -8,13 +8,10 @@ struct EntityInfoComponent : Component
 	EntityInfoComponent( int id, EntityType type = Entity ):
 		Id( id ),
 		Type( type ),
-		Name( "" ),
+		Name( std::to_string( id ) ),
 		HP( 100 )
 	{
-		if ( Name == "" )
-		{
-			//Name = "Entity" + std::to_string( id );
-		}
+
 	}
 
 	int Id;
