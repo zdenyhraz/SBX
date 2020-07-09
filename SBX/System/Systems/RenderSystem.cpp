@@ -1,4 +1,6 @@
 #include "RenderSystem.h"
+#include "Render/VertexBuffer.h"
+#include "Render/IndexBuffer.h"
 
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Render", true ),
@@ -102,10 +104,7 @@ void RenderSystem::Tick()
 	// - gen buffers - unique id
 	// - bind buffer - state machine
 	// - buffer data - alloc on GPU
-	unsigned int vertexBufferId;
-	glGenBuffers( 1, &vertexBufferId );
-	glBindBuffer( GL_ARRAY_BUFFER, vertexBufferId );
-	glBufferData( GL_ARRAY_BUFFER, 4 * 2 * sizeof( float ), positions, GL_STATIC_DRAW );
+	VertexBuffer vb( positions, 4 * 2 * sizeof( float ) );
 
 	// <VERTEX ATTRIB POINTERS>
 	// - specifies layout of the data in vertex buffer
@@ -119,10 +118,7 @@ void RenderSystem::Tick()
 	// <INDEX BUFFERS>
 	// - index buffers help reuse memory - no need to copy adjacent vertices
 	// - draw call count is all the indices tho
-	unsigned int indexBufferId;
-	glGenBuffers( 1, &indexBufferId );
-	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, indexBufferId );
-	glBufferData( GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof( unsigned int ), indices, GL_STATIC_DRAW );
+	IndexBuffer ib( indices, 6 );
 
 	// <SHADERS>
 	// there can be other shaders (like compute shader, geometry shader, idk...), but most important are:
@@ -148,7 +144,7 @@ void RenderSystem::Tick()
 	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, 0 );
 
 	float r = 0.0f;
-	float incrementAbs = 0.05f;
+	float incrementAbs = 0.07f;
 	float increment = incrementAbs;
 
 	while ( !glfwWindowShouldClose( m_Window ) )
@@ -160,7 +156,7 @@ void RenderSystem::Tick()
 		glUniform4f( location, r, 0.0f, 1.0f, 1.0f );
 
 		glBindVertexArray( vertexArrayId );
-		glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, indexBufferId );
+		ib.Bind();
 
 		r += increment;
 		if ( r >= 1.0 )
