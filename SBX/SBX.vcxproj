@@ -160,7 +160,9 @@
     <ClCompile Include="Manager\Managers\TimeManager.cpp" />
     <ClCompile Include="Render\IndexBuffer.cpp" />
     <ClCompile Include="Render\Renderer.cpp" />
+    <ClCompile Include="Render\VertexArray.cpp" />
     <ClCompile Include="Render\VertexBuffer.cpp" />
+    <ClCompile Include="Render\VertexBufferLayout.cpp" />
     <ClCompile Include="System\Systems\LogicSubSystems\EventSubSystem.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -214,7 +216,9 @@
     <ClInclude Include="Manager\Managers\TimeManager.h" />
     <ClInclude Include="Render\IndexBuffer.h" />
     <ClInclude Include="Render\Renderer.h" />
+    <ClInclude Include="Render\VertexArray.h" />
     <ClInclude Include="Render\VertexBuffer.h" />
+    <ClInclude Include="Render\VertexBufferLayout.h" />
     <ClInclude Include="System\Systems\LogicSubSystems\EventSubSystem.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\Manager.h" />

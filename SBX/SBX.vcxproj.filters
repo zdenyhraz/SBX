@@ -31,6 +31,8 @@
     <ClCompile Include="Render\Renderer.cpp" />
     <ClCompile Include="Render\VertexBuffer.cpp" />
     <ClCompile Include="Render\IndexBuffer.cpp" />
+    <ClCompile Include="Render\VertexArray.cpp" />
+    <ClCompile Include="Render\VertexBufferLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -80,6 +82,8 @@
     <ClInclude Include="Render\Renderer.h" />
     <ClInclude Include="Render\VertexBuffer.h" />
     <ClInclude Include="Render\IndexBuffer.h" />
+    <ClInclude Include="Render\VertexArray.h" />
+    <ClInclude Include="Render\VertexBufferLayout.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />
