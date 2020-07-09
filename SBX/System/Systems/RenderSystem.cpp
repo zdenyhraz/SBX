@@ -67,6 +67,7 @@ void RenderSystem::Tick()
 	glfwInit();
 	m_Window = glfwCreateWindow( m_WindowWidth, m_WindowHeight, m_WindowName.c_str(), NULL, NULL );
 	glfwMakeContextCurrent( m_Window );
+	glfwSwapInterval( 1 );
 	glewInit();
 	LOG_INFO( "SBX using OpenGL version {}", glGetString( GL_VERSION ) );
 
@@ -84,6 +85,18 @@ void RenderSystem::Tick()
 		2, 3, 0
 	};
 
+	// <VERTEX ARRAYS>
+	// - with multiple objects in the scene we need to (for each object) do the following:
+	//	 bind shader, buffer, layout, index and then draw
+	// - vertex array simplifies this - binds the buffer with its layout
+	// - before draw call we just bind bind shader, array, index and then draw
+	// - option A: one global bound vertex array and before draw call I bind shader,buffer,layout,index
+	// - option B: each object has its vertex array and before draw call I bind shader,array,index
+	// - OpenGL recommends option B
+	unsigned int vertexArrayId;
+	glGenVertexArrays( 1, &vertexArrayId );
+	glBindVertexArray( vertexArrayId );
+
 	// <VERTEX BUFFERS>
 	// - basic storage of vertices
 	// - gen buffers - unique id
@@ -95,6 +108,7 @@ void RenderSystem::Tick()
 	glBufferData( GL_ARRAY_BUFFER, 4 * 2 * sizeof( float ), positions, GL_STATIC_DRAW );
 
 	// <VERTEX ATTRIB POINTERS>
+	// - specifies layout of the data in vertex buffer
 	// - index of vertex attribute (just one - position)
 	// - floats per vertex attribute (two - 2D position)
 	// - stride between vertices
@@ -120,18 +134,39 @@ void RenderSystem::Tick()
 	glUseProgram( shader );
 
 	// <UNIFORMS>
+	// - passes data from CPU to GPU (glUniform4f call before draw call)
+	// - cannot be cahnged during one draw call - different colors need vertex attribs
 	// - define in shader - e.g. "uniform vec4 u_Color"
 	// - name in get uniform location must be exactly the same
 	int location = glGetUniformLocation( shader, "u_Color" );
 	glUniform4f( location, 0.5f, 0.0f, 1.0f, 1.0f );
 
+	// unbind all
+	glUseProgram( 0 );
+	glBindVertexArray( 0 );
+	glBindBuffer( GL_ARRAY_BUFFER, 0 );
+	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, 0 );
 
-
+	float r = 0.0f;
+	float incrementAbs = 0.05f;
+	float increment = incrementAbs;
 
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		glClear( GL_COLOR_BUFFER_BIT );
 		//----------------------------
+
+		glUseProgram( shader );
+		glUniform4f( location, r, 0.0f, 1.0f, 1.0f );
+
+		glBindVertexArray( vertexArrayId );
+		glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, indexBufferId );
+
+		r += increment;
+		if ( r >= 1.0 )
+			increment = -incrementAbs;
+		if ( r <= 0.0 )
+			increment = incrementAbs;
 
 		glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr );
 
