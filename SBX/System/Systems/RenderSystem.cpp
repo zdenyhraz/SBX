@@ -18,6 +18,7 @@ std::string RenderSystem::ParseShader( const std::string &path )
 	{
 		ss << line << "\n";
 	}
+	LOG_DEBUG( "Shader {} source code:\n{}", path, ss.str() );
 	return ss.str();
 }
 
@@ -69,17 +70,25 @@ void RenderSystem::Tick()
 	glewInit();
 	LOG_INFO( "SBX using OpenGL version {}", glGetString( GL_VERSION ) );
 
-	float positions[6] =
+	float positions[] =
 	{
 		-0.5f, -0.5f,
-		0.3f,  0.5f,
-		0.5f, -0.7f
+		+0.5f, -0.5f,
+		+0.5f, +0.5f,
+		-0.5f, +0.5f
 	};
 
-	unsigned int bufferId;
-	glGenBuffers( 1, &bufferId );
-	glBindBuffer( GL_ARRAY_BUFFER, bufferId );
-	glBufferData( GL_ARRAY_BUFFER, 6 * sizeof( float ), positions, GL_STATIC_DRAW );
+	unsigned int indices[] =
+	{
+		0, 1, 2,
+		2, 3, 0
+	};
+
+	unsigned int vertexBufferId;
+	glGenBuffers( 1, &vertexBufferId );
+	glBindBuffer( GL_ARRAY_BUFFER, vertexBufferId );
+	glBufferData( GL_ARRAY_BUFFER, 4 * 2 * sizeof( float ), positions, GL_STATIC_DRAW );
+
 	int attribIdx = 0;//index of vertex attribute (just one - position)
 	int attribCnt = 2;//floats per vertex attribute (two - 2D position)
 	int stride = 2 * sizeof( float );//stride between vertices
@@ -87,12 +96,22 @@ void RenderSystem::Tick()
 	glEnableVertexAttribArray( attribIdx );
 	glVertexAttribPointer( attribIdx, attribCnt, GL_FLOAT, GL_FALSE, stride, attribPtr );
 
+	unsigned int indexBufferId;
+	glGenBuffers( 1, &indexBufferId );
+	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, indexBufferId );
+	glBufferData( GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof( unsigned int ), indices, GL_STATIC_DRAW );
+
 	std::string vertexShader = ParseShader( "Resources/Shaders/Vertex.shader" );
 	std::string fragmentShader = ParseShader( "Resources/Shaders/Fragment.shader" );
 
 	unsigned int shader = CreateShader( vertexShader, fragmentShader );
 	glUseProgram( shader );
 
+	// <INDEX BUFFERS>
+	// - index buffers help reuse memory - no need to copy adjacent vertices
+	// - draw call count is all the indices tho
+
+	// <SHADERS>
 	// there can be other shaders (like compute shader, geometry shader, idk...), but most important are:
 	// 1) vertex shader is run for each vertex (can for example project vertices)
 	// 2) fragment (pixel) shader is run for each pixel that needs to be rasterized (can for example determines color, lighting)
@@ -103,7 +122,7 @@ void RenderSystem::Tick()
 		glClear( GL_COLOR_BUFFER_BIT );
 		//----------------------------
 
-		glDrawArrays( GL_TRIANGLES, 0, 3 );
+		glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr );
 
 		//----------------------------
 		glfwSwapBuffers( m_Window );
