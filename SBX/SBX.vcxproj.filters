@@ -27,6 +27,7 @@
     <ClCompile Include="System\Systems\MovementSubSystems\SeekingSubSystem.cpp" />
     <ClCompile Include="System\Systems\MovementSubSystems\AvoidanceSubSystem.cpp" />
     <ClCompile Include="System\Systems\MovementSubSystems\AttractorSubSystem.cpp" />
+    <ClCompile Include="Manager\Managers\TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -72,5 +73,6 @@
     <ClInclude Include="System\Systems\MovementSubSystems\SeekingSubSystem.h" />
     <ClInclude Include="System\Systems\MovementSubSystems\AvoidanceSubSystem.h" />
     <ClInclude Include="System\Systems\MovementSubSystems\AttractorSubSystem.h" />
+    <ClInclude Include="Manager\Managers\TimeManager.h" />
   </ItemGroup>
 </Project>

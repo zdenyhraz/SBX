@@ -7,8 +7,8 @@ TimeSystem::TimeSystem( std::shared_ptr<ComponentVectors> components, std::share
 
 void TimeSystem::Tick()
 {
-	m_Components->Time.Advance();
-	m_ConsoleTitle = "Time = " + std::to_string( m_Components->Time.GetTime() ) + ", TimeRate = " + std::to_string( m_Components->Time.GetTimeRate() ) + ", Delta = " + std::to_string( m_Components->Time.GetDelta() ) + ", Running = " + std::to_string( m_Components->Time.GetRunning() ) + ", TickId = " + std::to_string( m_Components->Time.GetTickId() );
+	m_Managers->m_TimeManager->Advance();
+	m_ConsoleTitle = "Time = " + std::to_string( m_Managers->m_TimeManager->GetTime() ) + ", TimeRate = " + std::to_string( m_Managers->m_TimeManager->GetTimeRate() ) + ", Delta = " + std::to_string( m_Managers->m_TimeManager->GetDelta() ) + ", Running = " + std::to_string( m_Managers->m_TimeManager->GetRunning() ) + ", TickId = " + std::to_string( m_Managers->m_TimeManager->GetTickId() );
 	SetConsoleTitle( m_ConsoleTitle.c_str() );
-	std::this_thread::sleep_until( m_Components->Time.GetTargetTickEnd() );
+	std::this_thread::sleep_until( m_Managers->m_TimeManager->GetTargetTickEnd() );
 }

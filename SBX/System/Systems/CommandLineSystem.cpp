@@ -41,15 +41,15 @@ void CommandLineSystem::ProcessCommand( const std::string &command )
 
 void CommandLineSystem::ProcessStartTime()
 {
-	m_Components->Time.StartTime();
+	m_Managers->m_TimeManager->StartTime();
 }
 
 void CommandLineSystem::ProcessStopTime()
 {
-	m_Components->Time.StopTime();
+	m_Managers->m_TimeManager->StopTime();
 }
 
 void CommandLineSystem::ProcessSetTimeRate( double timerate )
 {
-	m_Components->Time.SetTimeRate( timerate );
+	m_Managers->m_TimeManager->SetTimeRate( timerate );
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Managers/EntityManager.h"
 #include "Managers/EventManager.h"
+#include "Managers/TimeManager.h"
 
 class ManagerVector
 {
@@ -9,7 +10,6 @@ public:
 
 	std::shared_ptr<EntityManager> m_EntityManager;
 	std::shared_ptr<EventManager> m_EventManager;
-
-private:
+	std::shared_ptr<TimeManager> m_TimeManager;
 };
 
