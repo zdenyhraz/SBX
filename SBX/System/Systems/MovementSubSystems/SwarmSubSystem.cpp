@@ -17,7 +17,7 @@ void SwarmSubSystem::Tick()
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
-		if ( !agent.second.Swarming )
+		if ( agent.second.MovementBehaviour != AgentComponent::Swarming )
 		{
 			continue;
 		}

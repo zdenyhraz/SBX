@@ -1,11 +1,11 @@
 #include "SystemVector.h"
 #include "Utils/ThreadUtils.h"
-#include "Systems/Movement/MovementSystem.h"
-#include "Systems/Draw/DrawSystem.h"
-#include "Systems/CommandLine/CommandLineSystem.h"
-#include "Systems/Time/TimeSystem.h"
-#include "Systems/Render/RenderSystem.h"
-#include "Systems/Logic/LogicSystem.h"
+#include "Systems/MovementSystem.h"
+#include "Systems/DrawSystem.h"
+#include "Systems/CommandLineSystem.h"
+#include "Systems/TimeSystem.h"
+#include "Systems/RenderSystem.h"
+#include "Systems/LogicSystem.h"
 
 SystemVector::SystemVector( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers )
 {

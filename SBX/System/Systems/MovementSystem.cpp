@@ -1,9 +1,9 @@
 #include "MovementSystem.h"
 #include "Utils/MathUtils.h"
-#include "AttractorSubSystem.h"
-#include "AvoidanceSubSystem.h"
-#include "SeekingSubSystem.h"
-#include "SwarmSubSystem.h"
+#include "MovementSubSystems/AttractorSubSystem.h"
+#include "MovementSubSystems/AvoidanceSubSystem.h"
+#include "MovementSubSystems/SeekingSubSystem.h"
+#include "MovementSubSystems/SwarmSubSystem.h"
 
 MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Movement" )

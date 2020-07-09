@@ -11,7 +11,7 @@ void AvoidanceSubSystem::Tick()
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
-		if ( !agent.second.Avoiding )
+		if ( agent.second.MovementBehaviour != AgentComponent::Avoiding )
 		{
 			continue;
 		}

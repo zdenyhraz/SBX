@@ -11,7 +11,7 @@ void SeekingSubSystem::Tick()
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
-		if ( !agent.second.Seeking )
+		if ( agent.second.MovementBehaviour != AgentComponent::Seeking )
 		{
 			continue;
 		}

@@ -3,19 +3,16 @@
 
 struct EntityInfoComponent : Component
 {
-	enum EntityType { Entity };
-
-	EntityInfoComponent():
-		Id( 0 ),
-		Type( Entity ),
-		Name( "" ),
-		Health( 100 )
+	enum EntityType
 	{
+		Entity,
+		Camera,
+		Light
+	};
 
-	}
 
-	int Id;
-	EntityType Type;
-	std::string Name;
-	int Health;
+	int Id = 0;
+	EntityType Type = Entity;
+	std::string Name = "";
+	int Health = 100;
 };

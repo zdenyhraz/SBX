@@ -3,19 +3,16 @@
 
 struct AgentComponent : Component
 {
-	AgentComponent():
-		Avoiding( false ),
-		Seeking( false ),
-		Swarming( false )
+	enum MovementBehaviour
 	{
+		None,
+		Avoiding,
+		Seeking,
+		Swarming
+	};
 
-	}
-
-	bool Avoiding;
-	bool Seeking;
-	bool Swarming;
-
-	double AvoidSpeed;
-	double SeekSpeed;
-	int TargetId;
+	MovementBehaviour MovementBehaviour = None;
+	double AvoidSpeed = 0;
+	double SeekSpeed = 0;
+	int TargetId = 0;
 };

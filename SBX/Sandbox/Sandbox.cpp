@@ -76,7 +76,7 @@ void Sandbox::InitTest()
 
 	for ( auto &ag : m_Components->Agents.GetContainer() )
 	{
-		ag.second.Swarming = true;
+		ag.second.MovementBehaviour = AgentComponent::Swarming;
 	}
 
 	if ( 1 )
