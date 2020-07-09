@@ -10,5 +10,8 @@ public:
 	void Tick() override;
 
 private:
+	std::string m_WindowName;
+	int m_WindowWidth;
+	int m_WindowHeight;
 	GLFWwindow *m_Window;
 };

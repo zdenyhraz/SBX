@@ -1,7 +1,10 @@
 #include "RenderSystem.h"
 
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Render", true )
+	System( components, managers, "Render", true ),
+	m_WindowName( "SBX 3D" ),
+	m_WindowWidth( 1500 ),
+	m_WindowHeight( 1000 )
 {
 
 }
@@ -9,9 +12,10 @@ RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::s
 void RenderSystem::Tick()
 {
 	glfwInit();
-	m_Window = glfwCreateWindow( 640, 480, "Hello OpenGL", NULL, NULL );
+	m_Window = glfwCreateWindow( m_WindowWidth, m_WindowHeight, m_WindowName.c_str(), NULL, NULL );
 	glfwMakeContextCurrent( m_Window );
 	glewInit();
+	LOG_INFO( "SBX using OpenGL version {}", glGetString( GL_VERSION ) );
 
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
