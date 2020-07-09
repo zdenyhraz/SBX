@@ -84,37 +84,48 @@ void RenderSystem::Tick()
 		2, 3, 0
 	};
 
+	// <VERTEX BUFFERS>
+	// - basic storage of vertices
+	// - gen buffers - unique id
+	// - bind buffer - state machine
+	// - buffer data - alloc on GPU
 	unsigned int vertexBufferId;
 	glGenBuffers( 1, &vertexBufferId );
 	glBindBuffer( GL_ARRAY_BUFFER, vertexBufferId );
 	glBufferData( GL_ARRAY_BUFFER, 4 * 2 * sizeof( float ), positions, GL_STATIC_DRAW );
 
-	int attribIdx = 0;//index of vertex attribute (just one - position)
-	int attribCnt = 2;//floats per vertex attribute (two - 2D position)
-	int stride = 2 * sizeof( float );//stride between vertices
-	const void *attribPtr = 0;//byte offset to this attribute
-	glEnableVertexAttribArray( attribIdx );
-	glVertexAttribPointer( attribIdx, attribCnt, GL_FLOAT, GL_FALSE, stride, attribPtr );
+	// <VERTEX ATTRIB POINTERS>
+	// - index of vertex attribute (just one - position)
+	// - floats per vertex attribute (two - 2D position)
+	// - stride between vertices
+	// - byte offset to this attribute
+	glEnableVertexAttribArray( 0 );
+	glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof( float ), ( const void * )0 );
 
+	// <INDEX BUFFERS>
+	// - index buffers help reuse memory - no need to copy adjacent vertices
+	// - draw call count is all the indices tho
 	unsigned int indexBufferId;
 	glGenBuffers( 1, &indexBufferId );
 	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, indexBufferId );
 	glBufferData( GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof( unsigned int ), indices, GL_STATIC_DRAW );
 
+	// <SHADERS>
+	// there can be other shaders (like compute shader, geometry shader, idk...), but most important are:
+	// - vertex shader is run for each vertex (can for example project vertices)
+	// - fragment (pixel) shader is run for each pixel that needs to be rasterized (can for example determines color, lighting)
 	std::string vertexShader = ParseShader( "Resources/Shaders/Vertex.shader" );
 	std::string fragmentShader = ParseShader( "Resources/Shaders/Fragment.shader" );
-
 	unsigned int shader = CreateShader( vertexShader, fragmentShader );
 	glUseProgram( shader );
 
-	// <INDEX BUFFERS>
-	// - index buffers help reuse memory - no need to copy adjacent vertices
-	// - draw call count is all the indices tho
+	// <UNIFORMS>
+	// - define in shader - e.g. "uniform vec4 u_Color"
+	// - name in get uniform location must be exactly the same
+	int location = glGetUniformLocation( shader, "u_Color" );
+	glUniform4f( location, 0.5f, 0.0f, 1.0f, 1.0f );
 
-	// <SHADERS>
-	// there can be other shaders (like compute shader, geometry shader, idk...), but most important are:
-	// 1) vertex shader is run for each vertex (can for example project vertices)
-	// 2) fragment (pixel) shader is run for each pixel that needs to be rasterized (can for example determines color, lighting)
+
 
 
 	while ( !glfwWindowShouldClose( m_Window ) )
