@@ -10,4 +10,5 @@ public:
 	void Tick() override;
 
 private:
+	GLFWwindow *m_Window;
 };

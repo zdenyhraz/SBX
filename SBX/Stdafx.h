@@ -31,6 +31,8 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+//glfw
+#include <GLFW/glfw3.h>
 //custom
 #include "Log/Logger.h"
 #include "Utils/MathUtils.h"
