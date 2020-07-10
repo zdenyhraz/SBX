@@ -116,9 +116,9 @@ void RenderSystem::Tick()
 
 	// unbind all
 	glUseProgram( 0 );
-	glBindVertexArray( 0 );
-	glBindBuffer( GL_ARRAY_BUFFER, 0 );
-	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, 0 );
+	va.Unbind();
+	vb.Unbind();
+	ib.Unbind();
 
 	float r = 0.0f;
 	float incrementAbs = 0.07f;
