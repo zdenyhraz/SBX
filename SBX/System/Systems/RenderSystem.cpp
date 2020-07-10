@@ -4,6 +4,7 @@
 #include "Render/VertexBufferLayout.h"
 #include "Render/IndexBuffer.h"
 #include "Render/Shader.h"
+#include "Render/Renderer.h"
 
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Render", true ),
@@ -44,8 +45,8 @@ void RenderSystem::Tick()
 	va.AddBuffer( vb, vbl );
 	IndexBuffer ib( indices, 6 );
 	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
+	Renderer renderer;
 
-	// unbind all
 	va.Unbind();
 	vb.Unbind();
 	ib.Unbind();
@@ -57,14 +58,10 @@ void RenderSystem::Tick()
 
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
-		glClear( GL_COLOR_BUFFER_BIT );
-		//----------------------------
-
+		renderer.Clear();
 		sh.Bind();
 		sh.SetUniform4f( "u_Color", r, 0.0f, 1.0f, 1.0f );
-
-		va.Bind();
-		ib.Bind();
+		renderer.Draw( va, ib, sh );
 
 		r += increment;
 		if ( r >= 1.0 )
@@ -72,9 +69,6 @@ void RenderSystem::Tick()
 		if ( r <= 0.0 )
 			increment = incrementAbs;
 
-		glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr );
-
-		//----------------------------
 		glfwSwapBuffers( m_Window );
 		glfwPollEvents();
 	}
