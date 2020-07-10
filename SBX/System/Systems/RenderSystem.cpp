@@ -3,6 +3,7 @@
 #include "Render/VertexBuffer.h"
 #include "Render/VertexBufferLayout.h"
 #include "Render/IndexBuffer.h"
+#include "Render/Shader.h"
 
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Render", true ),
@@ -49,11 +50,11 @@ unsigned int RenderSystem::CompileShader( unsigned int type, const std::string &
 	return id;
 }
 
-unsigned int RenderSystem::CreateShader( const std::string &vertexShader, const std::string &fragmentShader )
+unsigned int RenderSystem::CreateShader( const std::string &sourceVertex, const std::string &sourceFragment )
 {
 	unsigned int program = glCreateProgram();
-	unsigned int vs = CompileShader( GL_VERTEX_SHADER, vertexShader );
-	unsigned int fs = CompileShader( GL_FRAGMENT_SHADER, fragmentShader );
+	unsigned int vs = CompileShader( GL_VERTEX_SHADER, sourceVertex );
+	unsigned int fs = CompileShader( GL_FRAGMENT_SHADER, sourceFragment );
 
 	glAttachShader( program, vs );
 	glAttachShader( program, fs );
@@ -89,7 +90,6 @@ void RenderSystem::Tick()
 		2, 3, 0
 	};
 
-
 	VertexArray va;
 	VertexBuffer vb( positions, 4 * 2 * sizeof( float ) );
 	VertexBufferLayout vbl;
@@ -97,28 +97,13 @@ void RenderSystem::Tick()
 	va.AddBuffer( vb, vbl );
 	IndexBuffer ib( indices, 6 );
 
-	// <SHADERS>
-	// there can be other shaders (like compute shader, geometry shader, idk...), but most important are:
-	// - vertex shader is run for each vertex (can for example project vertices)
-	// - fragment (pixel) shader is run for each pixel that needs to be rasterized (can for example determines color, lighting)
-	std::string vertexShader = ParseShader( "Resources/Shaders/Vertex.shader" );
-	std::string fragmentShader = ParseShader( "Resources/Shaders/Fragment.shader" );
-	unsigned int shader = CreateShader( vertexShader, fragmentShader );
-	glUseProgram( shader );
-
-	// <UNIFORMS>
-	// - passes data from CPU to GPU (glUniform4f call before draw call)
-	// - cannot be cahnged during one draw call - different colors need vertex attribs
-	// - define in shader - e.g. "uniform vec4 u_Color"
-	// - name in get uniform location must be exactly the same
-	int location = glGetUniformLocation( shader, "u_Color" );
-	glUniform4f( location, 0.5f, 0.0f, 1.0f, 1.0f );
+	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 
 	// unbind all
-	glUseProgram( 0 );
 	va.Unbind();
 	vb.Unbind();
 	ib.Unbind();
+	sh.Unbind();
 
 	float r = 0.0f;
 	float incrementAbs = 0.07f;
@@ -129,8 +114,8 @@ void RenderSystem::Tick()
 		glClear( GL_COLOR_BUFFER_BIT );
 		//----------------------------
 
-		glUseProgram( shader );
-		glUniform4f( location, r, 0.0f, 1.0f, 1.0f );
+		sh.Bind();
+		sh.SetUniform4f( "u_Color", r, 0.0f, 1.0f, 1.0f );
 
 		va.Bind();
 		ib.Bind();
@@ -147,6 +132,5 @@ void RenderSystem::Tick()
 		glfwSwapBuffers( m_Window );
 		glfwPollEvents();
 	}
-	glDeleteProgram( shader );
 	glfwTerminate();
 }
