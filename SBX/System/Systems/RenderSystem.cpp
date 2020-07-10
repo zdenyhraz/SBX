@@ -74,15 +74,23 @@ void RenderSystem::Tick()
 	ImGui_ImplGlfw_InitForOpenGL( m_Window, true );
 	ImGui_ImplOpenGL3_Init( ( char * )glGetString( GL_NUM_SHADING_LANGUAGE_VERSIONS ) );
 
-	glm::vec3 translation( 0, 0, 0 );
+	glm::vec3 translationA( 0, 0, 0 );
+	glm::vec3 translationB( 0, 0, 0 );
 
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		renderer.Clear();
-		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), translation );
-		glm::mat4 mvp = proj * view * model;
+		glm::mat4 modelA = glm::translate( glm::mat4( 1.0f ), translationA );
+		glm::mat4 modelB = glm::translate( glm::mat4( 1.0f ), translationB );
+		glm::mat4 mvpA = proj * view * modelA;
+		glm::mat4 mvpB = proj * view * modelB;
+
 		sh.Bind();
-		sh.SetUniformMat4f( "u_MVP", mvp );
+
+		sh.SetUniformMat4f( "u_MVP", mvpA );
+		renderer.Draw( va, ib, sh );
+
+		sh.SetUniformMat4f( "u_MVP", mvpB );
 		renderer.Draw( va, ib, sh );
 
 		ImGui_ImplOpenGL3_NewFrame();
@@ -94,7 +102,9 @@ void RenderSystem::Tick()
 
 			ImGui::Text( "Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate );
 			ImGui::NewLine();
-			ImGui::SliderFloat3( "translation", &translation.x, -1.0f, 1.0f );
+			ImGui::SliderFloat3( "translation A", &translationA.x, -1.0f, 1.0f );
+			ImGui::SliderFloat3( "translation B", &translationB.x, -1.0f, 1.0f );
+
 
 			ImGui::End();
 		}
