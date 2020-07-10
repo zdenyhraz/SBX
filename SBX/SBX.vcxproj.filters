@@ -91,4 +91,7 @@
     <None Include="Resources\Shaders\Vertex.shader" />
     <None Include="Resources\Shaders\Fragment.shader" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Textures\sasa.png" />
+  </ItemGroup>
 </Project>

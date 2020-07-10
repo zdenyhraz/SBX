@@ -256,6 +256,9 @@
     <None Include="Resources\Shaders\Fragment.shader" />
     <None Include="Resources\Shaders\Vertex.shader" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Textures\sasa.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
