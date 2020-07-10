@@ -30,9 +30,9 @@ void RenderSystem::Tick()
 	float positions[] =
 	{
 		-0.5f, -0.7f, 0.0f, 0.0f,
-		+0.5f, -0.3f, 1.0f, 0.0f,
-		+0.5f, +0.7f, 1.0f, 1.0f,
-		-0.5f, +0.3f, 0.0f, 1.0f
+		+0.7f, -0.3f, 1.0f, 0.0f,
+		+0.5f, +0.5f, 1.0f, 1.0f,
+		-0.7f, +0.7f, 0.0f, 1.0f
 	};
 
 	unsigned int indices[] =
@@ -66,8 +66,6 @@ void RenderSystem::Tick()
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		renderer.Clear();
-		sh.Bind();
-		sh.SetUniform4f( "u_Color", r, 1.0f - r, r, 1.0f );
 		renderer.Draw( va, ib, sh );
 
 		r += increment;

@@ -6,6 +6,7 @@
 // - gen buffers - unique id
 // - bind buffer - state machine
 // - buffer data - alloc on GPU
+// - default screen coordinates are in [-1, 1]
 class VertexBuffer
 {
 public:
