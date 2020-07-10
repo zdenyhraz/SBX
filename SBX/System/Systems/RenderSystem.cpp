@@ -55,10 +55,10 @@ void RenderSystem::Tick()
 
 	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	sh.Bind();
+	sh.SetUniform1i( "u_Texture", 0 );
 
 	Texture texture( "Resources/Textures/sasa.png" );
 	texture.Bind();
-	sh.SetUniform1i( "u_Texture", 0 );
 
 	va.Unbind();
 	vb.Unbind();
@@ -79,28 +79,25 @@ void RenderSystem::Tick()
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		renderer.Clear();
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-
 		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), translation );
 		glm::mat4 mvp = proj * view * model;
-
 		sh.Bind();
 		sh.SetUniformMat4f( "u_MVP", mvp );
 		renderer.Draw( va, ib, sh );
 
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 		{
-			ImGui::Begin( "Hello, world!" );
+			ImGui::Begin( "ModelViewProjection matrix" );
 			ImGui::SetWindowFontScale( 1.5 );
 
 			ImGui::Text( "Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate );
-			ImGui::SliderFloat( "translation.x", &translation.x, -1.0f, 1.0f );
-			ImGui::SliderFloat( "translation.y", &translation.y, -1.0f, 1.0f );
+			ImGui::NewLine();
+			ImGui::SliderFloat3( "translation", &translation.x, -1.0f, 1.0f );
 
 			ImGui::End();
 		}
-
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData( ImGui::GetDrawData() );
 
