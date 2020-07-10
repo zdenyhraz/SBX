@@ -42,6 +42,8 @@
     <ClCompile Include="Vendor\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -104,6 +106,8 @@
     <ClInclude Include="Vendor\imgui\imstb_rectpack.h" />
     <ClInclude Include="Vendor\imgui\imstb_textedit.h" />
     <ClInclude Include="Vendor\imgui\imstb_truetype.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\TestScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />

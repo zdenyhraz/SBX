@@ -6,6 +6,7 @@
 #include "Render/Shader.h"
 #include "Render/Renderer.h"
 #include "Render/Texture.h"
+#include "Scene/TestScene.h"
 
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Render", true ),
@@ -78,9 +79,14 @@ void RenderSystem::Tick()
 	glm::vec3 translationB( 0, 0, 0 );
 	sh.Bind();
 
+	TestScene scene;
+
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		renderer.Clear();
+
+		scene.OnUpdate( 0.0f );
+		scene.OnRender();
 
 		{
 			glm::mat4 modelA = glm::translate( glm::mat4( 1.0f ), translationA );
@@ -99,6 +105,8 @@ void RenderSystem::Tick()
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
+		scene.OnImGuiRender();
+
 		{
 			ImGui::Begin( "ModelViewProjection matrix" );
 			ImGui::SetWindowFontScale( 1.5 );
@@ -107,7 +115,6 @@ void RenderSystem::Tick()
 			ImGui::NewLine();
 			ImGui::SliderFloat3( "translation A", &translationA.x, -1.0f, 1.0f );
 			ImGui::SliderFloat3( "translation B", &translationB.x, -1.0f, 1.0f );
-
 
 			ImGui::End();
 		}
