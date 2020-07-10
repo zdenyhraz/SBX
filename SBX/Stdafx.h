@@ -34,6 +34,8 @@
 //OpenGL
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+//stb_image
+#include "Vendor/stb_image//stb_image.h"
 //custom
 #include "Log/Logger.h"
 #include "Utils/MathUtils.h"

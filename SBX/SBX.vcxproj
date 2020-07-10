@@ -199,6 +199,7 @@
     <ClCompile Include="System\Systems\TemplateSystem.cpp" />
     <ClCompile Include="System\Systems\MovementSubSystems\AttractorSubSystem.cpp" />
     <ClCompile Include="System\Systems\TimeSystem.cpp" />
+    <ClCompile Include="Vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\Components\AgentComponent.h" />
@@ -251,6 +252,7 @@
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />
+    <ClInclude Include="Vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Fragment.shader" />
