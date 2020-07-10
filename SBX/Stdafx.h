@@ -35,12 +35,17 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 //stb_image
-#include <stb_image/stb_image.h>
+#include <Vendor/stb_image/stb_image.h>
 //glm
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+//imgui
+#include <Vendor/imgui/imgui.h>
+#include <Vendor/imgui/imgui_impl_glfw.h>
+#include <Vendor/imgui/imgui_impl_opengl3.h>
 //custom
 #include "Log/Logger.h"
 #include "Utils/MathUtils.h"
 #include "Utils/TimeUtils.h"
 #include "Utils/ThreadUtils.h"
+

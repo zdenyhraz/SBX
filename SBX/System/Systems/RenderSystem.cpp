@@ -29,10 +29,10 @@ void RenderSystem::Tick()
 
 	float positions[] =
 	{
-		-0.5f, -0.5f, 0.0f, 0.0f,
-		+0.5f, -0.5f, 1.0f, 0.0f,
-		+0.5f, +0.5f, 1.0f, 1.0f,
-		-0.5f, +0.5f, 0.0f, 1.0f
+		-0.25f, -0.25f, 0.0f, 0.0f,
+		+0.25f, -0.25f, 1.0f, 0.0f,
+		+0.25f, +0.25f, 1.0f, 1.0f,
+		-0.25f, +0.25f, 0.0f, 1.0f
 	};
 
 	unsigned int indices[] =
@@ -52,8 +52,9 @@ void RenderSystem::Tick()
 	//model view projection matrix (M V P) -> (model)*(view)*(projection) in that order (however maths - reversed)
 	glm::mat4 proj = glm::ortho( -1.0f, 1.0f, -m_AspectRatioReversed, m_AspectRatioReversed, -1.0f, 1.0f );
 	glm::mat4 view = glm::translate( glm::mat4( 1.0f ), glm::vec3( -0.5, 0, 0 ) );
-	glm::mat4 model = glm::mat4( 1.0f );
+	glm::mat4 model = glm::translate( glm::mat4( 1.0f ), glm::vec3( 0, 0.25, 0 ) );
 	glm::mat4 mvp = proj * view * model;
+
 	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	sh.Bind();
 	Texture texture( "Resources/Textures/sasa.png" );
@@ -67,6 +68,9 @@ void RenderSystem::Tick()
 	sh.Unbind();
 
 	Renderer renderer;
+	ImGui::CreateContext();
+	ImGui_ImplGlfw_InitForOpenGL( m_Window, true );
+
 	float r = 0.0f;
 	float incrementAbs = 0.02f;
 	float increment = incrementAbs;
