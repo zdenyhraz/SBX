@@ -14,59 +14,6 @@ RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::s
 
 }
 
-std::string RenderSystem::ParseShader( const std::string &path )
-{
-	std::ifstream stream( path );
-	std::stringstream ss;
-	std::string line;
-	while ( getline( stream, line ) )
-	{
-		ss << line << "\n";
-	}
-	LOG_DEBUG( "Shader {} source code:\n{}", path, ss.str() );
-	return ss.str();
-}
-
-unsigned int RenderSystem::CompileShader( unsigned int type, const std::string &source )
-{
-	unsigned int id = glCreateShader( type );
-	const char *src = source.c_str();
-	glShaderSource( id, 1, &src, nullptr );
-	glCompileShader( id );
-
-	int result;
-	glGetShaderiv( id, GL_COMPILE_STATUS, &result );
-	if ( result == GL_FALSE )
-	{
-		int length;
-		glGetShaderiv( id, GL_INFO_LOG_LENGTH, &length );
-		char *message = ( char * )alloca( length * sizeof( char ) );
-		glGetShaderInfoLog( id, length, &length, message );
-		LOG_ERROR( "Failed to compile shader! (type {}) - {}", type, message );
-		glDeleteShader( id );
-		return 0;
-	}
-
-	return id;
-}
-
-unsigned int RenderSystem::CreateShader( const std::string &sourceVertex, const std::string &sourceFragment )
-{
-	unsigned int program = glCreateProgram();
-	unsigned int vs = CompileShader( GL_VERTEX_SHADER, sourceVertex );
-	unsigned int fs = CompileShader( GL_FRAGMENT_SHADER, sourceFragment );
-
-	glAttachShader( program, vs );
-	glAttachShader( program, fs );
-	glLinkProgram( program );
-	glValidateProgram( program );
-
-	glDeleteShader( vs );
-	glDeleteShader( fs );
-
-	return program;
-}
-
 void RenderSystem::Tick()
 {
 	glfwInit();
@@ -96,7 +43,6 @@ void RenderSystem::Tick()
 	vbl.Push<float>( 2 );
 	va.AddBuffer( vb, vbl );
 	IndexBuffer ib( indices, 6 );
-
 	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 
 	// unbind all
