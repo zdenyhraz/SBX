@@ -10,6 +10,7 @@
 // - cannot be cahnged during one draw call - different colors need vertex attribs
 // - define in shader - e.g. "uniform vec4 u_Color"
 // - name in get uniform location must be exactly the same, ofc
+// - call of glUniform4f affects current program (currently bound)
 class Shader
 {
 public:
