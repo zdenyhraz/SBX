@@ -6,7 +6,8 @@
 // - gen buffers - unique id
 // - bind buffer - state machine
 // - buffer data - alloc on GPU
-// - default screen coordinates are in [-1, 1]
+// - final (projected) screen coordinates are in [-1, 1] - thats what OpenGL renders
+// - projection matrix changes this - vertices should be in the same range as proj matrix
 class VertexBuffer
 {
 public:

@@ -5,6 +5,7 @@
 // - loads image from disk
 // - texture slot - int - max 32, we can reuse them, whatever
 // - set texture slot in bind, uniform needs to match
+// - texture coordinates in vertex array - in [0, 1] based on x/y
 class Texture
 {
 public:

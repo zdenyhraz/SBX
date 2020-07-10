@@ -13,7 +13,7 @@ RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::s
 	m_WindowWidth( 2000 ),
 	m_WindowHeight( 1500 )
 {
-
+	m_AspectRatioReversed = ( float )m_WindowHeight / m_WindowWidth;
 }
 
 void RenderSystem::Tick()
@@ -29,10 +29,10 @@ void RenderSystem::Tick()
 
 	float positions[] =
 	{
-		-0.5f, -0.7f, 0.0f, 0.0f,
-		+0.7f, -0.3f, 1.0f, 0.0f,
+		-0.5f, -0.5f, 0.0f, 0.0f,
+		+0.5f, -0.5f, 1.0f, 0.0f,
 		+0.5f, +0.5f, 1.0f, 1.0f,
-		-0.7f, +0.7f, 0.0f, 1.0f
+		-0.5f, +0.5f, 0.0f, 1.0f
 	};
 
 	unsigned int indices[] =
@@ -49,13 +49,17 @@ void RenderSystem::Tick()
 	va.AddBuffer( vb, vbl );
 	IndexBuffer ib( indices, 6 );
 
-	glm::mat4 proj = glm::ortho( -2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f );
+	//model view projection matrix (M V P) -> (model)*(view)*(projection) in that order (however maths - reversed)
+	glm::mat4 proj = glm::ortho( -1.0f, 1.0f, -m_AspectRatioReversed, m_AspectRatioReversed, -1.0f, 1.0f );
+	glm::mat4 view = glm::translate( glm::mat4( 1.0f ), glm::vec3( -0.5, 0, 0 ) );
+	glm::mat4 model = glm::mat4( 1.0f );
+	glm::mat4 mvp = proj * view * model;
 	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	sh.Bind();
 	Texture texture( "Resources/Textures/sasa.png" );
 	texture.Bind();
 	sh.SetUniform1i( "u_Texture", 0 );
-	sh.SetUniformMat4f( "u_MVP", proj );
+	sh.SetUniformMat4f( "u_MVP", mvp );
 
 	va.Unbind();
 	vb.Unbind();
