@@ -76,22 +76,25 @@ void RenderSystem::Tick()
 
 	glm::vec3 translationA( 0, 0, 0 );
 	glm::vec3 translationB( 0, 0, 0 );
+	sh.Bind();
 
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		renderer.Clear();
-		glm::mat4 modelA = glm::translate( glm::mat4( 1.0f ), translationA );
-		glm::mat4 modelB = glm::translate( glm::mat4( 1.0f ), translationB );
-		glm::mat4 mvpA = proj * view * modelA;
-		glm::mat4 mvpB = proj * view * modelB;
 
-		sh.Bind();
+		{
+			glm::mat4 modelA = glm::translate( glm::mat4( 1.0f ), translationA );
+			glm::mat4 mvpA = proj * view * modelA;
+			sh.SetUniformMat4f( "u_MVP", mvpA );
+			renderer.Draw( va, ib, sh );
+		}
 
-		sh.SetUniformMat4f( "u_MVP", mvpA );
-		renderer.Draw( va, ib, sh );
-
-		sh.SetUniformMat4f( "u_MVP", mvpB );
-		renderer.Draw( va, ib, sh );
+		{
+			glm::mat4 modelB = glm::translate( glm::mat4( 1.0f ), translationB );
+			glm::mat4 mvpB = proj * view * modelB;
+			sh.SetUniformMat4f( "u_MVP", mvpB );
+			renderer.Draw( va, ib, sh );
+		}
 
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
