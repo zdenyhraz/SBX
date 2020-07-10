@@ -7,7 +7,7 @@ public:
 	TestScene();
 	~TestScene();
 
-	void OnUpdate( float dt ) override;
+	void OnUpdate() override;
 	void OnRender() override;
 	void OnImGuiRender() override;
 

@@ -85,7 +85,7 @@ void RenderSystem::Tick()
 	{
 		renderer.Clear();
 
-		scene.OnUpdate( 0.0f );
+		scene.OnUpdate();
 		scene.OnRender();
 
 		{

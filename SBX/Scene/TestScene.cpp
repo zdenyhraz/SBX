@@ -9,7 +9,7 @@ TestScene::~TestScene()
 {
 }
 
-void TestScene::OnUpdate( float dt )
+void TestScene::OnUpdate()
 {
 }
 
@@ -21,5 +21,6 @@ void TestScene::OnRender()
 
 void TestScene::OnImGuiRender()
 {
+	ImGui::SetWindowFontScale( 1.5 );
 	ImGui::ColorEdit4( "Clear color", &m_ClearColor.x );
 }
