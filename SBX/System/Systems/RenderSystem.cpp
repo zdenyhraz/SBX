@@ -1,5 +1,7 @@
 #include "RenderSystem.h"
+#include "Render/VertexArray.h"
 #include "Render/VertexBuffer.h"
+#include "Render/VertexBufferLayout.h"
 #include "Render/IndexBuffer.h"
 
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
@@ -87,37 +89,12 @@ void RenderSystem::Tick()
 		2, 3, 0
 	};
 
-	// <VERTEX ARRAYS>
-	// - with multiple objects in the scene we need to (for each object) do the following:
-	//	 bind shader, buffer, layout, index and then draw
-	// - vertex array simplifies this - binds the buffer with its layout
-	// - before draw call we just bind bind shader, array, index and then draw
-	// - option A: one global bound vertex array and before draw call I bind shader,buffer,layout,index
-	// - option B: each object has its vertex array and before draw call I bind shader,array,index
-	// - OpenGL recommends option B
-	unsigned int vertexArrayId;
-	glGenVertexArrays( 1, &vertexArrayId );
-	glBindVertexArray( vertexArrayId );
 
-	// <VERTEX BUFFERS>
-	// - basic storage of vertices
-	// - gen buffers - unique id
-	// - bind buffer - state machine
-	// - buffer data - alloc on GPU
+	VertexArray va;
 	VertexBuffer vb( positions, 4 * 2 * sizeof( float ) );
-
-	// <VERTEX ATTRIB POINTERS>
-	// - specifies layout of the data in vertex buffer
-	// - index of vertex attribute (just one - position)
-	// - floats per vertex attribute (two - 2D position)
-	// - stride between vertices
-	// - byte offset to this attribute
-	glEnableVertexAttribArray( 0 );
-	glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof( float ), ( const void * )0 );
-
-	// <INDEX BUFFERS>
-	// - index buffers help reuse memory - no need to copy adjacent vertices
-	// - draw call count is all the indices tho
+	VertexBufferLayout vbl;
+	vbl.Push<float>( 2 );
+	va.AddBuffer( vb, vbl );
 	IndexBuffer ib( indices, 6 );
 
 	// <SHADERS>
@@ -155,7 +132,7 @@ void RenderSystem::Tick()
 		glUseProgram( shader );
 		glUniform4f( location, r, 0.0f, 1.0f, 1.0f );
 
-		glBindVertexArray( vertexArrayId );
+		va.Bind();
 		ib.Bind();
 
 		r += increment;

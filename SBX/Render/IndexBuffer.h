@@ -1,6 +1,9 @@
 #pragma once
 #include "Stdafx.h"
 
+// <INDEX BUFFERS>
+// - index buffers help reuse memory - no need to copy adjacent vertices
+// - draw call count is all the indices tho
 class IndexBuffer
 {
 public:
