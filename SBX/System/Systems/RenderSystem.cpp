@@ -9,7 +9,7 @@
 
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Render", true ),
-	m_WindowName( "SBX 3D" ),
+	m_WindowName( "SBX OpenGL" ),
 	m_WindowWidth( 1500 ),
 	m_WindowHeight( 1000 )
 {
@@ -23,6 +23,8 @@ void RenderSystem::Tick()
 	glfwMakeContextCurrent( m_Window );
 	glfwSwapInterval( 1 );
 	glewInit();
+	glEnable( GL_BLEND );
+	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 	LOG_INFO( "SBX using OpenGL version {}", glGetString( GL_VERSION ) );
 
 	float positions[] =

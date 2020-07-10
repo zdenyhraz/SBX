@@ -35,7 +35,10 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 //stb_image
-#include "Vendor/stb_image//stb_image.h"
+#include <stb_image/stb_image.h>
+//glm
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 //custom
 #include "Log/Logger.h"
 #include "Utils/MathUtils.h"
