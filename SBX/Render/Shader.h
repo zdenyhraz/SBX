@@ -5,12 +5,14 @@
 // there can be other shaders (like compute shader, geometry shader, idk...), but most important are:
 // - vertex shader is run for each vertex (can for example project vertices)
 // - fragment (pixel) shader is run for each pixel that needs to be rasterized (can for example determines color, lighting)
+// - "layout( location = 0 ) in T x" should correspond to the vertex array structure;
 // <UNIFORMS>
 // - passes data from CPU to GPU (glUniform4f call before draw call)
 // - cannot be cahnged during one draw call - different colors need vertex attribs
-// - define in shader - e.g. "uniform vec4 u_Color"
+// - define in shader - e.g. "uniform vec4 u_Color", use naming convention u_
 // - name in get uniform location must be exactly the same, ofc
 // - call of glUniform4f affects current program (currently bound)
+// - pass data from vertex shader (vertex array) to fragment shader via out T v_x -> in T v_x, use naming convention v_
 class Shader
 {
 public:
@@ -18,6 +20,7 @@ public:
 	~Shader();
 	void Bind() const;
 	void Unbind() const;
+	void SetUniform1i( const std::string &name, int v );
 	void SetUniform1f( const std::string &name, float v );
 	void SetUniform4f( const std::string &name, float v0, float v1, float v2, float v3 );
 

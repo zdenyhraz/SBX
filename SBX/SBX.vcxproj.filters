@@ -35,6 +35,7 @@
     <ClCompile Include="Render\VertexBufferLayout.cpp" />
     <ClCompile Include="Render\Shader.cpp" />
     <ClCompile Include="Vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="Render\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -88,6 +89,7 @@
     <ClInclude Include="Render\VertexBufferLayout.h" />
     <ClInclude Include="Render\Shader.h" />
     <ClInclude Include="Vendor\stb_image\stb_image.h" />
+    <ClInclude Include="Render\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />

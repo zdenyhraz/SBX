@@ -165,6 +165,7 @@
     <ClCompile Include="Render\IndexBuffer.cpp" />
     <ClCompile Include="Render\Renderer.cpp" />
     <ClCompile Include="Render\Shader.cpp" />
+    <ClCompile Include="Render\Texture.cpp" />
     <ClCompile Include="Render\VertexArray.cpp" />
     <ClCompile Include="Render\VertexBuffer.cpp" />
     <ClCompile Include="Render\VertexBufferLayout.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="Render\IndexBuffer.h" />
     <ClInclude Include="Render\Renderer.h" />
     <ClInclude Include="Render\Shader.h" />
+    <ClInclude Include="Render\Texture.h" />
     <ClInclude Include="Render\VertexArray.h" />
     <ClInclude Include="Render\VertexBuffer.h" />
     <ClInclude Include="Render\VertexBufferLayout.h" />
