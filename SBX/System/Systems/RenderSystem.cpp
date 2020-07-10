@@ -10,8 +10,8 @@
 RenderSystem::RenderSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers, "Render", true ),
 	m_WindowName( "SBX OpenGL" ),
-	m_WindowWidth( 1500 ),
-	m_WindowHeight( 1000 )
+	m_WindowWidth( 2000 ),
+	m_WindowHeight( 1500 )
 {
 
 }
@@ -48,17 +48,21 @@ void RenderSystem::Tick()
 	vbl.Push<float>( 2 );//texture coordinate
 	va.AddBuffer( vb, vbl );
 	IndexBuffer ib( indices, 6 );
+
+	glm::mat4 proj = glm::ortho( -2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f );
 	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
-	Renderer renderer;
+	sh.Bind();
 	Texture texture( "Resources/Textures/sasa.png" );
 	texture.Bind();
 	sh.SetUniform1i( "u_Texture", 0 );
+	sh.SetUniformMat4f( "u_MVP", proj );
 
 	va.Unbind();
 	vb.Unbind();
 	ib.Unbind();
 	sh.Unbind();
 
+	Renderer renderer;
 	float r = 0.0f;
 	float incrementAbs = 0.02f;
 	float increment = incrementAbs;
