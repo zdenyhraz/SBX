@@ -51,16 +51,14 @@ void RenderSystem::Tick()
 
 	//model view projection matrix (M V P) -> (model)*(view)*(projection) in that order (however maths - reversed)
 	glm::mat4 proj = glm::ortho( -1.0f, 1.0f, -m_AspectRatioReversed, m_AspectRatioReversed, -1.0f, 1.0f );
-	glm::mat4 view = glm::translate( glm::mat4( 1.0f ), glm::vec3( -0.5, 0, 0 ) );
-	glm::mat4 model = glm::translate( glm::mat4( 1.0f ), glm::vec3( 0, 0.25, 0 ) );
-	glm::mat4 mvp = proj * view * model;
+	glm::mat4 view = glm::translate( glm::mat4( 1.0f ), glm::vec3( 0, 0, 0 ) );
 
 	Shader sh( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	sh.Bind();
+
 	Texture texture( "Resources/Textures/sasa.png" );
 	texture.Bind();
 	sh.SetUniform1i( "u_Texture", 0 );
-	sh.SetUniformMat4f( "u_MVP", mvp );
 
 	va.Unbind();
 	vb.Unbind();
@@ -68,26 +66,52 @@ void RenderSystem::Tick()
 	sh.Unbind();
 
 	Renderer renderer;
-	ImGui::CreateContext();
-	ImGui_ImplGlfw_InitForOpenGL( m_Window, true );
 
-	float r = 0.0f;
-	float incrementAbs = 0.02f;
-	float increment = incrementAbs;
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGui::StyleColorsDark();
+	//ImGuiIO &io = ImGui::GetIO();( void )io;
+	ImGui_ImplGlfw_InitForOpenGL( m_Window, true );
+	ImGui_ImplOpenGL3_Init( ( char * )glGetString( GL_NUM_SHADING_LANGUAGE_VERSIONS ) );
+
+	glm::vec3 translation( 0, 0, 0 );
 
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		renderer.Clear();
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), translation );
+		glm::mat4 mvp = proj * view * model;
+
+		sh.Bind();
+		sh.SetUniformMat4f( "u_MVP", mvp );
 		renderer.Draw( va, ib, sh );
 
-		r += increment;
-		if ( r >= 1.0 )
-			increment = -incrementAbs;
-		if ( r <= 0.0 )
-			increment = incrementAbs;
+		{
+			ImGui::Begin( "Hello, world!" );
+			ImGui::SetWindowFontScale( 1.5 );
+
+			ImGui::Text( "Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate );
+			ImGui::SliderFloat( "translation.x", &translation.x, -1.0f, 1.0f );
+			ImGui::SliderFloat( "translation.y", &translation.y, -1.0f, 1.0f );
+
+			ImGui::End();
+		}
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData( ImGui::GetDrawData() );
 
 		glfwSwapBuffers( m_Window );
 		glfwPollEvents();
 	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
+
+	glfwDestroyWindow( m_Window );
 	glfwTerminate();
 }
