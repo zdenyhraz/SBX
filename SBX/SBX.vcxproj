@@ -218,8 +218,6 @@
     <ClInclude Include="Component\Components\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
     <ClInclude Include="Component\Components\ModelComponent.h" />
-    <ClInclude Include="Component\Components\TemplateComponent.h" />
-    <ClInclude Include="Component\Component.h" />
     <ClInclude Include="Component\ComponentVector.h" />
     <ClInclude Include="Component\Components\EntityInfoComponent.h" />
     <ClInclude Include="Component\Components\PositionComponent.h" />

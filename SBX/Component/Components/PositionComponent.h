@@ -1,7 +1,6 @@
 #pragma once
-#include "Component/Component.h"
 
-struct PositionComponent : Component
+struct PositionComponent
 {
 	cv::Point2d Position = cv::Point2d( 0, 0 );
 };

@@ -1,7 +1,6 @@
 #pragma once
-#include "Component/Component.h"
 
-struct EntityInfoComponent : Component
+struct EntityInfoComponent
 {
 	enum EntityType
 	{

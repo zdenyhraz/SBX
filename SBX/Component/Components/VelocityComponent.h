@@ -1,7 +1,6 @@
 #pragma once
-#include "Component/Component.h"
 
-struct VelocityComponent : Component
+struct VelocityComponent
 {
 	cv::Point2d Velocity = cv::Point2d( 0, 0 );
 };

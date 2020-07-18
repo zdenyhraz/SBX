@@ -1,7 +1,6 @@
 #pragma once
-#include "Component/Component.h"
 
-struct TimeComponent : Component
+struct TimeComponent
 {
 	static constexpr int RefreshRate = 75;
 	static constexpr long long TargetTickDuration = ( long long )( 1. / RefreshRate * 1000 );
