@@ -55,19 +55,19 @@ void Sandbox::InitTest()
 	for ( auto &mod : m_Components->Models.GetContainer() )
 	{
 		mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
-		mod.second.Size = 5;//std::max( ( int )( Utils::Rand01() * 15 ), 5 );
+		mod.second.Size = 1;//std::max( ( int )( Utils::Rand01() * 15 ), 5 );
 	}
 
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
-		const double spread = 1.0;
+		const float spread = 1.0;
 		pos.second.Position.x = Utils::Rand11() * spread;
 		pos.second.Position.y = Utils::Rand11() * spread;
 	}
 
 	for ( auto &vel : m_Components->Velocities.GetContainer() )
 	{
-		const double spread = 1.0;
+		const float spread = 1.0;
 		vel.second.Velocity.x = Utils::Rand11() * spread;
 		vel.second.Velocity.y = Utils::Rand11() * spread;
 	}
@@ -80,11 +80,11 @@ void Sandbox::InitTest()
 	if ( 1 )
 	{
 		m_Components->EntityInfos.Find( 0 ).Name = "Sasko";
-		m_Components->Models.Find( 0 ).Size = 15;
+		m_Components->Models.Find( 0 ).Size = 3;
 		m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.7, 0.41, 1 );
 
 		m_Components->EntityInfos.Find( 1 ).Name = "Zdeny";
-		m_Components->Models.Find( 1 ).Size = 15;
+		m_Components->Models.Find( 1 ).Size = 3;
 		m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
 	}
 }

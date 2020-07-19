@@ -2,13 +2,13 @@
 
 struct MapComponent
 {
-	static constexpr double MapWidth = 1;
-	static constexpr double MapHeight = 1;
+	static constexpr float MapWidth = 1;
+	static constexpr float MapHeight = 1;
 
-	static constexpr double MinPositionX = -MapWidth;
-	static constexpr double MinPositionY = -MapHeight;
+	static constexpr float MinPositionX = -MapWidth;
+	static constexpr float MinPositionY = -MapHeight;
 
-	static constexpr double MaxPositionX = MapWidth;
-	static constexpr double MaxPositionY = MapHeight;
+	static constexpr float MaxPositionX = MapWidth;
+	static constexpr float MaxPositionY = MapHeight;
 
 };

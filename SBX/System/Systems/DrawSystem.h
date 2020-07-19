@@ -32,4 +32,5 @@ private:
 	int m_FpsTextThickness;
 	cv::Scalar m_FpsTextColor;
 	float m_FpsTextScale;
+	float m_SizeScale;
 };

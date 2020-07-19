@@ -16,7 +16,8 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_FpsTextThickness( 2 ),
 	m_FpsTextColor( 0.2, 1, 0.2 ),
 	m_FpsTextScale( 1.0f ),
-	m_TickDuration( 1000 )
+	m_TickDuration( 1000 ),
+	m_SizeScale( 5.0f )
 {
 	m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
 	m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );
@@ -32,17 +33,15 @@ void DrawSystem::Tick( float dt )
 	{
 		auto pos = m_Components->Positions.Find( model.first );
 		auto winpos = GetWindowCoordinates( pos.Position.x, pos.Position.y );
+		int size = ( int )( m_SizeScale * model.second.Size );
 
-		if ( model.second.Size )
-		{
-			cv::circle( m_Live, winpos, model.second.Size, model.second.Color, m_DrawEntityThickness );
-			auto arrow = Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * ( float )model.second.Size;
-			cv::arrowedLine( m_Live, winpos, winpos + cv::Point( ( int )arrow.x, -( int )arrow.y ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * model.second.Size ) );
-		}
+		cv::circle( m_Live, winpos, size, model.second.Color, m_DrawEntityThickness );
+		auto arrow = Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * ( float )size;
+		cv::arrowedLine( m_Live, winpos, winpos + cv::Point( ( int )arrow.x, -( int )arrow.y ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * size ) );
 
 		if ( m_Components->EntityInfos.Find( model.first ).Name != "" )
 		{
-			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, winpos + cv::Point( ( int )( m_TextRelOffsetX * model.second.Size ), ( int )( m_TextRelOffsetY * model.second.Size ) ), 0, std::max( m_TextRelScale * model.second.Size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
+			cv::putText( m_Live, m_Components->EntityInfos.Find( model.first ).Name, winpos + cv::Point( ( int )( m_TextRelOffsetX * size ), ( int )( m_TextRelOffsetY * size ) ), 0, std::max( m_TextRelScale * size, m_TextMinRelScale ), model.second.Color, m_TextThickness );
 		}
 	}
 

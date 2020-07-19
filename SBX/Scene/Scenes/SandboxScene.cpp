@@ -74,7 +74,8 @@ void SandboxScene::OnRender()
 
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
-		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position );
+		auto &mod = m_Components->Models.Find( pos.first );
+		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) );
 		glm::mat4 mvp = m_Proj * m_View * model;
 		m_Shader->SetUniformMat4f( "u_MVP", mvp );
 		Renderer::Draw( *m_Va, *m_Ib, *m_Shader );
