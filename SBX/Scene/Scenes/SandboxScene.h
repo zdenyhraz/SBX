@@ -16,6 +16,7 @@ private:
 	std::unique_ptr<Shader> m_Shader;
 	glm::mat4 m_Proj;
 	glm::mat4 m_View;
+	glm::vec3 m_ViewPos;
 
 	glm::vec4 m_ClearColor;
 	std::unique_ptr<VertexArray> m_Va;

@@ -2,9 +2,11 @@
 
 SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
 	Scene( components, managers, systems ),
-	m_ClearColor{0.f, 69.f / 255, 204.f / 255, 1.f}
+	m_ClearColor( 0.f, 69.f / 255, 204.f / 255, 1.f ),
+	m_ViewPos( 0.f, 0.f, 0.f )
 {
-
+	m_Proj = glm::ortho( -1.0f, 1.0f, -1.0f / m_AspectRatio, 1.0f / m_AspectRatio, -1.0f, 1.0f );
+	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
 }
 
 void SandboxScene::OnStart()
@@ -77,10 +79,6 @@ void SandboxScene::OnStart()
 	vb.Unbind();
 	m_Ib = std::make_unique<IndexBuffer>( indices, 6 );
 
-	//model view projection matrix (M V P) -> (model)*(view)*(projection) in that order (however maths - reversed)
-	m_Proj = glm::ortho( -1.0f, 1.0f, -1.0f / m_AspectRatio, 1.0f / m_AspectRatio, -1.0f, 1.0f );
-	m_View = glm::translate( glm::mat4( 1.0f ), glm::vec3( 0, 0, 0 ) );
-
 	m_Shader = std::make_unique<Shader>( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	m_Shader->Bind();
 	m_Shader->SetUniform1i( "u_Texture", 0 );
@@ -114,6 +112,8 @@ void SandboxScene::OnUpdate()
 	m_Systems->Movement->Tick( dt );
 	m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
+
+	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
 }
 
 void SandboxScene::OnRender()
@@ -137,5 +137,6 @@ void SandboxScene::OnImGuiRender()
 	ImGui::Text( "Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate );
 	ImGui::NewLine();
 	ImGui::ColorEdit4( "Clear color", &m_ClearColor.x );
+	ImGui::SliderFloat3( "ViewPos", &m_ViewPos.x, -1, 1 );
 	ImGui::End();
 }
