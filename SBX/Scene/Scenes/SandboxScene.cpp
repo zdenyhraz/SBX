@@ -144,5 +144,22 @@ void SandboxScene::OnImGuiRender()
 
 void SandboxScene::OnEvent( const EventComponent &event )
 {
-	m_ViewPos.x += 0.01f;
+	switch ( event.key )
+	{
+		case GLFW_KEY_W:
+			m_ViewPos.y += 0.05f;
+			break;
+
+		case GLFW_KEY_S:
+			m_ViewPos.y -= 0.05f;
+			break;
+
+		case GLFW_KEY_A:
+			m_ViewPos.x -= 0.05f;
+			break;
+
+		case GLFW_KEY_D:
+			m_ViewPos.x += 0.05f;
+			break;
+	}
 }

@@ -106,22 +106,8 @@ void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, 
 {
 	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
 	EventComponent event;
-
-	switch ( key )
-	{
-		case GLFW_KEY_W:
-			break;
-
-		case GLFW_KEY_S:
-			break;
-
-		case GLFW_KEY_A:
-			break;
-
-		case GLFW_KEY_D:
-			break;
-	}
+	event.key = key;
 
 	scene->OnEvent( event );
-	scene->m_Managers->m_EventManager->AddEvent( EventComponent() );
+	//scene->m_Managers->m_EventManager->AddEvent( EventComponent() );
 }
