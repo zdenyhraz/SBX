@@ -3,7 +3,10 @@
 SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
 	Scene( components, managers, systems ),
 	m_ClearColor( 0.f, 69.f / 255, 204.f / 255, 1.f ),
-	m_ViewPos( 0.f, 0.f, 0.f )
+	m_ViewPos( 0.f, 0.f, 0.f ),
+	m_CameraMoveSpeed( 0.01f ),
+	m_CameraZoomSpeed( 0.1f ),
+	m_CameraZoom( 1.f )
 {
 	m_Proj = glm::ortho( -1.0f, 1.0f, -1.0f / m_AspectRatio, 1.0f / m_AspectRatio, -1.0f, 1.0f );
 	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
@@ -114,6 +117,7 @@ void SandboxScene::OnUpdate()
 	m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
 
+	m_Proj = glm::ortho( -1.0f * m_CameraZoom, 1.0f * m_CameraZoom, -1.0f / m_AspectRatio * m_CameraZoom, 1.0f / m_AspectRatio * m_CameraZoom, -1.0f, 1.0f );
 	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
 }
 
@@ -147,19 +151,22 @@ void SandboxScene::OnEvent( const EventComponent &event )
 	switch ( event.key )
 	{
 		case GLFW_KEY_W:
-			m_ViewPos.y += 0.05f;
+			m_ViewPos.y += m_CameraMoveSpeed;
 			break;
 
 		case GLFW_KEY_S:
-			m_ViewPos.y -= 0.05f;
+			m_ViewPos.y -= m_CameraMoveSpeed;
 			break;
 
 		case GLFW_KEY_A:
-			m_ViewPos.x -= 0.05f;
+			m_ViewPos.x -= m_CameraMoveSpeed;
 			break;
 
 		case GLFW_KEY_D:
-			m_ViewPos.x += 0.05f;
+			m_ViewPos.x += m_CameraMoveSpeed;
 			break;
 	}
+
+	m_CameraZoom += m_CameraZoomSpeed * -event.scrolloffset;
+	Utils::Clampr( m_CameraZoom, 0.01f, 10.f );
 }

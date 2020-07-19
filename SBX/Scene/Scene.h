@@ -37,6 +37,7 @@ protected:
 	void ImGuiRender();
 
 	static void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods );
+	static void ScrollCallback( GLFWwindow *window, double xoffset, double yoffset );
 
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;

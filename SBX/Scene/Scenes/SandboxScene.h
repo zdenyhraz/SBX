@@ -23,4 +23,8 @@ private:
 	std::unique_ptr<VertexArray> m_Va;
 	std::unique_ptr<IndexBuffer> m_Ib;
 	std::unique_ptr<Texture> m_Texture;
+
+	float m_CameraMoveSpeed;
+	float m_CameraZoomSpeed;
+	float m_CameraZoom;
 };

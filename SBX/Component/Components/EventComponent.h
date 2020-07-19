@@ -3,4 +3,5 @@
 struct EventComponent
 {
 	int key;
+	double scrolloffset;
 };

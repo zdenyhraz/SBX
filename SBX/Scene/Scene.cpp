@@ -55,6 +55,7 @@ void Scene::GlfwStart()
 	glfwSetInputMode( m_Window, GLFW_STICKY_KEYS, 1 );
 	glfwSetWindowUserPointer( m_Window, this );
 	glfwSetKeyCallback( m_Window, KeyCallback );
+	glfwSetScrollCallback( m_Window, ScrollCallback );
 	glewInit();
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
@@ -104,10 +105,20 @@ void Scene::ImGuiRender()
 
 void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
 {
+	LOG_DEBUG( "Key {} pressed!", key );
 	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
 	EventComponent event;
 	event.key = key;
+	scene->OnEvent( event );
+	//scene->m_Managers->m_EventManager->AddEvent( EventComponent() );
+}
 
+void Scene::ScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
+{
+	LOG_DEBUG( "Mouse scrolled!" );
+	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
+	EventComponent event;
+	event.scrolloffset = yoffset;
 	scene->OnEvent( event );
 	//scene->m_Managers->m_EventManager->AddEvent( EventComponent() );
 }
