@@ -2,9 +2,7 @@
 
 SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
 	Scene( components, managers, systems ),
-	m_ClearColor{0.3, 0.1, 0.7, 1},
-	m_TranslationA( 0.5, 0, 0 ),
-	m_TranslationB( 0, -0.5, 0 )
+	m_ClearColor{0.f, 69.f / 255, 204.f / 255, 1.f}
 {
 
 }
@@ -88,8 +86,6 @@ void SandboxScene::OnImGuiRender()
 	ImGui::SetWindowFontScale( 1.5 );
 	ImGui::Text( "Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate );
 	ImGui::NewLine();
-	ImGui::SliderFloat3( "translation A", &m_TranslationA.x, -1.0f, 1.0f );
-	ImGui::SliderFloat3( "translation B", &m_TranslationB.x, -1.0f, 1.0f );
 	ImGui::ColorEdit4( "Clear color", &m_ClearColor.x );
 	ImGui::End();
 }

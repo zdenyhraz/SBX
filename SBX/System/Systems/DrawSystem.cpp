@@ -17,7 +17,7 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_FpsTextColor( 0.2, 1, 0.2 ),
 	m_FpsTextScale( 1.0f ),
 	m_TickDuration( 1000 ),
-	m_SizeScale( 5.0f )
+	m_SizeScale( 10.0f )
 {
 	m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
 	m_Blank = cv::Mat::zeros( m_WindowHeight, m_WindowWidth, CV_32FC3 );

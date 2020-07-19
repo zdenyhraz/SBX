@@ -17,8 +17,6 @@ private:
 	glm::mat4 m_View;
 
 	glm::vec4 m_ClearColor;
-	glm::vec3 m_TranslationA;
-	glm::vec3 m_TranslationB;
 	std::unique_ptr<VertexArray> m_Va;
 	std::unique_ptr<IndexBuffer> m_Ib;
 	std::unique_ptr<Texture> m_Texture;
