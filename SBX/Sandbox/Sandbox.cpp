@@ -21,7 +21,6 @@ Sandbox::Sandbox()
 
 Sandbox::~Sandbox()
 {
-	Kill();
 	LOG_INFO( "Sandbox destroyed" );
 }
 
@@ -29,12 +28,6 @@ void Sandbox::Run()
 {
 	LOG_DEBUG( "Running sandbox from thread {}", Utils::ThisThreadId() );
 	m_Scene->Run();
-}
-
-void Sandbox::Kill()
-{
-	LOG_DEBUG( "Killing sandbox from thread {}", Utils::ThisThreadId() );
-	m_Scene->Kill();
 }
 
 void Sandbox::Init()

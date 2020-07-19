@@ -8,17 +8,12 @@ class Sandbox
 {
 public:
 	Sandbox();
-
 	~Sandbox();
 
 	void Run();
 
-	void Kill();
-
 private:
-
 	void Init();
-
 	void InitTest();
 
 	std::shared_ptr<ComponentVectors> m_Components;
