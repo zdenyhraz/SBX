@@ -52,6 +52,9 @@ void Scene::GlfwStart()
 	m_Window = glfwCreateWindow( m_WindowWidth, m_WindowHeight, m_WindowName.c_str(), NULL, NULL );
 	glfwMakeContextCurrent( m_Window );
 	glfwSwapInterval( 1 );
+	glfwSetInputMode( m_Window, GLFW_STICKY_KEYS, 1 );
+	glfwSetWindowUserPointer( m_Window, this );
+	glfwSetKeyCallback( m_Window, KeyCallback );
 	glewInit();
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
@@ -97,4 +100,28 @@ void Scene::ImGuiRender()
 {
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData( ImGui::GetDrawData() );
+}
+
+void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
+{
+	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
+	EventComponent event;
+
+	switch ( key )
+	{
+		case GLFW_KEY_W:
+			break;
+
+		case GLFW_KEY_S:
+			break;
+
+		case GLFW_KEY_A:
+			break;
+
+		case GLFW_KEY_D:
+			break;
+	}
+
+	scene->OnEvent( event );
+	scene->m_Managers->m_EventManager->AddEvent( EventComponent() );
 }

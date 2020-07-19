@@ -12,4 +12,5 @@ private:
 	void OnUpdate() override;
 	void OnRender() override;
 	void OnImGuiRender() override;
+	void OnEvent( const EventComponent &event ) override;
 };

@@ -12,6 +12,7 @@ private:
 	void OnUpdate() override;
 	void OnRender() override;
 	void OnImGuiRender() override;
+	void OnEvent( const EventComponent &event ) override;
 
 	std::unique_ptr<Shader> m_Shader;
 	glm::mat4 m_Proj;

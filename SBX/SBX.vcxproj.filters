@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Stdafx.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
@@ -41,6 +40,7 @@
     <ClCompile Include="System\Systems\SwarmSystem.cpp" />
     <ClCompile Include="Scene\Scenes\TemplateScene.cpp" />
     <ClCompile Include="Scene\Scenes\SandboxScene.cpp" />
+    <ClCompile Include="Application.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />

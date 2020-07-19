@@ -30,3 +30,8 @@ void TemplateScene::OnImGuiRender()
 {
 
 }
+
+void TemplateScene::OnEvent( const EventComponent &event )
+{
+
+}

@@ -9,6 +9,7 @@ public:
 
 	void ProcessEvents()
 	{
+		std::lock_guard<std::mutex> lock( m_mutex );
 		for ( auto &event : m_Components->Events )
 		{
 			HandleEvent( event );
@@ -17,9 +18,10 @@ public:
 		m_Components->Events.clear();
 	}
 
-	void AddEvent()
+	void AddEvent( const EventComponent &event )
 	{
-		m_Components->Events.push_back( EventComponent() );
+		std::lock_guard<std::mutex> lock( m_mutex );
+		m_Components->Events.push_back( event );
 	}
 
 private:

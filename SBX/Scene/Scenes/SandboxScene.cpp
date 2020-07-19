@@ -102,6 +102,7 @@ void SandboxScene::OnStop()
 void SandboxScene::OnUpdate()
 {
 	float dt = m_Components->Time.Delta;
+
 	m_Systems->Attractor->Tick( dt );
 	m_Systems->Avoidance->Tick( dt );
 	m_Systems->Event->Tick( dt );
@@ -139,4 +140,9 @@ void SandboxScene::OnImGuiRender()
 	ImGui::ColorEdit4( "Clear color", &m_ClearColor.x );
 	ImGui::SliderFloat3( "ViewPos", &m_ViewPos.x, -1, 1 );
 	ImGui::End();
+}
+
+void SandboxScene::OnEvent( const EventComponent &event )
+{
+	m_ViewPos.x += 0.01f;
 }

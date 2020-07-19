@@ -23,6 +23,7 @@ protected:
 	virtual void OnUpdate() = 0;
 	virtual void OnRender() = 0;
 	virtual void OnImGuiRender() = 0;
+	virtual void OnEvent( const EventComponent &event ) = 0;
 
 	void Clear();
 
@@ -34,6 +35,8 @@ protected:
 	void ImGuiStop();
 	void ImgGuiNewFrame();
 	void ImGuiRender();
+
+	static void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods );
 
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
