@@ -1,7 +1,7 @@
 #include "TemplateScene.h"
 
-TemplateScene::TemplateScene() :
-	Scene()
+TemplateScene::TemplateScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ) :
+	Scene( components, managers, systems )
 {
 
 }

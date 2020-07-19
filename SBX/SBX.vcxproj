@@ -210,7 +210,7 @@
   <ItemGroup>
     <ClInclude Include="Component\Components\AgentComponent.h" />
     <ClInclude Include="Component\Components\EventComponent.h" />
-    <ClInclude Include="Component\MapComponentVector.h" />
+    <ClInclude Include="Component\Containers\MapComponentVector.h" />
     <ClInclude Include="Component\Components\MapComponent.h" />
     <ClInclude Include="Component\Components\AccelerationComponent.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
@@ -220,7 +220,7 @@
     <ClInclude Include="Component\Components\PositionComponent.h" />
     <ClInclude Include="Component\Components\TimeComponent.h" />
     <ClInclude Include="Component\Components\VelocityComponent.h" />
-    <ClInclude Include="Component\VecComponentVector.h" />
+    <ClInclude Include="Component\Containers\VecComponentVector.h" />
     <ClInclude Include="Manager\Managers\EventManager.h" />
     <ClInclude Include="Manager\Managers\TemplateManager.h" />
     <ClInclude Include="Manager\Managers\TimeManager.h" />
@@ -233,6 +233,7 @@
     <ClInclude Include="Render\VertexBufferLayout.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\Scenes\TestScene.h" />
+    <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\Systems\EventSystem.h" />
     <ClInclude Include="Log\Logger.h" />

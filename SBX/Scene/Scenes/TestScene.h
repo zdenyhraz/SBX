@@ -4,7 +4,7 @@
 class TestScene: public Scene
 {
 public:
-	TestScene();
+	TestScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems );
 	~TestScene();
 
 private:

@@ -1,6 +1,6 @@
 #pragma once
-#include "MapComponentVector.h"
-#include "VecComponentVector.h"
+#include "Containers/MapComponentVector.h"
+#include "Containers/VecComponentVector.h"
 #include "Components/TimeComponent.h"
 #include "Components/MapComponent.h"
 #include "Components/EventComponent.h"

@@ -1,7 +1,7 @@
 #include "TestScene.h"
 
-TestScene::TestScene():
-	Scene(),
+TestScene::TestScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
+	Scene( components, managers, systems ),
 	m_ClearColor{0.3, 0.1, 0.3, 1},
 	m_TranslationA( 0, 0, 0 ),
 	m_TranslationB( 0, 0, 0 )
@@ -58,7 +58,20 @@ void TestScene::OnGLInit()
 
 void TestScene::OnUpdate()
 {
-	//ticks
+	float dt = m_Components->Time.Delta;
+
+	//m_Systems->CommandLine->Tick( dt );
+
+	m_Systems->Draw->Tick( dt );
+	m_Systems->Attractor->Tick( dt );
+	m_Systems->Avoidance->Tick( dt );
+	m_Systems->Event->Tick( dt );
+	m_Systems->Health->Tick( dt );
+	m_Systems->Logic->Tick( dt );
+	m_Systems->Seeking->Tick( dt );
+	m_Systems->Swarm->Tick( dt );
+	m_Systems->Movement->Tick( dt );
+	m_Systems->Time->Tick( dt );
 }
 
 void TestScene::OnRender()

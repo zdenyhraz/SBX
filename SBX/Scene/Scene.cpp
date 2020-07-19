@@ -1,6 +1,9 @@
 #include "Scene.h"
 
-Scene::Scene() :
+Scene::Scene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ) :
+	m_Components( components ),
+	m_Managers( managers ),
+	m_Systems( systems ),
 	m_WindowName( "SBX OpenGL" ),
 	m_WindowWidth( 2000 ),
 	m_WindowHeight( 1500 )

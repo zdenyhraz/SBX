@@ -13,10 +13,13 @@ Sandbox::Sandbox()
 	// 2) construct managers acting on components
 	m_Managers = std::make_shared<ManagerVector>( m_Components );
 
-	// 3) construct scene
-	m_Scene = std::make_unique<TestScene>();
+	// 3) construct systems acting on components directly or via managers
+	m_Systems = std::make_shared<SystemVector>( m_Components, m_Managers );
 
-	// 4) initialize the sandbox world
+	// 4) construct a scene that ticks the relevant systems
+	m_Scene = std::make_unique<TestScene>( m_Components, m_Managers, m_Systems );
+
+	// 5) initialize the sandbox world
 	Init();
 }
 

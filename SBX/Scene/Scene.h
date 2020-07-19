@@ -7,11 +7,12 @@
 #include "Render/Shader.h"
 #include "Render/Renderer.h"
 #include "Render/Texture.h"
+#include "System/SystemVector.h"
 
 class Scene
 {
 public:
-	Scene();
+	Scene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems );
 	virtual ~Scene();
 
 	void Run();
@@ -30,6 +31,10 @@ protected:
 	void ImGuiStop();
 	void ImgGuiNewFrame();
 	void ImGuiRender();
+
+	std::shared_ptr<ComponentVectors> m_Components;
+	std::shared_ptr<ManagerVector> m_Managers;
+	std::shared_ptr<SystemVector> m_Systems;
 
 	std::string m_WindowName;
 	int m_WindowWidth;
