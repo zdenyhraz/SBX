@@ -8,11 +8,11 @@ public:
 
 	void Advance();
 
-	double GetTime() const;
+	float GetTime() const;
 
-	double GetDelta() const;
+	float GetDelta() const;
 
-	double GetTimeRate() const;
+	float GetTimeRate() const;
 
 	bool GetRunning() const;
 
@@ -22,7 +22,7 @@ public:
 
 	void SetTargetTickEnd( const std::chrono::time_point<std::chrono::steady_clock> &time );
 
-	void SetTimeRate( double timerate );
+	void SetTimeRate( float timerate );
 
 	void StartTime();
 

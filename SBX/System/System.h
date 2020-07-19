@@ -6,9 +6,9 @@ class System
 {
 public:
 	System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
-	~System();
 
-	virtual void Tick( float dt ) = 0;
+	virtual void Tick( float dt );
+	virtual void Run();
 
 protected:
 	std::shared_ptr<ComponentVectors> m_Components;

@@ -1,15 +1,18 @@
 #include "CommandLineSystem.h"
 
 CommandLineSystem::CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers)
+	System( components, managers )
 {
 
 }
 
-void CommandLineSystem::Tick(float dt)
+void CommandLineSystem::Run()
 {
-	getline( std::cin, m_Command );
-	ProcessCommand( m_Command );
+	while ( true )
+	{
+		getline( std::cin, m_Command );
+		ProcessCommand( m_Command );
+	}
 }
 
 void CommandLineSystem::ProcessCommand( const std::string &command )
@@ -31,7 +34,7 @@ void CommandLineSystem::ProcessCommand( const std::string &command )
 	if ( command.find( "timerate" ) != std::string::npos )
 	{
 		LOG_DEBUG( "SetTimeRate command registered" );
-		double timerate = std::stod( command.substr( command.find( " " ) + 1 ) );
+		float timerate = std::stof( command.substr( command.find( " " ) + 1 ) );
 		ProcessSetTimeRate( timerate );
 		return;
 	}
@@ -49,7 +52,7 @@ void CommandLineSystem::ProcessStopTime()
 	m_Managers->m_TimeManager->StopTime();
 }
 
-void CommandLineSystem::ProcessSetTimeRate( double timerate )
+void CommandLineSystem::ProcessSetTimeRate( float timerate )
 {
 	m_Managers->m_TimeManager->SetTimeRate( timerate );
 }

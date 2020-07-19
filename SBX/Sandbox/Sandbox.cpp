@@ -31,7 +31,8 @@ Sandbox::~Sandbox()
 void Sandbox::Run()
 {
 	LOG_DEBUG( "Running sandbox from thread {}", Utils::ThisThreadId() );
-	m_Scene->Run();
+	std::thread thread( &Scene::Run, m_Scene.get() );
+	thread.detach();
 }
 
 void Sandbox::Init()

@@ -13,17 +13,17 @@ void TimeManager::Advance()
 	m_Components->Time.TickId++;
 }
 
-double TimeManager::GetTime() const
+float TimeManager::GetTime() const
 {
 	return m_Components->Time.Time;
 }
 
-double TimeManager::GetDelta() const
+float TimeManager::GetDelta() const
 {
 	return m_Components->Time.Delta;
 }
 
-double TimeManager::GetTimeRate() const
+float TimeManager::GetTimeRate() const
 {
 	return m_Components->Time.TimeRate;
 }
@@ -48,7 +48,7 @@ void TimeManager::SetTargetTickEnd( const std::chrono::time_point<std::chrono::s
 	m_Components->Time.TargetTickEnd = time;
 }
 
-void TimeManager::SetTimeRate( double timerate )
+void TimeManager::SetTimeRate( float timerate )
 {
 	std::lock_guard<std::mutex> lock( m_mutex );
 
@@ -74,7 +74,7 @@ void TimeManager::StopTime()
 
 void TimeManager::ResetDelta()
 {
-	m_Components->Time.Delta = 1. / TimeComponent::RefreshRate * m_Components->Time.TimeRate;
+	m_Components->Time.Delta = 1.0f / TimeComponent::RefreshRate * m_Components->Time.TimeRate;
 }
 
 void TimeManager::SetRunning( bool running )

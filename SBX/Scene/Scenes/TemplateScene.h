@@ -5,7 +5,6 @@ class TemplateScene : public Scene
 {
 public:
 	TemplateScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems );
-	~TemplateScene();
 
 private:
 	void OnGLInit() override;

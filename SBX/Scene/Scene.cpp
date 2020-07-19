@@ -18,6 +18,9 @@ inline Scene::~Scene()
 
 void Scene::Run()
 {
+	std::thread thread( &CommandLineSystem::Run, m_Systems->CommandLine.get() );
+	thread.detach();
+
 	GlfwStart();
 	ImGuiStart();
 	OnGLInit();

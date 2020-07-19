@@ -7,7 +7,13 @@ System::System( std::shared_ptr<ComponentVectors> components, std::shared_ptr<Ma
 
 }
 
-System::~System()
+void System::Tick( float dt )
 {
 
 }
+
+void System::Run()
+{
+
+}
+

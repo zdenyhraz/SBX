@@ -9,11 +9,6 @@ TestScene::TestScene( std::shared_ptr<ComponentVectors> components, std::shared_
 
 }
 
-TestScene::~TestScene()
-{
-
-}
-
 void TestScene::OnGLInit()
 {
 	float positions[] =
@@ -59,8 +54,6 @@ void TestScene::OnGLInit()
 void TestScene::OnUpdate()
 {
 	float dt = m_Components->Time.Delta;
-
-	//m_Systems->CommandLine->Tick( dt );
 
 	m_Systems->Draw->Tick( dt );
 	m_Systems->Attractor->Tick( dt );
