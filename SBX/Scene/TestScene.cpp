@@ -21,6 +21,7 @@ void TestScene::OnRender()
 {
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
 	glClear( GL_COLOR_BUFFER_BIT );
+
 }
 
 void TestScene::OnImGuiRender()
