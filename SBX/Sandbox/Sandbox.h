@@ -2,7 +2,7 @@
 #include "Stdafx.h"
 #include "Component/ComponentVectors.h"
 #include "Manager/ManagerVector.h"
-#include "Scene/TestScene.h"
+#include "Scene/Scene.h"
 
 class Sandbox
 {

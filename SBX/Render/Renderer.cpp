@@ -1,16 +1,11 @@
 #include "Renderer.h"
 
-Renderer::Renderer()
-{
-
-}
-
-void Renderer::Clear() const
+void Renderer::Clear()
 {
 	glClear( GL_COLOR_BUFFER_BIT );
 }
 
-void Renderer::Draw( const VertexArray &va, const IndexBuffer &ib, const Shader &sh ) const
+void Renderer::Draw( const VertexArray &va, const IndexBuffer &ib, const Shader &sh )
 {
 	sh.Bind();
 	va.Bind();

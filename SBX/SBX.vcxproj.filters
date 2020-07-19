@@ -32,7 +32,6 @@
     <ClCompile Include="Vendor\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
-    <ClCompile Include="Scene\TestScene.cpp" />
     <ClCompile Include="System\System.cpp" />
     <ClCompile Include="System\Systems\AttractorSystem.cpp" />
     <ClCompile Include="System\Systems\AvoidanceSystem.cpp" />
@@ -40,6 +39,7 @@
     <ClCompile Include="System\Systems\HealthSystem.cpp" />
     <ClCompile Include="System\Systems\SeekingSystem.cpp" />
     <ClCompile Include="System\Systems\SwarmSystem.cpp" />
+    <ClCompile Include="Scene\Scenes\TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -90,7 +90,6 @@
     <ClInclude Include="Vendor\imgui\imstb_textedit.h" />
     <ClInclude Include="Vendor\imgui\imstb_truetype.h" />
     <ClInclude Include="Scene\Scene.h" />
-    <ClInclude Include="Scene\TestScene.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\Systems\AttractorSystem.h" />
     <ClInclude Include="System\Systems\AvoidanceSystem.h" />
@@ -98,6 +97,7 @@
     <ClInclude Include="System\Systems\HealthSystem.h" />
     <ClInclude Include="System\Systems\SeekingSystem.h" />
     <ClInclude Include="System\Systems\SwarmSystem.h" />
+    <ClInclude Include="Scene\Scenes\TestScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />

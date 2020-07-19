@@ -31,7 +31,6 @@ protected:
 	void ImgGuiNewFrame();
 	void ImGuiRender();
 
-	bool m_Enabled;
 	std::string m_WindowName;
 	int m_WindowWidth;
 	int m_WindowHeight;

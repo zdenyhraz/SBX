@@ -1,6 +1,7 @@
 #include "Sandbox.h"
 #include "Utils/MathUtils.h"
 #include "Utils/ThreadUtils.h"
+#include "Scene/Scenes/TestScene.h"
 
 Sandbox::Sandbox()
 {

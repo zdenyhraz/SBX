@@ -1,7 +1,6 @@
 #include "Scene.h"
 
 Scene::Scene() :
-	m_Enabled( false ),
 	m_WindowName( "SBX OpenGL" ),
 	m_WindowWidth( 2000 ),
 	m_WindowHeight( 1500 )
@@ -16,11 +15,10 @@ inline Scene::~Scene()
 
 void Scene::Run()
 {
-	m_Enabled = true;
-
 	GlfwStart();
 	ImGuiStart();
 	OnGLInit();
+
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		OnUpdate();
@@ -30,6 +28,7 @@ void Scene::Run()
 		ImGuiRender();
 		GlfwRender();
 	}
+
 	ImGuiStop();
 	GlfwStop();
 }
@@ -79,7 +78,6 @@ void Scene::ImgGuiNewFrame()
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
-	ImGui::SetWindowFontScale( 1.5 );
 }
 
 void Scene::ImGuiRender()
