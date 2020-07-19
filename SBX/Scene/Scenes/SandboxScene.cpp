@@ -11,12 +11,13 @@ SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::s
 
 void SandboxScene::OnGLInit()
 {
+	float size = 0.05f;
 	float positions[] =
 	{
-		-0.25f, -0.25f, 0.0f, 0.0f,
-		+0.25f, -0.25f, 1.0f, 0.0f,
-		+0.25f, +0.25f, 1.0f, 1.0f,
-		-0.25f, +0.25f, 0.0f, 1.0f
+		-size, -size, 0.0f, 0.0f,
+		+size, -size, 1.0f, 0.0f,
+		+size, +size, 1.0f, 1.0f,
+		-size, +size, 0.0f, 1.0f
 	};
 
 	unsigned int indices[] =
@@ -71,15 +72,13 @@ void SandboxScene::OnRender()
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
 	glClear( GL_COLOR_BUFFER_BIT );
 
-	glm::mat4 modelA = glm::translate( glm::mat4( 1.0f ), m_TranslationA );
-	glm::mat4 mvpA = m_Proj * m_View * modelA;
-	m_Shader->SetUniformMat4f( "u_MVP", mvpA );
-	Renderer::Draw( *m_Va, *m_Ib, *m_Shader );
-
-	glm::mat4 modelB = glm::translate( glm::mat4( 1.0f ), m_TranslationB );
-	glm::mat4 mvpB = m_Proj * m_View * modelB;
-	m_Shader->SetUniformMat4f( "u_MVP", mvpB );
-	Renderer::Draw( *m_Va, *m_Ib, *m_Shader );
+	for ( auto &pos : m_Components->Positions.GetContainer() )
+	{
+		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position );
+		glm::mat4 mvp = m_Proj * m_View * model;
+		m_Shader->SetUniformMat4f( "u_MVP", mvp );
+		Renderer::Draw( *m_Va, *m_Ib, *m_Shader );
+	}
 }
 
 void SandboxScene::OnImGuiRender()

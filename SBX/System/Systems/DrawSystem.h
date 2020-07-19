@@ -10,7 +10,7 @@ public:
 	void Tick( float dt ) override;
 
 private:
-	cv::Point GetWindowCoordinates( double x, double y );
+	cv::Point GetWindowCoordinates( float x, float y );
 
 	std::string m_WindowName;
 	int m_WindowWidth;
@@ -19,17 +19,17 @@ private:
 	cv::Mat m_Blank;
 	cv::Mat m_Live;
 	int m_DrawEntityThickness;
-	double m_TextRelOffsetX;
-	double m_TextRelOffsetY;
-	double m_TextRelScale;
-	double m_TextMinRelScale;
+	float m_TextRelOffsetX;
+	float m_TextRelOffsetY;
+	float m_TextRelScale;
+	float m_TextMinRelScale;
 	int m_TextThickness;
-	double m_DrawEntityArrowLengthScale;
-	double m_DrawEntityArrowThicknessScale;
+	float m_DrawEntityArrowLengthScale;
+	float m_DrawEntityArrowThicknessScale;
 	std::chrono::time_point<std::chrono::steady_clock> m_TickStart;
 	std::chrono::time_point<std::chrono::steady_clock> m_TickEnd;
 	long long m_TickDuration;
 	int m_FpsTextThickness;
 	cv::Scalar m_FpsTextColor;
-	double m_FpsTextScale;
+	float m_FpsTextScale;
 };

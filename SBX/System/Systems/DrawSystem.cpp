@@ -6,16 +6,16 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_WindowWidth( 1500 ),
 	m_WindowHeight( 1000 ),
 	m_DrawEntityThickness( -1 ),
-	m_TextRelOffsetX( 1.5 ),
-	m_TextRelOffsetY( 0.5 ),
-	m_TextRelScale( 0.05 ),
-	m_TextMinRelScale( 0.5 ),
+	m_TextRelOffsetX( 1.5f ),
+	m_TextRelOffsetY( 0.5f ),
+	m_TextRelScale( 0.05f ),
+	m_TextMinRelScale( 0.5f ),
 	m_TextThickness( 2 ),
-	m_DrawEntityArrowLengthScale( 3 ),
-	m_DrawEntityArrowThicknessScale( 0.5 ),
+	m_DrawEntityArrowLengthScale( 3.0f ),
+	m_DrawEntityArrowThicknessScale( 0.5f ),
 	m_FpsTextThickness( 2 ),
 	m_FpsTextColor( 0.2, 1, 0.2 ),
-	m_FpsTextScale( 1 ),
+	m_FpsTextScale( 1.0f ),
 	m_TickDuration( 1000 )
 {
 	m_WindowCenter = cv::Point( m_WindowWidth / 2, m_WindowHeight / 2 );
@@ -36,7 +36,8 @@ void DrawSystem::Tick( float dt )
 		if ( model.second.Size )
 		{
 			cv::circle( m_Live, winpos, model.second.Size, model.second.Color, m_DrawEntityThickness );
-			cv::arrowedLine( m_Live, winpos, winpos + ( cv::Point )( Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * model.second.Size ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * model.second.Size ) );
+			auto arrow = Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * ( float )model.second.Size;
+			cv::arrowedLine( m_Live, winpos, winpos + cv::Point( ( int )arrow.x, -( int )arrow.y ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * model.second.Size ) );
 		}
 
 		if ( m_Components->EntityInfos.Find( model.first ).Name != "" )
@@ -56,7 +57,7 @@ void DrawSystem::Tick( float dt )
 	m_TickDuration = Utils::GetDuration( m_TickStart, m_TickEnd );
 }
 
-cv::Point DrawSystem::GetWindowCoordinates( double x, double y )
+cv::Point DrawSystem::GetWindowCoordinates( float x, float y )
 {
-	return m_WindowCenter + cv::Point( ( int )( ( x / m_Components->Map.MapWidth ) * ( m_WindowWidth / 2 ) ), ( int )( ( y / m_Components->Map.MapHeight ) * ( m_WindowHeight / 2 ) ) );
+	return m_WindowCenter + cv::Point( ( int )( ( x / m_Components->Map.MapWidth ) * ( m_WindowWidth / 2 ) ), -( int )( ( y / m_Components->Map.MapHeight ) * ( m_WindowHeight / 2 ) ) );
 }

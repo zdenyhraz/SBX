@@ -7,7 +7,7 @@ AvoidanceSystem::AvoidanceSystem( std::shared_ptr<ComponentVectors> components, 
 
 }
 
-void AvoidanceSystem::Tick(float dt)
+void AvoidanceSystem::Tick( float dt )
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
@@ -22,7 +22,7 @@ void AvoidanceSystem::Tick(float dt)
 		int closestId = FindClosestEntity( agentId );
 		PositionComponent &closestPos = m_Components->Positions.Find( closestId );
 
-		cv::Point2d fleeDirection = agentPos.Position - closestPos.Position;
+		glm::vec3 fleeDirection = agentPos.Position - closestPos.Position;
 		m_Components->Velocities.Find( agentId ).Velocity = Utils::UnitVector( fleeDirection ) * agent.second.AvoidSpeed;
 	}
 }
@@ -40,7 +40,7 @@ int AvoidanceSystem::FindClosestEntity( int agentId )
 		}
 
 		auto &pos = m_Components->Positions.Find( agent.first );
-		double distance = cv::norm( agentPos.Position - pos.Position );
+		double distance = glm::length( agentPos.Position - pos.Position );
 		if ( distance < closestDistance )
 		{
 			closestDistance = distance;

@@ -13,7 +13,7 @@ void MovementSystem::Tick( float dt )
 	for ( auto &accel : m_Components->Accelerations.GetContainer() )
 	{
 		m_Components->Velocities.Find( accel.first ).Velocity += accel.second.Acceleration * m_Managers->m_TimeManager->GetDelta();
-		accel.second.Acceleration = cv::Point2d( 0, 0 );
+		accel.second.Acceleration = glm::vec3( 0, 0, 0 );
 	}
 
 	// update positions from velocities

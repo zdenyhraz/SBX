@@ -2,5 +2,5 @@
 
 struct PositionComponent
 {
-	cv::Point2d Position = cv::Point2d( 0, 0 );
+	glm::vec3 Position = glm::vec3( 0, 0, 0 );
 };

@@ -11,7 +11,7 @@ struct AgentComponent
 	};
 
 	MovementBehaviour MovementBehaviour = None;
-	double AvoidSpeed = 0;
-	double SeekSpeed = 0;
+	float AvoidSpeed = 0;
+	float SeekSpeed = 0;
 	int TargetId = 0;
 };

@@ -2,5 +2,5 @@
 
 struct AccelerationComponent
 {
-	cv::Point2d Acceleration = cv::Point2d( 0, 0 );
+	glm::vec3 Acceleration = glm::vec3( 0, 0, 0 );
 };

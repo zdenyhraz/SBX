@@ -2,13 +2,13 @@
 
 SwarmSystem::SwarmSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
 	System( components, managers ),
-	m_BoundaryW( 3.0 ),
-	m_AlignmentW( 1.0 ),
-	m_SeparationW( 1.0 ),
-	m_CohesionW( 1.0 ),
-	m_VisionRadius( 0.3 ),
-	m_Speed( 7.0 ),
-	m_Acceleration( 0.7 )
+	m_BoundaryW( 3.0f ),
+	m_AlignmentW( 1.0f ),
+	m_SeparationW( 1.0f ),
+	m_CohesionW( 1.0f ),
+	m_VisionRadius( 0.3f ),
+	m_Speed( 7.0f ),
+	m_Acceleration( 0.7f )
 {
 
 }
@@ -24,16 +24,16 @@ void SwarmSystem::Tick( float dt )
 
 		int agentId = agent.first;
 		auto &agentVelocity = m_Components->Velocities.Find( agentId ).Velocity;
-		cv::Point2d swarmVelocity = m_Speed * ( GetSeparationDirection( agentId ) * m_SeparationW + GetAlignmentDirection( agentId ) * m_AlignmentW + GetCohesionDirection( agentId ) * m_CohesionW + GetBoundaryDirection( agentId ) * m_BoundaryW ) / ( m_SeparationW + m_AlignmentW + m_CohesionW + m_BoundaryW );
-		cv::Point2d acceleration = m_Acceleration * ( swarmVelocity - agentVelocity );
+		glm::vec3 swarmVelocity = m_Speed * ( GetSeparationDirection( agentId ) * m_SeparationW + GetAlignmentDirection( agentId ) * m_AlignmentW + GetCohesionDirection( agentId ) * m_CohesionW + GetBoundaryDirection( agentId ) * m_BoundaryW ) / ( m_SeparationW + m_AlignmentW + m_CohesionW + m_BoundaryW );
+		glm::vec3 acceleration = m_Acceleration * ( swarmVelocity - agentVelocity );
 
 		m_Components->Accelerations.Find( agentId ).Acceleration += acceleration;
 	}
 }
 
-cv::Point2d SwarmSystem::GetSeparationDirection( int id )
+glm::vec3 SwarmSystem::GetSeparationDirection( int id )
 {
-	cv::Point2d separation( 0, 0 );
+	glm::vec3 separation( 0, 0, 0 );
 	auto &mainAgentPos = m_Components->Positions.Find( id );
 
 	for ( auto &agent : m_Components->Agents.GetContainer() )
@@ -44,20 +44,20 @@ cv::Point2d SwarmSystem::GetSeparationDirection( int id )
 		}
 
 		auto &agentPos = m_Components->Positions.Find( agent.first );
-		cv::Point2d direction = mainAgentPos.Position - agentPos.Position;
-		double distance = cv::norm( direction );
+		glm::vec3 direction = mainAgentPos.Position - agentPos.Position;
+		float distance = glm::length( direction );
 
 		if ( distance < m_VisionRadius )
 		{
-			separation += Utils::UnitVector( direction ) / std::max( distance, 1e-6 );
+			separation += Utils::UnitVector( direction ) / std::max( distance, 1e-6f );
 		}
 	}
 	return Utils::UnitVector( separation );
 }
 
-cv::Point2d SwarmSystem::GetAlignmentDirection( int id )
+glm::vec3 SwarmSystem::GetAlignmentDirection( int id )
 {
-	cv::Point2d alignment( 0, 0 );
+	glm::vec3 alignment( 0, 0, 0 );
 	auto &mainAgentPos = m_Components->Positions.Find( id );
 
 	for ( auto &agent : m_Components->Agents.GetContainer() )
@@ -68,8 +68,8 @@ cv::Point2d SwarmSystem::GetAlignmentDirection( int id )
 		}
 
 		auto &agentPos = m_Components->Positions.Find( agent.first );
-		cv::Point2d direction = mainAgentPos.Position - agentPos.Position;
-		double distance = cv::norm( direction );
+		glm::vec3 direction = mainAgentPos.Position - agentPos.Position;
+		double distance = glm::length( direction );
 
 		if ( distance < m_VisionRadius )
 		{
@@ -81,9 +81,9 @@ cv::Point2d SwarmSystem::GetAlignmentDirection( int id )
 	return Utils::UnitVector( alignment );
 }
 
-cv::Point2d SwarmSystem::GetCohesionDirection( int id )
+glm::vec3 SwarmSystem::GetCohesionDirection( int id )
 {
-	cv::Point2d center( 0, 0 );
+	glm::vec3 center( 0, 0, 0 );
 	auto &mainAgentPos = m_Components->Positions.Find( id );
 	int otherAgentsCnt = 0;
 
@@ -95,8 +95,8 @@ cv::Point2d SwarmSystem::GetCohesionDirection( int id )
 		}
 
 		auto &agentPos = m_Components->Positions.Find( agent.first );
-		cv::Point2d direction = mainAgentPos.Position - agentPos.Position;
-		double distance = cv::norm( direction );
+		glm::vec3 direction = mainAgentPos.Position - agentPos.Position;
+		double distance = glm::length( direction );
 
 		if ( distance < m_VisionRadius )
 		{
@@ -111,27 +111,27 @@ cv::Point2d SwarmSystem::GetCohesionDirection( int id )
 	return Utils::UnitVector( center - mainAgentPos.Position );
 }
 
-cv::Point2d SwarmSystem::GetBoundaryDirection( int id )
+glm::vec3 SwarmSystem::GetBoundaryDirection( int id )
 {
-	cv::Point2d boundary( 0, 0 );
+	glm::vec3 boundary( 0, 0, 0 );
 	auto &mainAgentPos = m_Components->Positions.Find( id );
 
 	if ( mainAgentPos.Position.x + m_VisionRadius > m_Components->Map.MaxPositionX )
 	{
-		return cv::Point2d( -1, 0 );
+		return glm::vec3( -1, 0, 0 );
 	}
 	if ( mainAgentPos.Position.x - m_VisionRadius < m_Components->Map.MinPositionX )
 	{
-		return cv::Point2d( 1, 0 );
+		return glm::vec3( 1, 0, 0 );
 	}
 	if ( mainAgentPos.Position.y + m_VisionRadius > m_Components->Map.MaxPositionY )
 	{
-		return cv::Point2d( 0, -1 );
+		return glm::vec3( 0, -1, 0 );
 	}
 	if ( mainAgentPos.Position.y - m_VisionRadius < m_Components->Map.MinPositionY )
 	{
-		return cv::Point2d( 0, 1 );
+		return glm::vec3( 0, 1, 0 );
 	}
 
-	return cv::Point2d( 0, 0 );
+	return glm::vec3( 0, 0, 0 );
 }

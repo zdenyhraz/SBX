@@ -3,45 +3,45 @@
 
 namespace Utils {
 
-static constexpr double Pi = 3.1415926535897932384626433;
-static constexpr double TwoPi = Pi * 2;
-static constexpr double HalfPi = Pi / 2;
-static constexpr double QuartPi = Pi / 4;
-static constexpr double E = 2.7182818284590452353602874;
-static constexpr double Rad = 360. / 2. / Pi;
+static constexpr float Pi = 3.1415926535897932384626433f;
+static constexpr float TwoPi = Pi * 2;
+static constexpr float HalfPi = Pi / 2;
+static constexpr float QuartPi = Pi / 4;
+static constexpr float E = 2.7182818284590452353602874f;
+static constexpr float Rad = 360.0f / 2.0f / Pi;
 
-inline double Rand01()
+inline float Rand01()
 {
-	return ( double )rand() / RAND_MAX;
+	return ( float )rand() / RAND_MAX;
 }
 
-inline double Rand11()
+inline float Rand11()
 {
-	return -1. + Rand01() * 2;
+	return -1.0f + Rand01() * 2;
 }
 
-inline void Clamp( double &val, double minval, double maxval )
+inline void Clamp( float &val, float minval, float maxval )
 {
 	val = std::max( std::min( val, maxval ), minval );
 }
 
-inline cv::Point2d UnitVector( const cv::Point2d &pt )
+inline glm::vec3 UnitVector( const glm::vec3 &pt )
 {
-	return pt / std::max( cv::norm( pt ), 1e-6 );
+	return pt / std::max( glm::length( pt ), 1e-6f );
 }
 
-inline double GetAngle( const cv::Point2d &pt1, const cv::Point2d &pt2 )
+inline float GetAngle( const glm::vec3 &pt1, const glm::vec3 &pt2 )
 {
-	double a = ( pt1.dot( pt2 ) ) / ( cv::norm( pt1 ) * cv::norm( pt2 ) );
+	float a = ( glm::dot( pt1, pt2 ) ) / ( glm::length( pt1 ) * glm::length( pt2 ) );
 	return acos( a );
 }
 
-inline double ToDegrees( double rad )
+inline float ToDegrees( float rad )
 {
 	return rad * Rad;
 }
 
-inline double ToRadians( double deg )
+inline float ToRadians( float deg )
 {
 	return deg / Rad;
 }
