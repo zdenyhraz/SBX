@@ -3,8 +3,8 @@
 SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
 	Scene( components, managers, systems ),
 	m_ClearColor{0.3, 0.1, 0.3, 1},
-	m_TranslationA( 0, 0, 0 ),
-	m_TranslationB( 0, 0, 0 )
+	m_TranslationA( 0.5, 0, 0 ),
+	m_TranslationB( 0, -0.5, 0 )
 {
 
 }
