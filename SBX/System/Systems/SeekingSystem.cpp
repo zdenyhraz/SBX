@@ -1,13 +1,13 @@
-#include "SeekingSubSystem.h"
+#include "SeekingSystem.h"
 #include "Utils/MathUtils.h"
 
-SeekingSubSystem::SeekingSubSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	SubSystem( components, managers )
+SeekingSystem::SeekingSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+	System( components, managers )
 {
 
 }
 
-void SeekingSubSystem::Tick()
+void SeekingSystem::Tick(float dt)
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{

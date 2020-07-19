@@ -171,17 +171,17 @@
     <ClCompile Include="Render\VertexBufferLayout.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\TestScene.cpp" />
-    <ClCompile Include="System\Systems\LogicSubSystems\EventSubSystem.cpp" />
+    <ClCompile Include="System\System.cpp" />
+    <ClCompile Include="System\Systems\EventSystem.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Managers\EntityManager.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
-    <ClCompile Include="System\Systems\LogicSubSystems\HealthSubSystem.cpp" />
+    <ClCompile Include="System\Systems\HealthSystem.cpp" />
     <ClCompile Include="System\Systems\LogicSystem.cpp" />
-    <ClCompile Include="System\SubSystem.cpp" />
-    <ClCompile Include="System\Systems\MovementSubSystems\SeekingSubSystem.cpp" />
+    <ClCompile Include="System\Systems\SeekingSystem.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -190,17 +190,13 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Stdafx.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="System\Systems\MovementSubSystems\AvoidanceSubSystem.cpp" />
-    <ClCompile Include="System\Systems\MovementSubSystems\SwarmSubSystem.cpp" />
+    <ClCompile Include="System\Systems\AvoidanceSystem.cpp" />
+    <ClCompile Include="System\Systems\SwarmSystem.cpp" />
     <ClCompile Include="System\Systems\CommandLineSystem.cpp" />
     <ClCompile Include="System\Systems\DrawSystem.cpp" />
     <ClCompile Include="System\Systems\MovementSystem.cpp" />
-    <ClCompile Include="System\Systems\RenderSystem.cpp" />
-    <ClCompile Include="System\System.cpp" />
-    <ClCompile Include="System\SystemVector.cpp" />
-    <ClCompile Include="System\Systems\TemplateSubSystem.cpp" />
     <ClCompile Include="System\Systems\TemplateSystem.cpp" />
-    <ClCompile Include="System\Systems\MovementSubSystems\AttractorSubSystem.cpp" />
+    <ClCompile Include="System\Systems\AttractorSystem.cpp" />
     <ClCompile Include="System\Systems\TimeSystem.cpp" />
     <ClCompile Include="Vendor\imgui\imgui.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
@@ -236,29 +232,25 @@
     <ClInclude Include="Render\VertexBufferLayout.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\TestScene.h" />
-    <ClInclude Include="System\Systems\LogicSubSystems\EventSubSystem.h" />
+    <ClInclude Include="System\System.h" />
+    <ClInclude Include="System\Systems\EventSystem.h" />
     <ClInclude Include="Log\Logger.h" />
     <ClInclude Include="Manager\Manager.h" />
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Managers\EntityManager.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
-    <ClInclude Include="System\Systems\LogicSubSystems\HealthSubSystem.h" />
+    <ClInclude Include="System\Systems\HealthSystem.h" />
     <ClInclude Include="System\Systems\LogicSystem.h" />
-    <ClInclude Include="System\SubSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\SeekingSubSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\AvoidanceSubSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\SwarmSubSystem.h" />
-    <ClInclude Include="System\Systems\RenderSystem.h" />
-    <ClInclude Include="System\Systems\TemplateSubSystem.h" />
+    <ClInclude Include="System\Systems\SeekingSystem.h" />
+    <ClInclude Include="System\Systems\AvoidanceSystem.h" />
+    <ClInclude Include="System\Systems\SwarmSystem.h" />
     <ClInclude Include="System\Systems\TimeSystem.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="System\Systems\CommandLineSystem.h" />
     <ClInclude Include="System\Systems\DrawSystem.h" />
     <ClInclude Include="System\Systems\MovementSystem.h" />
-    <ClInclude Include="System\System.h" />
-    <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\Systems\TemplateSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\AttractorSubSystem.h" />
+    <ClInclude Include="System\Systems\AttractorSystem.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />

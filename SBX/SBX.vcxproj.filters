@@ -5,28 +5,17 @@
     <ClCompile Include="Stdafx.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
     <ClCompile Include="Sandbox\Sandbox.cpp" />
-    <ClCompile Include="System\System.cpp" />
-    <ClCompile Include="System\SystemVector.cpp" />
     <ClCompile Include="Manager\ManagerVector.cpp" />
     <ClCompile Include="Manager\Manager.cpp" />
-    <ClCompile Include="System\SubSystem.cpp" />
     <ClCompile Include="Manager\Managers\EventManager.cpp" />
     <ClCompile Include="Manager\Managers\EntityManager.cpp" />
     <ClCompile Include="Manager\Managers\TemplateManager.cpp" />
     <ClCompile Include="System\Systems\TimeSystem.cpp" />
     <ClCompile Include="System\Systems\TemplateSystem.cpp" />
-    <ClCompile Include="System\Systems\TemplateSubSystem.cpp" />
-    <ClCompile Include="System\Systems\RenderSystem.cpp" />
     <ClCompile Include="System\Systems\LogicSystem.cpp" />
-    <ClCompile Include="System\Systems\LogicSubSystems\HealthSubSystem.cpp" />
-    <ClCompile Include="System\Systems\LogicSubSystems\EventSubSystem.cpp" />
     <ClCompile Include="System\Systems\DrawSystem.cpp" />
     <ClCompile Include="System\Systems\CommandLineSystem.cpp" />
     <ClCompile Include="System\Systems\MovementSystem.cpp" />
-    <ClCompile Include="System\Systems\MovementSubSystems\SwarmSubSystem.cpp" />
-    <ClCompile Include="System\Systems\MovementSubSystems\SeekingSubSystem.cpp" />
-    <ClCompile Include="System\Systems\MovementSubSystems\AvoidanceSubSystem.cpp" />
-    <ClCompile Include="System\Systems\MovementSubSystems\AttractorSubSystem.cpp" />
     <ClCompile Include="Manager\Managers\TimeManager.cpp" />
     <ClCompile Include="Render\Renderer.cpp" />
     <ClCompile Include="Render\VertexBuffer.cpp" />
@@ -44,13 +33,18 @@
     <ClCompile Include="Vendor\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\TestScene.cpp" />
+    <ClCompile Include="System\System.cpp" />
+    <ClCompile Include="System\Systems\AttractorSystem.cpp" />
+    <ClCompile Include="System\Systems\AvoidanceSystem.cpp" />
+    <ClCompile Include="System\Systems\EventSystem.cpp" />
+    <ClCompile Include="System\Systems\HealthSystem.cpp" />
+    <ClCompile Include="System\Systems\SeekingSystem.cpp" />
+    <ClCompile Include="System\Systems\SwarmSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="System\System.h" />
     <ClInclude Include="Sandbox\Sandbox.h" />
     <ClInclude Include="Log\Logger.h" />
-    <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="Component\ComponentVector.h" />
     <ClInclude Include="Component\ComponentVectors.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
@@ -58,7 +52,6 @@
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Manager\ManagerVector.h" />
     <ClInclude Include="Manager\Manager.h" />
-    <ClInclude Include="System\SubSystem.h" />
     <ClInclude Include="Component\Components\AgentComponent.h" />
     <ClInclude Include="Component\Components\EntityInfoComponent.h" />
     <ClInclude Include="Component\Components\EventComponent.h" />
@@ -75,18 +68,10 @@
     <ClInclude Include="Manager\Managers\TemplateManager.h" />
     <ClInclude Include="System\Systems\TimeSystem.h" />
     <ClInclude Include="System\Systems\TemplateSystem.h" />
-    <ClInclude Include="System\Systems\TemplateSubSystem.h" />
-    <ClInclude Include="System\Systems\RenderSystem.h" />
     <ClInclude Include="System\Systems\LogicSystem.h" />
-    <ClInclude Include="System\Systems\LogicSubSystems\HealthSubSystem.h" />
-    <ClInclude Include="System\Systems\LogicSubSystems\EventSubSystem.h" />
     <ClInclude Include="System\Systems\DrawSystem.h" />
     <ClInclude Include="System\Systems\CommandLineSystem.h" />
     <ClInclude Include="System\Systems\MovementSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\SwarmSubSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\SeekingSubSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\AvoidanceSubSystem.h" />
-    <ClInclude Include="System\Systems\MovementSubSystems\AttractorSubSystem.h" />
     <ClInclude Include="Manager\Managers\TimeManager.h" />
     <ClInclude Include="Render\Renderer.h" />
     <ClInclude Include="Render\VertexBuffer.h" />
@@ -106,6 +91,13 @@
     <ClInclude Include="Vendor\imgui\imstb_truetype.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\TestScene.h" />
+    <ClInclude Include="System\System.h" />
+    <ClInclude Include="System\Systems\AttractorSystem.h" />
+    <ClInclude Include="System\Systems\AvoidanceSystem.h" />
+    <ClInclude Include="System\Systems\EventSystem.h" />
+    <ClInclude Include="System\Systems\HealthSystem.h" />
+    <ClInclude Include="System\Systems\SeekingSystem.h" />
+    <ClInclude Include="System\Systems\SwarmSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />

@@ -1,7 +1,7 @@
 #include "DrawSystem.h"
 
 DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Draw", true ),
+	System( components, managers ),
 	m_WindowName( "SBX OpenCV" ),
 	m_WindowWidth( 1500 ),
 	m_WindowHeight( 1000 ),
@@ -23,7 +23,7 @@ DrawSystem::DrawSystem( std::shared_ptr<ComponentVectors> components, std::share
 	m_Live = m_Blank.clone();
 }
 
-void DrawSystem::Tick()
+void DrawSystem::Tick( float dt )
 {
 	m_TickStart = Utils::GetTimeNow();
 	m_Live = m_Blank.clone();

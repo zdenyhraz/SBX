@@ -1,26 +1,14 @@
 #include "MovementSystem.h"
 #include "Utils/MathUtils.h"
-#include "MovementSubSystems/AttractorSubSystem.h"
-#include "MovementSubSystems/AvoidanceSubSystem.h"
-#include "MovementSubSystems/SeekingSubSystem.h"
-#include "MovementSubSystems/SwarmSubSystem.h"
 
 MovementSystem::MovementSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "Movement" )
+	System( components, managers )
 {
-	m_SubSystems.push_back( std::make_shared<AvoidanceSubSystem>( components, managers ) );
-	m_SubSystems.push_back( std::make_shared<SeekingSubSystem>( components, managers ) );
-	m_SubSystems.push_back( std::make_shared<AttractorSubSystem>( components, managers ) );
-	m_SubSystems.push_back( std::make_shared<SwarmSubSystem>( components, managers ) );
+
 }
 
-void MovementSystem::Tick()
+void MovementSystem::Tick( float dt )
 {
-	for ( auto &subsystem : m_SubSystems )
-	{
-		subsystem->Tick();
-	}
-
 	// update velocities from accelerations
 	for ( auto &accel : m_Components->Accelerations.GetContainer() )
 	{

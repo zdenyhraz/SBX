@@ -12,8 +12,8 @@ Sandbox::Sandbox()
 	// 2) construct managers acting on components
 	m_Managers = std::make_shared<ManagerVector>( m_Components );
 
-	// 3) construct systems that act on components directly and/or via managers
-	m_Systems = std::make_shared<SystemVector>( m_Components, m_Managers );
+	// 3) construct scene
+	m_Scene = std::make_unique<TestScene>();
 
 	// 4) initialize the sandbox world
 	Init();
@@ -28,13 +28,13 @@ Sandbox::~Sandbox()
 void Sandbox::Run()
 {
 	LOG_DEBUG( "Running sandbox from thread {}", Utils::ThisThreadId() );
-	m_Systems->Run();
+	m_Scene->Run();
 }
 
 void Sandbox::Kill()
 {
 	LOG_DEBUG( "Killing sandbox from thread {}", Utils::ThisThreadId() );
-	m_Systems->Kill();
+	m_Scene->Kill();
 }
 
 void Sandbox::Init()
@@ -89,6 +89,4 @@ void Sandbox::InitTest()
 		m_Components->Models.Find( 1 ).Size = 15;
 		m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
 	}
-
-
 }

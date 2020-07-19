@@ -7,11 +7,11 @@ public:
 
 	DrawSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
-	void Tick() override;
-
-	cv::Point GetWindowCoordinates( double x, double y );
+	void Tick( float dt ) override;
 
 private:
+	cv::Point GetWindowCoordinates( double x, double y );
+
 	std::string m_WindowName;
 	int m_WindowWidth;
 	int m_WindowHeight;

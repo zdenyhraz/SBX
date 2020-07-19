@@ -7,7 +7,7 @@ public:
 
 	TimeSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
-	void Tick() override;
+	void Tick( float dt ) override;
 
 private:
 	std::string m_ConsoleTitle;

@@ -1,22 +1,18 @@
 #pragma once
-#include "System/SubSystem.h"
+#include "System/System.h"
 
-class SwarmSubSystem : public SubSystem
+class SwarmSystem : public System
 {
 public:
 
-	SwarmSubSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
+	SwarmSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers );
 
-	void Tick() override;
+	void Tick( float dt ) override;
 
 private:
-
 	cv::Point2d GetSeparationDirection( int id );
-
 	cv::Point2d GetAlignmentDirection( int id );
-
 	cv::Point2d GetCohesionDirection( int id );
-
 	cv::Point2d GetBoundaryDirection( int id );
 
 	double m_SeparationW;

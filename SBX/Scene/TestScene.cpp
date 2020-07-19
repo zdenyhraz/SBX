@@ -1,16 +1,20 @@
 #include "TestScene.h"
 
 TestScene::TestScene():
+	Scene(),
 	m_ClearColor{0.3, 0.1, 0.3, 1}
 {
+
 }
 
 TestScene::~TestScene()
 {
+
 }
 
 void TestScene::OnUpdate()
 {
+
 }
 
 void TestScene::OnRender()

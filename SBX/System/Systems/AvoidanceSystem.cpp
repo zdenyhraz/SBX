@@ -1,13 +1,13 @@
-#include "AvoidanceSubSystem.h"
+#include "AvoidanceSystem.h"
 #include "Utils/MathUtils.h"
 
-AvoidanceSubSystem::AvoidanceSubSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	SubSystem( components, managers )
+AvoidanceSystem::AvoidanceSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
+	System( components, managers )
 {
 
 }
 
-void AvoidanceSubSystem::Tick()
+void AvoidanceSystem::Tick(float dt)
 {
 	for ( auto &agent : m_Components->Agents.GetContainer() )
 	{
@@ -27,7 +27,7 @@ void AvoidanceSubSystem::Tick()
 	}
 }
 
-int AvoidanceSubSystem::FindClosestEntity( int agentId )
+int AvoidanceSystem::FindClosestEntity( int agentId )
 {
 	PositionComponent &agentPos = m_Components->Positions.Find( agentId );
 	int closestId;

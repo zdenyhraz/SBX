@@ -1,12 +1,12 @@
 #include "CommandLineSystem.h"
 
 CommandLineSystem::CommandLineSystem( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers ) :
-	System( components, managers, "CommandLine", true )
+	System( components, managers)
 {
 
 }
 
-void CommandLineSystem::Tick()
+void CommandLineSystem::Tick(float dt)
 {
 	getline( std::cin, m_Command );
 	ProcessCommand( m_Command );
