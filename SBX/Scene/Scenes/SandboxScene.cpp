@@ -148,25 +148,33 @@ void SandboxScene::OnImGuiRender()
 
 void SandboxScene::OnEvent( const EventComponent &event )
 {
-	switch ( event.key )
+	if ( event.key != 0 )
 	{
-		case GLFW_KEY_W:
-			m_ViewPos.y += m_CameraMoveSpeed;
-			break;
+		switch ( event.key )
+		{
+			case GLFW_KEY_W:
+				m_ViewPos.y += m_CameraMoveSpeed;
+				return;
 
-		case GLFW_KEY_S:
-			m_ViewPos.y -= m_CameraMoveSpeed;
-			break;
+			case GLFW_KEY_S:
+				m_ViewPos.y -= m_CameraMoveSpeed;
+				return;
 
-		case GLFW_KEY_A:
-			m_ViewPos.x -= m_CameraMoveSpeed;
-			break;
+			case GLFW_KEY_A:
+				m_ViewPos.x -= m_CameraMoveSpeed;
+				return;
 
-		case GLFW_KEY_D:
-			m_ViewPos.x += m_CameraMoveSpeed;
-			break;
+			case GLFW_KEY_D:
+				m_ViewPos.x += m_CameraMoveSpeed;
+				return;
+		}
 	}
 
-	m_CameraZoom += m_CameraZoomSpeed * -event.scrolloffset;
-	Utils::Clampr( m_CameraZoom, 0.01f, 10.f );
+	if ( event.scrolloffset != 0 )
+	{
+		m_CameraZoom += m_CameraZoomSpeed * -event.scrolloffset;
+		Utils::Clampr( m_CameraZoom, 0.01f, 10.f );
+		return;
+	}
+
 }
