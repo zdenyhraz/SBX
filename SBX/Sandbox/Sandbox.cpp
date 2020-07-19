@@ -1,7 +1,7 @@
 #include "Sandbox.h"
 #include "Utils/MathUtils.h"
 #include "Utils/ThreadUtils.h"
-#include "Scene/Scenes/TestScene.h"
+#include "Scene/Scenes/SandboxScene.h"
 
 Sandbox::Sandbox()
 {
@@ -17,7 +17,7 @@ Sandbox::Sandbox()
 	m_Systems = std::make_shared<SystemVector>( m_Components, m_Managers );
 
 	// 4) construct a scene that ticks the relevant systems
-	m_Scene = std::make_unique<TestScene>( m_Components, m_Managers, m_Systems );
+	m_Scene = std::make_unique<SandboxScene>( m_Components, m_Managers, m_Systems );
 
 	// 5) initialize the sandbox world
 	Init();

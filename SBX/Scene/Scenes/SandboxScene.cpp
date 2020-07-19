@@ -1,6 +1,6 @@
-#include "TestScene.h"
+#include "SandboxScene.h"
 
-TestScene::TestScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
+SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
 	Scene( components, managers, systems ),
 	m_ClearColor{0.3, 0.1, 0.3, 1},
 	m_TranslationA( 0, 0, 0 ),
@@ -9,7 +9,7 @@ TestScene::TestScene( std::shared_ptr<ComponentVectors> components, std::shared_
 
 }
 
-void TestScene::OnGLInit()
+void SandboxScene::OnGLInit()
 {
 	float positions[] =
 	{
@@ -51,11 +51,9 @@ void TestScene::OnGLInit()
 	m_Shader->Bind();
 }
 
-void TestScene::OnUpdate()
+void SandboxScene::OnUpdate()
 {
 	float dt = m_Components->Time.Delta;
-
-	m_Systems->Draw->Tick( dt );
 	m_Systems->Attractor->Tick( dt );
 	m_Systems->Avoidance->Tick( dt );
 	m_Systems->Event->Tick( dt );
@@ -64,10 +62,11 @@ void TestScene::OnUpdate()
 	m_Systems->Seeking->Tick( dt );
 	m_Systems->Swarm->Tick( dt );
 	m_Systems->Movement->Tick( dt );
+	m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
 }
 
-void TestScene::OnRender()
+void SandboxScene::OnRender()
 {
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
 	glClear( GL_COLOR_BUFFER_BIT );
@@ -83,7 +82,7 @@ void TestScene::OnRender()
 	Renderer::Draw( *m_Va, *m_Ib, *m_Shader );
 }
 
-void TestScene::OnImGuiRender()
+void SandboxScene::OnImGuiRender()
 {
 	ImGui::Begin( "Stuffs" );
 	ImGui::SetWindowFontScale( 1.5 );

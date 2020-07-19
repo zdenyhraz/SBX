@@ -1,10 +1,10 @@
 #pragma once
 #include "Scene/Scene.h"
 
-class TestScene: public Scene
+class SandboxScene: public Scene
 {
 public:
-	TestScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems );
+	SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems );
 
 private:
 	void OnGLInit() override;

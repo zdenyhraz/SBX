@@ -6,10 +6,9 @@ TimeManager::TimeManager( std::shared_ptr<ComponentVectors> components ) :
 
 }
 
-void TimeManager::Advance()
+void TimeManager::Advance( float dt )
 {
-	m_Components->Time.Time += m_Components->Time.Delta;
-	m_Components->Time.TargetTickEnd += std::chrono::milliseconds( TimeComponent::TargetTickDuration );
+	m_Components->Time.Time += dt;
 	m_Components->Time.TickId++;
 }
 
@@ -36,16 +35,6 @@ bool TimeManager::GetRunning() const
 long long TimeManager::GetTickId() const
 {
 	return m_Components->Time.TickId;
-}
-
-std::chrono::time_point<std::chrono::steady_clock> TimeManager::GetTargetTickEnd() const
-{
-	return m_Components->Time.TargetTickEnd;
-}
-
-void TimeManager::SetTargetTickEnd( const std::chrono::time_point<std::chrono::steady_clock> &time )
-{
-	m_Components->Time.TargetTickEnd = time;
 }
 
 void TimeManager::SetTimeRate( float timerate )

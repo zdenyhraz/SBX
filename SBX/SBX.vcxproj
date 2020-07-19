@@ -170,7 +170,7 @@
     <ClCompile Include="Render\VertexBuffer.cpp" />
     <ClCompile Include="Render\VertexBufferLayout.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
-    <ClCompile Include="Scene\Scenes\TestScene.cpp" />
+    <ClCompile Include="Scene\Scenes\SandboxScene.cpp" />
     <ClCompile Include="System\System.cpp" />
     <ClCompile Include="System\Systems\EventSystem.cpp" />
     <ClCompile Include="Log\Logger.cpp" />
@@ -232,7 +232,7 @@
     <ClInclude Include="Render\VertexBuffer.h" />
     <ClInclude Include="Render\VertexBufferLayout.h" />
     <ClInclude Include="Scene\Scene.h" />
-    <ClInclude Include="Scene\Scenes\TestScene.h" />
+    <ClInclude Include="Scene\Scenes\SandboxScene.h" />
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\Systems\EventSystem.h" />

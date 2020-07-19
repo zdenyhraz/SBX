@@ -6,7 +6,7 @@ class TimeManager : public Manager
 public:
 	TimeManager( std::shared_ptr<ComponentVectors> components );
 
-	void Advance();
+	void Advance( float dt );
 
 	float GetTime() const;
 
@@ -17,10 +17,6 @@ public:
 	bool GetRunning() const;
 
 	long long GetTickId() const;
-
-	std::chrono::time_point<std::chrono::steady_clock> GetTargetTickEnd() const;
-
-	void SetTargetTickEnd( const std::chrono::time_point<std::chrono::steady_clock> &time );
 
 	void SetTimeRate( float timerate );
 

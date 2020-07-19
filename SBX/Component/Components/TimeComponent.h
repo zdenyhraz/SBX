@@ -9,5 +9,4 @@ struct TimeComponent
 	float TimeRate = 1.0f;
 	bool Running = true;
 	long long TickId = 0;
-	std::chrono::time_point<std::chrono::steady_clock> TargetTickEnd = std::chrono::steady_clock::now();
 };
