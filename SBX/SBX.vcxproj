@@ -198,6 +198,7 @@
     <ClCompile Include="System\Systems\TemplateSystem.cpp" />
     <ClCompile Include="System\Systems\AttractorSystem.cpp" />
     <ClCompile Include="System\Systems\TimeSystem.cpp" />
+    <ClCompile Include="Scene\Scenes\TemplateScene.cpp" />
     <ClCompile Include="Vendor\imgui\imgui.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="System\Systems\MovementSystem.h" />
     <ClInclude Include="System\Systems\TemplateSystem.h" />
     <ClInclude Include="System\Systems\AttractorSystem.h" />
+    <ClInclude Include="Scene\Scenes\TemplateScene.h" />
     <ClInclude Include="Utils\MathUtils.h" />
     <ClInclude Include="Utils\ThreadUtils.h" />
     <ClInclude Include="Utils\TimeUtils.h" />

@@ -40,6 +40,7 @@
     <ClCompile Include="System\Systems\SeekingSystem.cpp" />
     <ClCompile Include="System\Systems\SwarmSystem.cpp" />
     <ClCompile Include="Scene\Scenes\TestScene.cpp" />
+    <ClCompile Include="Scene\Scenes\TemplateScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -98,6 +99,7 @@
     <ClInclude Include="System\Systems\SeekingSystem.h" />
     <ClInclude Include="System\Systems\SwarmSystem.h" />
     <ClInclude Include="Scene\Scenes\TestScene.h" />
+    <ClInclude Include="Scene\Scenes\TemplateScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />
