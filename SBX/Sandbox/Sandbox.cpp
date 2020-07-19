@@ -44,7 +44,7 @@ void Sandbox::Init()
 
 void Sandbox::InitTest()
 {
-	int initEntityCnt = 300;
+	int initEntityCnt = 20;
 	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 	for ( int i = 0; i < initEntityCnt; i++ )
