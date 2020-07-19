@@ -7,7 +7,8 @@ public:
 	SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems );
 
 private:
-	void OnGLInit() override;
+	void OnStart() override;
+	void OnStop() override;
 	void OnUpdate() override;
 	void OnRender() override;
 	void OnImGuiRender() override;

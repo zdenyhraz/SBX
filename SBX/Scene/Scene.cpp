@@ -23,11 +23,12 @@ void Scene::Run()
 
 	GlfwStart();
 	ImGuiStart();
-	OnGLInit();
+	OnStart();
 
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		OnUpdate();
+		Clear();
 		OnRender();
 		ImgGuiNewFrame();
 		OnImGuiRender();
@@ -35,8 +36,14 @@ void Scene::Run()
 		GlfwRender();
 	}
 
+	OnStop();
 	ImGuiStop();
 	GlfwStop();
+}
+
+void Scene::Clear()
+{
+	glClear( GL_COLOR_BUFFER_BIT );
 }
 
 void Scene::GlfwStart()

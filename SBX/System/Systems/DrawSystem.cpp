@@ -35,9 +35,12 @@ void DrawSystem::Tick( float dt )
 		auto winpos = GetWindowCoordinates( pos.Position.x, pos.Position.y );
 		int size = ( int )( m_SizeScale * model.second.Size );
 
-		cv::circle( m_Live, winpos, size, model.second.Color, m_DrawEntityThickness );
-		auto arrow = Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * ( float )size;
-		cv::arrowedLine( m_Live, winpos, winpos + cv::Point( ( int )arrow.x, -( int )arrow.y ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * size ) );
+		if ( size > 0 )
+		{
+			cv::circle( m_Live, winpos, size, model.second.Color, m_DrawEntityThickness );
+			auto arrow = Utils::UnitVector( m_Components->Velocities.Find( model.first ).Velocity ) * m_DrawEntityArrowLengthScale * ( float )size;
+			cv::arrowedLine( m_Live, winpos, winpos + cv::Point( ( int )arrow.x, -( int )arrow.y ), model.second.Color, ( int )( m_DrawEntityArrowThicknessScale * size ) );
+		}
 
 		if ( m_Components->EntityInfos.Find( model.first ).Name != "" )
 		{

@@ -6,7 +6,12 @@ TemplateScene::TemplateScene( std::shared_ptr<ComponentVectors> components, std:
 
 }
 
-void TemplateScene::OnGLInit()
+void TemplateScene::OnStart()
+{
+
+}
+
+void TemplateScene::OnStop()
 {
 
 }

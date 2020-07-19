@@ -20,7 +20,7 @@ void MovementSystem::Tick( float dt )
 	for ( auto &vel : m_Components->Velocities.GetContainer() )
 	{
 		m_Components->Positions.Find( vel.first ).Position += vel.second.Velocity * m_Managers->m_TimeManager->GetDelta();
-		Utils::Clamp( m_Components->Positions.Find( vel.first ).Position.x, m_Components->Map.MinPositionX, m_Components->Map.MaxPositionX );
-		Utils::Clamp( m_Components->Positions.Find( vel.first ).Position.y, m_Components->Map.MinPositionY, m_Components->Map.MaxPositionX );
+		Utils::Clampr( m_Components->Positions.Find( vel.first ).Position.x, m_Components->Map.MinPositionX, m_Components->Map.MaxPositionX );
+		Utils::Clampr( m_Components->Positions.Find( vel.first ).Position.y, m_Components->Map.MinPositionY, m_Components->Map.MaxPositionX );
 	}
 }

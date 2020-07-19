@@ -18,10 +18,13 @@ public:
 	void Run();
 
 protected:
-	virtual void OnGLInit() = 0;
+	virtual void OnStart() = 0;
+	virtual void OnStop() = 0;
 	virtual void OnUpdate() = 0;
 	virtual void OnRender() = 0;
 	virtual void OnImGuiRender() = 0;
+
+	void Clear();
 
 	void GlfwStart();
 	void GlfwStop();

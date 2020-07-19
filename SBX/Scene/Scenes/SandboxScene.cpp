@@ -7,8 +7,52 @@ SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::s
 
 }
 
-void SandboxScene::OnGLInit()
+void SandboxScene::OnStart()
 {
+	int initEntityCnt = 120;
+	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
+
+	for ( int i = 0; i < initEntityCnt; i++ )
+	{
+		m_Managers->m_EntityManager->CreateEntity( EntityInfoComponent::EntityType::Entity );
+	}
+
+	for ( auto &mod : m_Components->Models.GetContainer() )
+	{
+		mod.second.Color = cv::Scalar( Utils::Rand01(), Utils::Rand01(), Utils::Rand01() );
+		mod.second.Size = Utils::Clamp( Utils::Rand01() * 2, 0.3f, 2.f );
+	}
+
+	for ( auto &pos : m_Components->Positions.GetContainer() )
+	{
+		const float spread = 1.0;
+		pos.second.Position.x = Utils::Rand11() * spread;
+		pos.second.Position.y = Utils::Rand11() * spread;
+	}
+
+	for ( auto &vel : m_Components->Velocities.GetContainer() )
+	{
+		const float spread = 1.0;
+		vel.second.Velocity.x = Utils::Rand11() * spread;
+		vel.second.Velocity.y = Utils::Rand11() * spread;
+	}
+
+	for ( auto &ag : m_Components->Agents.GetContainer() )
+	{
+		ag.second.MovementBehaviour = AgentComponent::Swarming;
+	}
+
+	if ( true )
+	{
+		m_Components->EntityInfos.Find( 0 ).Name = "Sasko";
+		m_Components->Models.Find( 0 ).Size = 3;
+		m_Components->Models.Find( 0 ).Color = cv::Scalar( 0.7, 0.41, 1 );
+
+		m_Components->EntityInfos.Find( 1 ).Name = "Zdeny";
+		m_Components->Models.Find( 1 ).Size = 3;
+		m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
+	}
+
 	float size = 0.05f;
 	float positions[] =
 	{
@@ -47,7 +91,14 @@ void SandboxScene::OnGLInit()
 	m_Va->Unbind();
 	m_Ib->Unbind();
 	m_Shader->Unbind();
-	m_Shader->Bind();
+}
+
+void SandboxScene::OnStop()
+{
+	for ( auto &ent : m_Components->EntityInfos.GetContainer() )
+	{
+		m_Managers->m_EntityManager->DeleteEntity( ent.first );
+	}
 }
 
 void SandboxScene::OnUpdate()
@@ -68,7 +119,6 @@ void SandboxScene::OnUpdate()
 void SandboxScene::OnRender()
 {
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
-	glClear( GL_COLOR_BUFFER_BIT );
 
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{

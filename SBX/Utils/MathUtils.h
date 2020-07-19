@@ -20,9 +20,14 @@ inline float Rand11()
 	return -1.0f + Rand01() * 2;
 }
 
-inline void Clamp( float &val, float minval, float maxval )
+inline void Clampr( float &val, float minval, float maxval )
 {
 	val = std::max( std::min( val, maxval ), minval );
+}
+
+inline float Clamp( float val, float minval, float maxval )
+{
+	return std::max( std::min( val, maxval ), minval );
 }
 
 inline glm::vec3 UnitVector( const glm::vec3 &pt )
