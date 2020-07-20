@@ -31,7 +31,13 @@ void TemplateScene::OnImGuiRender()
 
 }
 
-void TemplateScene::OnEvent( const EventComponent &event )
+void TemplateScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
 {
 
 }
+
+void TemplateScene::OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
+{
+
+}
+

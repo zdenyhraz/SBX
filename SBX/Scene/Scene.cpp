@@ -52,7 +52,7 @@ void Scene::GlfwStart()
 	m_Window = glfwCreateWindow( m_WindowWidth, m_WindowHeight, m_WindowName.c_str(), NULL, NULL );
 	glfwMakeContextCurrent( m_Window );
 	glfwSwapInterval( 1 );
-	glfwSetInputMode( m_Window, GLFW_STICKY_KEYS, 1 );
+	glfwSetInputMode( m_Window, GLFW_STICKY_KEYS, GLFW_TRUE );
 	glfwSetWindowUserPointer( m_Window, this );
 	glfwSetKeyCallback( m_Window, KeyCallback );
 	glfwSetScrollCallback( m_Window, ScrollCallback );
@@ -105,20 +105,12 @@ void Scene::ImGuiRender()
 
 void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
 {
-	LOG_DEBUG( "Key {} pressed!", key );
 	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
-	EventComponent event;
-	event.key = key;
-	scene->OnEvent( event );
-	//scene->m_Managers->m_EventManager->AddEvent( EventComponent() );
+	scene->OnKeyCallback( window, key, scancode, action, mods );
 }
 
 void Scene::ScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
 {
-	LOG_DEBUG( "Mouse scrolled!" );
 	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
-	EventComponent event;
-	event.scrolloffset = yoffset;
-	scene->OnEvent( event );
-	//scene->m_Managers->m_EventManager->AddEvent( EventComponent() );
+	scene->OnScrollCallback( window, xoffset, yoffset );
 }

@@ -12,5 +12,6 @@ private:
 	void OnUpdate() override;
 	void OnRender() override;
 	void OnImGuiRender() override;
-	void OnEvent( const EventComponent &event ) override;
+	void OnKeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods ) override;
+	void OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset ) override;
 };

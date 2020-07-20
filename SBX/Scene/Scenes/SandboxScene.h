@@ -12,7 +12,8 @@ private:
 	void OnUpdate() override;
 	void OnRender() override;
 	void OnImGuiRender() override;
-	void OnEvent( const EventComponent &event ) override;
+	void OnKeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods ) override;
+	void OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset ) override;
 
 	std::unique_ptr<Shader> m_Shader;
 	glm::mat4 m_Proj;
@@ -27,4 +28,9 @@ private:
 	float m_CameraMoveSpeed;
 	float m_CameraZoomSpeed;
 	float m_CameraZoom;
+
+	bool m_KeyPressed_W;
+	bool m_KeyPressed_S;
+	bool m_KeyPressed_A;
+	bool m_KeyPressed_D;
 };

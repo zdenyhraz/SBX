@@ -18,12 +18,13 @@ public:
 	void Run();
 
 protected:
-	virtual void OnStart() = 0;
-	virtual void OnStop() = 0;
-	virtual void OnUpdate() = 0;
-	virtual void OnRender() = 0;
-	virtual void OnImGuiRender() = 0;
-	virtual void OnEvent( const EventComponent &event ) = 0;
+	virtual void OnStart() {};
+	virtual void OnStop() {};
+	virtual void OnUpdate() {};
+	virtual void OnRender() {};
+	virtual void OnImGuiRender() {};
+	virtual void OnKeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods ) {};
+	virtual void OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset ) {};
 
 	void Clear();
 

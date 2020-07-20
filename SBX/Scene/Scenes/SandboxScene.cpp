@@ -6,7 +6,11 @@ SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::s
 	m_ViewPos( 0.f, 0.f, 0.f ),
 	m_CameraMoveSpeed( 0.01f ),
 	m_CameraZoomSpeed( 0.1f ),
-	m_CameraZoom( 1.f )
+	m_CameraZoom( 1.f ),
+	m_KeyPressed_W( false ),
+	m_KeyPressed_S( false ),
+	m_KeyPressed_A( false ),
+	m_KeyPressed_D( false )
 {
 	m_Proj = glm::ortho( -1.0f, 1.0f, -1.0f / m_AspectRatio, 1.0f / m_AspectRatio, -1.0f, 1.0f );
 	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
@@ -117,6 +121,9 @@ void SandboxScene::OnUpdate()
 	m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
 
+	m_ViewPos.x += m_CameraMoveSpeed * ( m_KeyPressed_D - m_KeyPressed_A );
+	m_ViewPos.y += m_CameraMoveSpeed * ( m_KeyPressed_W - m_KeyPressed_S );
+
 	m_Proj = glm::ortho( -1.0f * m_CameraZoom, 1.0f * m_CameraZoom, -1.0f / m_AspectRatio * m_CameraZoom, 1.0f / m_AspectRatio * m_CameraZoom, -1.0f, 1.0f );
 	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
 }
@@ -146,35 +153,34 @@ void SandboxScene::OnImGuiRender()
 	ImGui::End();
 }
 
-void SandboxScene::OnEvent( const EventComponent &event )
+void SandboxScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
 {
-	if ( event.key != 0 )
+	if ( action == GLFW_REPEAT )
 	{
-		switch ( event.key )
-		{
-			case GLFW_KEY_W:
-				m_ViewPos.y += m_CameraMoveSpeed;
-				return;
-
-			case GLFW_KEY_S:
-				m_ViewPos.y -= m_CameraMoveSpeed;
-				return;
-
-			case GLFW_KEY_A:
-				m_ViewPos.x -= m_CameraMoveSpeed;
-				return;
-
-			case GLFW_KEY_D:
-				m_ViewPos.x += m_CameraMoveSpeed;
-				return;
-		}
-	}
-
-	if ( event.scrolloffset != 0 )
-	{
-		m_CameraZoom += m_CameraZoomSpeed * -event.scrolloffset;
-		Utils::Clampr( m_CameraZoom, 0.01f, 10.f );
 		return;
 	}
 
+	switch ( key )
+	{
+		case GLFW_KEY_W:
+			m_KeyPressed_W = action == GLFW_PRESS;
+			return;
+		case GLFW_KEY_S:
+			m_KeyPressed_S = action == GLFW_PRESS;
+			return;
+		case GLFW_KEY_A:
+			m_KeyPressed_A = action == GLFW_PRESS;
+			return;
+		case GLFW_KEY_D:
+			m_KeyPressed_D = action == GLFW_PRESS;
+			return;
+	}
 }
+
+void SandboxScene::OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
+{
+	m_CameraZoom += m_CameraZoomSpeed * -yoffset;
+	Utils::Clampr( m_CameraZoom, 0.01f, 10.f );
+	return;
+}
+
