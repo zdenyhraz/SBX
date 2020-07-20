@@ -6,9 +6,9 @@ class Camera3D
 public:
 	Camera3D( float aspect ) :
 		m_AspectRatio( aspect ),
-		m_ViewPos( 0.f, 0.f, 3.f ),
-		m_ViewDir( 0.f, 0.f, -1.f ),
-		m_UpDir( 0.f, 1.f, 0.f ),
+		m_ViewPos( 0.f, -1.f, 1.f ),
+		m_ViewDir( 0.f, 1.f, -1.f ),
+		m_UpDir( 0.f, 0.f, 1.f ),
 		m_CameraMoveSpeed( 0.1f ),
 		m_CameraZoomSpeed( 3.5f ),
 		m_CameraFov( 90.f )
