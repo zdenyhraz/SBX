@@ -105,7 +105,32 @@ void Scene::ImGuiRender()
 
 void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
 {
+	if ( action == GLFW_REPEAT )
+	{
+		return;
+	}
+
 	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
+
+	switch ( key )
+	{
+		case GLFW_KEY_W:
+			scene->m_Keys.KeyW = action == GLFW_PRESS;
+			return;
+
+		case GLFW_KEY_S:
+			scene->m_Keys.KeyS = action == GLFW_PRESS;
+			return;
+
+		case GLFW_KEY_A:
+			scene->m_Keys.KeyA = action == GLFW_PRESS;
+			return;
+
+		case GLFW_KEY_D:
+			scene->m_Keys.KeyD = action == GLFW_PRESS;
+			return;
+	}
+
 	scene->OnKeyCallback( window, key, scancode, action, mods );
 }
 

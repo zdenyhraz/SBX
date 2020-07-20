@@ -27,7 +27,6 @@ protected:
 	virtual void OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset ) {};
 
 	void Clear();
-
 	void GlfwStart();
 	void GlfwStop();
 	void GlfwRender();
@@ -40,6 +39,14 @@ protected:
 	static void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods );
 	static void ScrollCallback( GLFWwindow *window, double xoffset, double yoffset );
 
+	struct KeysPressed
+	{
+		bool KeyW = false;
+		bool KeyS = false;
+		bool KeyA = false;
+		bool KeyD = false;
+	};
+
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
 	std::shared_ptr<SystemVector> m_Systems;
@@ -49,4 +56,5 @@ protected:
 	int m_WindowHeight;
 	float m_AspectRatio;
 	GLFWwindow *m_Window;
+	KeysPressed m_Keys;
 };

@@ -28,9 +28,4 @@ private:
 	float m_CameraMoveSpeed;
 	float m_CameraZoomSpeed;
 	float m_CameraZoom;
-
-	bool m_KeyPressed_W;
-	bool m_KeyPressed_S;
-	bool m_KeyPressed_A;
-	bool m_KeyPressed_D;
 };
