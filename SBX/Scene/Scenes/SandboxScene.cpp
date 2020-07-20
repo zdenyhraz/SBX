@@ -2,14 +2,9 @@
 
 SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::shared_ptr<ManagerVector> managers, std::shared_ptr<SystemVector> systems ):
 	Scene( components, managers, systems ),
-	m_ClearColor( 0.f, 69.f / 255, 204.f / 255, 1.f ),
-	m_ViewPos( 0.f, 0.f, 0.f ),
-	m_CameraMoveSpeed( 0.01f ),
-	m_CameraZoomSpeed( 0.1f ),
-	m_CameraZoom( 1.f )
+	m_ClearColor( 0.f, 69.f / 255, 204.f / 255, 1.f )
 {
-	m_Proj = glm::ortho( -1.0f, 1.0f, -1.0f / m_AspectRatio, 1.0f / m_AspectRatio, -1.0f, 1.0f );
-	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
+
 }
 
 void SandboxScene::OnStart()
@@ -33,6 +28,7 @@ void SandboxScene::OnStart()
 		const float spread = 1.0;
 		pos.second.Position.x = Utils::Rand11() * spread;
 		pos.second.Position.y = Utils::Rand11() * spread;
+		//pos.second.Position.z = Utils::Rand11() * spread;
 	}
 
 	for ( auto &vel : m_Components->Velocities.GetContainer() )
@@ -40,6 +36,7 @@ void SandboxScene::OnStart()
 		const float spread = 1.0;
 		vel.second.Velocity.x = Utils::Rand11() * spread;
 		vel.second.Velocity.y = Utils::Rand11() * spread;
+		//vel.second.Velocity.z = Utils::Rand11() * spread;
 	}
 
 	for ( auto &ag : m_Components->Agents.GetContainer() )
@@ -89,6 +86,9 @@ void SandboxScene::OnStart()
 	m_Texture = std::make_unique<Texture>( "Resources/Textures/sasa.png" );
 	m_Texture->Bind();
 
+	m_Camera2D = std::make_unique<Camera2D>( m_AspectRatio );
+	m_Camera3D = std::make_unique<Camera3D>( m_AspectRatio );
+
 	m_Va->Unbind();
 	m_Ib->Unbind();
 	m_Shader->Unbind();
@@ -117,11 +117,13 @@ void SandboxScene::OnUpdate()
 	m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
 
-	m_ViewPos.x += m_CameraMoveSpeed * ( m_Keys.KeyD - m_Keys.KeyA );
-	m_ViewPos.y += m_CameraMoveSpeed * ( m_Keys.KeyW - m_Keys.KeyS );
+	m_Camera2D->m_ViewPos.x += m_Camera2D->m_CameraMoveSpeed * ( m_Keys.KeyD - m_Keys.KeyA );
+	m_Camera2D->m_ViewPos.y += m_Camera2D->m_CameraMoveSpeed * ( m_Keys.KeyW - m_Keys.KeyS );
 
-	m_Proj = glm::ortho( -1.0f * m_CameraZoom, 1.0f * m_CameraZoom, -1.0f / m_AspectRatio * m_CameraZoom, 1.0f / m_AspectRatio * m_CameraZoom, -1.0f, 1.0f );
-	m_View = glm::translate( glm::mat4( 1.0f ), -m_ViewPos );
+	m_Camera3D->m_ViewPos += m_Camera3D->m_ViewDir * m_Camera3D->m_CameraMoveSpeed * ( float )( m_Keys.KeyW - m_Keys.KeyS );
+
+	m_Camera2D->Update();
+	m_Camera3D->Update();
 }
 
 void SandboxScene::OnRender()
@@ -132,7 +134,7 @@ void SandboxScene::OnRender()
 	{
 		auto &mod = m_Components->Models.Find( pos.first );
 		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) );
-		glm::mat4 mvp = m_Proj * m_View * model;
+		glm::mat4 mvp = m_Camera3D->m_Proj * m_Camera3D->m_View * model;
 		m_Shader->SetUniformMat4f( "u_MVP", mvp );
 		Renderer::Draw( *m_Va, *m_Ib, *m_Shader );
 	}
@@ -145,7 +147,9 @@ void SandboxScene::OnImGuiRender()
 	ImGui::Text( "Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate );
 	ImGui::NewLine();
 	ImGui::ColorEdit4( "Clear color", &m_ClearColor.x );
-	ImGui::SliderFloat3( "ViewPos", &m_ViewPos.x, -1, 1 );
+	ImGui::SliderFloat3( "Camera3D position", &m_Camera3D->m_ViewPos.x, -5, 5 );
+	ImGui::SliderFloat3( "Camera3D direction", &m_Camera3D->m_ViewDir.x, -5, 5 );
+	ImGui::SliderFloat( "Camera3D Fov", &m_Camera3D->m_CameraFov, 5.0f, 180.f );
 	ImGui::End();
 }
 
@@ -156,8 +160,12 @@ void SandboxScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int
 
 void SandboxScene::OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
 {
-	m_CameraZoom += m_CameraZoomSpeed * -( float )yoffset;
-	Utils::Clampr( m_CameraZoom, 0.01f, 10.f );
+	m_Camera2D->m_CameraZoom += m_Camera2D->m_CameraZoomSpeed * -( float )yoffset;
+	Utils::Clampr( m_Camera2D->m_CameraZoom, 5.0f, 180.f );
+
+	m_Camera3D->m_CameraFov += m_Camera3D->m_CameraZoomSpeed * -( float )yoffset;
+	Utils::Clampr( m_Camera3D->m_CameraFov, 5.0f, 180.f );
+
 	return;
 }
 

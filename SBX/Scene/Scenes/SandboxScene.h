@@ -16,16 +16,10 @@ private:
 	void OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset ) override;
 
 	std::unique_ptr<Shader> m_Shader;
-	glm::mat4 m_Proj;
-	glm::mat4 m_View;
-	glm::vec3 m_ViewPos;
-
 	glm::vec4 m_ClearColor;
 	std::unique_ptr<VertexArray> m_Va;
 	std::unique_ptr<IndexBuffer> m_Ib;
 	std::unique_ptr<Texture> m_Texture;
-
-	float m_CameraMoveSpeed;
-	float m_CameraZoomSpeed;
-	float m_CameraZoom;
+	std::unique_ptr<Camera2D> m_Camera2D;
+	std::unique_ptr<Camera3D> m_Camera3D;
 };

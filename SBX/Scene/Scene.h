@@ -8,6 +8,8 @@
 #include "Render/Renderer.h"
 #include "Render/Texture.h"
 #include "System/SystemVector.h"
+#include "Camera2D.h"
+#include "Camera3D.h"
 
 class Scene
 {

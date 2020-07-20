@@ -169,6 +169,8 @@
     <ClCompile Include="Render\VertexArray.cpp" />
     <ClCompile Include="Render\VertexBuffer.cpp" />
     <ClCompile Include="Render\VertexBufferLayout.cpp" />
+    <ClCompile Include="Scene\Camera2D.cpp" />
+    <ClCompile Include="Scene\Camerra3D.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\Scenes\SandboxScene.cpp" />
     <ClCompile Include="System\System.cpp" />
@@ -231,6 +233,8 @@
     <ClInclude Include="Render\VertexArray.h" />
     <ClInclude Include="Render\VertexBuffer.h" />
     <ClInclude Include="Render\VertexBufferLayout.h" />
+    <ClInclude Include="Scene\Camera2D.h" />
+    <ClInclude Include="Scene\Camera3D.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\Scenes\SandboxScene.h" />
     <ClInclude Include="System\SystemVector.h" />

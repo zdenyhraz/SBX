@@ -39,6 +39,7 @@
 //glm
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/vector_angle.hpp>
 //imgui
 #include <Vendor/imgui/imgui.h>
 #include <Vendor/imgui/imgui_impl_glfw.h>
