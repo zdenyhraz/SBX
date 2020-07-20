@@ -165,12 +165,15 @@ void SandboxScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int
 		case GLFW_KEY_W:
 			m_KeyPressed_W = action == GLFW_PRESS;
 			return;
+
 		case GLFW_KEY_S:
 			m_KeyPressed_S = action == GLFW_PRESS;
 			return;
+
 		case GLFW_KEY_A:
 			m_KeyPressed_A = action == GLFW_PRESS;
 			return;
+
 		case GLFW_KEY_D:
 			m_KeyPressed_D = action == GLFW_PRESS;
 			return;
@@ -179,7 +182,7 @@ void SandboxScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int
 
 void SandboxScene::OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
 {
-	m_CameraZoom += m_CameraZoomSpeed * -yoffset;
+	m_CameraZoom += m_CameraZoomSpeed * -( float )yoffset;
 	Utils::Clampr( m_CameraZoom, 0.01f, 10.f );
 	return;
 }
