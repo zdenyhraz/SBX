@@ -86,7 +86,6 @@ void SandboxScene::OnStart()
 	m_Texture = std::make_unique<Texture>( "Resources/Textures/sasa.png" );
 	m_Texture->Bind();
 
-	m_Camera2D = std::make_unique<Camera2D>( m_AspectRatio );
 	m_Camera3D = std::make_unique<Camera3D>( m_AspectRatio );
 
 	m_Va->Unbind();
@@ -117,12 +116,7 @@ void SandboxScene::OnUpdate()
 	m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
 
-	m_Camera2D->m_ViewPos.x += m_Camera2D->m_CameraMoveSpeed * ( m_Keys.KeyD - m_Keys.KeyA );
-	m_Camera2D->m_ViewPos.y += m_Camera2D->m_CameraMoveSpeed * ( m_Keys.KeyW - m_Keys.KeyS );
-
 	m_Camera3D->m_ViewPos += m_Camera3D->m_ViewDir * m_Camera3D->m_CameraMoveSpeed * ( float )( m_Keys.KeyW - m_Keys.KeyS );
-
-	m_Camera2D->Update();
 	m_Camera3D->Update();
 }
 
@@ -160,12 +154,8 @@ void SandboxScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int
 
 void SandboxScene::OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
 {
-	m_Camera2D->m_CameraZoom += m_Camera2D->m_CameraZoomSpeed * -( float )yoffset;
-	Utils::Clampr( m_Camera2D->m_CameraZoom, 5.0f, 180.f );
-
-	m_Camera3D->m_CameraFov += m_Camera3D->m_CameraZoomSpeed * -( float )yoffset;
+	m_Camera3D->m_CameraFov += m_Camera3D->m_CameraFovSpeed * -( float )yoffset;
 	Utils::Clampr( m_Camera3D->m_CameraFov, 5.0f, 180.f );
-
 	return;
 }
 

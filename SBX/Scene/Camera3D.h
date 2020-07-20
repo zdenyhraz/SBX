@@ -10,7 +10,7 @@ public:
 		m_ViewDir( 0.f, 1.f, -1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
 		m_CameraMoveSpeed( 0.1f ),
-		m_CameraZoomSpeed( 3.5f ),
+		m_CameraFovSpeed( 3.5f ),
 		m_CameraFov( 90.f )
 	{
 	}
@@ -27,9 +27,8 @@ public:
 	glm::vec3 m_ViewPos;
 	glm::vec3 m_ViewDir;
 	glm::vec3 m_UpDir;
-	float m_CameraMoveSpeed;
-	float m_CameraZoomSpeed;
-	float m_CameraFov;
 	float m_AspectRatio;
-
+	float m_CameraMoveSpeed;
+	float m_CameraFovSpeed;
+	float m_CameraFov;
 };
