@@ -7,25 +7,26 @@ class Camera3D
 public:
 	Camera3D( float aspect ) :
 		m_AspectRatio( aspect ),
-		m_ViewPos( 0.f, -1.f, 1.f ),
+		m_ViewPos( 1.5f, -1.5f, 1.5f ),
 		m_ViewDir( 0.f, 0.f, 0.f ),
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
-		m_CameraPosSpeed( 0.1f ),
+		m_CameraPosSpeed( 0.03f ),
 		m_CameraDirSpeed( 0.1f ),
-		m_CameraFovSpeed( 3.5f ),
+		m_CameraFovSpeed( 5.f ),
 		m_CameraFov( 90.f ),
 		m_Target( 0.f, 0.f, 0.f ),
 		m_Targeted( false ),
 		m_Pitch( 45 ),
-		m_Yaw( 0 )
+		m_Yaw( -45 )
 	{
 	}
 
 	void Update( const UserInput &ui )
 	{
-		m_Pitch += ( float )ui.MouseR * m_CameraDirSpeed * ( ui.MouseY - ui.MouseYprev );
+		m_Pitch += ( float )ui.MouseR * m_CameraDirSpeed * -( ui.MouseY - ui.MouseYprev );
 		m_Yaw += ( float )ui.MouseR * m_CameraDirSpeed * ( ui.MouseX - ui.MouseXprev );
+		Utils::Clampr( m_Pitch, 1.f, 179.f );
 
 		m_ViewDir.x = sin( glm::radians( m_Yaw ) ) * sin( glm::radians( m_Pitch ) );
 		m_ViewDir.y = cos( glm::radians( m_Yaw ) ) * sin( glm::radians( m_Pitch ) );

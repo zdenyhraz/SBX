@@ -277,6 +277,7 @@
     <None Include="Resources\Shaders\Vertex.shader" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\Textures\ground.png" />
     <Image Include="Resources\Textures\sasa.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

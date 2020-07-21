@@ -19,8 +19,10 @@ private:
 
 	std::unique_ptr<Shader> m_Shader;
 	glm::vec4 m_ClearColor;
-	std::unique_ptr<VertexArray> m_Va;
+	std::unique_ptr<VertexArray> m_VaEntity;
+	std::unique_ptr<VertexArray> m_VaGround;
 	std::unique_ptr<IndexBuffer> m_Ib;
-	std::unique_ptr<Texture> m_Texture;
+	std::unique_ptr<Texture> m_TextureEntity;
+	std::unique_ptr<Texture> m_TextureGround;
 	std::unique_ptr<Camera3D> m_Camera3D;
 };
