@@ -143,6 +143,8 @@ void SandboxScene::OnImGuiRender()
 	ImGui::SliderFloat3( "Camera3D position", &m_Camera3D->m_ViewPos.x, -5, 5 );
 	ImGui::SliderFloat3( "Camera3D direction", &m_Camera3D->m_ViewDir.x, -5, 5 );
 	ImGui::SliderFloat( "Camera3D Fov", &m_Camera3D->m_CameraFov, 5.0f, 180.f );
+	ImGui::SliderFloat( "Camera pitch", &m_Camera3D->m_Pitch, -90, 90 );
+	ImGui::SliderFloat( "Camera yaw", &m_Camera3D->m_Yaw, -90, 90 );
 	ImGui::End();
 }
 

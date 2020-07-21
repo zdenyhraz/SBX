@@ -12,26 +12,41 @@ public:
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
 		m_CameraPosSpeed( 0.1f ),
-		m_CameraDirSpeed( 0.001f ),
+		m_CameraDirSpeed( 0.1f ),
 		m_CameraFovSpeed( 3.5f ),
 		m_CameraFov( 90.f ),
 		m_Target( 0.f, 0.f, 0.f ),
-		m_Targeted( false )
+		m_Targeted( false ),
+		m_Pitch( -45 ),
+		m_Yaw( 0 )
 	{
 	}
 
 	void Update( const UserInput &ui )
 	{
-		m_ViewDir += ( float )ui.MouseR * ( m_CameraDirSpeed * glm::vec3( ui.MouseX - ui.MouseXprev, 0.f, ui.MouseYprev - ui.MouseY ) );
+		m_Pitch += ( float )ui.MouseR * m_CameraDirSpeed * -( ui.MouseY - ui.MouseYprev );
+		m_Yaw += ( float )ui.MouseR * m_CameraDirSpeed * ( ui.MouseX - ui.MouseXprev );
+
+		m_ViewDir.x = sin( glm::radians( m_Yaw ) ) * sin( glm::radians( m_Pitch ) );
+		m_ViewDir.y = cos( glm::radians( m_Yaw ) ) * sin( glm::radians( m_Pitch ) );
+		m_ViewDir.z = cos( glm::radians( m_Pitch ) );
 		m_ViewDir = glm::normalize( m_ViewDir );
-		m_UpDir;//update updir too - perpendicular to viewdir & in the same plane as updir def
-		m_ViewPos += m_ViewDir * m_CameraPosSpeed * ( float )( ui.KeyW - ui.KeyS );
+
+		m_RightDir = glm::normalize( glm::cross( m_UpDirDef, m_ViewDir ) );
+		m_UpDir = glm::cross( m_ViewDir, m_RightDir );
+
+		m_ViewPos += m_CameraPosSpeed * ( m_ViewDir  * ( float )( ui.KeyW - ui.KeyS ) + m_RightDir * ( float )( ui.KeyA - ui.KeyD ) );
 
 		m_CameraFov += m_CameraFovSpeed * -( float )ui.MouseScroll;
 		Utils::Clampr( m_CameraFov, 5.0f, 180.f );
 
-		m_View = ( float )!m_Targeted * glm::lookAt( m_ViewPos, m_ViewPos + m_ViewDir, m_UpDir ) + ( float )m_Targeted * glm::lookAt( m_ViewPos, m_Target, m_UpDir );
+		m_View = glm::lookAt( m_ViewPos, m_ViewPos + m_ViewDir, m_UpDir );
 		m_Proj = glm::perspective( glm::radians( m_CameraFov ), m_AspectRatio, 0.1f, 1000.0f );
+
+		if ( m_Targeted )
+		{
+
+		}
 	}
 
 	void StartTargeting( glm::vec3 &target )
@@ -50,8 +65,11 @@ public:
 	glm::vec3 m_ViewPos;
 	glm::vec3 m_ViewDir;
 	glm::vec3 m_UpDir;
+	glm::vec3 m_RightDir;
 	glm::vec3 m_UpDirDef;
 	glm::vec3 m_Target;
+	float m_Pitch;
+	float m_Yaw;
 	bool m_Targeted;
 	float m_AspectRatio;
 	float m_CameraPosSpeed;
