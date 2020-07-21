@@ -116,8 +116,7 @@ void SandboxScene::OnUpdate()
 	m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
 
-	m_Camera3D->m_ViewPos += m_Camera3D->m_ViewDir * m_Camera3D->m_CameraMoveSpeed * ( float )( m_Keys.KeyW - m_Keys.KeyS );
-	m_Camera3D->Update();
+	m_Camera3D->Update( m_UserInput );
 }
 
 void SandboxScene::OnRender()
@@ -154,8 +153,16 @@ void SandboxScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int
 
 void SandboxScene::OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
 {
-	m_Camera3D->m_CameraFov += m_Camera3D->m_CameraFovSpeed * -( float )yoffset;
-	Utils::Clampr( m_Camera3D->m_CameraFov, 5.0f, 180.f );
-	return;
+
+}
+
+void SandboxScene::OnMouseMoveCallback( GLFWwindow *window, double xpos, double ypos )
+{
+
+}
+
+void SandboxScene::OnMouseClickCallback( GLFWwindow *window, int button, int action, int mods )
+{
+
 }
 

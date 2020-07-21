@@ -170,7 +170,7 @@
     <ClCompile Include="Render\VertexBuffer.cpp" />
     <ClCompile Include="Render\VertexBufferLayout.cpp" />
     <ClCompile Include="Scene\Camera2D.cpp" />
-    <ClCompile Include="Scene\Camerra3D.cpp" />
+    <ClCompile Include="Scene\Camera3D.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\Scenes\SandboxScene.cpp" />
     <ClCompile Include="System\System.cpp" />
@@ -237,6 +237,7 @@
     <ClInclude Include="Scene\Camera3D.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\Scenes\SandboxScene.h" />
+    <ClInclude Include="Scene\UserInput.h" />
     <ClInclude Include="System\SystemVector.h" />
     <ClInclude Include="System\System.h" />
     <ClInclude Include="System\Systems\EventSystem.h" />

@@ -33,6 +33,7 @@ void Scene::Run()
 		ImgGuiNewFrame();
 		OnImGuiRender();
 		ImGuiRender();
+		UpdateUserInput();
 		GlfwRender();
 	}
 
@@ -46,6 +47,12 @@ void Scene::Clear()
 	glClear( GL_COLOR_BUFFER_BIT );
 }
 
+void Scene::UpdateUserInput()
+{
+	m_UserInput.Update();
+	glfwPollEvents();
+}
+
 void Scene::GlfwStart()
 {
 	glfwInit();
@@ -56,6 +63,8 @@ void Scene::GlfwStart()
 	glfwSetWindowUserPointer( m_Window, this );
 	glfwSetKeyCallback( m_Window, KeyCallback );
 	glfwSetScrollCallback( m_Window, ScrollCallback );
+	glfwSetCursorPosCallback( m_Window, MouseMoveCallback );
+	glfwSetMouseButtonCallback( m_Window, MouseClickCallback );
 	glewInit();
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
@@ -71,7 +80,6 @@ void Scene::GlfwStop()
 void Scene::GlfwRender()
 {
 	glfwSwapBuffers( m_Window );
-	glfwPollEvents();
 }
 
 void Scene::ImGuiStart()
@@ -103,6 +111,11 @@ void Scene::ImGuiRender()
 	ImGui_ImplOpenGL3_RenderDrawData( ImGui::GetDrawData() );
 }
 
+inline Scene *Scene::GetSceneFromWindow( GLFWwindow *window )
+{
+	return ( Scene * )glfwGetWindowUserPointer( window );
+}
+
 void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
 {
 	if ( action == GLFW_REPEAT )
@@ -110,24 +123,24 @@ void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, 
 		return;
 	}
 
-	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
+	Scene *scene = GetSceneFromWindow( window );
 
 	switch ( key )
 	{
 		case GLFW_KEY_W:
-			scene->m_Keys.KeyW = action == GLFW_PRESS;
+			scene->m_UserInput.KeyW = action == GLFW_PRESS;
 			return;
 
 		case GLFW_KEY_S:
-			scene->m_Keys.KeyS = action == GLFW_PRESS;
+			scene->m_UserInput.KeyS = action == GLFW_PRESS;
 			return;
 
 		case GLFW_KEY_A:
-			scene->m_Keys.KeyA = action == GLFW_PRESS;
+			scene->m_UserInput.KeyA = action == GLFW_PRESS;
 			return;
 
 		case GLFW_KEY_D:
-			scene->m_Keys.KeyD = action == GLFW_PRESS;
+			scene->m_UserInput.KeyD = action == GLFW_PRESS;
 			return;
 	}
 
@@ -136,6 +149,38 @@ void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, 
 
 void Scene::ScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
 {
-	Scene *scene = ( Scene * )glfwGetWindowUserPointer( window );
+	Scene *scene = GetSceneFromWindow( window );
+	scene->m_UserInput.MouseScroll = yoffset;
 	scene->OnScrollCallback( window, xoffset, yoffset );
+}
+
+void Scene::MouseMoveCallback( GLFWwindow *window, double xpos, double ypos )
+{
+	Scene *scene = GetSceneFromWindow( window );
+	scene->m_UserInput.MouseX = xpos;
+	scene->m_UserInput.MouseY = ypos;
+	scene->OnMouseMoveCallback( window, xpos, ypos );
+}
+
+void Scene::MouseClickCallback( GLFWwindow *window, int button, int action, int mods )
+{
+	if ( action == GLFW_REPEAT )
+	{
+		return;
+	}
+
+	Scene *scene = GetSceneFromWindow( window );
+
+	switch ( button )
+	{
+		case GLFW_MOUSE_BUTTON_LEFT:
+			scene->m_UserInput.MouseL = action == GLFW_PRESS;
+			return;
+
+		case GLFW_MOUSE_BUTTON_RIGHT:
+			scene->m_UserInput.MouseR = action == GLFW_PRESS;
+			return;
+	}
+
+	scene->OnMouseClickCallback( window, button, action, mods );
 }

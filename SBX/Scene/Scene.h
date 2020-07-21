@@ -10,6 +10,7 @@
 #include "System/SystemVector.h"
 #include "Camera2D.h"
 #include "Camera3D.h"
+#include "UserInput.h"
 
 class Scene
 {
@@ -27,8 +28,12 @@ protected:
 	virtual void OnImGuiRender() {};
 	virtual void OnKeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods ) {};
 	virtual void OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset ) {};
+	virtual void OnMouseMoveCallback( GLFWwindow *window, double xpos, double ypos ) {};
+	virtual void OnMouseClickCallback( GLFWwindow *window, int button, int action, int mods ) {};
 
 	void Clear();
+	void UpdateUserInput();
+
 	void GlfwStart();
 	void GlfwStop();
 	void GlfwRender();
@@ -38,16 +43,12 @@ protected:
 	void ImgGuiNewFrame();
 	void ImGuiRender();
 
+	static Scene *GetSceneFromWindow( GLFWwindow *window );
+
 	static void KeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods );
 	static void ScrollCallback( GLFWwindow *window, double xoffset, double yoffset );
-
-	struct KeysPressed
-	{
-		bool KeyW = false;
-		bool KeyS = false;
-		bool KeyA = false;
-		bool KeyD = false;
-	};
+	static void MouseMoveCallback( GLFWwindow *window, double xpos, double ypos );
+	static void MouseClickCallback( GLFWwindow *window, int button, int action, int mods );
 
 	std::shared_ptr<ComponentVectors> m_Components;
 	std::shared_ptr<ManagerVector> m_Managers;
@@ -58,5 +59,5 @@ protected:
 	int m_WindowHeight;
 	float m_AspectRatio;
 	GLFWwindow *m_Window;
-	KeysPressed m_Keys;
+	UserInput m_UserInput;
 };

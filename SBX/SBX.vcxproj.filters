@@ -41,8 +41,8 @@
     <ClCompile Include="Scene\Scenes\TemplateScene.cpp" />
     <ClCompile Include="Scene\Scenes\SandboxScene.cpp" />
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Scene\Camerra3D.cpp" />
     <ClCompile Include="Scene\Camera2D.cpp" />
+    <ClCompile Include="Scene\Camera3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -105,6 +105,7 @@
     <ClInclude Include="Scene\Scenes\SandboxScene.h" />
     <ClInclude Include="Scene\Camera3D.h" />
     <ClInclude Include="Scene\Camera2D.h" />
+    <ClInclude Include="Scene\UserInput.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />
