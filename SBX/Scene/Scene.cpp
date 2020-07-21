@@ -150,15 +150,15 @@ void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, 
 void Scene::ScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
 {
 	Scene *scene = GetSceneFromWindow( window );
-	scene->m_UserInput.MouseScroll = yoffset;
+	scene->m_UserInput.MouseScroll = ( float )yoffset;
 	scene->OnScrollCallback( window, xoffset, yoffset );
 }
 
 void Scene::MouseMoveCallback( GLFWwindow *window, double xpos, double ypos )
 {
 	Scene *scene = GetSceneFromWindow( window );
-	scene->m_UserInput.MouseX = xpos;
-	scene->m_UserInput.MouseY = ypos;
+	scene->m_UserInput.MouseX = ( float )xpos;
+	scene->m_UserInput.MouseY = ( float )ypos;
 	scene->OnMouseMoveCallback( window, xpos, ypos );
 }
 

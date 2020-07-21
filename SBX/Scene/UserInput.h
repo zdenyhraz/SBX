@@ -8,11 +8,11 @@ struct UserInput
 	bool KeyD = false;
 	bool MouseL = false;
 	bool MouseR = false;
-	double MouseX = 0;
-	double MouseY = 0;
-	double MouseXprev = 0;
-	double MouseYprev = 0;
-	double MouseScroll = 0;
+	float MouseX = 0;
+	float MouseY = 0;
+	float MouseXprev = 0;
+	float MouseYprev = 0;
+	float MouseScroll = 0;
 
 	void Update()
 	{
