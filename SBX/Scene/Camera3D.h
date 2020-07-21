@@ -8,7 +8,7 @@ public:
 	Camera3D( float aspect ) :
 		m_AspectRatio( aspect ),
 		m_ViewPos( 0.f, -1.f, 1.f ),
-		m_ViewDir( 0.f, 1.f, -1.f ),
+		m_ViewDir( 0.f, 0.f, 0.f ),
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
 		m_CameraPosSpeed( 0.1f ),
@@ -17,20 +17,19 @@ public:
 		m_CameraFov( 90.f ),
 		m_Target( 0.f, 0.f, 0.f ),
 		m_Targeted( false ),
-		m_Pitch( -45 ),
+		m_Pitch( 45 ),
 		m_Yaw( 0 )
 	{
 	}
 
 	void Update( const UserInput &ui )
 	{
-		m_Pitch += ( float )ui.MouseR * m_CameraDirSpeed * -( ui.MouseY - ui.MouseYprev );
+		m_Pitch += ( float )ui.MouseR * m_CameraDirSpeed * ( ui.MouseY - ui.MouseYprev );
 		m_Yaw += ( float )ui.MouseR * m_CameraDirSpeed * ( ui.MouseX - ui.MouseXprev );
 
 		m_ViewDir.x = sin( glm::radians( m_Yaw ) ) * sin( glm::radians( m_Pitch ) );
 		m_ViewDir.y = cos( glm::radians( m_Yaw ) ) * sin( glm::radians( m_Pitch ) );
-		m_ViewDir.z = cos( glm::radians( m_Pitch ) );
-		m_ViewDir = glm::normalize( m_ViewDir );
+		m_ViewDir.z = -cos( glm::radians( m_Pitch ) );
 
 		m_RightDir = glm::normalize( glm::cross( m_UpDirDef, m_ViewDir ) );
 		m_UpDir = glm::cross( m_ViewDir, m_RightDir );
