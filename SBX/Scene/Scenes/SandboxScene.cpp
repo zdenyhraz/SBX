@@ -133,7 +133,7 @@ void SandboxScene::OnUpdate()
 	m_Systems->Seeking->Tick( dt );
 	m_Systems->Swarm->Tick( dt );
 	m_Systems->Movement->Tick( dt );
-	m_Systems->Draw->Tick( dt );
+	//m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
 
 	m_Camera3D->Update( m_UserInput );
