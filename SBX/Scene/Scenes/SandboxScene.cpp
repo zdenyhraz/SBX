@@ -89,6 +89,7 @@ void SandboxScene::OnStart()
 	m_VaEntity->AddBuffer( vbe, vble );
 	vbe.Unbind();
 
+
 	m_VaGround = std::make_unique<VertexArray>();
 	VertexBuffer vbg( positionsGround, 4 * 4 * sizeof( float ) );
 	VertexBufferLayout vblg;
@@ -109,6 +110,7 @@ void SandboxScene::OnStart()
 	m_Camera3D = std::make_unique<Camera3D>( m_AspectRatio );
 
 	m_VaEntity->Unbind();
+	m_VaGround->Unbind();
 	m_Ib->Unbind();
 	m_Shader->Unbind();
 }
@@ -147,7 +149,7 @@ void SandboxScene::OnRender()
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
 		auto &mod = m_Components->Models.Find( pos.first );
-		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) );
+		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) ) * glm::eulerAngleXZY( pos.second.Rotation.x, pos.second.Rotation.y, pos.second.Rotation.z );
 		glm::mat4 mvp = m_Camera3D->m_Proj * m_Camera3D->m_View * model;
 		m_Shader->SetUniformMat4f( "u_MVP", mvp );
 		Renderer::Draw( *m_VaEntity, *m_Ib, *m_Shader );
