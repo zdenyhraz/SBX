@@ -198,12 +198,21 @@ void SandboxScene::OnRender()
 	Renderer::Draw( *m_VaGround, *m_Shader );
 
 	m_TextureBox->Bind();
-	const glm::vec3 posb( 0, 0, 0 );
-	const glm::vec3 rotb( 0, 0, 0 );
-	const float scaleb = 1.0f;
-	const glm::mat4 modelb = glm::translate( glm::mat4( 1.0f ), posb ) * glm::eulerAngleXZY( rotb.x, rotb.y, rotb.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb ) );
-	glm::mat4 mvpb = m_Camera3D->m_Proj * m_Camera3D->m_View * modelb;
-	m_Shader->SetUniformMat4f( "u_MVP", mvpb );
+	const glm::vec3 posb1( 0, 0, 0 );
+	const glm::vec3 rotb1( 0, 0, 0 );
+	const float scaleb1 = 1.0f;
+	const glm::mat4 modelb1 = glm::translate( glm::mat4( 1.0f ), posb1 ) * glm::eulerAngleXZY( rotb1.x, rotb1.y, rotb1.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb1 ) );
+	glm::mat4 mvpb1 = m_Camera3D->m_Proj * m_Camera3D->m_View * modelb1;
+	m_Shader->SetUniformMat4f( "u_MVP", mvpb1 );
+	Renderer::Draw( *m_VaBox, *m_Shader );
+
+	m_TextureBox->Bind();
+	const glm::vec3 posb2( 0, -0.5, 0 );
+	const glm::vec3 rotb2( 0, glm::radians( 45.0f ), 0 );
+	const float scaleb2 = 1.0f;
+	const glm::mat4 modelb2 = glm::translate( glm::mat4( 1.0f ), posb2 ) * glm::eulerAngleXZY( rotb2.x, rotb2.y, rotb2.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb2 ) );
+	glm::mat4 mvpb2 = m_Camera3D->m_Proj * m_Camera3D->m_View * modelb2;
+	m_Shader->SetUniformMat4f( "u_MVP", mvpb2 );
 	Renderer::Draw( *m_VaBox, *m_Shader );
 }
 
