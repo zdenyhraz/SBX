@@ -114,5 +114,6 @@
   <ItemGroup>
     <Image Include="Resources\Textures\sasa.png" />
     <Image Include="Resources\Textures\ground.png" />
+    <Image Include="Resources\Textures\box.png" />
   </ItemGroup>
 </Project>

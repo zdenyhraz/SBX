@@ -21,8 +21,11 @@ private:
 	glm::vec4 m_ClearColor;
 	std::unique_ptr<VertexArray> m_VaEntity;
 	std::unique_ptr<VertexArray> m_VaGround;
+	std::unique_ptr<VertexArray> m_VaBox;
 	std::unique_ptr<IndexBuffer> m_Ib;
+	std::unique_ptr<IndexBuffer> m_IbBox;
 	std::unique_ptr<Texture> m_TextureEntity;
 	std::unique_ptr<Texture> m_TextureGround;
+	std::unique_ptr<Texture> m_TextureBox;
 	std::unique_ptr<Camera3D> m_Camera3D;
 };
