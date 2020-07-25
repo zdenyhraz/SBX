@@ -9,7 +9,7 @@ SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::s
 
 void SandboxScene::OnStart()
 {
-	int initEntityCnt = 120;
+	int initEntityCnt = 0;
 	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 	for ( int i = 0; i < initEntityCnt; i++ )
@@ -44,7 +44,7 @@ void SandboxScene::OnStart()
 		ag.second.MovementBehaviour = AgentComponent::Swarming;
 	}
 
-	if ( true )
+	if ( initEntityCnt >= 2 )
 	{
 		m_Components->EntityInfos.Find( 0 ).Name = "Sasko";
 		m_Components->Models.Find( 0 ).Size = 3;
@@ -141,7 +141,7 @@ void SandboxScene::OnStart()
 	m_Shader->SetUniform1i( "u_Texture", 0 );
 
 	m_TextureEntity = std::make_shared<Texture>( "Resources/Textures/sasa.png" );
-	m_TextureGround = std::make_shared<Texture>( "Resources/Textures/ground.png" );
+	m_TextureGround = std::make_shared<Texture>( "Resources/Textures/ground.jpg" );
 	m_TextureBox = std::make_shared<Texture>( "Resources/Textures/box.jpg" );
 
 	m_Camera3D = std::make_shared<Camera3D>( m_AspectRatio );
