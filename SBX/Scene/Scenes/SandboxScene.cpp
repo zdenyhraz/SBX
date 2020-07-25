@@ -140,18 +140,11 @@ void SandboxScene::OnStart()
 	m_Shader->Bind();
 	m_Shader->SetUniform1i( "u_Texture", 0 );
 
+	m_Camera3D = std::make_shared<Camera3D>( m_AspectRatio );
+
 	m_TextureEntity = std::make_shared<Texture>( "Resources/Textures/sasa.png" );
 	m_TextureGround = std::make_shared<Texture>( "Resources/Textures/ground.jpg" );
 	m_TextureBox = std::make_shared<Texture>( "Resources/Textures/box.jpg" );
-
-	m_Camera3D = std::make_shared<Camera3D>( m_AspectRatio );
-
-	m_VaEntity->Unbind();
-	m_VaGround->Unbind();
-	m_VaBox->Unbind();
-	m_Ib->Unbind();
-	m_IbBox->Unbind();
-	m_Shader->Unbind();
 }
 
 void SandboxScene::OnStop()
@@ -192,7 +185,7 @@ void SandboxScene::OnRender()
 		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::eulerAngleXZY( pos.second.Rotation.x, pos.second.Rotation.y, pos.second.Rotation.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) );
 		glm::mat4 mvp = m_Camera3D->m_Proj * m_Camera3D->m_View * model;
 		m_Shader->SetUniformMat4f( "u_MVP", mvp );
-		Renderer::Draw( *m_VaEntity );
+		Renderer::Draw( *m_VaEntity, *m_Shader );
 	}
 
 	m_TextureGround->Bind();
@@ -202,7 +195,7 @@ void SandboxScene::OnRender()
 	const glm::mat4 modelg = glm::translate( glm::mat4( 1.0f ), posg ) * glm::eulerAngleXZY( rotg.x, rotg.y, rotg.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleg ) );
 	glm::mat4 mvpg = m_Camera3D->m_Proj * m_Camera3D->m_View * modelg;
 	m_Shader->SetUniformMat4f( "u_MVP", mvpg );
-	Renderer::Draw( *m_VaGround );
+	Renderer::Draw( *m_VaGround, *m_Shader );
 
 	m_TextureBox->Bind();
 	const glm::vec3 posb( 0, 0, 0 );
@@ -211,7 +204,7 @@ void SandboxScene::OnRender()
 	const glm::mat4 modelb = glm::translate( glm::mat4( 1.0f ), posb ) * glm::eulerAngleXZY( rotb.x, rotb.y, rotb.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb ) );
 	glm::mat4 mvpb = m_Camera3D->m_Proj * m_Camera3D->m_View * modelb;
 	m_Shader->SetUniformMat4f( "u_MVP", mvpb );
-	Renderer::Draw( *m_VaBox );
+	Renderer::Draw( *m_VaBox, *m_Shader );
 }
 
 void SandboxScene::OnImGuiRender()
