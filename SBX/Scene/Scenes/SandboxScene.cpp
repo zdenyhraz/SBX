@@ -129,8 +129,8 @@ void SandboxScene::OnStart()
 	m_VaBox = std::make_unique<VertexArray>();
 	VertexBuffer vbb( positionsBox, 8 * 5 * sizeof( float ) );
 	VertexBufferLayout vblb;
-	vble.Push<float>( 3 ); //vertex position
-	vble.Push<float>( 2 ); //texture coordinate
+	vblb.Push<float>( 3 ); //vertex position
+	vblb.Push<float>( 2 ); //texture coordinate
 	m_VaBox->AddBuffer( vbb, vblb );
 	vbb.Unbind();
 
