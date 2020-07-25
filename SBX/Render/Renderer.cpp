@@ -1,6 +1,11 @@
 #include "Renderer.h"
 
-std::unique_ptr<RendererStorage> Renderer::m_RendererStorage = std::make_unique<RendererStorage>();
+std::unique_ptr<RendererStorage> Renderer::m_RendererStorage;
+
+void Renderer::InitStorage()
+{
+	m_RendererStorage = std::make_unique<RendererStorage>();
+}
 
 void Renderer::Clear()
 {

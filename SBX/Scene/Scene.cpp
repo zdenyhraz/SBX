@@ -70,6 +70,7 @@ void Scene::GlfwStart()
 	glDepthFunc( GL_LESS );
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+	Renderer::InitStorage();
 	LOG_INFO( "SBX using OpenGL version {}", glGetString( GL_VERSION ) );
 }
 
