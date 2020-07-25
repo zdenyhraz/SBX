@@ -20,17 +20,25 @@ void VertexArray::Unbind() const
 	glBindVertexArray( 0 );
 }
 
-void VertexArray::AddBuffer( const VertexBuffer &vb, const VertexBufferLayout &layout )
+void VertexArray::SetVertexBuffer( std::shared_ptr<VertexBuffer> vb, std::shared_ptr<VertexBufferLayout> layout )
 {
 	Bind();
-	vb.Bind();
-	const auto &elements = layout.GetElements();
+	vb->Bind();
+	const auto &elements = layout->GetElements();
 	unsigned int offset = 0;
 	for ( unsigned int i = 0; i < elements.size(); i++ )
 	{
 		const auto &element = elements[i];
 		glEnableVertexAttribArray( i );
-		glVertexAttribPointer( i, element.Count, element.Type, element.Normalized, layout.GetStride(), ( const void * )offset );
+		glVertexAttribPointer( i, element.Count, element.Type, element.Normalized, layout->GetStride(), ( const void * )offset );
 		offset += element.Count * VertexBufferLayoutElement::GetSizeOfType( element.Type );
 	}
+	m_vb = vb;
+}
+
+void VertexArray::SetIndexBuffer( std::shared_ptr<IndexBuffer> ib )
+{
+	Bind();
+	ib->Bind();
+	m_ib = ib;
 }

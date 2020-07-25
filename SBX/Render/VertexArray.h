@@ -2,6 +2,7 @@
 #include "Stdafx.h"
 #include "VertexBuffer.h"
 #include "VertexBufferLayout.h"
+#include "IndexBuffer.h"
 
 // <VERTEX ARRAYS>
 // - with multiple objects in the scene we need to (for each object) do the following:
@@ -19,11 +20,16 @@ public:
 	~VertexArray();
 
 	void Bind() const;
-
 	void Unbind() const;
 
-	void AddBuffer( const VertexBuffer &vb, const VertexBufferLayout &layout );
+	void SetVertexBuffer( std::shared_ptr<VertexBuffer>vb, std::shared_ptr <VertexBufferLayout> layout );
+	void SetIndexBuffer( std::shared_ptr<IndexBuffer> ib );
+
+	VertexBuffer *GetVertexBuffer() const { return m_vb.get(); }
+	IndexBuffer *GetIndexBuffer() const { return m_ib.get(); }
 
 private:
 	unsigned int m_RenderedId;
+	std::shared_ptr<VertexBuffer> m_vb;
+	std::shared_ptr<IndexBuffer> m_ib;
 };

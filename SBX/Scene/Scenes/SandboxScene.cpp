@@ -109,43 +109,42 @@ void SandboxScene::OnStart()
 		4, 7, 3
 	};
 
+	m_Ib = std::make_shared<IndexBuffer>( indices, 6 );
+	m_IbBox = std::make_shared<IndexBuffer>( indicesBox, 36 );
 
-	m_VaEntity = std::make_unique<VertexArray>();
-	VertexBuffer vbe( positionsEntity, 4 * 5 * sizeof( float ) );
-	VertexBufferLayout vble;
-	vble.Push<float>( 3 ); //vertex position
-	vble.Push<float>( 2 ); //texture coordinate
-	m_VaEntity->AddBuffer( vbe, vble );
-	vbe.Unbind();
+	m_VaEntity = std::make_shared<VertexArray>();
+	m_VbEntity = std::make_shared<VertexBuffer>( positionsEntity, 4 * 5 * sizeof( float ) );
+	m_VblEntity = std::make_shared<VertexBufferLayout>();
+	m_VblEntity->Push<float>( 3 ); //vertex position
+	m_VblEntity->Push<float>( 2 ); //texture coordinate
+	m_VaEntity->SetVertexBuffer( m_VbEntity, m_VblEntity );
+	m_VaEntity->SetIndexBuffer( m_Ib );
 
-	m_VaGround = std::make_unique<VertexArray>();
-	VertexBuffer vbg( positionsGround, 4 * 5 * sizeof( float ) );
-	VertexBufferLayout vblg;
-	vblg.Push<float>( 3 ); //vertex position
-	vblg.Push<float>( 2 ); //texture coordinate
-	m_VaGround->AddBuffer( vbg, vblg );
-	vbg.Unbind();
+	m_VaGround = std::make_shared<VertexArray>();
+	m_VbGround = std::make_shared<VertexBuffer>( positionsGround, 4 * 5 * sizeof( float ) );
+	m_VblGround = std::make_shared<VertexBufferLayout>();
+	m_VblGround->Push<float>( 3 ); //vertex position
+	m_VblGround->Push<float>( 2 ); //texture coordinate
+	m_VaGround->SetVertexBuffer( m_VbGround, m_VblGround );
+	m_VaGround->SetIndexBuffer( m_Ib );
 
-	m_VaBox = std::make_unique<VertexArray>();
-	VertexBuffer vbb( positionsBox, 8 * 5 * sizeof( float ) );
-	VertexBufferLayout vblb;
-	vblb.Push<float>( 3 ); //vertex position
-	vblb.Push<float>( 2 ); //texture coordinate
-	m_VaBox->AddBuffer( vbb, vblb );
-	vbb.Unbind();
+	m_VaBox = std::make_shared<VertexArray>();
+	m_VbBox = std::make_shared<VertexBuffer>( positionsBox, 8 * 5 * sizeof( float ) );
+	m_VblBox = std::make_shared<VertexBufferLayout>();
+	m_VblBox->Push<float>( 3 ); //vertex position
+	m_VblBox->Push<float>( 2 ); //texture coordinate
+	m_VaBox->SetVertexBuffer( m_VbBox, m_VblBox );
+	m_VaBox->SetIndexBuffer( m_IbBox );
 
-	m_Ib = std::make_unique<IndexBuffer>( indices, 6 );
-	m_IbBox = std::make_unique<IndexBuffer>( indicesBox, 36 );
-
-	m_Shader = std::make_unique<Shader>( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
+	m_Shader = std::make_shared<Shader>( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	m_Shader->Bind();
 	m_Shader->SetUniform1i( "u_Texture", 0 );
 
-	m_TextureEntity = std::make_unique<Texture>( "Resources/Textures/sasa.png" );
-	m_TextureGround = std::make_unique<Texture>( "Resources/Textures/ground.png" );
-	m_TextureBox = std::make_unique<Texture>( "Resources/Textures/box.png" );
+	m_TextureEntity = std::make_shared<Texture>( "Resources/Textures/sasa.png" );
+	m_TextureGround = std::make_shared<Texture>( "Resources/Textures/ground.png" );
+	m_TextureBox = std::make_shared<Texture>( "Resources/Textures/box.jpg" );
 
-	m_Camera3D = std::make_unique<Camera3D>( m_AspectRatio );
+	m_Camera3D = std::make_shared<Camera3D>( m_AspectRatio );
 
 	m_VaEntity->Unbind();
 	m_VaGround->Unbind();
@@ -184,26 +183,35 @@ void SandboxScene::OnUpdate()
 void SandboxScene::OnRender()
 {
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
+	m_Shader->Bind();
 
 	m_TextureEntity->Bind();
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
 		auto &mod = m_Components->Models.Find( pos.first );
-		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) ) * glm::eulerAngleXZY( pos.second.Rotation.x, pos.second.Rotation.y, pos.second.Rotation.z );
+		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::eulerAngleXZY( pos.second.Rotation.x, pos.second.Rotation.y, pos.second.Rotation.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) );
 		glm::mat4 mvp = m_Camera3D->m_Proj * m_Camera3D->m_View * model;
 		m_Shader->SetUniformMat4f( "u_MVP", mvp );
-		Renderer::Draw( *m_VaEntity, *m_Ib, *m_Shader );
+		Renderer::Draw( *m_VaEntity );
 	}
 
 	m_TextureGround->Bind();
-	glm::mat4 mvpg = m_Camera3D->m_Proj * m_Camera3D->m_View;
+	const glm::vec3 posg( 0, 0, 0 );
+	const glm::vec3 rotg( 0, 0, 0 );
+	const float scaleg = 1.0f;
+	const glm::mat4 modelg = glm::translate( glm::mat4( 1.0f ), posg ) * glm::eulerAngleXZY( rotg.x, rotg.y, rotg.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleg ) );
+	glm::mat4 mvpg = m_Camera3D->m_Proj * m_Camera3D->m_View * modelg;
 	m_Shader->SetUniformMat4f( "u_MVP", mvpg );
-	Renderer::Draw( *m_VaGround, *m_Ib, *m_Shader );
+	Renderer::Draw( *m_VaGround );
 
 	m_TextureBox->Bind();
-	glm::mat4 mvpb = m_Camera3D->m_Proj * m_Camera3D->m_View;
+	const glm::vec3 posb( 0, 0, 0 );
+	const glm::vec3 rotb( 0, 0, 0 );
+	const float scaleb = 1.0f;
+	const glm::mat4 modelb = glm::translate( glm::mat4( 1.0f ), posb ) * glm::eulerAngleXZY( rotb.x, rotb.y, rotb.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb ) );
+	glm::mat4 mvpb = m_Camera3D->m_Proj * m_Camera3D->m_View * modelb;
 	m_Shader->SetUniformMat4f( "u_MVP", mvpb );
-	Renderer::Draw( *m_VaBox, *m_IbBox, *m_Shader );
+	Renderer::Draw( *m_VaBox );
 }
 
 void SandboxScene::OnImGuiRender()

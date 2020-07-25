@@ -12,3 +12,9 @@ void Renderer::Draw( const VertexArray &va, const IndexBuffer &ib, const Shader 
 	ib.Bind();
 	glDrawElements( GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr );
 }
+
+void Renderer::Draw( const VertexArray &va )
+{
+	va.Bind();
+	glDrawElements( GL_TRIANGLES, va.GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+}
