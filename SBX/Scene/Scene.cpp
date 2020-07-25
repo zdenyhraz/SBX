@@ -44,7 +44,7 @@ void Scene::Run()
 
 void Scene::Clear()
 {
-	glClear( GL_COLOR_BUFFER_BIT );
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 }
 
 void Scene::UpdateUserInput()
@@ -66,9 +66,10 @@ void Scene::GlfwStart()
 	glfwSetCursorPosCallback( m_Window, MouseMoveCallback );
 	glfwSetMouseButtonCallback( m_Window, MouseClickCallback );
 	glewInit();
+	glEnable( GL_DEPTH_TEST );
+	glDepthFunc( GL_LESS );
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-	//glEnable( GL_DEPTH_TEST );
 	LOG_INFO( "SBX using OpenGL version {}", glGetString( GL_VERSION ) );
 }
 
