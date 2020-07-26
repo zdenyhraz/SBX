@@ -184,14 +184,10 @@ void SandboxScene::OnRender()
 		Renderer::Draw( *m_VaEntity, *m_Shader );
 	}
 
-	m_TextureGround->Bind();
 	const glm::vec3 posg( 0, 0, 0 );
 	const glm::vec3 rotg( 0, 0, 0 );
-	const float scaleg = 1.0f;
-	const glm::mat4 modelg = glm::translate( glm::mat4( 1.0f ), posg ) * glm::eulerAngleXZY( rotg.x, rotg.y, rotg.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleg ) );
-	glm::mat4 mvpg = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * modelg;
-	m_Shader->SetUniformMat4f( "u_MVP", mvpg );
-	Renderer::Draw( *m_VaGround, *m_Shader );
+	const glm::vec2 sizeg( 1, 1 );
+	Renderer::DrawQuad( posg, rotg, sizeg, m_Shader.get(), m_TextureGround.get() );
 
 	const glm::vec3 posb1( 0, 0, 0 );
 	const glm::vec3 rotb1( 0, 0, 0 );
