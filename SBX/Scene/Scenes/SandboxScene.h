@@ -19,17 +19,6 @@ private:
 
 	std::shared_ptr<Shader> m_Shader;
 	glm::vec4 m_ClearColor;
-	std::shared_ptr<VertexBuffer> m_VbEntity;
-	std::shared_ptr<VertexBuffer> m_VbGround;
-	std::shared_ptr<VertexBuffer> m_VbBox;
-	std::shared_ptr<VertexBufferLayout> m_VblEntity;
-	std::shared_ptr<VertexBufferLayout> m_VblGround;
-	std::shared_ptr<VertexBufferLayout> m_VblBox;
-	std::shared_ptr<VertexArray> m_VaEntity;
-	std::shared_ptr<VertexArray> m_VaGround;
-	std::shared_ptr<VertexArray> m_VaBox;
-	std::shared_ptr<IndexBuffer> m_Ib;
-	std::shared_ptr<IndexBuffer> m_IbBox;
 	std::shared_ptr<Texture> m_TextureEntity;
 	std::shared_ptr<Texture> m_TextureGround;
 	std::shared_ptr<Texture> m_TextureBox;

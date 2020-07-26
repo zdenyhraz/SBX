@@ -55,87 +55,6 @@ void SandboxScene::OnStart()
 		m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
 	}
 
-	float sizeEntity = 0.05f;
-	float sizeGround = 1.0f;
-	float sizeBox = 0.1f;
-
-	float positionsEntity[] =
-	{
-		-sizeEntity, -sizeEntity, 0.0f, 0.0f, 0.0f,
-		+sizeEntity, -sizeEntity, 0.0f, 1.0f, 0.0f,
-		+sizeEntity, +sizeEntity, 0.0f, 1.0f, 1.0f,
-		-sizeEntity, +sizeEntity, 0.0f, 0.0f, 1.0f
-	};
-
-	float positionsGround[] =
-	{
-		-sizeGround, -sizeGround, 0.0f, 0.0f, 0.0f,
-		+sizeGround, -sizeGround, 0.0f, 1.0f, 0.0f,
-		+sizeGround, +sizeGround, 0.0f, 1.0f, 1.0f,
-		-sizeGround, +sizeGround, 0.0f, 0.0f, 1.0f
-	};
-
-	float positionsBox[] =
-	{
-		-sizeBox, -sizeBox, 0.0f, 0.0f, 0.0f,
-		sizeBox, -sizeBox, 0.0f, 1.0f, 0.0f,
-		sizeBox, sizeBox, 0.0f, 1.0f, 1.0f,
-		-sizeBox, sizeBox, 0.0f, 0.0f, 1.0f,
-		-sizeBox, -sizeBox, 2.0f * sizeBox, 0.0f, 0.0f,
-		sizeBox, -sizeBox, 2.0f * sizeBox, 1.0f, 0.0f,
-		sizeBox, sizeBox, 2.0f * sizeBox, 1.0f, 1.0f,
-		-sizeBox, sizeBox, 2.0f * sizeBox, 0.0f, 1.0f,
-	};
-
-	unsigned int indices[] =
-	{
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	unsigned int indicesBox[] =
-	{
-		0, 1, 2,
-		2, 3, 0,
-		4, 5, 6,
-		6, 7, 4,
-		0, 1, 5,
-		5, 4, 0,
-		1, 2, 6,
-		6, 5, 1,
-		2, 3, 7,
-		7, 6, 2,
-		3, 0, 4,
-		4, 7, 3
-	};
-
-	m_Ib = std::make_shared<IndexBuffer>( indices, 6 );
-	m_IbBox = std::make_shared<IndexBuffer>( indicesBox, 36 );
-
-	m_VaEntity = std::make_shared<VertexArray>();
-	m_VbEntity = std::make_shared<VertexBuffer>( positionsEntity, 4 * 5 * sizeof( float ) );
-	m_VblEntity = std::make_shared<VertexBufferLayout>();
-	m_VblEntity->Push<float>( 3 ); //vertex position
-	m_VblEntity->Push<float>( 2 ); //texture coordinate
-	m_VaEntity->SetVertexBuffer( m_VbEntity, m_VblEntity );
-	m_VaEntity->SetIndexBuffer( m_Ib );
-
-	m_VaGround = std::make_shared<VertexArray>();
-	m_VbGround = std::make_shared<VertexBuffer>( positionsGround, 4 * 5 * sizeof( float ) );
-	m_VblGround = std::make_shared<VertexBufferLayout>();
-	m_VblGround->Push<float>( 3 ); //vertex position
-	m_VblGround->Push<float>( 2 ); //texture coordinate
-	m_VaGround->SetVertexBuffer( m_VbGround, m_VblGround );
-	m_VaGround->SetIndexBuffer( m_Ib );
-
-	m_VaBox = std::make_shared<VertexArray>();
-	m_VbBox = std::make_shared<VertexBuffer>( positionsBox, 8 * 5 * sizeof( float ) );
-	m_VblBox = std::make_shared<VertexBufferLayout>();
-	m_VblBox->Push<float>( 3 ); //vertex position
-	m_VblBox->Push<float>( 2 ); //texture coordinate
-	m_VaBox->SetVertexBuffer( m_VbBox, m_VblBox );
-	m_VaBox->SetIndexBuffer( m_IbBox );
-
 	m_Shader = std::make_shared<Shader>( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	m_Shader->Bind();
 	m_Shader->SetUniform1i( "u_Texture", 0 );
@@ -172,37 +91,18 @@ void SandboxScene::OnUpdate()
 void SandboxScene::OnRender()
 {
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
-	m_Shader->Bind();
 
 	m_TextureEntity->Bind();
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
-		auto &mod = m_Components->Models.Find( pos.first );
-		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::eulerAngleXZY( pos.second.Rotation.x, pos.second.Rotation.y, pos.second.Rotation.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) );
-		glm::mat4 mvp = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * model;
-		m_Shader->SetUniformMat4f( "u_MVP", mvp );
-		Renderer::Draw( *m_VaEntity, *m_Shader );
+
 	}
 
-	const glm::vec3 posg( 0, 0, 0 );
-	const glm::vec3 rotg( 0, 0, 0 );
-	const glm::vec2 sizeg( 1, 1 );
-	Renderer::DrawQuad( posg, rotg, sizeg, m_Shader.get(), m_TextureGround.get() );
-
-	const glm::vec3 posb1( 0, 0, 0 );
-	const glm::vec3 rotb1( 0, 0, 0 );
-	const glm::vec3 sizeb1( 0.1f, 0.1f, 0.1f );
-	Renderer::DrawCube( posb1, rotb1, sizeb1, m_Shader.get(), m_TextureBox.get() );
-
-	const glm::vec3 posb2( 0, 0.5, 0 );
-	const glm::vec3 rotb2( 0, glm::radians( +45.0f ), 0 );
-	const glm::vec3 sizeb2( 0.1f, 0.1f, 0.1f );
-	Renderer::DrawCube( posb2, rotb2, sizeb2, m_Shader.get(), m_TextureBox.get() );
-
-	const glm::vec3 posb3( -0.5, 0, 0 );
-	const glm::vec3 rotb3( 0, glm::radians( -45.0f ), 0 );
-	const glm::vec3 sizeb3( 0.1f, 0.1f, 0.1f );
-	Renderer::DrawCube( posb3, rotb3, sizeb3, m_Shader.get(), m_TextureBox.get() );
+	Renderer::DrawQuad( glm::vec3( 0, 0, 0 ), glm::vec3( 0, 0, 0 ), glm::vec2( 2, 2 ), m_Shader.get(), m_TextureGround.get() );
+	Renderer::DrawCube( glm::vec3( 0, 0, 0 ), glm::vec3( 0, 0, 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
+	Renderer::DrawCube( glm::vec3( 0, 0.5, 0 ), glm::vec3( 0, glm::radians( +45.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
+	Renderer::DrawCube( glm::vec3( -0.1, 0, 0.2 ), glm::vec3( 0, glm::radians( -45.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
+	Renderer::DrawCube( glm::vec3( -0.2, 0, 0.4 ), glm::vec3( 0, glm::radians( +0.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
 }
 
 void SandboxScene::OnImGuiRender()
