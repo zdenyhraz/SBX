@@ -8,8 +8,6 @@
 #include "Render/Renderer.h"
 #include "Render/Texture.h"
 #include "System/SystemVector.h"
-#include "Camera2D.h"
-#include "Camera3D.h"
 #include "UserInput.h"
 
 class Scene
@@ -33,6 +31,7 @@ protected:
 
 	void Clear();
 	void UpdateUserInput();
+	void UpdateCamera();
 
 	void GlfwStart();
 	void GlfwStop();

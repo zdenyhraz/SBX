@@ -33,5 +33,4 @@ private:
 	std::shared_ptr<Texture> m_TextureEntity;
 	std::shared_ptr<Texture> m_TextureGround;
 	std::shared_ptr<Texture> m_TextureBox;
-	std::shared_ptr<Camera3D> m_Camera3D;
 };

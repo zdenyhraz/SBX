@@ -1,12 +1,12 @@
 #pragma once
 #include "Stdafx.h"
-#include "UserInput.h"
+#include "Scene/UserInput.h"
 
-class Camera3D
+class Camera
 {
 public:
-	Camera3D( float aspect ) :
-		m_AspectRatio( aspect ),
+	Camera( float aspectRatio ) :
+		m_AspectRatio( aspectRatio ),
 		m_ViewPos( 1.5f, -1.5f, 1.5f ),
 		m_ViewDir( 0.f, 0.f, 0.f ),
 		m_UpDirDef( 0.f, 0.f, 1.f ),

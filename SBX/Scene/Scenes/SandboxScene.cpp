@@ -140,8 +140,6 @@ void SandboxScene::OnStart()
 	m_Shader->Bind();
 	m_Shader->SetUniform1i( "u_Texture", 0 );
 
-	m_Camera3D = std::make_shared<Camera3D>( m_AspectRatio );
-
 	m_TextureEntity = std::make_shared<Texture>( "Resources/Textures/sasa.png" );
 	m_TextureGround = std::make_shared<Texture>( "Resources/Textures/ground.jpg" );
 	m_TextureBox = std::make_shared<Texture>( "Resources/Textures/box.jpg" );
@@ -169,8 +167,6 @@ void SandboxScene::OnUpdate()
 	m_Systems->Movement->Tick( dt );
 	//m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
-
-	m_Camera3D->Update( m_UserInput );
 }
 
 void SandboxScene::OnRender()
@@ -183,7 +179,7 @@ void SandboxScene::OnRender()
 	{
 		auto &mod = m_Components->Models.Find( pos.first );
 		glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos.second.Position ) * glm::eulerAngleXZY( pos.second.Rotation.x, pos.second.Rotation.y, pos.second.Rotation.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( ( float )mod.Size ) );
-		glm::mat4 mvp = m_Camera3D->m_Proj * m_Camera3D->m_View * model;
+		glm::mat4 mvp = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * model;
 		m_Shader->SetUniformMat4f( "u_MVP", mvp );
 		Renderer::Draw( *m_VaEntity, *m_Shader );
 	}
@@ -193,7 +189,7 @@ void SandboxScene::OnRender()
 	const glm::vec3 rotg( 0, 0, 0 );
 	const float scaleg = 1.0f;
 	const glm::mat4 modelg = glm::translate( glm::mat4( 1.0f ), posg ) * glm::eulerAngleXZY( rotg.x, rotg.y, rotg.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleg ) );
-	glm::mat4 mvpg = m_Camera3D->m_Proj * m_Camera3D->m_View * modelg;
+	glm::mat4 mvpg = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * modelg;
 	m_Shader->SetUniformMat4f( "u_MVP", mvpg );
 	Renderer::Draw( *m_VaGround, *m_Shader );
 
@@ -202,7 +198,7 @@ void SandboxScene::OnRender()
 	const glm::vec3 rotb1( 0, 0, 0 );
 	const float scaleb1 = 1.0f;
 	const glm::mat4 modelb1 = glm::translate( glm::mat4( 1.0f ), posb1 ) * glm::eulerAngleXZY( rotb1.x, rotb1.y, rotb1.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb1 ) );
-	glm::mat4 mvpb1 = m_Camera3D->m_Proj * m_Camera3D->m_View * modelb1;
+	glm::mat4 mvpb1 = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * modelb1;
 	m_Shader->SetUniformMat4f( "u_MVP", mvpb1 );
 	Renderer::Draw( *m_VaBox, *m_Shader );
 
@@ -211,7 +207,7 @@ void SandboxScene::OnRender()
 	const glm::vec3 rotb2( 0, glm::radians( 45.0f ), 0 );
 	const float scaleb2 = 1.0f;
 	const glm::mat4 modelb2 = glm::translate( glm::mat4( 1.0f ), posb2 ) * glm::eulerAngleXZY( rotb2.x, rotb2.y, rotb2.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb2 ) );
-	glm::mat4 mvpb2 = m_Camera3D->m_Proj * m_Camera3D->m_View * modelb2;
+	glm::mat4 mvpb2 = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * modelb2;
 	m_Shader->SetUniformMat4f( "u_MVP", mvpb2 );
 	Renderer::Draw( *m_VaBox, *m_Shader );
 }
@@ -223,11 +219,11 @@ void SandboxScene::OnImGuiRender()
 	ImGui::Text( "Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate );
 	ImGui::NewLine();
 	ImGui::ColorEdit4( "Clear color", &m_ClearColor.x );
-	ImGui::SliderFloat3( "Camera position", &m_Camera3D->m_ViewPos.x, -5, 5 );
-	ImGui::SliderFloat3( "Camera direction", &m_Camera3D->m_ViewDir.x, -5, 5 );
-	ImGui::SliderFloat( "Camera Fov", &m_Camera3D->m_CameraFov, 5.0f, 180.f );
-	ImGui::SliderFloat( "Camera pitch", &m_Camera3D->m_Pitch, 1.f, 179.f );
-	ImGui::SliderFloat( "Camera yaw", &m_Camera3D->m_Yaw, -180, 180 );
+	ImGui::SliderFloat3( "Camera position", &Renderer::m_Camera->m_ViewPos.x, -5, 5 );
+	ImGui::SliderFloat3( "Camera direction", &Renderer::m_Camera->m_ViewDir.x, -5, 5 );
+	ImGui::SliderFloat( "Camera Fov", &Renderer::m_Camera->m_CameraFov, 5.0f, 180.f );
+	ImGui::SliderFloat( "Camera pitch", &Renderer::m_Camera->m_Pitch, 1.f, 179.f );
+	ImGui::SliderFloat( "Camera yaw", &Renderer::m_Camera->m_Yaw, -180, 180 );
 	ImGui::End();
 }
 

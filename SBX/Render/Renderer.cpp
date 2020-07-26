@@ -1,10 +1,12 @@
 #include "Renderer.h"
 
 std::unique_ptr<RendererStorage> Renderer::m_RendererStorage;
+std::unique_ptr<Camera> Renderer::m_Camera;
 
-void Renderer::InitStorage()
+void Renderer::InitStorage( float aspectRatio )
 {
 	m_RendererStorage = std::make_unique<RendererStorage>();
+	m_Camera = std::make_unique<Camera>( aspectRatio );
 }
 
 void Renderer::Clear()
@@ -21,8 +23,8 @@ void Renderer::Draw( const VertexArray &va, const Shader &sh )
 
 void Renderer::DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, float size )
 {
-	//const glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos ) * glm::eulerAngleXZY( rot.x, rot.y, rot.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( size ) );
-	//glm::mat4 mvp = m_Camera3D->m_Proj * m_Camera3D->m_View * model;
+	const glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos ) * glm::eulerAngleXZY( rot.x, rot.y, rot.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( size ) );
+	glm::mat4 mvp = m_Camera->m_Proj * m_Camera->m_View * model;
 	//m_Shader->SetUniformMat4f( "u_MVP", mvp );
 	//m_RendererStorage->GetQuadVA()->Bind();
 	//m_RendererStorage->GetQuadTex()->Bind();
