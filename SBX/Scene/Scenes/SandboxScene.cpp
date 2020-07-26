@@ -91,8 +91,8 @@ void SandboxScene::OnUpdate()
 void SandboxScene::OnRender()
 {
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
+	m_Shader->UpdateMvp();
 
-	m_TextureEntity->Bind();
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
 

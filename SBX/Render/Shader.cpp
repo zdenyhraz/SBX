@@ -1,4 +1,5 @@
 #include "Shader.h"
+#include "Render/Renderer.h"
 
 Shader::Shader( const std::string &filepathVertex, const std::string &filepathFragment ):
 	m_VertexFilepath( filepathVertex ),
@@ -43,6 +44,12 @@ void Shader::SetUniform4f( const std::string &name, float v0, float v1, float v2
 void Shader::SetUniformMat4f( const std::string &name, const glm::mat4 &matrix )
 {
 	glUniformMatrix4fv( GetUniformLocation( name ), 1, GL_FALSE, &matrix[0][0] );
+}
+
+void Shader::UpdateMvp()
+{
+	SetUniformMat4f( "u_View", Renderer::m_Camera->m_View );
+	SetUniformMat4f( "u_Proj", Renderer::m_Camera->m_Proj );
 }
 
 int Shader::GetUniformLocation( const std::string &name )
