@@ -193,23 +193,20 @@ void SandboxScene::OnRender()
 	m_Shader->SetUniformMat4f( "u_MVP", mvpg );
 	Renderer::Draw( *m_VaGround, *m_Shader );
 
-	m_TextureBox->Bind();
 	const glm::vec3 posb1( 0, 0, 0 );
 	const glm::vec3 rotb1( 0, 0, 0 );
-	const float scaleb1 = 1.0f;
-	const glm::mat4 modelb1 = glm::translate( glm::mat4( 1.0f ), posb1 ) * glm::eulerAngleXZY( rotb1.x, rotb1.y, rotb1.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb1 ) );
-	glm::mat4 mvpb1 = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * modelb1;
-	m_Shader->SetUniformMat4f( "u_MVP", mvpb1 );
-	Renderer::Draw( *m_VaBox, *m_Shader );
+	const glm::vec3 sizeb1( 0.1f, 0.1f, 0.1f );
+	Renderer::DrawCube( posb1, rotb1, sizeb1, m_Shader.get(), m_TextureBox.get() );
 
-	m_TextureBox->Bind();
-	const glm::vec3 posb2( 0, -0.5, 0 );
-	const glm::vec3 rotb2( 0, glm::radians( 45.0f ), 0 );
-	const float scaleb2 = 1.0f;
-	const glm::mat4 modelb2 = glm::translate( glm::mat4( 1.0f ), posb2 ) * glm::eulerAngleXZY( rotb2.x, rotb2.y, rotb2.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( scaleb2 ) );
-	glm::mat4 mvpb2 = Renderer::m_Camera->m_Proj * Renderer::m_Camera->m_View * modelb2;
-	m_Shader->SetUniformMat4f( "u_MVP", mvpb2 );
-	Renderer::Draw( *m_VaBox, *m_Shader );
+	const glm::vec3 posb2( 0, 0.5, 0 );
+	const glm::vec3 rotb2( 0, glm::radians( +45.0f ), 0 );
+	const glm::vec3 sizeb2( 0.1f, 0.1f, 0.1f );
+	Renderer::DrawCube( posb2, rotb2, sizeb2, m_Shader.get(), m_TextureBox.get() );
+
+	const glm::vec3 posb3( -0.5, 0, 0 );
+	const glm::vec3 rotb3( 0, glm::radians( -45.0f ), 0 );
+	const glm::vec3 sizeb3( 0.1f, 0.1f, 0.1f );
+	Renderer::DrawCube( posb3, rotb3, sizeb3, m_Shader.get(), m_TextureBox.get() );
 }
 
 void SandboxScene::OnImGuiRender()

@@ -21,13 +21,23 @@ void Renderer::Draw( const VertexArray &va, const Shader &sh )
 	glDrawElements( GL_TRIANGLES, va.GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
 }
 
-void Renderer::DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, float size )
+void Renderer::DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec2 &size, Shader *shader, Texture *texture )
 {
-	const glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos ) * glm::eulerAngleXZY( rot.x, rot.y, rot.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( size ) );
-	glm::mat4 mvp = m_Camera->m_Proj * m_Camera->m_View * model;
-	//m_Shader->SetUniformMat4f( "u_MVP", mvp );
-	//m_RendererStorage->GetQuadVA()->Bind();
-	//m_RendererStorage->GetQuadTex()->Bind();
-	//glDrawElements( GL_TRIANGLES, m_RendererStorage->GetQuad()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+	shader->Bind();
+	texture->Bind();
+	m_RendererStorage->GetQuadVA()->Bind();
+	const glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos ) * glm::eulerAngleXZY( rot.x, rot.y, rot.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( size.x, size.y, 1.0f ) );
+	shader->SetUniformMat4f( "u_MVP", m_Camera->m_Proj * m_Camera->m_View * model );
+	glDrawElements( GL_TRIANGLES, m_RendererStorage->GetQuadVA()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+}
+
+void Renderer::DrawCube( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec3 &size, Shader *shader, Texture *texture )
+{
+	shader->Bind();
+	texture->Bind();
+	m_RendererStorage->GetCubeVA()->Bind();
+	const glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos ) * glm::eulerAngleXZY( rot.x, rot.y, rot.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( size.x, size.y, size.z ) );
+	shader->SetUniformMat4f( "u_MVP", m_Camera->m_Proj * m_Camera->m_View * model );
+	glDrawElements( GL_TRIANGLES, m_RendererStorage->GetCubeVA()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
 }
 

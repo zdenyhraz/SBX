@@ -13,15 +13,9 @@ public:
 	VertexArray *GetQuadVA() { return m_QuadVA.get(); }
 	VertexArray *GetCubeVA() { return m_CubeVA.get(); }
 
-	Texture *GetQuadTex() { return m_QuadTex.get(); }
-	Texture *GetCubeTex() { return m_CubeTex.get(); }
-
 private:
 	std::shared_ptr<VertexArray> m_QuadVA;
 	std::shared_ptr<VertexArray> m_CubeVA;
-
-	std::shared_ptr<Texture> m_QuadTex;
-	std::shared_ptr<Texture> m_CubeTex;
 
 	std::shared_ptr<VertexBuffer> m_QuadVB;
 	std::shared_ptr<VertexBuffer> m_CubeVB;
@@ -34,5 +28,4 @@ private:
 
 	void CreateQuad();
 	void CreateCube();
-	void CreateTextures();
 };
