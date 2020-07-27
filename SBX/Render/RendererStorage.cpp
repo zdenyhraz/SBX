@@ -6,6 +6,26 @@ RendererStorage::RendererStorage()
 	CreateCube();
 }
 
+void RendererStorage::AddModel( const std::string &name, const std::string &objPath, const std::string &texPath )
+{
+	m_Models.emplace( std::pair( name, Model( objPath, texPath ) ) );
+}
+
+void RendererStorage::AddTexture( const std::string &name, const std::string &texPath )
+{
+	m_Textures.emplace( std::pair( name, Texture( texPath ) ) );
+}
+
+Model *RendererStorage::GetModel( const std::string &name )
+{
+	return &m_Models.find( name )->second;
+}
+
+Texture *RendererStorage::GetTexture( const std::string &name )
+{
+	return &m_Textures.find( name )->second;
+}
+
 void RendererStorage::CreateQuad()
 {
 	float positions[] =

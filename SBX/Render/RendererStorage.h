@@ -14,11 +14,18 @@ public:
 	VertexArray *GetQuadVA() { return m_QuadVA.get(); }
 	VertexArray *GetCubeVA() { return m_CubeVA.get(); }
 
+	void AddModel( const std::string &name, const std::string &objPath, const std::string &texPath );
+	void AddTexture( const std::string &name, const std::string &texPath );
+
+	Model *GetModel( const std::string &name );
+	Texture *GetTexture( const std::string &name );
+
 private:
 	void CreateQuad();
 	void CreateCube();
 
 	std::unordered_map<std::string, Model> m_Models;
+	std::unordered_map<std::string, Texture> m_Textures;
 
 	std::unique_ptr<VertexArray> m_QuadVA;
 	std::unique_ptr<VertexArray> m_CubeVA;

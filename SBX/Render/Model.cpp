@@ -2,9 +2,9 @@
 
 Model::Model( const std::string &objPath, const std::string &texPath )
 {
+	//load from obj file @objPath
 	float positions[] = {0, 0, 0};
 	unsigned int indices[] = { 0, 0, 0 };
-
 
 	vb = std::make_unique<VertexBuffer>( positions, 1 * 3 * sizeof( float ) );
 	ib = std::make_unique<IndexBuffer>( indices, 3 );
