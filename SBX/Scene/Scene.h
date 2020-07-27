@@ -31,7 +31,7 @@ protected:
 
 	void Clear();
 	void UpdateUserInput();
-	void UpdateCamera();
+	void UpdateRenderer();
 
 	void GlfwStart();
 	void GlfwStop();

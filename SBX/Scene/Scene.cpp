@@ -28,7 +28,7 @@ void Scene::Run()
 	while ( !glfwWindowShouldClose( m_Window ) )
 	{
 		OnUpdate();
-		UpdateCamera();
+		UpdateRenderer();
 		Clear();
 		OnRender();
 		ImgGuiNewFrame();
@@ -45,7 +45,7 @@ void Scene::Run()
 
 void Scene::Clear()
 {
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	Renderer::Clear();
 }
 
 void Scene::UpdateUserInput()
@@ -54,9 +54,9 @@ void Scene::UpdateUserInput()
 	glfwPollEvents();
 }
 
-void Scene::UpdateCamera()
+void Scene::UpdateRenderer()
 {
-	Renderer::m_Camera->Update( m_UserInput );
+	Renderer::Update( m_UserInput );
 }
 
 void Scene::GlfwStart()
@@ -76,7 +76,7 @@ void Scene::GlfwStart()
 	glDepthFunc( GL_LESS );
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-	Renderer::InitStorage( m_AspectRatio );
+	Renderer::Init( m_AspectRatio );
 	LOG_INFO( "SBX using OpenGL version {}", glGetString( GL_VERSION ) );
 }
 

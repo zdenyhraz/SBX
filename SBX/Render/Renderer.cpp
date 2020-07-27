@@ -3,7 +3,7 @@
 std::unique_ptr<RendererStorage> Renderer::m_RendererStorage;
 std::unique_ptr<Camera> Renderer::m_Camera;
 
-void Renderer::InitStorage( float aspectRatio )
+void Renderer::Init( float aspectRatio )
 {
 	m_RendererStorage = std::make_unique<RendererStorage>();
 	m_Camera = std::make_unique<Camera>( aspectRatio );
@@ -11,14 +11,19 @@ void Renderer::InitStorage( float aspectRatio )
 
 void Renderer::Clear()
 {
-	glClear( GL_COLOR_BUFFER_BIT );
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 }
 
-void Renderer::Draw( const VertexArray &va, const Shader &sh )
+void Renderer::Update( const UserInput &ui )
 {
-	sh.Bind();
-	va.Bind();
-	glDrawElements( GL_TRIANGLES, va.GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+	m_Camera->Update( ui );
+}
+
+void Renderer::Draw( VertexArray *va, Shader *sh )
+{
+	sh->Bind();
+	va->Bind();
+	glDrawElements( GL_TRIANGLES, va->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
 }
 
 void Renderer::DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec2 &size, Shader *shader, Texture *texture )
