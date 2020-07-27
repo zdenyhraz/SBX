@@ -61,9 +61,9 @@ void SandboxScene::OnStart()
 	m_Shader->Bind();
 	m_Shader->SetUniform1i( "u_Texture", 0 );
 
-	m_TextureEntity = std::make_shared<Texture>( "Resources/Textures/sasa.png" );
-	m_TextureGround = std::make_shared<Texture>( "Resources/Textures/ground.jpg" );
-	m_TextureBox = std::make_shared<Texture>( "Resources/Textures/box.jpg" );
+	Renderer::m_RendererStorage->AddTexture( "entity", "Resources/Textures/sasa.png" );
+	Renderer::m_RendererStorage->AddTexture( "ground", "Resources/Textures/ground.jpg" );
+	Renderer::m_RendererStorage->AddTexture( "box", "Resources/Textures/box.jpg" );
 }
 
 void SandboxScene::OnStop()
@@ -100,11 +100,11 @@ void SandboxScene::OnRender()
 
 	}
 
-	Renderer::DrawQuad( glm::vec3( 0, 0, 0 ), glm::vec3( 0, 0, 0 ), glm::vec2( 2, 2 ), m_Shader.get(), m_TextureGround.get() );
-	Renderer::DrawCube( glm::vec3( 0, 0, 0 ), glm::vec3( 0, 0, 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
-	Renderer::DrawCube( glm::vec3( 0, 0.5, 0 ), glm::vec3( 0, glm::radians( +45.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
-	Renderer::DrawCube( glm::vec3( -0.1, 0, 0.2 ), glm::vec3( 0, glm::radians( -45.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
-	Renderer::DrawCube( glm::vec3( -0.2, 0, 0.4 ), glm::vec3( 0, glm::radians( +0.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), m_TextureBox.get() );
+	Renderer::DrawQuad( glm::vec3( 0, 0, 0 ), glm::vec3( 0, 0, 0 ), glm::vec2( 2, 2 ), m_Shader.get(), Renderer::m_RendererStorage->GetTexture( "ground" ) );
+	Renderer::DrawCube( glm::vec3( 0, 0, 0 ), glm::vec3( 0, 0, 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), Renderer::m_RendererStorage->GetTexture( "box" ) );
+	Renderer::DrawCube( glm::vec3( 0, 0.5, 0 ), glm::vec3( 0, glm::radians( +45.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), Renderer::m_RendererStorage->GetTexture( "box" ) );
+	Renderer::DrawCube( glm::vec3( -0.1, 0, 0.2 ), glm::vec3( 0, glm::radians( -45.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), Renderer::m_RendererStorage->GetTexture( "box" ) );
+	Renderer::DrawCube( glm::vec3( -0.2, 0, 0.4 ), glm::vec3( 0, glm::radians( +0.0f ), 0 ), glm::vec3( 0.2f, 0.2f, 0.2f ), m_Shader.get(), Renderer::m_RendererStorage->GetTexture( "box" ) );
 }
 
 void SandboxScene::OnImGuiRender()

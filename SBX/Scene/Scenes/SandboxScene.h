@@ -15,7 +15,4 @@ private:
 
 	std::shared_ptr<Shader> m_Shader;
 	glm::vec4 m_ClearColor;
-	std::shared_ptr<Texture> m_TextureEntity;
-	std::shared_ptr<Texture> m_TextureGround;
-	std::shared_ptr<Texture> m_TextureBox;
 };
