@@ -11,7 +11,9 @@ public:
 		m_ViewDir( 0.f, 0.f, 0.f ),
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
-		m_CameraPosSpeed( 0.02f ),
+		m_CameraPosSpeedBase( 0.01f ),
+		m_CameraPosSpeedMod( 3.0f ),
+		m_CameraPosSpeed( 0.01f ),
 		m_CameraDirSpeed( 0.1f ),
 		m_CameraFovSpeed( 5.f ),
 		m_CameraFov( 80.f ),
@@ -35,6 +37,7 @@ public:
 		m_RightDir = glm::normalize( glm::cross( m_UpDirDef, m_ViewDir ) );
 		m_UpDir = glm::cross( m_ViewDir, m_RightDir );
 
+		m_CameraPosSpeed = m_CameraPosSpeedBase * ( 1.0f + m_CameraPosSpeedMod * ( ui.KeyShift + ui.KeyCtrl + ui.KeyAlt ) );
 		m_ViewPos += m_CameraPosSpeed * ( m_ViewDir  * ( float )( ui.KeyW - ui.KeyS ) + m_RightDir * ( float )( ui.KeyA - ui.KeyD ) );
 
 		m_CameraFov += m_CameraFovSpeed * -( float )ui.MouseScroll;
@@ -42,11 +45,6 @@ public:
 
 		m_View = glm::lookAt( m_ViewPos, m_ViewPos + m_ViewDir, m_UpDir );
 		m_Proj = glm::perspective( glm::radians( m_CameraFov ), m_AspectRatio, 0.1f, 1000.0f );
-
-		if ( m_Targeted )
-		{
-
-		}
 	}
 
 	void StartTargeting( glm::vec3 &target )
@@ -72,6 +70,8 @@ public:
 	float m_Yaw;
 	bool m_Targeted;
 	float m_AspectRatio;
+	float m_CameraPosSpeedBase;
+	float m_CameraPosSpeedMod;
 	float m_CameraPosSpeed;
 	float m_CameraDirSpeed;
 	float m_CameraFovSpeed;

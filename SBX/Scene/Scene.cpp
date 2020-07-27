@@ -134,6 +134,10 @@ void Scene::KeyCallback( GLFWwindow *window, int key, int scancode, int action, 
 
 	Scene *scene = GetSceneFromWindow( window );
 
+	scene->m_UserInput.KeyShift = mods & GLFW_MOD_SHIFT;
+	scene->m_UserInput.KeyAlt = mods & GLFW_MOD_ALT;
+	scene->m_UserInput.KeyCtrl = mods & GLFW_MOD_CONTROL;
+
 	switch ( key )
 	{
 		case GLFW_KEY_W:

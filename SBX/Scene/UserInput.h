@@ -6,6 +6,9 @@ struct UserInput
 	bool KeyS = false;
 	bool KeyA = false;
 	bool KeyD = false;
+	bool KeyShift = false;
+	bool KeyCtrl = false;
+	bool KeyAlt = false;
 	bool MouseL = false;
 	bool MouseR = false;
 	float MouseX = 0;
