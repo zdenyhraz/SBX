@@ -22,14 +22,13 @@ public:
 	void Bind() const;
 	void Unbind() const;
 
-	void SetVertexBuffer( std::shared_ptr<VertexBuffer>vb, std::shared_ptr <VertexBufferLayout> layout );
-	void SetIndexBuffer( std::shared_ptr<IndexBuffer> ib );
+	void SetBuffers( VertexBuffer *vb, VertexBufferLayout *vbl, IndexBuffer *ib );
 
-	VertexBuffer *GetVertexBuffer() const { return m_vb.get(); }
-	IndexBuffer *GetIndexBuffer() const { return m_ib.get(); }
+	VertexBuffer *GetVertexBuffer() const { return m_vb; }
+	IndexBuffer *GetIndexBuffer() const { return m_ib; }
 
 private:
 	unsigned int m_RenderedId;
-	std::shared_ptr<VertexBuffer> m_vb;
-	std::shared_ptr<IndexBuffer> m_ib;
+	VertexBuffer *m_vb;
+	IndexBuffer *m_ib;
 };

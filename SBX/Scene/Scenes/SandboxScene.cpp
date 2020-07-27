@@ -10,7 +10,9 @@ SandboxScene::SandboxScene( std::shared_ptr<ComponentVectors> components, std::s
 void SandboxScene::OnStart()
 {
 	int initEntityCnt = 0;
-	LOG_DEBUG( "Initializing {} entities", initEntityCnt );
+
+	if ( initEntityCnt > 0 )
+		LOG_DEBUG( "Initializing {} entities", initEntityCnt );
 
 	for ( int i = 0; i < initEntityCnt; i++ )
 	{
@@ -82,16 +84,16 @@ void SandboxScene::OnUpdate()
 	m_Systems->Health->Tick( dt );
 	m_Systems->Logic->Tick( dt );
 	m_Systems->Seeking->Tick( dt );
-	//m_Systems->Swarm->Tick( dt );
+	m_Systems->Swarm->Tick( dt );
 	m_Systems->Movement->Tick( dt );
-	//m_Systems->Draw->Tick( dt );
 	m_Systems->Time->Tick( dt );
+
+	m_Shader->UpdateMvp();
 }
 
 void SandboxScene::OnRender()
 {
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
-	m_Shader->UpdateMvp();
 
 	for ( auto &pos : m_Components->Positions.GetContainer() )
 	{
@@ -120,23 +122,4 @@ void SandboxScene::OnImGuiRender()
 	ImGui::End();
 }
 
-void SandboxScene::OnKeyCallback( GLFWwindow *window, int key, int scancode, int action, int mods )
-{
-
-}
-
-void SandboxScene::OnScrollCallback( GLFWwindow *window, double xoffset, double yoffset )
-{
-
-}
-
-void SandboxScene::OnMouseMoveCallback( GLFWwindow *window, double xpos, double ypos )
-{
-
-}
-
-void SandboxScene::OnMouseClickCallback( GLFWwindow *window, int button, int action, int mods )
-{
-
-}
 

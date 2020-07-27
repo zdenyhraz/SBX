@@ -4,6 +4,7 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "Texture.h"
+#include "Model.h"
 
 class RendererStorage
 {
@@ -14,18 +15,20 @@ public:
 	VertexArray *GetCubeVA() { return m_CubeVA.get(); }
 
 private:
-	std::shared_ptr<VertexArray> m_QuadVA;
-	std::shared_ptr<VertexArray> m_CubeVA;
-
-	std::shared_ptr<VertexBuffer> m_QuadVB;
-	std::shared_ptr<VertexBuffer> m_CubeVB;
-
-	std::shared_ptr<VertexBufferLayout> m_QuadVBL;
-	std::shared_ptr<VertexBufferLayout> m_CubeVBL;
-
-	std::shared_ptr<IndexBuffer> m_QuadIB;
-	std::shared_ptr<IndexBuffer> m_CubeIB;
-
 	void CreateQuad();
 	void CreateCube();
+
+	std::unordered_map<std::string, Model> m_Models;
+
+	std::unique_ptr<VertexArray> m_QuadVA;
+	std::unique_ptr<VertexArray> m_CubeVA;
+
+	std::unique_ptr<VertexBuffer> m_QuadVB;
+	std::unique_ptr<VertexBuffer> m_CubeVB;
+
+	std::unique_ptr<VertexBufferLayout> m_QuadVBL;
+	std::unique_ptr<VertexBufferLayout> m_CubeVBL;
+
+	std::unique_ptr<IndexBuffer> m_QuadIB;
+	std::unique_ptr<IndexBuffer> m_CubeIB;
 };

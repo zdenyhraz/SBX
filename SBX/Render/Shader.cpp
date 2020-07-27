@@ -88,7 +88,6 @@ std::string Shader::ParseShader( const std::string &path )
 	{
 		ss << line << "\n";
 	}
-	LOG_DEBUG( "Shader {} source code:\n{}", path, ss.str() );
 	return ss.str();
 }
 

@@ -26,6 +26,13 @@ void Renderer::Draw( VertexArray *va, Shader *sh )
 	glDrawElements( GL_TRIANGLES, va->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
 }
 
+void Renderer::Draw( Model *model, Shader *sh )
+{
+	sh->Bind();
+	model->Bind();
+	glDrawElements( GL_TRIANGLES, model->va->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+}
+
 void Renderer::DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec2 &size, Shader *shader, Texture *texture )
 {
 	shader->Bind();

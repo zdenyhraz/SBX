@@ -43,6 +43,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Render\RendererStorage.cpp" />
     <ClCompile Include="Render\Camera.cpp" />
+    <ClCompile Include="Render\Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="Scene\UserInput.h" />
     <ClInclude Include="Render\RendererStorage.h" />
     <ClInclude Include="Render\Camera.h" />
+    <ClInclude Include="Render\Model.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\Vertex.shader" />

@@ -163,6 +163,7 @@
     <ClCompile Include="Manager\Managers\TemplateManager.cpp" />
     <ClCompile Include="Manager\Managers\TimeManager.cpp" />
     <ClCompile Include="Render\IndexBuffer.cpp" />
+    <ClCompile Include="Render\Model.cpp" />
     <ClCompile Include="Render\Renderer.cpp" />
     <ClCompile Include="Render\RendererStorage.cpp" />
     <ClCompile Include="Render\Shader.cpp" />
@@ -227,6 +228,7 @@
     <ClInclude Include="Manager\Managers\TemplateManager.h" />
     <ClInclude Include="Manager\Managers\TimeManager.h" />
     <ClInclude Include="Render\IndexBuffer.h" />
+    <ClInclude Include="Render\Model.h" />
     <ClInclude Include="Render\Renderer.h" />
     <ClInclude Include="Render\Shader.h" />
     <ClInclude Include="Render\Texture.h" />
