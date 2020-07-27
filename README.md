@@ -12,6 +12,8 @@ Multithreaded, data oriented, entity-component-system based sandbox world with O
 - Dynamic render fps display for both renderers
 - Basic kinematics - orbiting planets with gravity demo
 
+![blobs](https://github.com/zdenyhraz/SBX/blob/master/pics/5.PNG?raw=true)
+
 ![blobs](https://github.com/zdenyhraz/SBX/blob/master/pics/4.png?raw=true)
 
 ![blobs](https://github.com/zdenyhraz/SBX/blob/master/pics/2.png?raw=true)
