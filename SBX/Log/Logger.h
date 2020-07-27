@@ -20,6 +20,7 @@ public:
 
 private:
 	static std::shared_ptr<spdlog::logger> spdlogger;
+	static std::unique_ptr<Logger> logger;
 };
 
 class LOG_STARTEND
