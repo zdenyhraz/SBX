@@ -8,22 +8,23 @@ RendererStorage::RendererStorage()
 
 void RendererStorage::AddModel( const std::string &name, const std::string &objPath, const std::string &texPath )
 {
-	m_Models.emplace( std::pair( name, Model( objPath, texPath ) ) );
+	m_Models.emplace( std::pair( name, std::make_unique<Model>( objPath, texPath ) ) );
 }
 
 void RendererStorage::AddTexture( const std::string &name, const std::string &texPath )
 {
-	m_Textures.emplace( std::pair( name, Texture( texPath ) ) );
+	m_Textures.emplace( std::pair( name, std::make_unique<Texture>( texPath ) ) );
 }
 
 Model *RendererStorage::GetModel( const std::string &name )
 {
-	return &m_Models.find( name )->second;
+
+	return m_Models.find( name )->second.get();
 }
 
 Texture *RendererStorage::GetTexture( const std::string &name )
 {
-	return &m_Textures.find( name )->second;
+	return m_Textures.find( name )->second.get();
 }
 
 void RendererStorage::CreateQuad()
@@ -41,7 +42,7 @@ void RendererStorage::CreateQuad()
 		0, 1, 2, 2, 3, 0
 	};
 
-	m_QuadVB = std::make_unique<VertexBuffer>( positions, 4 * 5 * sizeof( float ) );
+	m_QuadVB = std::make_unique<VertexBuffer>( positions, 4u * 5 * sizeof( float ) );
 	m_QuadIB = std::make_unique<IndexBuffer>( indices, 6 );
 	m_QuadVA = std::make_unique<VertexArray>();
 	m_QuadVBL = std::make_unique<VertexBufferLayout>();

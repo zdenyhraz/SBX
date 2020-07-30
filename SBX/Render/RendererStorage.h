@@ -24,8 +24,8 @@ private:
 	void CreateQuad();
 	void CreateCube();
 
-	std::unordered_map<std::string, Model> m_Models;
-	std::unordered_map<std::string, Texture> m_Textures;
+	std::unordered_map<std::string, std::unique_ptr<Model>> m_Models;
+	std::unordered_map<std::string, std::unique_ptr<Texture>> m_Textures;
 
 	std::unique_ptr<VertexArray> m_QuadVA;
 	std::unique_ptr<VertexArray> m_CubeVA;
