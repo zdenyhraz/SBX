@@ -12,7 +12,8 @@ public:
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
 		m_CameraPosSpeedBase( 0.003f ),
-		m_CameraPosSpeedMod( 3.0f ),
+		m_CameraPosSpeedModFaster( 3.0f ),
+		m_CameraPosSpeedModSlower( 5.0f ),
 		m_CameraPosSpeed( 0.f ),
 		m_CameraDirSpeed( 0.1f ),
 		m_CameraFovSpeed( 5.f ),
@@ -38,8 +39,8 @@ public:
 		m_UpDir = glm::cross( m_ViewDir, m_RightDir );
 
 		m_CameraPosSpeed = m_CameraPosSpeedBase;
-		m_CameraPosSpeed *= 1.0f + m_CameraPosSpeedMod * ( ui.KeyShift + ui.KeyCtrl );
-		m_CameraPosSpeed /= 1.0f + m_CameraPosSpeedMod * ui.KeyAlt;
+		m_CameraPosSpeed *= 1.0f + m_CameraPosSpeedModFaster * ui.KeyShift;
+		m_CameraPosSpeed /= 1.0f + m_CameraPosSpeedModSlower * ui.KeyAlt;
 
 		m_ViewPos += m_CameraPosSpeed * ( m_ViewDir  * ( float )( ui.KeyW - ui.KeyS ) + m_RightDir * ( float )( ui.KeyA - ui.KeyD ) );
 		m_CameraFov += m_CameraFovSpeed * -( float )ui.MouseScroll;
@@ -73,7 +74,8 @@ public:
 	bool m_Targeted;
 	float m_AspectRatio;
 	float m_CameraPosSpeedBase;
-	float m_CameraPosSpeedMod;
+	float m_CameraPosSpeedModFaster;
+	float m_CameraPosSpeedModSlower;
 	float m_CameraPosSpeed;
 	float m_CameraDirSpeed;
 	float m_CameraFovSpeed;
