@@ -7,7 +7,7 @@ class Camera
 public:
 	Camera( float aspectRatio ) :
 		m_AspectRatio( aspectRatio ),
-		m_ViewPos( 1.5f, -1.5f, 1.5f ),
+		m_ViewPos( 0.1f, -0.1f, 0.1f ),
 		m_ViewDir( 0.f, 0.f, 0.f ),
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
@@ -19,7 +19,7 @@ public:
 		m_CameraFov( 80.f ),
 		m_Target( 0.f, 0.f, 0.f ),
 		m_Targeted( false ),
-		m_Pitch( 45 ),
+		m_Pitch( 60 ),
 		m_Yaw( -45 )
 	{
 	}
@@ -44,7 +44,7 @@ public:
 		Utils::Clampr( m_CameraFov, 5.0f, 180.f );
 
 		m_View = glm::lookAt( m_ViewPos, m_ViewPos + m_ViewDir, m_UpDir );
-		m_Proj = glm::perspective( glm::radians( m_CameraFov ), m_AspectRatio, 0.1f, 1000.0f );
+		m_Proj = glm::perspective( glm::radians( m_CameraFov ), m_AspectRatio, 0.001f, 1000.0f );
 	}
 
 	void StartTargeting( glm::vec3 &target )
