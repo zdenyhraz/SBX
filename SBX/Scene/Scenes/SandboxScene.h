@@ -15,4 +15,6 @@ private:
 
 	std::shared_ptr<Shader> m_Shader;
 	glm::vec4 m_ClearColor;
+	std::vector<glm::vec3> m_BoxPositions;
+	std::vector<glm::vec3> m_BoxRotations;
 };

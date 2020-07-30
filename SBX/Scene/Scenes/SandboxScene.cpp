@@ -57,6 +57,15 @@ void SandboxScene::OnStart()
 		m_Components->Models.Find( 1 ).Color = cv::Scalar( 0.2, 0.8, 0.2 );
 	}
 
+	const float boxSize = 0.05f;
+	const int boxCnt = 20;
+	const float boxSpread = 4 * boxSize;
+	for ( int i = 0; i < boxCnt; i++ )
+	{
+		m_BoxPositions.emplace_back( glm::vec3( boxSpread * Utils::Rand11(), boxSpread * Utils::Rand11(), boxSpread * Utils::Rand01() ) );
+		m_BoxRotations.emplace_back( glm::vec3( Utils::Rand11(), Utils::Rand11(), Utils::Rand11() ) );
+	}
+
 	m_Shader = std::make_shared<Shader>( "Resources/Shaders/Vertex.shader", "Resources/Shaders/Fragment.shader" );
 	m_Shader->Bind();
 	m_Shader->SetUniform1i( "u_Texture", 0 );
@@ -104,16 +113,15 @@ void SandboxScene::OnRender()
 		for ( int y = 0; y < floorCnt; y++ )
 			Renderer::DrawQuad( glm::vec3( ( 0.5f + x - floorCnt / 2 ) * floorSize, ( 0.5f + y - floorCnt / 2 ) * floorSize, 0 ), glm::vec3( 0, 0, 0 ), glm::vec2( floorSize, floorSize ), m_Shader.get(), "ground" );
 
-	//cubes
-	const glm::vec3 cubeSize( 0.02f, 0.02f, 0.02f );
-	Renderer::DrawCube( glm::vec3( 0, 0, 0 ), glm::vec3( 0, 0, 0 ), cubeSize, m_Shader.get(), "box" );
-	Renderer::DrawCube( glm::vec3( 0, 0.05, 0 ), glm::vec3( 0, glm::radians( +45.0f ), 0 ), cubeSize, m_Shader.get(), "box" );
-	Renderer::DrawCube( glm::vec3( -0.01, 0, 0.02 ), glm::vec3( 0, glm::radians( -45.0f ), 0 ), cubeSize, m_Shader.get(), "box" );
-	Renderer::DrawCube( glm::vec3( -0.02, 0, 0.04 ), glm::vec3( 0, glm::radians( +0.0f ), 0 ), cubeSize, m_Shader.get(), "box" );
+	//boxes
+	const float boxSize = 0.05f;
+	const glm::vec3 boxSizev( boxSize, boxSize, boxSize );
+	for ( int i = 0; i < m_BoxPositions.size(); i++ )
+		Renderer::DrawCube( m_BoxPositions[i], m_BoxRotations[i], boxSizev, m_Shader.get(), "box" );
 
 	//fence
 	const float fenceLength = 2.0f;
-	const float fenceSize = 0.02f;
+	const float fenceSize = 0.05f;
 	const int fenceCnt = ( int )( fenceLength / fenceSize );
 	for ( int i = 0; i < fenceCnt; i++ )
 	{
