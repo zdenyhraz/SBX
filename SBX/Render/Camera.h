@@ -11,9 +11,9 @@ public:
 		m_ViewDir( 0.f, 0.f, 0.f ),
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
-		m_CameraPosSpeedBase( 0.01f ),
+		m_CameraPosSpeedBase( 0.003f ),
 		m_CameraPosSpeedMod( 3.0f ),
-		m_CameraPosSpeed( 0.01f ),
+		m_CameraPosSpeed( 0.f ),
 		m_CameraDirSpeed( 0.1f ),
 		m_CameraFovSpeed( 5.f ),
 		m_CameraFov( 80.f ),
@@ -37,9 +37,11 @@ public:
 		m_RightDir = glm::normalize( glm::cross( m_UpDirDef, m_ViewDir ) );
 		m_UpDir = glm::cross( m_ViewDir, m_RightDir );
 
-		m_CameraPosSpeed = m_CameraPosSpeedBase * ( 1.0f + m_CameraPosSpeedMod * ( ui.KeyShift + ui.KeyCtrl + ui.KeyAlt ) );
-		m_ViewPos += m_CameraPosSpeed * ( m_ViewDir  * ( float )( ui.KeyW - ui.KeyS ) + m_RightDir * ( float )( ui.KeyA - ui.KeyD ) );
+		m_CameraPosSpeed = m_CameraPosSpeedBase;
+		m_CameraPosSpeed *= 1.0f + m_CameraPosSpeedMod * ( ui.KeyShift + ui.KeyCtrl );
+		m_CameraPosSpeed /= 1.0f + m_CameraPosSpeedMod * ui.KeyAlt;
 
+		m_ViewPos += m_CameraPosSpeed * ( m_ViewDir  * ( float )( ui.KeyW - ui.KeyS ) + m_RightDir * ( float )( ui.KeyA - ui.KeyD ) );
 		m_CameraFov += m_CameraFovSpeed * -( float )ui.MouseScroll;
 		Utils::Clampr( m_CameraFov, 5.0f, 180.f );
 
