@@ -18,5 +18,7 @@ public:
 	static void Draw( VertexArray *va, Shader *sh );
 	static void Draw( Model *model, Shader *sh );
 	static void DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec2 &size, Shader *shader, Texture *texture );
+	static void DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec2 &size, Shader *shader, const std::string &texname );
 	static void DrawCube( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec3 &size, Shader *shader, Texture *texture );
+	static void DrawCube( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec3 &size, Shader *shader, const std::string &texname );
 };

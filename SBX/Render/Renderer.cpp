@@ -43,6 +43,11 @@ void Renderer::DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, const glm::
 	glDrawElements( GL_TRIANGLES, m_RendererStorage->GetQuadVA()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
 }
 
+void Renderer::DrawQuad( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec2 &size, Shader *shader, const std::string &texname )
+{
+	DrawQuad( pos, rot, size, shader, m_RendererStorage->GetTexture( texname ) );
+}
+
 void Renderer::DrawCube( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec3 &size, Shader *shader, Texture *texture )
 {
 	shader->Bind();
@@ -51,5 +56,10 @@ void Renderer::DrawCube( const glm::vec3 &pos, const glm::vec3 &rot, const glm::
 	const glm::mat4 model = glm::translate( glm::mat4( 1.0f ), pos ) * glm::eulerAngleXZY( rot.x, rot.y, rot.z ) * glm::scale( glm::mat4( 1.0f ), glm::vec3( size.x / 2, size.y / 2, size.z / 2 ) );
 	shader->SetUniformMat4f( "u_Model", model );
 	glDrawElements( GL_TRIANGLES, m_RendererStorage->GetCubeVA()->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+}
+
+void Renderer::DrawCube( const glm::vec3 &pos, const glm::vec3 &rot, const glm::vec3 &size, Shader *shader, const std::string &texname )
+{
+	DrawCube( pos, rot, size, shader, m_RendererStorage->GetTexture( texname ) );
 }
 
