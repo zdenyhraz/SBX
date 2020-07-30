@@ -12,7 +12,7 @@ public:
 	Logger()
 	{
 		spdlogger = spdlog::stdout_color_mt( "console" );
-		spdlog::set_pattern( "%^[%T]%$ %v " );
+		spdlog::set_pattern( "[%T] %^%v%$" );
 		spdlog::set_level( spdlog::level::debug );
 	}
 
