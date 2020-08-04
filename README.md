@@ -7,7 +7,7 @@ Multithreaded, data oriented, entity-component-system based sandbox world with O
 - Command line parser for live user interaction
 - Data driven approach - arrays of components in unordered hash tables for O(1) lookup/add/remove
 - Render system implemented with OpenGL & OpenCV
-- Multithreaded systems - each system works asynchronously on a separate thread
+- Multithreaded systems
 - Synchronized target refresh rate across all systems
 - Dynamic render fps display for both renderers
 - Basic kinematics - orbiting planets with gravity demo
