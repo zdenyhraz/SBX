@@ -136,6 +136,7 @@ void SandboxScene::OnRender()
 		Renderer::DrawCube( m_BoxPositions[i], m_BoxRotations[i], boxSizev, m_Shader.get(), "box" );
 
 	Renderer::DrawCube({ 0,0,0 }, { 0,0,0 }, { 1,1,1 }, m_Shader.get(), "box");
+	Renderer::DrawCube({ 0,0,1 }, { 0,0,0 }, { 1,1,1 }, m_Shader.get(), "entity");
 }
 
 void SandboxScene::OnImGuiRender()
