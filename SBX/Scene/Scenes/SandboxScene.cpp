@@ -58,7 +58,7 @@ void SandboxScene::OnStart()
 	}
 
 	const float boxSize = 0.05f;
-	const int boxCnt = 20;
+	const int boxCnt = 100;
 	const float boxSpread = 4 * boxSize;
 	for ( int i = 0; i < boxCnt; i++ )
 	{
@@ -73,7 +73,6 @@ void SandboxScene::OnStart()
 	Renderer::m_RendererStorage->AddTexture( "entity", "Resources/Textures/sasa.png" );
 	Renderer::m_RendererStorage->AddTexture( "ground", "Resources/Textures/ground.jpg" );
 	Renderer::m_RendererStorage->AddTexture( "box", "Resources/Textures/box.jpg" );
-	Renderer::m_RendererStorage->AddTexture( "fence", "Resources/Textures/fence.png" );
 }
 
 void SandboxScene::OnStop()
@@ -103,33 +102,40 @@ void SandboxScene::OnUpdate()
 
 void SandboxScene::OnRender()
 {
+	mTime += 0.01f;
 	glClearColor( m_ClearColor.x, m_ClearColor.y, m_ClearColor.z, m_ClearColor.w );
 
 	//floor
-	const float floorLength = 2.0f;
-	const float floorSize = 0.2f;
+	const float floorLength = 4.0f;
+	const float floorSize = 4.0f;
 	const float floorCnt = ( int )( floorLength / floorSize );
 	for ( int x = 0; x < floorCnt; x++ )
 		for ( int y = 0; y < floorCnt; y++ )
 			Renderer::DrawQuad( glm::vec3( ( 0.5f + x - floorCnt / 2 ) * floorSize, ( 0.5f + y - floorCnt / 2 ) * floorSize, 0 ), glm::vec3( 0, 0, 0 ), glm::vec2( floorSize, floorSize ), m_Shader.get(), "ground" );
 
-	//boxes
-	const float boxSize = 0.05f;
+	float shift = 0;
+	for (auto& boxpos : m_BoxPositions)
+	{
+		boxpos.x = (1.0f + std::sin(shift))*std::cos(mTime*5*std::sin(shift) + shift);
+		boxpos.y = (1.0f + std::sin(shift))*std::sin(mTime*5*std::sin(shift) + shift);
+		boxpos.z = 0.5f + 0.4f*std::sin(mTime*5*std::sin(shift) + shift + 3.14f * std::sin(shift));
+		shift += 6.28f / m_BoxPositions.size();
+	}
+
+	const float rotMult = 0.02f;
+	for (auto& boxrot : m_BoxRotations)
+	{
+		boxrot.x += rotMult;
+		boxrot.y += rotMult;
+		boxrot.z += rotMult;
+	}
+
+	const float boxSize = 0.3f;
 	const glm::vec3 boxSizev( boxSize, boxSize, boxSize );
 	for ( int i = 0; i < m_BoxPositions.size(); i++ )
 		Renderer::DrawCube( m_BoxPositions[i], m_BoxRotations[i], boxSizev, m_Shader.get(), "box" );
 
-	//fence
-	const float fenceLength = 2.0f;
-	const float fenceSize = 0.05f;
-	const int fenceCnt = ( int )( fenceLength / fenceSize );
-	for ( int i = 0; i < fenceCnt; i++ )
-	{
-		Renderer::DrawQuad( glm::vec3( -1, ( 0.5f + i - fenceCnt / 2 ) * fenceSize, fenceSize / 2 ), glm::vec3( glm::radians( 90.0f ), 0, glm::radians( 90.0f ) ), glm::vec2( fenceSize, fenceSize ), m_Shader.get(), "fence" );
-		Renderer::DrawQuad( glm::vec3( +1, ( 0.5f + i - fenceCnt / 2 ) * fenceSize, fenceSize / 2 ), glm::vec3( glm::radians( 90.0f ), 0, glm::radians( 90.0f ) ), glm::vec2( fenceSize, fenceSize ), m_Shader.get(), "fence" );
-		Renderer::DrawQuad( glm::vec3( ( 0.5f + i - fenceCnt / 2 ) * fenceSize, +1, fenceSize / 2 ), glm::vec3( glm::radians( 90.0f ), 0, 0 ), glm::vec2( fenceSize, fenceSize ), m_Shader.get(), "fence" );
-		Renderer::DrawQuad( glm::vec3( ( 0.5f + i - fenceCnt / 2 ) * fenceSize, -1, fenceSize / 2 ), glm::vec3( glm::radians( 90.0f ), 0, 0 ), glm::vec2( fenceSize, fenceSize ), m_Shader.get(), "fence" );
-	}
+	Renderer::DrawCube({ 0,0,0 }, { 0,0,0 }, { 1,1,1 }, m_Shader.get(), "box");
 }
 
 void SandboxScene::OnImGuiRender()

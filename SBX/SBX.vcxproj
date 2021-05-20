@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;E:\opencv\build\install\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
@@ -85,8 +85,8 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;C:\include\opencv\build\x64\vc14\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world343d.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;E:\opencv\build\install\x64\vc15\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world451d.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;E:\opencv\build\install\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <OpenMPSupport>
@@ -106,8 +106,8 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;C:\include\opencv\build\x64\vc14\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world343d.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;E:\opencv\build\install\x64\vc15\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world451d.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,7 +118,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;E:\opencv\build\install\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
@@ -129,8 +129,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;C:\include\opencv\build\x64\vc14\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world343.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;E:\opencv\build\install\x64\vc15\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world451.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,7 +141,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;C:\include\opencv\build\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\SBX\SBX;C:\include\spdlog\include;E:\opencv\build\install\include;C:\include\glfw\include;C:\include\glew\include;C:\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <OpenMPSupport>
@@ -154,8 +154,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;C:\include\opencv\build\x64\vc14\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_world343.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\include\glfw\lib-vc2017;E:\opencv\build\install\x64\vc15\lib;C:\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world451.lib;%(AdditionalDependencies);glfw3.lib;opengl32.lib;glew32s.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

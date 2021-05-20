@@ -7,11 +7,11 @@ class Camera
 public:
 	Camera( float aspectRatio ) :
 		m_AspectRatio( aspectRatio ),
-		m_ViewPos( 0.1f, -0.1f, 0.1f ),
+		m_ViewPos( 0.0f, -3.0f, 2.3f ),
 		m_ViewDir( 0.f, 0.f, 0.f ),
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
-		m_CameraPosSpeedBase( 0.003f ),
+		m_CameraPosSpeedBase( 0.01f ),
 		m_CameraPosSpeedModFaster( 3.0f ),
 		m_CameraPosSpeedModSlower( 5.0f ),
 		m_CameraPosSpeed( 0.f ),
@@ -20,8 +20,8 @@ public:
 		m_CameraFov( 80.f ),
 		m_Target( 0.f, 0.f, 0.f ),
 		m_Targeted( false ),
-		m_Pitch( 60 ),
-		m_Yaw( -45 )
+		m_Pitch( 50 ),
+		m_Yaw( 0 )
 	{
 	}
 
