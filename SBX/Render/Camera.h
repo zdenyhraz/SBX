@@ -12,7 +12,7 @@ public:
 		m_UpDirDef( 0.f, 0.f, 1.f ),
 		m_UpDir( 0.f, 0.f, 1.f ),
 		m_CameraPosSpeedBase( 0.01f ),
-		m_CameraPosSpeedModFaster( 3.0f ),
+		m_CameraPosSpeedModFaster( 10.0f ),
 		m_CameraPosSpeedModSlower( 5.0f ),
 		m_CameraPosSpeed( 0.f ),
 		m_CameraDirSpeed( 0.1f ),
